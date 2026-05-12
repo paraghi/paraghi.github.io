@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CA Parvesh Aghi — Visiting Professor of Finance</title>
+<meta name="description" content="CA Parvesh Aghi — Chartered Accountant and Visiting Professor of Finance at IMT Ghaziabad, IIFT Delhi, and BM Munjal University. Expertise in stock valuations, mutual fund analysis, and corporate finance." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a1929;
+    --ink-soft: #1a2942;
+    --paper: #f6f1e8;
+    --paper-warm: #ede4d3;
+    --gold: #b8893a;
+    --gold-bright: #d4a554;
+    --rule: #c9b894;
+    --muted: #5a6678;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(184, 137, 58, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(10, 25, 41, 0.04) 0%, transparent 40%);
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(246, 241, 232, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(10, 25, 41, 0.08);
+    z-index: 100;
+    padding: 1.2rem 0;
+  }
+  nav .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  nav .brand span { color: var(--gold); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+  nav ul a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+  }
+  nav ul a:hover { color: var(--gold); }
+  nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  nav ul a:hover::after { width: 100%; }
+
+  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+  }
+  .hero::before {
+    content: '01';
+    position: absolute;
+    top: 6rem; right: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12rem;
+    font-weight: 300;
+    color: rgba(184, 137, 58, 0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-text { opacity: 0; animation: fadeUp 1s ease 0.2s forwards; }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+    max-width: 90%;
+  }
+
+  .meta {
+    display: flex;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(10, 25, 41, 0.15);
+    font-size: 0.85rem;
+  }
+  .meta div span {
+    display: block;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .meta div strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .hero-visual {
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.5s forwards;
+  }
+  .portrait-frame {
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
+    border: 1px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait-frame::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(184, 137, 58, 0.3);
+  }
+  .portrait-frame .monogram {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9rem;
+    color: var(--gold);
+    font-weight: 300;
+    letter-spacing: -0.05em;
+  }
+  .portrait-frame .label {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    color: var(--paper);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .portrait-frame .label span {
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  /* SECTION BASE */
+  section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: baseline;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    font-style: italic;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+  }
+  .about-sidebar {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    position: sticky;
+    top: 8rem;
+    align-self: start;
+  }
+  .about-sidebar::before {
+    content: '"';
+    font-size: 5rem;
+    color: var(--gold);
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .about-body p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+  .about-body p:first-child::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 500;
+    float: left;
+    line-height: 1;
+    padding-right: 0.8rem;
+    padding-top: 0.4rem;
+    color: var(--gold);
+  }
+
+  /* INSTITUTIONS */
+  .institutions {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 0;
+    max-width: none;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .institutions::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .institutions-inner { max-width: 1200px; margin: 0 auto; }
+  .institutions .section-head { border-color: rgba(184, 137, 58, 0.3); }
+  .institutions .section-title { color: var(--paper); }
+
+  .school-list { display: grid; gap: 0; }
+  .school {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(184, 137, 58, 0.2);
+    transition: padding 0.4s ease;
+  }
+  .school:hover { padding-left: 1rem; }
+  .school:last-child { border-bottom: none; }
+  .school-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+  .school-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .school-loc {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+  }
+
+  /* EXPERTISE */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .exp-card {
+    padding: 2.5rem 2rem;
+    background: var(--paper-warm);
+    border: 1px solid transparent;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+  .exp-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+  .exp-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .exp-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .exp-card p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--paper-warm);
+    margin: 0;
+    max-width: none;
+    padding: 8rem 2rem;
+    text-align: center;
+  }
+  .contact-inner { max-width: 700px; margin: 0 auto; }
+  .contact .eyebrow { justify-content: center; }
+  .contact .eyebrow::before { display: none; }
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+  .contact h2 em { font-style: italic; color: var(--gold); }
+  .contact p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    margin-bottom: 3rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .contact-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border: 1px solid var(--ink);
+    transition: all 0.3s;
+  }
+  .contact-links a:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--paper-warm);
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+  }
+  footer .gold-rule {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+  }
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 6rem; gap: 3rem; }
+    .hero::before { font-size: 8rem; top: 4rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-sidebar { position: static; font-size: 1.2rem; }
+    .section-head { grid-template-columns: 1fr; gap: 0.5rem; }
+    .school { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
+    .school-name { font-size: 1.4rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="brand">P<span>·</span>A</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Chartered Accountant &middot; Educator</div>
+    <h1>CA Parvesh <em>Aghi</em></h1>
+    <p class="lede">Visiting Professor of Finance with four decades at the intersection of corporate practice and classroom rigour — interpreting markets, valuations, and the discipline of investing for India's next generation of business leaders.</p>
+    <div class="meta">
+      <div>
+        <span>Industry</span>
+        <strong>25 Years</strong>
+      </div>
+      <div>
+        <span>Teaching</span>
+        <strong>15 Years</strong>
+      </div>
+      <div>
+        <span>Focus</span>
+        <strong>Valuations</strong>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="portrait-frame">
+      <div class="monogram">PA</div>
+      <div class="label"><span>Est. Practice</span>Finance &middot; Pedagogy</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <div class="section-num">02 &mdash; Profile</div>
+    <h2 class="section-title">A practitioner who <em>teaches</em>.</h2>
+  </div>
+  <div class="about-grid">
+    <aside class="about-sidebar">
+      The most valuable lesson in finance is the one a textbook cannot offer — the lived experience of decisions made under uncertainty.
+    </aside>
+    <div class="about-body">
+      <p>A Chartered Accountant by training, I spent twenty-five years in the corporate world, navigating financial strategy, capital decisions, and the day-to-day judgements that determine whether enterprises endure or unravel. That practice forms the spine of how I teach today.</p>
+      <p>For the past fifteen years, I have been a visiting faculty member at leading Indian business schools, where my courses explore the architecture of financial analysis — how to read a company, how to value it, and how to separate signal from noise in equity and mutual fund markets.</p>
+      <p>My approach is unapologetically applied. Cases are drawn from Indian markets. Frameworks are stress-tested against real filings. Students leave with not just models, but the instincts to question them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="institutions" id="teaching">
+  <div class="institutions-inner">
+    <div class="section-head">
+      <div class="section-num">03 &mdash; Affiliations</div>
+      <h2 class="section-title">Visiting faculty at <em>institutions</em> shaping Indian business.</h2>
+    </div>
+    <div class="school-list">
+      <div class="school">
+        <div class="school-num">i.</div>
+        <div class="school-name">IMT Ghaziabad</div>
+        <div class="school-loc">Ghaziabad &middot; NCR</div>
+      </div>
+      <div class="school">
+        <div class="school-num">ii.</div>
+        <div class="school-name">Indian Institute of Foreign Trade</div>
+        <div class="school-loc">New Delhi</div>
+      </div>
+      <div class="school">
+        <div class="school-num">iii.</div>
+        <div class="school-name">BM Munjal University</div>
+        <div class="school-loc">Gurgaon &middot; Haryana</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="section-head">
+    <div class="section-num">04 &mdash; Expertise</div>
+    <h2 class="section-title">What I <em>teach</em> &amp; analyse.</h2>
+  </div>
+  <div class="expertise-grid">
+    <div class="exp-card">
+      <div class="exp-icon">§</div>
+      <h3>Equity Valuations</h3>
+      <p>Discounted cash flow, relative valuation, and the practical judgement calls that separate good models from defensible ones in Indian listed markets.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">¶</div>
+      <h3>Mutual Fund Analysis</h3>
+      <p>Reading factsheets beyond returns — risk-adjusted performance, style consistency, expense drag, and the long-arc compounding of disciplined choices.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">†</div>
+      <h3>Financial Analysis</h3>
+      <p>Annual reports as primary documents. Ratio analysis as a language. The skills to interrogate management commentary and decode what numbers don't say.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="eyebrow">Get in touch</div>
+    <h2>Open to <em>guest lectures</em>, corporate sessions, and collaborations.</h2>
+    <p>For speaking engagements, MDP sessions, or academic conversations on Indian finance.</p>
+    <div class="contact-links">
+      <a href="mailto:parvesh1104@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/parvesh-aghi-34473b18" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.quora.com/profile/Parvesh-Aghi" target="_blank" rel="noopener">Quora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="gold-rule"></div>
+  <div>CA PARVESH AGHI <span>&middot;</span> NEW DELHI <span>&middot;</span> &copy; 2026</div>
+</footer>
+
+</body>
+</html>
