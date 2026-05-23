@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="India's Top Mutual Funds 2026 — A 7-Dimension Selection Framework across Large-Cap, Mid-Cap & Small-Cap categories | CA Parvesh Aghi, Visiting Professor of Finance">
+<title>India's Top Mutual Funds 2026 · Selection Framework | CA Parvesh Aghi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#11243f;
+    --navy-soft:#1c3454;
+    --cream:#f7f3ea;
+    --cream-deep:#efe8d8;
+    --paper:#fbf9f3;
+    --gold:#a9852f;
+    --gold-soft:#c2a14e;
+    --ink:#1a1d22;
+    --ink-soft:#3c4148;
+    --grey:#6b7078;
+    --line:#d9d0bd;
+    --green:#1f6b3a;
+    --red:#9c2b22;
+    --max:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Spectral',Georgia,serif;
+    font-weight:400;
+    line-height:1.72;
+    font-size:18px;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    background:var(--navy);
+    color:var(--cream);
+    padding:14px 0;
+    border-bottom:3px solid var(--gold);
+  }
+  .masthead .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .vol{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);font-family:'Spectral',serif;}
+  .vol b{color:var(--cream);font-weight:600;}
+  .dateline{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#b9c2cf;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%,var(--navy-soft) 100%);
+    color:var(--cream);
+    padding:78px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(169,133,47,.16) 0%,transparent 68%);
+  }
+  .kicker{
+    font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:26px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:340;
+    font-size:clamp(42px,7vw,82px);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin-bottom:26px;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-soft);font-weight:340;}
+  .hero .sub{
+    font-size:17px;color:#cdd5df;max-width:640px;font-weight:300;
+    border-top:1px solid rgba(255,255,255,.16);padding-top:20px;letter-spacing:.01em;
+  }
+  .hero .sub b{color:var(--cream);font-weight:500;}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:64px 0;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:8px;
+  }
+  .eyebrow .num{
+    font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:var(--gold);
+    letter-spacing:.06em;
+  }
+  .eyebrow .lbl{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--grey);}
+  h2{
+    font-family:'Fraunces',serif;font-weight:360;
+    font-size:clamp(28px,4.4vw,44px);line-height:1.1;letter-spacing:-.01em;
+    color:var(--navy);margin-bottom:10px;
+  }
+  h2 em{font-style:italic;color:var(--gold);}
+  .lede{font-size:18px;color:var(--ink-soft);max-width:760px;margin-bottom:30px;}
+  .lede b{color:var(--navy);font-weight:600;}
+  p{margin-bottom:18px;}
+  p b{color:var(--navy);font-weight:600;}
+  h3{
+    font-family:'Fraunces',serif;font-weight:440;font-size:25px;color:var(--navy);
+    margin:6px 0 14px;letter-spacing:-.005em;
+  }
+  h3 em{font-style:italic;color:var(--gold);}
+  h4{
+    font-family:'Spectral',serif;font-weight:600;font-size:13px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--navy);margin:26px 0 14px;
+    padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+
+  /* ---------- EXEC SUMMARY HERO STATS ---------- */
+  .summary-band{
+    background:var(--cream);border-top:3px solid var(--gold);
+  }
+  .picks-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:34px 0 0;
+    border:1px solid var(--line);background:var(--paper);
+  }
+  .pick{
+    padding:26px 24px;border-right:1px solid var(--line);position:relative;
+  }
+  .pick:last-child{border-right:none;}
+  .pick .cat{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .pick .name{font-family:'Fraunces',serif;font-size:22px;font-weight:480;color:var(--navy);line-height:1.12;margin-bottom:16px;}
+  .pick .metrics{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink-soft);}
+  .pick .metrics span{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line);padding-bottom:5px;}
+  .pick .metrics b{color:var(--navy);font-weight:600;font-variant-numeric:tabular-nums;}
+  .star{color:var(--gold);}
+
+  .stat-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:36px 0 8px;
+  }
+  .stat{
+    border-left:3px solid var(--gold);padding:6px 0 6px 18px;
+  }
+  .stat .v{font-family:'Fraunces',serif;font-size:38px;font-weight:520;color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat .v.pos{color:var(--green);}
+  .stat .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-top:10px;}
+  .stat .note{font-size:13px;color:var(--ink-soft);margin-top:4px;font-style:italic;}
+
+  /* ---------- FRAMEWORK GRID ---------- */
+  .fw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:28px;border:1px solid var(--line);}
+  .fw{padding:24px 26px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);}
+  .fw:nth-child(2n){border-right:none;}
+  .fw:nth-last-child(-n+1){border-bottom:none;}
+  @media(min-width:721px){.fw:nth-last-child(2){border-bottom:none;}}
+  .fw .fwn{font-family:'Fraunces',serif;font-size:30px;font-weight:300;color:var(--gold-soft);line-height:1;float:left;margin:2px 16px 0 0;}
+  .fw .fwt{font-family:'Spectral',serif;font-weight:600;color:var(--navy);font-size:16px;display:block;margin-bottom:4px;}
+  .fw .fwd{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+  .fw .fwd b{color:var(--navy);}
+
+  /* ---------- TABLES ---------- */
+  .tbl-wrap{overflow-x:auto;margin:24px 0 8px;border:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:480px;}
+  thead th{
+    background:var(--navy);color:var(--cream);font-family:'Spectral',serif;font-weight:600;
+    text-align:left;padding:13px 16px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+  }
+  thead th.r{text-align:right;}
+  tbody td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+  tbody td.r{text-align:right;}
+  tbody tr:nth-child(even){background:var(--cream);}
+  tbody tr.best{background:#fbf4e2;}
+  tbody tr.best td{color:var(--navy);font-weight:600;}
+  .rank{font-family:'Fraunces',serif;color:var(--gold);font-weight:600;}
+  .pos{color:var(--green);font-weight:600;}
+  .neg{color:var(--red);font-weight:600;}
+  .er{color:var(--navy);font-weight:600;}
+
+  /* ---------- BEST PICK CARD ---------- */
+  .bestpick{
+    background:var(--navy);color:var(--cream);padding:38px 40px;margin-top:34px;
+    border-left:5px solid var(--gold);
+  }
+  .bestpick .tag{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;}
+  .bestpick h3{color:var(--cream);font-size:27px;margin-bottom:14px;}
+  .bestpick h3 em{color:var(--gold-soft);}
+  .bestpick p{color:#cdd5df;font-size:16px;font-weight:300;margin-bottom:0;}
+  .bestpick p b{color:var(--cream);font-weight:600;}
+  .bp-metrics{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:26px;
+    border-top:1px solid rgba(255,255,255,.16);
+  }
+  .bp-metrics div{padding:18px 8px 0;border-right:1px solid rgba(255,255,255,.12);}
+  .bp-metrics div:last-child{border-right:none;}
+  .bp-metrics .bv{font-family:'Fraunces',serif;font-size:27px;font-weight:520;color:var(--gold-soft);line-height:1;}
+  .bp-metrics .bk{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9aa6b5;margin-top:8px;}
+
+  /* ---------- CALLOUT ---------- */
+  .callout{
+    background:#fcf2f0;border-left:4px solid var(--red);padding:22px 26px;margin:26px 0;
+    font-size:16px;color:var(--ink-soft);
+  }
+  .callout .lab{font-family:'Spectral',serif;font-weight:700;color:var(--red);letter-spacing:.04em;display:block;margin-bottom:6px;font-size:13px;text-transform:uppercase;}
+  .callout b{color:var(--navy);font-weight:600;}
+
+  /* ---------- KEY FINDINGS ---------- */
+  .findings{list-style:none;margin:18px 0 8px;display:grid;gap:0;border:1px solid var(--line);}
+  .findings li{padding:16px 22px 16px 52px;position:relative;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink-soft);}
+  .findings li:last-child{border-bottom:none;}
+  .findings li::before{content:"✓";position:absolute;left:22px;top:16px;color:var(--green);font-weight:700;}
+  .findings li b{color:var(--navy);font-weight:600;}
+
+  /* ---------- ALLOCATION ---------- */
+  .alloc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px;}
+  .alloc{border:1px solid var(--line);padding:26px 24px;background:var(--paper);position:relative;}
+  .alloc.rec{border-color:var(--gold);border-width:2px;}
+  .alloc .rec-tag{position:absolute;top:-11px;left:24px;background:var(--gold);color:#fff;font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:3px 10px;font-weight:600;}
+  .alloc .profile{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
+  .alloc .ptitle{font-family:'Fraunces',serif;font-size:22px;font-weight:480;color:var(--navy);margin-bottom:18px;}
+  .alloc .bar{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px dotted var(--line);color:var(--ink-soft);}
+  .alloc .bar b{color:var(--navy);font-weight:600;font-variant-numeric:tabular-nums;}
+  .alloc .desc{font-size:13.5px;color:var(--grey);font-style:italic;margin-top:14px;line-height:1.5;}
+
+  /* ---------- TAKEAWAYS ---------- */
+  .takeaways{counter-reset:tk;margin-top:24px;}
+  .tk{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);}
+  .tk:last-child{border-bottom:none;}
+  .tk .tn{font-family:'Fraunces',serif;font-size:30px;font-weight:300;color:var(--gold-soft);line-height:1;flex-shrink:0;width:42px;}
+  .tk .tc h5{font-family:'Spectral',serif;font-weight:700;color:var(--navy);font-size:16px;margin-bottom:5px;}
+  .tk .tc p{font-size:15px;color:var(--ink-soft);margin-bottom:0;}
+
+  /* ---------- FOOTER ---------- */
+  .footer{background:var(--navy);color:var(--cream);padding:54px 0 40px;border-bottom:none;}
+  .footer .fcols{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;margin-bottom:34px;}
+  .footer h6{font-family:'Spectral',serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px;}
+  .footer .auth{font-family:'Fraunces',serif;font-size:26px;font-weight:440;color:var(--cream);}
+  .footer .role{font-size:14px;color:#aab4c2;margin-top:2px;}
+  .footer a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(194,161,78,.4);}
+  .footer p{font-size:13.5px;color:#aab4c2;font-weight:300;line-height:1.6;margin-bottom:0;}
+  .footer .disc{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;font-size:12.5px;color:#8c97a6;line-height:1.65;}
+  .footer .disc b{color:#c6cdd6;font-weight:600;}
+  .footer em{font-style:italic;color:#c6cdd6;}
+  .copyline{text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#7e8a99;margin-top:30px;}
+
+  @media(max-width:720px){
+    body{font-size:17px;}
+    .wrap{padding:0 20px;}
+    .picks-grid,.stat-row,.fw-grid,.alloc-grid{grid-template-columns:1fr;}
+    .pick{border-right:none;border-bottom:1px solid var(--line);}
+    .pick:last-child{border-bottom:none;}
+    .stat-row{gap:18px;}
+    .fw:nth-child(2n){border-right:1px solid var(--line);}
+    .fw{border-right:none !important;}
+    .bp-metrics{grid-template-columns:repeat(2,1fr);}
+    .bp-metrics div:nth-child(2n){border-right:none;}
+    .footer .fcols{grid-template-columns:1fr;gap:24px;}
+    .bestpick{padding:28px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <div class="vol">Vol. I · No. 6 &nbsp;<b>Fund Selection</b></div>
+    <div class="dateline">May 2026 · New Delhi</div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">India's Top Mutual Funds · 2026</div>
+    <h1>The <em>Selection</em><br>Framework</h1>
+    <p class="sub">A practitioner's guide to identifying funds with the highest probability of sustained outperformance — evaluated across <b>Large-Cap, Mid-Cap and Small-Cap</b> categories through a rigorous seven-dimension analytical lens. <b>By CA Parvesh Aghi.</b></p>
+  </div>
+</header>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="summary-band">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">00</span><span class="lbl">Executive Summary</span></div>
+    <h2>Three categories, one <em>discipline</em>: alpha, cost, and the patience to hold.</h2>
+    <p class="lede">This analysis evaluates India's mutual fund landscape across three equity categories using a seven-dimension framework. The findings reveal a clear hierarchy of risk-adjusted returns — and the way each category rewards a different kind of investor.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="v pos">14%</div>
+        <div class="k">Large-Cap · 5Y</div>
+        <div class="note">Stability & capital preservation</div>
+      </div>
+      <div class="stat">
+        <div class="v pos">21.1%</div>
+        <div class="k">Mid-Cap · 5Y</div>
+        <div class="note">~700 bps premium over large-cap</div>
+      </div>
+      <div class="stat">
+        <div class="v pos">23%</div>
+        <div class="k">Small-Cap · 5Y</div>
+        <div class="note">Highest long-term compounding</div>
+      </div>
+    </div>
+
+    <h4 style="margin-top:40px;">★ Top Pick · Each Category</h4>
+    <div class="picks-grid">
+      <div class="pick">
+        <div class="cat"><span class="star">★</span> Large-Cap</div>
+        <div class="name">Nippon India Large Cap</div>
+        <div class="metrics">
+          <span>5Y Return <b>16.7%</b></span>
+          <span>Expense Ratio <b>0.70%</b></span>
+          <span>Beta <b>0.97</b></span>
+          <span>AUM <b>₹51,690 Cr</b></span>
+        </div>
+      </div>
+      <div class="pick">
+        <div class="cat"><span class="star">★</span> Mid-Cap</div>
+        <div class="name">Invesco India Mid Cap</div>
+        <div class="metrics">
+          <span>5Y Return <b>21.87%</b></span>
+          <span>Expense Ratio <b>0.60%</b></span>
+          <span>3Y Return <b>26.87%</b></span>
+          <span>AUM <b>₹11,767 Cr</b></span>
+        </div>
+      </div>
+      <div class="pick">
+        <div class="cat"><span class="star">★★</span> Small-Cap</div>
+        <div class="name">Bandhan Small Cap</div>
+        <div class="metrics">
+          <span>5Y Return <b>23.49%</b></span>
+          <span>Expense Ratio <b>0.42%</b></span>
+          <span>3Y Return <b>31.05%</b></span>
+          <span>AUM <b>₹5–8K Cr</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span><span class="lbl">Methodology</span></div>
+    <h2>The 7-Dimension <em>Selection</em> Framework.</h2>
+    <p class="lede">Every fund in this report is evaluated against the same seven critical dimensions, with thresholds adapted to the risk-return profile of each category. Returns alone are noise; this framework isolates <b>repeatable, skill-based outperformance</b>.</p>
+
+    <div class="fw-grid">
+      <div class="fw"><span class="fwn">1</span><span class="fwt">Consistent Alpha over Category Average</span><span class="fwd">Funds beating benchmarks across <b>1Y, 3Y and 5Y</b> demonstrate a repeatable process — not a single lucky window.</span></div>
+      <div class="fw"><span class="fwn">2</span><span class="fwt">Risk-Adjusted Returns</span><span class="fwd">Sharpe & Sortino ratios test return quality. Target: Sharpe <b>&gt;0.70</b> (large-cap), <b>&gt;1.0</b> (mid & small-cap).</span></div>
+      <div class="fw"><span class="fwn">3</span><span class="fwt">Downside Capture Ratio</span><span class="fwd">Funds that limit losses in falling markets recover faster — enabling superior <b>long-term compounding</b>.</span></div>
+      <div class="fw"><span class="fwn">4</span><span class="fwt">Fund Manager Tenure & Stability</span><span class="fwd">Longer tenure reduces style drift. Prefer <b>5+ years</b> (large-cap), <b>7+ years</b> (small-cap).</span></div>
+      <div class="fw"><span class="fwn">5</span><span class="fwt">Assets Under Management</span><span class="fwd">Optimal ranges differ by cap: <b>₹1–50K Cr</b> large, <b>₹3–15K Cr</b> mid, <b>₹5–20K Cr</b> small.</span></div>
+      <div class="fw"><span class="fwn">6</span><span class="fwt">Expense Ratio Efficiency</span><span class="fwd">A <b>20–30 bps</b> edge compounds to a 3–5% wealth advantage over twenty years. Cost is a near-certain return.</span></div>
+      <div class="fw"><span class="fwn">7</span><span class="fwt">Beta vs. Return Quality</span><span class="fwd">Low-beta funds (<b>0.8–1.0</b>) with high returns prove genuine stock-picking — not just market exposure.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LARGE CAP -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">02</span><span class="lbl">Large-Cap Funds</span></div>
+    <h2>The <em>mature</em> category.</h2>
+    <p class="lede">India's most mature equity category. The focus is on consistent alpha generation, cost discipline, and superior downside protection — capital preservation with moderate growth.</p>
+
+    <ul class="findings">
+      <li><b>Consistent alpha:</b> the top three funds beat category averages across both 3Y and 5Y periods.</li>
+      <li><b>Expense discipline:</b> all funds maintain competitive expense ratios of 0.52–0.84%.</li>
+      <li><b>Optimal AUM:</b> funds sit in the ₹2K–50K Cr sweet spot, balancing agility with stability.</li>
+      <li><b>Downside protection:</b> superior beta metrics confirm better capital preservation.</li>
+    </ul>
+
+    <h4>Top 5 · Large-Cap</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Rank</th><th>Fund Name</th><th class="r">5Y Return</th><th class="r">Expense Ratio</th></tr></thead>
+        <tbody>
+          <tr class="best"><td class="rank">1</td><td>★ Nippon India Large Cap</td><td class="r pos">16.7%</td><td class="r er">0.70%</td></tr>
+          <tr><td class="rank">2</td><td>ICICI Prudential Large Cap</td><td class="r pos">14.3%</td><td class="r">0.80%</td></tr>
+          <tr><td class="rank">3</td><td>DSP Large Cap Fund</td><td class="r pos">12.3%</td><td class="r">0.80%</td></tr>
+          <tr><td class="rank">4</td><td>SBI Large Cap Fund</td><td class="r pos">13.23%</td><td class="r">0.84%</td></tr>
+          <tr><td class="rank">5</td><td>Canara Robeco Large Cap</td><td class="r pos">11.12%</td><td class="r er">0.52%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bestpick">
+      <div class="tag">★ Best Pick · Large-Cap</div>
+      <h3>Nippon India Large Cap Fund <em>— Direct Plan</em></h3>
+      <p>Leading 5Y returns with the lowest expense ratio among the top performers. A beta of <b>0.97</b> indicates genuine stock-picking ability rather than market-driven returns, while consistent 3Y alpha (15.6% vs. ~13.5% category average) demonstrates a repeatable process at a scale that still preserves agility.</p>
+      <div class="bp-metrics">
+        <div><div class="bv">16.7%</div><div class="bk">5Y CAGR</div></div>
+        <div><div class="bv">0.70%</div><div class="bk">Expense Ratio</div></div>
+        <div><div class="bv">0.97</div><div class="bk">Beta</div></div>
+        <div><div class="bv">₹51,690 Cr</div><div class="bk">AUM</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CAP -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">03</span><span class="lbl">Mid-Cap Funds</span></div>
+    <h2>The <em>sweet spot</em> of growth.</h2>
+    <p class="lede">India's fastest-growing equity category, offering roughly 700 basis points of return premium over large-caps. Mid-cap stocks (ranked 101–250 by market cap) sit earlier in the business cycle, with <b>earnings growth of 15–20% annually</b>.</p>
+
+    <ul class="findings">
+      <li><b>Superior alpha:</b> top three funds beat the 21.1% category average by 100–150 bps annually.</li>
+      <li><b>Risk-adjusted excellence:</b> all maintain Sharpe ratios above 1.0.</li>
+      <li><b>Cost competitiveness:</b> expense ratios of 0.42–0.74% sit 20–40 bps below the category average.</li>
+      <li><b>Downside resilience:</b> managers limit drawdowns to −6% / −8% vs. category −12% / −15%.</li>
+    </ul>
+
+    <h4>Top 5 · Mid-Cap</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Rank</th><th>Fund Name</th><th class="r">5Y Return</th><th class="r">Expense Ratio</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">1</td><td>HSBC Midcap Fund</td><td class="r pos">20.4%</td><td class="r">0.60%</td></tr>
+          <tr class="best"><td class="rank">2</td><td>★ Invesco India Mid Cap</td><td class="r pos">21.87%</td><td class="r er">0.60%</td></tr>
+          <tr><td class="rank">3</td><td>Edelweiss Mid Cap Fund</td><td class="r pos">21.8%</td><td class="r er">0.42%</td></tr>
+          <tr><td class="rank">4</td><td>Nippon India Growth Mid Cap</td><td class="r pos">22.48%</td><td class="r">0.80%</td></tr>
+          <tr><td class="rank">5</td><td>HDFC Mid Cap Opportunities</td><td class="r pos">21.17%</td><td class="r">0.74%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bestpick">
+      <div class="tag">★ Best Pick · Mid-Cap</div>
+      <h3>Invesco India Mid Cap Fund <em>— Direct Plan</em></h3>
+      <p>Outstanding 5Y returns — <b>68 bps above the category average</b> — demonstrate a sustainable edge, while a strong 3Y figure of 26.87% confirms the recent outperformance is no fluke. A thematic focus on financial services and healthcare provides concentrated conviction, and an optimal AUM of ₹11,767 Cr ensures no capacity constraints.</p>
+      <div class="bp-metrics">
+        <div><div class="bv">21.87%</div><div class="bk">5Y CAGR</div></div>
+        <div><div class="bv">26.87%</div><div class="bk">3Y CAGR</div></div>
+        <div><div class="bv">0.60%</div><div class="bk">Expense Ratio</div></div>
+        <div><div class="bv">₹11,767 Cr</div><div class="bk">AUM</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMALL CAP -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">04</span><span class="lbl">Small-Cap Funds</span></div>
+    <h2>The <em>final frontier</em> for wealth creation.</h2>
+    <p class="lede">Small-cap funds are India's highest-compounding category. While 30% annual returns are achievable, <b>40% drawdowns are equally possible</b>. Suitable only for investors with a 7–10 year commitment and high risk tolerance.</p>
+
+    <div class="callout">
+      <span class="lab">⚠ The Compounding Mismatch</span>
+      Small-caps trade at a <b>30–50% discount</b> to large-cap multiples despite 25–35% annual EPS growth. This mismatch compounds: ₹10 lakh in a 25% CAGR small-cap fund becomes <b>₹1+ crore over 20 years</b> — against ₹97.5 lakh in a 14% large-cap fund.
+    </div>
+
+    <ul class="findings">
+      <li><b>Superior long-term returns:</b> the category averages 22–24% over 5Y, against 14% (large) and 21% (mid).</li>
+      <li><b>High volatility demands discipline:</b> ~33% annual volatility requires a 7–10 year horizon and monthly SIP.</li>
+      <li><b>Cost discipline is critical:</b> expense ratios of 0.42–0.75% sit below the 0.90%+ category average.</li>
+      <li><b>Manager skill is paramount:</b> +4% to +8% annual alpha separates a 20% fund from a 40% one.</li>
+    </ul>
+
+    <h4>Top 5 · Small-Cap</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Rank</th><th>Fund Name</th><th class="r">5Y Return</th><th class="r">Expense Ratio</th></tr></thead>
+        <tbody>
+          <tr class="best"><td class="rank">1</td><td>★★ Bandhan Small Cap Fund</td><td class="r pos">23.49%</td><td class="r er">0.42%</td></tr>
+          <tr><td class="rank">2</td><td>Quant Small Cap Fund</td><td class="r pos">27.92%</td><td class="r">0.60%</td></tr>
+          <tr><td class="rank">3</td><td>Invesco India Small Cap</td><td class="r pos">24.13%</td><td class="r">0.65%</td></tr>
+          <tr><td class="rank">4</td><td>Bank of India Small Cap</td><td class="r pos">21.02%</td><td class="r">0.70%</td></tr>
+          <tr><td class="rank">5</td><td>Nippon India Small Cap</td><td class="r pos">22.2%</td><td class="r">0.75%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bestpick">
+      <div class="tag">★★ Best Pick · Small-Cap</div>
+      <h3>Bandhan Small Cap Fund <em>— Direct Plan</em></h3>
+      <p>Extraordinary 3Y returns — <b>700 bps above the category average</b> — demonstrate superior stock-picking, while an excellent 5Y figure proves it is sustainable. The lowest expense ratio in the cohort captures 50+ bps of alpha annually, and an optimal AUM enables conviction positions without liquidity strain.</p>
+      <div class="bp-metrics">
+        <div><div class="bv">23.49%</div><div class="bk">5Y CAGR</div></div>
+        <div><div class="bv">31.05%</div><div class="bk">3Y CAGR</div></div>
+        <div><div class="bv">0.42%</div><div class="bk">Expense Ratio</div></div>
+        <div><div class="bv">₹5–8K Cr</div><div class="bk">AUM</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALLOCATION -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">05</span><span class="lbl">Portfolio Strategy</span></div>
+    <h2>Allocation by <em>investor</em> profile.</h2>
+    <p class="lede">For most investors, a blended allocation across the three categories delivers the optimal risk-adjusted outcome. Match the blend to your risk tolerance and time horizon — then let SIP discipline do the rest.</p>
+
+    <div class="alloc-grid">
+      <div class="alloc">
+        <div class="profile">Profile A</div>
+        <div class="ptitle">Conservative</div>
+        <div class="bar">Large-Cap <b>70%</b></div>
+        <div class="bar">Mid-Cap <b>20%</b></div>
+        <div class="bar">Small-Cap <b>10%</b></div>
+        <div class="desc">Capital preservation with moderate growth; low volatility tolerance.</div>
+      </div>
+      <div class="alloc rec">
+        <div class="rec-tag">Recommended</div>
+        <div class="profile">Profile B</div>
+        <div class="ptitle">Moderate</div>
+        <div class="bar">Large-Cap <b>50%</b></div>
+        <div class="bar">Mid-Cap <b>35%</b></div>
+        <div class="bar">Small-Cap <b>15%</b></div>
+        <div class="desc">Balanced growth with manageable risk — the recommended baseline.</div>
+      </div>
+      <div class="alloc">
+        <div class="profile">Profile C</div>
+        <div class="ptitle">Growth</div>
+        <div class="bar">Large-Cap <b>30%</b></div>
+        <div class="bar">Mid-Cap <b>40%</b></div>
+        <div class="bar">Small-Cap <b>30%</b></div>
+        <div class="desc">Maximum long-term compounding; a 7–10 year horizon required.</div>
+      </div>
+    </div>
+
+    <h4 style="margin-top:44px;">Five Lessons That Outlast Any Market Cycle</h4>
+    <div class="takeaways">
+      <div class="tk"><div class="tn">1</div><div class="tc"><h5>Cost Discipline Compounds</h5><p>A 20–30 bps expense edge becomes a 3–5% wealth gain over twenty years. Favour the bottom quartile on cost.</p></div></div>
+      <div class="tk"><div class="tn">2</div><div class="tc"><h5>Alpha is Repeatable but Rare</h5><p>Only top-decile funds — roughly 5% of any category — consistently beat their benchmark. The seven dimensions exist to find them.</p></div></div>
+      <div class="tk"><div class="tn">3</div><div class="tc"><h5>Risk Management Matters Most</h5><p>Sharpe ratios, downside capture, and manager tenure predict long-term success far better than a single year's return.</p></div></div>
+      <div class="tk"><div class="tn">4</div><div class="tc"><h5>Time Horizon Determines Category</h5><p>Large-caps for 3–5 years, mid-caps for 5–7, small-caps for 7–10 minimum. Match the fund to the horizon, never the reverse.</p></div></div>
+      <div class="tk"><div class="tn">5</div><div class="tc"><h5>SIP Discipline Beats Lump-Sum</h5><p>Monthly investment smooths volatility and removes behavioural bias — most valuable in the mid and small-cap segments.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <h6>Author</h6>
+        <div class="auth">CA Parvesh Aghi</div>
+        <div class="role">Visiting Professor of Finance</div>
+        <div class="role"><a href="https://paraghi.github.io">paraghi.github.io</a></div>
+      </div>
+      <div>
+        <h6>Methodology</h6>
+        <p>Funds evaluated against a seven-dimension framework spanning consistent alpha, risk-adjusted returns, downside capture, manager tenure, AUM, expense efficiency, and beta-to-return quality. Returns are 5Y CAGR unless stated; the five funds named in each category represent the top quartile. <em>Data as of May 2026.</em></p>
+      </div>
+    </div>
+    <div class="disc">
+      <b>Disclaimer.</b> This analysis is for educational and informational purposes only and does not constitute investment advice. Past performance is not indicative of future results. All equity investments carry the risk of capital loss; mid-cap and small-cap investments carry higher risk than large-cap. Direct plans carry lower expense ratios but offer no advisory support. Readers should review all scheme-related documents and consult a SEBI-registered investment advisor before making any investment decision. The funds discussed are not investment recommendations.
+    </div>
+    <div class="copyline">CA Parvesh Aghi · New Delhi · © 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
