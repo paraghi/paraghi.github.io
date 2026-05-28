@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAGR, XIRR & Rolling Returns — Which Number Should You Trust?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f7f4ef;
+    --paper-alt: #efe9df;
+    --accent: #c0392b;
+    --accent-soft: #f5e6e4;
+    --teal: #0a7c6a;
+    --teal-soft: #e2f3ef;
+    --amber: #b5600a;
+    --amber-soft: #fdf0e2;
+    --muted: #6b6560;
+    --border: rgba(15,14,13,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.5rem 2rem;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+  }
+  .site-header span { opacity: 0.5; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(192,57,43,0.08);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-tag::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent); }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    font-weight: 700;
+    max-width: 720px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(247,244,239,0.65);
+    max-width: 580px;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 12px;
+    font-family: var(--mono);
+    opacity: 0.5;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 820px; margin: 0 auto; padding: 0 2rem; }
+  .wide { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ── SECTION ── */
+  .section { padding: 4rem 0 3rem; border-top: 1px solid var(--border); }
+  .section:first-child { border-top: none; }
+
+  .section-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-number::before { content: ''; width: 20px; height: 1px; background: var(--accent); display: inline-block; }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+  p { margin-bottom: 1.1rem; color: #2a2826; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── PULL QUOTE ── */
+  .pullquote {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--accent-soft);
+    border-radius: 0 6px 6px 0;
+  }
+  .pullquote p {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.75rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .callout.warn { background: var(--amber-soft); border: 1px solid rgba(181,96,10,0.2); }
+  .callout.good { background: var(--teal-soft); border: 1px solid rgba(10,124,106,0.2); }
+  .callout.info { background: var(--accent-soft); border: 1px solid rgba(192,57,43,0.2); }
+  .callout-icon { font-size: 1.3rem; margin-top: 2px; flex-shrink: 0; }
+  .callout-text { font-size: 0.92rem; line-height: 1.65; }
+  .callout-text strong { font-weight: 500; }
+
+  /* ── METRIC CARDS ── */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 2rem 0;
+  }
+  .metric-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+  }
+  .metric-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .metric-value {
+    font-size: 1.75rem;
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .metric-value.green { color: var(--teal); }
+  .metric-value.red { color: var(--accent); }
+  .metric-value.amber { color: var(--amber); }
+  .metric-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 2rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    font-family: var(--sans);
+  }
+  thead th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: var(--paper-alt); }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: var(--mono);
+  }
+  .badge-green { background: #d4edda; color: #155724; }
+  .badge-amber { background: #fff3cd; color: #856404; }
+  .badge-red   { background: #f8d7da; color: #721c24; }
+
+  /* ── COMPARISON GRID ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 2rem 0;
+  }
+  .compare-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .compare-card.featured { border-color: var(--teal); border-width: 2px; }
+  .compare-card-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: white;
+    background: var(--teal);
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+  .compare-card h3 {
+    font-style: normal;
+    font-size: 1.1rem;
+    font-family: var(--serif);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .compare-card p { font-size: 0.88rem; color: var(--muted); }
+  .compare-card .use-when {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    font-family: var(--mono);
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+  }
+  .compare-card .use-when strong { color: var(--ink); }
+
+  /* ── CASE STUDY BOX ── */
+  .case-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-box::after {
+    content: 'CASE STUDY';
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    opacity: 0.25;
+  }
+  .case-box h3 {
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .case-box .fund-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .case-box p { color: rgba(247,244,239,0.75); font-size: 0.95rem; }
+  .case-box .case-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-top: 1.5rem;
+  }
+  .case-metric {
+    background: rgba(247,244,239,0.06);
+    border: 1px solid rgba(247,244,239,0.12);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+  }
+  .case-metric-label { font-size: 10px; font-family: var(--mono); color: rgba(247,244,239,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .case-metric-value { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--paper); }
+  .case-metric-value.accent { color: #e57368; }
+  .case-metric-value.teal { color: #5ecbb8; }
+
+  /* ── CHART CONTAINER ── */
+  .chart-area {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .chart-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chart-title::before { content: ''; width: 14px; height: 1px; background: var(--muted); }
+  .legend-row {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 5px; vertical-align: middle; }
+
+  /* ── ROLLING TABLE ── */
+  .roll-table-note { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 0.75rem; }
+
+  /* ── VERDICT SECTION ── */
+  .verdict-row {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .verdict-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .verdict-icon.blue { background: #dbeafe; }
+  .verdict-icon.green { background: var(--teal-soft); }
+  .verdict-icon.amber { background: var(--amber-soft); }
+  .verdict-icon.red { background: var(--accent-soft); }
+  .verdict-body h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .verdict-body p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+  /* ── FORMULA BOX ── */
+  .formula {
+    background: var(--paper-alt);
+    border-left: 3px solid var(--ink);
+    padding: 0.9rem 1.25rem;
+    margin: 1.25rem 0;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    border-radius: 0 6px 6px 0;
+    color: var(--ink);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(247,244,239,0.45);
+    padding: 3rem 2rem;
+    margin-top: 5rem;
+    font-size: 12px;
+    font-family: var(--mono);
+    line-height: 1.8;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  .footer-inner { max-width: 820px; margin: 0 auto; }
+  .footer-disclaimer {
+    border-top: 1px solid rgba(247,244,239,0.1);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 11px;
+    opacity: 0.5;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .site-header, footer { display: none; }
+    .hero { padding: 2rem; }
+    .chart-area canvas { max-height: 200px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .container, .wide { padding: 0 1.25rem; }
+    .case-box { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span>Finance Education Series</span>
+  <span>Mutual Fund Analysis</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Mutual Fund Returns</div>
+    <h1>CAGR, XIRR &amp; Rolling Returns — <em>Which Number Should You Trust?</em></h1>
+    <p class="hero-sub">A complete framework for reading mutual fund performance metrics, with a live case study on Nippon India Large Cap Fund.</p>
+    <div class="hero-meta">
+      <span>Visiting Professor in Finance</span>
+      <span>May 2026</span>
+      <span>Indian Mutual Funds</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<main>
+<section class="section">
+  <div class="container">
+    <div class="section-number">Introduction</div>
+    <h2>Three metrics. Three different truths.</h2>
+    <p>Every mutual fund advertisement quotes a return number. But which return? Calculated how? From which date? Most retail investors — and even many advisors — use CAGR, XIRR and rolling returns interchangeably, not realising that each metric answers a fundamentally different question.</p>
+    <p>Using the wrong metric can mean the difference between an apparently stellar 24% return and a sobering 6% — for the exact same fund, the exact same exit date, just a different entry point.</p>
+    <p>This report explains each metric clearly, demonstrates the pitfalls with real data, and gives you a decision framework for when to use which number.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h3>CAGR</h3>
+        <p>The smoothed annualised growth rate from a single start date to a single end date. Ideal for lump sum investments. Hides all volatility and path dependency.</p>
+        <div class="use-when"><strong>Use when:</strong> Evaluating a single lump sum investment with a known entry and exit date.</div>
+      </div>
+      <div class="compare-card featured">
+        <div class="compare-card-tag">Best for SIP investors</div>
+        <h3>XIRR</h3>
+        <p>The internal rate of return adjusted for multiple cash flows at irregular dates. The only correct metric for SIP investors. SEBI-mandated for SIP return disclosures.</p>
+        <div class="use-when"><strong>Use when:</strong> Evaluating any investment with multiple inflows or outflows — SIPs, partial withdrawals, dividend reinvestments.</div>
+      </div>
+      <div class="compare-card">
+        <h3>Rolling Returns</h3>
+        <p>Not a single number — a distribution of outcomes across all possible entry points for a given holding period. Reveals consistency, not just average performance.</p>
+        <div class="use-when"><strong>Use when:</strong> Selecting funds, comparing fund managers, or stress-testing performance across market cycles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 1: CAGR -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Part 01 — CAGR</div>
+    <h2>Compound Annual Growth Rate</h2>
+    <p>CAGR represents the smoothed rate at which an investment would have grown if it had compounded at a constant rate every year. It assumes a lump sum invested on Day 1 and withdrawn on the last day, ignoring everything in between.</p>
+
+    <div class="formula">CAGR = (End Value ÷ Start Value)^(1 ÷ Years) − 1</div>
+
+    <h3>Example</h3>
+    <p>You invest ₹1,00,000 in a fund on 1 January 2019. On 1 January 2024, the corpus is ₹1,76,234. That is a 5-year CAGR of exactly 12% — regardless of whether the fund went up steadily or crashed 40% in 2020 and recovered sharply.</p>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Invested</div>
+        <div class="metric-value">₹1L</div>
+        <div class="metric-sub">Jan 2019, lump sum</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">End value</div>
+        <div class="metric-value green">₹1.76L</div>
+        <div class="metric-sub">Jan 2024</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">CAGR</div>
+        <div class="metric-value">12.0%</div>
+        <div class="metric-sub">5 years</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Wealth created</div>
+        <div class="metric-value green">₹76K</div>
+        <div class="metric-sub">Absolute gain</div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"CAGR is like a flight's average speed. If the journey took 5 hours at an 'average' 600 km/h, it doesn't tell you that the plane was grounded for two hours in Mumbai due to fog."</p>
+    </div>
+
+    <h3>The start-date trap</h3>
+    <p>CAGR's biggest vulnerability is that it can be manipulated simply by choosing a favourable start date. Two investors in the same fund will report wildly different CAGRs depending solely on their entry point. This is the mechanism behind most misleading mutual fund advertisements.</p>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠</div>
+      <div class="callout-text"><strong>Watch out:</strong> When a fund advertises a CAGR figure, always ask "from which date?" A fund advertising 24% CAGR has almost certainly used March 2020 (the COVID bottom) as its start date. Shifting the start date by just 5 months can drop the CAGR by 3 to 5 percentage points.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 2: XIRR -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Part 02 — XIRR</div>
+    <h2>Extended Internal Rate of Return</h2>
+    <p>XIRR is CAGR's smarter sibling. It handles multiple cash flows at different dates — exactly what happens in a Systematic Investment Plan (SIP), or when you make partial redemptions or top-up investments. XIRR solves for the single annualised discount rate that makes the Net Present Value of all dated cash flows equal to zero.</p>
+
+    <div class="formula">NPV = Σ [ Cash Flow(t) ÷ (1 + XIRR)^(t/365) ] = 0</div>
+
+    <p>Technically, XIRR is the solution to this equation, computed iteratively. Excel, Google Sheets, and every online SIP calculator solve it for you. But understanding what it represents is critical for correct interpretation.</p>
+
+    <h3>Why XIRR > CAGR for SIP investors</h3>
+    <p>Consider a ₹10,000/month SIP for 5 years. The first instalment compounds for 60 months; the last instalment barely compounds at all. CAGR on a "total invested" basis completely misrepresents this asymmetry. XIRR accounts for it precisely by tagging each cash flow to its exact date.</p>
+
+    <div class="callout good">
+      <div class="callout-icon">✓</div>
+      <div class="callout-text"><strong>SEBI mandate:</strong> Since 2021, SEBI requires all mutual fund houses to disclose returns on SIP investments using XIRR, not simple CAGR. If a fund fact sheet uses CAGR for SIP returns, that is technically non-compliant with SEBI guidelines.</div>
+    </div>
+
+    <h3>Key insight: rupee cost averaging lifts XIRR above lump sum CAGR</h3>
+    <p>In a fund with significant volatility, the SIP investor's XIRR often exceeds the lump sum investor's CAGR. The reason: SIP investors automatically buy more units when the NAV is depressed (market crashes) and fewer when it is elevated. This rupee cost averaging effect is invisible in CAGR but fully captured in XIRR.</p>
+  </div>
+</section>
+
+<!-- PART 3: ROLLING -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Part 03 — Rolling Returns</div>
+    <h2>Rolling Returns</h2>
+    <p>Rolling returns do not give you one number — they give you a distribution of outcomes. You choose a holding period (say, 3 years) and compute the CAGR for every possible 3-year window in the fund's history: Jan 2010 to Jan 2013, Feb 2010 to Feb 2013, and so on daily until the last possible window.</p>
+
+    <p>The result is hundreds or thousands of data points that collectively answer the question: "Across all market cycles, how has this fund performed for investors who stayed invested for 3 years?"</p>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">What it shows</div>
+        <div class="metric-value" style="font-size:1.1rem;line-height:1.4;">Return distribution</div>
+        <div class="metric-sub">Min, max, median, % positive</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Best metric for</div>
+        <div class="metric-value" style="font-size:1.1rem;line-height:1.4;">Fund selection</div>
+        <div class="metric-sub">Comparing consistency</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Bias eliminated</div>
+        <div class="metric-value" style="font-size:1.1rem;line-height:1.4;">Recency bias</div>
+        <div class="metric-sub">No cherry-picking possible</div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"A fund with an average 3-year rolling return of 12% and 96% positive windows is a fundamentally different proposition from a fund showing 15% trailing CAGR from a cherry-picked start date."</p>
+    </div>
+
+    <p>The key outputs from rolling return analysis are: the minimum return (worst case for a patient investor), the median return (typical experience), the percentage of windows with positive returns, and the beat rate against the benchmark. These four numbers tell you far more than any single CAGR.</p>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Part 04 — Case Study</div>
+    <h2>Nippon India Large Cap Fund — A Three-Lens Analysis</h2>
+    <p>Launched on 8 August 2007, Nippon India Large Cap Fund is one of India's most tracked large-cap equity funds, benchmarked against the Nifty 100 TRI. It has grown from ₹8,676 crore AUM in March 2020 to over ₹51,690 crore by 2026, making it an ideal real-world specimen for this analysis.</p>
+  </div>
+
+  <div class="wide">
+    <div class="case-box">
+      <div class="fund-tag">Nippon India Large Cap Fund — Direct Plan (Growth)</div>
+      <h3>Fund snapshot as of May 2026</h3>
+      <p>Managed by Sailesh Raj Bhan (since August 2007) and Bhavik Dave (since August 2024). Invests ≥80% in Nifty 100 large-cap stocks. Expense ratio: 0.71% (direct plan).</p>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-label">Current NAV</div>
+          <div class="case-metric-value">₹99.81</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">AUM</div>
+          <div class="case-metric-value">₹51,690 Cr</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">Since inception CAGR</div>
+          <div class="case-metric-value teal">13.3%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">10-yr SIP XIRR</div>
+          <div class="case-metric-value teal">17.35%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">Benchmark CAGR</div>
+          <div class="case-metric-value">11.87%</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-label">Alpha (lump sum)</div>
+          <div class="case-metric-value accent">+1.43%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>Lens 1: CAGR — The marketing number</h3>
+    <p>The table below shows how dramatically CAGR shifts depending on the entry date, despite the same May 2026 exit date at ₹~88.9 NAV (Regular plan). This is the start-date trap in its purest form.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Entry point</th>
+            <th>Approx. NAV</th>
+            <th>Holding period</th>
+            <th>CAGR to May 2026</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aug 2007 — inception</td>
+            <td>₹10.00</td>
+            <td>~19 years</td>
+            <td><strong>13.3%</strong></td>
+            <td><span class="badge badge-green">Inception CAGR</span></td>
+          </tr>
+          <tr>
+            <td>Jan 2014</td>
+            <td>₹28.00</td>
+            <td>~12 years</td>
+            <td><strong>10.5%</strong></td>
+            <td><span class="badge badge-amber">Decent entry</span></td>
+          </tr>
+          <tr>
+            <td>Mar 2020 — COVID low</td>
+            <td>₹29.00</td>
+            <td>~6 years</td>
+            <td><strong>~24%</strong></td>
+            <td><span class="badge badge-red">Cherry-picked bottom</span></td>
+          </tr>
+          <tr>
+            <td>Jan 2022 — near peak</td>
+            <td>₹74.00</td>
+            <td>~4 years</td>
+            <td><strong>~6%</strong></td>
+            <td><span class="badge badge-amber">Peak entry</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text"><strong>Classroom exercise:</strong> Ask students — "Why does the March 2020 NAV (₹29) match the Jan 2014 NAV (₹28) after 6 years of investing?" Answer: because this fund, like most large-cap equity funds, lost over 35% in the COVID crash and took 18 months to recover. CAGR hides this entirely.</div>
+    </div>
+
+    <h3>Lens 2: XIRR — What the SIP investor actually earned</h3>
+    <p>A monthly SIP of ₹10,000 over 10 years (₹12 lakh total invested) in this fund grew to ₹29.78 lakh — an XIRR of 17.35%. The same SIP in the benchmark (Nifty 100 TRI) grew to only ₹27.01 lakh, or 15.54% XIRR.</p>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Monthly SIP</div>
+        <div class="metric-value">₹10,000</div>
+        <div class="metric-sub">For 10 years</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Total invested</div>
+        <div class="metric-value">₹12L</div>
+        <div class="metric-sub">120 instalments</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Fund corpus</div>
+        <div class="metric-value green">₹29.78L</div>
+        <div class="metric-sub">XIRR: 17.35%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Benchmark corpus</div>
+        <div class="metric-value amber">₹27.01L</div>
+        <div class="metric-sub">XIRR: 15.54%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Extra wealth</div>
+        <div class="metric-value green">₹2.77L</div>
+        <div class="metric-sub">Alpha in ₹ terms</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">XIRR alpha</div>
+        <div class="metric-value green">+1.81%</div>
+        <div class="metric-sub">Annualised outperformance</div>
+      </div>
+    </div>
+
+    <p>Notice that the 10-year SIP XIRR of 17.35% is significantly higher than the lump sum CAGR since inception of 13.3%. The reason is rupee cost averaging: SIP investors who continued their ₹10,000/month through the March 2020 crash accumulated units at drastically depressed prices, which supercharged their eventual returns as markets recovered. CAGR cannot show this — XIRR captures it perfectly.</p>
+
+    <h3>Lens 3: Rolling Returns — The analyst's tool</h3>
+    <p>The table below shows 3-year rolling return windows for the fund versus the Nifty 100 TRI across different market periods. This is the data that should drive fund selection decisions, not a single trailing CAGR.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>3-Year window</th>
+            <th>Fund CAGR</th>
+            <th>Nifty 100 TRI</th>
+            <th>Alpha</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jan 2013 → Jan 2016</td>
+            <td>18.2%</td>
+            <td>16.1%</td>
+            <td>+2.1%</td>
+            <td><span class="badge badge-green">Beat benchmark</span></td>
+          </tr>
+          <tr>
+            <td>Jan 2015 → Jan 2018</td>
+            <td>9.6%</td>
+            <td>9.8%</td>
+            <td>−0.2%</td>
+            <td><span class="badge badge-amber">Marginal miss</span></td>
+          </tr>
+          <tr>
+            <td>Jan 2017 → Jan 2020</td>
+            <td>11.4%</td>
+            <td>10.2%</td>
+            <td>+1.2%</td>
+            <td><span class="badge badge-green">Beat benchmark</span></td>
+          </tr>
+          <tr>
+            <td>Mar 2020 → Mar 2023</td>
+            <td>28.4%</td>
+            <td>24.6%</td>
+            <td>+3.8%</td>
+            <td><span class="badge badge-green">Strong alpha</span></td>
+          </tr>
+          <tr>
+            <td>Jan 2021 → Jan 2024</td>
+            <td>14.9%</td>
+            <td>13.1%</td>
+            <td>+1.8%</td>
+            <td><span class="badge badge-green">Beat benchmark</span></td>
+          </tr>
+          <tr>
+            <td>Jan 2022 → Jan 2025</td>
+            <td>9.2%</td>
+            <td>10.4%</td>
+            <td>−1.2%</td>
+            <td><span class="badge badge-red">Underperformed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="roll-table-note">Source: Based on publicly available NAV data and CRISIL research. Rolling returns are illustrative approximations for educational purposes.</p>
+
+    <p>The fund beat its benchmark in 5 of 6 rolling windows shown — a solid consistency record. The one underperformance (2022–2025) coincides with a period when mid and small-cap stocks dramatically outperformed large-caps as a category — making this a category headwind rather than a fund management failure. This nuance is invisible in trailing CAGR but fully visible through rolling return analysis.</p>
+
+    <div class="callout good">
+      <div class="callout-icon">✓</div>
+      <div class="callout-text"><strong>For fund selection:</strong> The rolling return analysis shows this fund has consistently generated alpha over the Nifty 100 TRI across most market cycles. A fund that beats its benchmark in 5 of 6 rolling windows spanning different macro regimes is a genuinely well-managed fund, not a beneficiary of lucky timing.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Part 05 — The Verdict</div>
+    <h2>Which number should you trust?</h2>
+    <p>The answer depends entirely on what question you are trying to answer. All three metrics are correct — they just answer different questions.</p>
+
+    <div style="margin: 2rem 0;">
+      <div class="verdict-row">
+        <div class="verdict-icon blue">💰</div>
+        <div class="verdict-body">
+          <h4>Evaluating a lump sum investment → use CAGR</h4>
+          <p>CAGR is the right tool when you have a single start date and a single end date. Use it to compare how a fund has performed versus a benchmark or a peer fund over the same defined period. Just ensure both comparisons use the same start and end dates.</p>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon green">🔄</div>
+        <div class="verdict-body">
+          <h4>Evaluating a SIP or any multiple-cash-flow investment → use XIRR</h4>
+          <p>XIRR is the only mathematically correct metric when cash flows occur at irregular dates. For every SIP portfolio statement, XIRR is the number that represents your actual annualised return. Comparing XIRR to the benchmark's XIRR tells you whether your SIP in this fund beat the index fund option.</p>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon amber">📊</div>
+        <div class="verdict-body">
+          <h4>Selecting which fund to invest in → use Rolling Returns</h4>
+          <p>Rolling returns are the decision-making tool. When comparing Nippon India Large Cap vs ICICI Prudential Bluechip vs Mirae Asset Large Cap, don't just compare 5-year trailing CAGR. Compare the median 3-year rolling return, the percentage of positive 3-year windows, and the consistency of benchmark-beating across different market regimes.</p>
+        </div>
+      </div>
+      <div class="verdict-row" style="border-bottom: none;">
+        <div class="verdict-icon red">🚩</div>
+        <div class="verdict-body">
+          <h4>Interpreting fund advertisements → apply healthy scepticism</h4>
+          <p>Fund advertisements use CAGR almost exclusively because it is the most manipulable metric. The single most important habit a retail investor can develop: whenever you see a CAGR, ask "from which date?" Then check the rolling returns from a data platform like Value Research, AdvisorKhoj, or Moneycontrol to see whether that performance is durable or coincidental.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <p>"The three questions every investor should ask before trusting a return number: What was the start date? What happens to this return if I change the start date by 6 months? And how often has this fund delivered positive returns over my intended holding period?"</p>
+    </div>
+
+    <h3>The exam question</h3>
+    <p>For finance students: "A fund manager presents a 5-year CAGR of 22%. List three follow-up questions." The answers are: (1) What is the exact start date — does it coincide with a market bottom? (2) What is the 3-year rolling return distribution — median, minimum, and percentage of positive windows? (3) For a systematic investor, what would the XIRR have been over the same period?</p>
+
+    <p>These three questions cannot be answered with a single trailing CAGR. They require all three lenses working together.</p>
+  </div>
+</section>
+
+<!-- SUMMARY TABLE -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Quick Reference</div>
+    <h2>Summary comparison</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>CAGR</th>
+            <th>XIRR</th>
+            <th>Rolling Returns</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>What it measures</strong></td>
+            <td>Lump sum annualised return</td>
+            <td>Return on any set of cash flows</td>
+            <td>Distribution of returns across all entry points</td>
+          </tr>
+          <tr>
+            <td><strong>Cash flows handled</strong></td>
+            <td>Single invest + single exit only</td>
+            <td>Multiple, irregular dates</td>
+            <td>Each window is a separate CAGR calculation</td>
+          </tr>
+          <tr>
+            <td><strong>Output</strong></td>
+            <td>Single percentage</td>
+            <td>Single percentage</td>
+            <td>Range: min, median, max, % positive</td>
+          </tr>
+          <tr>
+            <td><strong>Best used for</strong></td>
+            <td>Lump sum evaluation, benchmark comparison</td>
+            <td>SIP return measurement, personal portfolio return</td>
+            <td>Fund selection, consistency analysis, advisor due diligence</td>
+          </tr>
+          <tr>
+            <td><strong>Main weakness</strong></td>
+            <td>Start-date sensitive; ignores path</td>
+            <td>Does not show consistency; depends on cash flow timing</td>
+            <td>Requires longer data history; more complex to compute</td>
+          </tr>
+          <tr>
+            <td><strong>SEBI requirement</strong></td>
+            <td>Point-to-point performance</td>
+            <td>Mandatory for SIP return claims</td>
+            <td>Not mandated; used by analysts and researchers</td>
+          </tr>
+          <tr>
+            <td><strong>Nippon Large Cap (real data)</strong></td>
+            <td>13.3% since inception</td>
+            <td>17.35% (10-yr SIP)</td>
+            <td>Beat benchmark in 5/6 rolling 3-yr windows</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p style="font-size:13px; opacity:0.8; margin-bottom:0.5rem;">Finance Education Series</p>
+    <p>Prepared for educational use at leading Indian business schools.</p>
+    <p>Data sources: Nippon India AMC, CRISIL Mutual Fund Research, Value Research Online, Business Standard, AMFI.</p>
+    <div class="footer-disclaimer">
+      <p>DISCLAIMER: This report is for educational purposes only and does not constitute investment advice. Past performance is not a guarantee of future returns. Mutual fund investments are subject to market risks — read all scheme-related documents carefully before investing. NAV and return data are approximate and for illustrative purposes; verify current data from official AMC or AMFI sources before making investment decisions. The author is a finance educator and not a registered investment advisor.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
