@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Returns Calculator — CAGR · XIRR · Rolling Returns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0f14;
+  --surface: #161921;
+  --surface2: #1e2230;
+  --surface3: #252a3a;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #e8eaf0;
+  --text2: #8b8fa8;
+  --text3: #555a72;
+  --green: #34d399;
+  --green-dim: rgba(52,211,153,0.12);
+  --red: #f87171;
+  --red-dim: rgba(248,113,113,0.12);
+  --amber: #fbbf24;
+  --amber-dim: rgba(251,191,36,0.12);
+  --blue: #60a5fa;
+  --blue-dim: rgba(96,165,250,0.12);
+  --accent: #818cf8;
+  --accent-dim: rgba(129,140,248,0.15);
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+.brand-name {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
+.brand-name strong { color: var(--text); font-weight: 500; }
+.topbar-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 3.5rem 2rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  color: var(--text2);
+  font-size: 0.95rem;
+  max-width: 560px;
+  font-weight: 300;
+}
+
+/* ── TAB NAV ── */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  padding: 0 2rem;
+  max-width: 1100px;
+  margin: 0 auto 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+.tab-btn {
+  padding: 0.7rem 1.4rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text2);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── CONTENT ── */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+.panel { display: none; }
+.panel.active { display: block; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── GRID LAYOUTS ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 768px) {
+  .two-col, .three-col, .four-col { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 500px) {
+  .two-col, .three-col, .four-col { grid-template-columns: 1fr; }
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.card-sm {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.25rem;
+}
+
+/* ── METRIC CARD ── */
+.metric-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem 1.25rem;
+  transition: border-color 0.2s;
+}
+.metric-card:hover { border-color: var(--border2); }
+.metric-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  margin-bottom: 6px;
+}
+.metric-val {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--text);
+}
+.metric-val.green { color: var(--green); }
+.metric-val.blue { color: var(--blue); }
+.metric-val.amber { color: var(--amber); }
+.metric-val.red { color: var(--red); }
+.metric-val.accent { color: var(--accent); }
+.metric-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 5px;
+}
+
+/* ── SLIDER ── */
+.slider-group { margin-bottom: 1.5rem; }
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.slider-label {
+  font-size: 13px;
+  color: var(--text2);
+  font-weight: 400;
+}
+.slider-value {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface3);
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  min-width: 80px;
+  text-align: center;
+}
+input[type=range] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--surface3);
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(129,140,248,0.5);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+/* ── CHART CONTAINER ── */
+.chart-wrap {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-top: 20px;
+  position: relative;
+}
+.chart-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chart-title::before {
+  content: '';
+  width: 3px; height: 12px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.legend-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--text2);
+}
+.leg { display: flex; align-items: center; gap: 6px; }
+.leg-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+/* ── INFO BOX ── */
+.info-box {
+  background: var(--accent-dim);
+  border: 1px solid rgba(129,140,248,0.2);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-top: 20px;
+}
+.info-box strong { color: var(--text); font-weight: 500; }
+.warn-box {
+  background: var(--amber-dim);
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-top: 20px;
+}
+.warn-box strong { color: var(--amber); font-weight: 500; }
+.good-box {
+  background: var(--green-dim);
+  border: 1px solid rgba(52,211,153,0.2);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-top: 20px;
+}
+.good-box strong { color: var(--green); font-weight: 500; }
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+  line-height: 1.65;
+  margin-top: -1rem;
+}
+
+/* ── FORMULA ── */
+.formula {
+  background: var(--surface3);
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+  border-radius: 0 6px 6px 0;
+  margin: 1.25rem 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── ROLLING TABLE ── */
+.rtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 16px;
+}
+.rtable th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.rtable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: middle;
+}
+.rtable td:first-child { color: var(--text); font-weight: 500; }
+.rtable tr:hover td { background: var(--surface3); }
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-family: var(--mono);
+  font-weight: 500;
+}
+.badge-g { background: var(--green-dim); color: var(--green); }
+.badge-a { background: var(--amber-dim); color: var(--amber); }
+.badge-r { background: var(--red-dim); color: var(--red); }
+
+/* ── VERDICT CARDS ── */
+.verdict-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 1.5rem;
+}
+.verdict-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.verdict-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.verdict-card.v-green { border-top: 2px solid var(--green); }
+.verdict-card.v-blue  { border-top: 2px solid var(--blue); }
+.verdict-card.v-amber { border-top: 2px solid var(--amber); }
+.verdict-card.v-red   { border-top: 2px solid var(--red); }
+.verdict-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.verdict-card h4 {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.verdict-card p { font-size: 12px; color: var(--text2); line-height: 1.6; }
+.verdict-tag {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 9px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+}
+
+/* ── NIPPON CASE STRIP ── */
+.fund-strip {
+  background: linear-gradient(135deg, #1a1d2e 0%, #1e2230 100%);
+  border: 1px solid rgba(129,140,248,0.2);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.fund-strip::before {
+  content: 'CASE STUDY';
+  position: absolute;
+  top: 1rem; right: 1.25rem;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(129,140,248,0.3);
+}
+.fund-strip h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.fund-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.fund-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 1rem;
+}
+.fund-metric {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+.fund-metric-label { font-size: 9px; font-family: var(--mono); color: rgba(232,234,240,0.35); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.fund-metric-value { font-family: var(--serif); font-size: 1.25rem; color: var(--text); }
+.fund-metric-value.g { color: var(--green); }
+.fund-metric-value.a { color: var(--accent); }
+
+/* ── RANGE TRACK PROGRESS ── */
+.range-track { position: relative; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+/* ── PULLQUOTE ── */
+.pullquote {
+  border-left: 2px solid var(--accent);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="brand-dot"></div>
+    <div class="brand-name"><strong>Returns Calculator</strong> &nbsp;·&nbsp; CAGR · XIRR · Rolling</div>
+  </div>
+  <div class="topbar-meta">Finance Education Series &nbsp;·&nbsp; May 2026</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Interactive Dashboard</div>
+  <h1>Mutual Fund Returns — <em>Three Lenses</em></h1>
+  <p class="hero-sub">Understand CAGR, XIRR and Rolling Returns through live calculators and a real case study on Nippon India Large Cap Fund.</p>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav" aria-label="Dashboard sections">
+  <button class="tab-btn active" onclick="switchTab('cagr',this)">CAGR Calculator</button>
+  <button class="tab-btn" onclick="switchTab('xirr',this)">XIRR / SIP Calculator</button>
+  <button class="tab-btn" onclick="switchTab('rolling',this)">Rolling Returns</button>
+  <button class="tab-btn" onclick="switchTab('nippon',this)">Nippon India — Case Study</button>
+  <button class="tab-btn" onclick="switchTab('verdict',this)">Which to Trust?</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PANEL 1: CAGR -->
+<!-- ═══════════════════════════════════════════════ -->
+<main class="content">
+<div id="p-cagr" class="panel active">
+  <div class="section-title">CAGR — Compound Annual Growth Rate</div>
+  <p class="section-sub">CAGR smooths your investment into one annualised percentage, assuming a lump sum at the start and a single exit. Adjust the sliders to see it recalculate live.</p>
+
+  <div class="two-col">
+    <!-- LEFT: Controls -->
+    <div class="card">
+      <div class="formula">CAGR = (End Value ÷ Start Value)<sup>1/Years</sup> − 1</div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Lump sum invested (₹)</span>
+          <span class="slider-value" id="lbl-c-invest">₹10,00,000</span>
+        </div>
+        <input type="range" min="1" max="50" step="1" value="10" id="sl-c-invest" oninput="updateCAGR()">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">End value (₹)</span>
+          <span class="slider-value" id="lbl-c-end">₹17,60,000</span>
+        </div>
+        <input type="range" min="1" max="100" step="1" value="17" id="sl-c-end" oninput="updateCAGR()">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Holding period (years)</span>
+          <span class="slider-value" id="lbl-c-years">5 yrs</span>
+        </div>
+        <input type="range" min="1" max="20" step="1" value="5" id="sl-c-years" oninput="updateCAGR()">
+      </div>
+
+      <div class="four-col" id="cagr-metrics" style="margin-top:1.5rem;"></div>
+
+      <div class="warn-box" style="margin-top:1.25rem;">
+        <strong>⚠ The start-date trap:</strong> Same fund, same exit — but switching the entry from a market bottom to a market peak can swing CAGR by 15–18 percentage points. Always ask "from which date?" when you see a CAGR figure.
+      </div>
+    </div>
+
+    <!-- RIGHT: Chart -->
+    <div>
+      <div class="chart-wrap">
+        <div class="chart-title">Growth of investment (illustrative path vs CAGR line)</div>
+        <div class="legend-row">
+          <div class="leg"><div class="leg-dot" style="background:#818cf8;"></div>CAGR (smooth)</div>
+          <div class="leg"><div class="leg-dot" style="background:#f87171;"></div>Actual path</div>
+        </div>
+        <div style="position:relative;height:280px;">
+          <canvas id="cagrChart"></canvas>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Key insight:</strong> CAGR hides all volatility. A fund that dropped 40% in year 2 and recovered sharply shows the same CAGR as one that grew smoothly. That is why CAGR alone is insufficient for fund evaluation.
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry-date comparison -->
+  <div class="divider"></div>
+  <div class="section-title" style="font-size:1.1rem;">Entry-date sensitivity — Nippon India Large Cap Fund (illustrative)</div>
+  <div class="four-col">
+    <div class="metric-card">
+      <div class="metric-label">Entry: Aug 2007</div>
+      <div class="metric-val accent">13.3%</div>
+      <div class="metric-sub">Inception — 19 years</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Entry: Jan 2014</div>
+      <div class="metric-val blue">10.5%</div>
+      <div class="metric-sub">Normal entry — 12 years</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Entry: Mar 2020</div>
+      <div class="metric-val green">~24%</div>
+      <div class="metric-sub">COVID bottom — cherry-picked!</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Entry: Jan 2022</div>
+      <div class="metric-val amber">~6%</div>
+      <div class="metric-sub">Near peak — painful entry</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PANEL 2: XIRR -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="p-xirr" class="panel">
+  <div class="section-title">XIRR — SIP Returns Calculator</div>
+  <p class="section-sub">XIRR is the only correct metric for SIPs and any investment with multiple cash flows at irregular dates. It accounts for the timing of every instalment.</p>
+
+  <div class="two-col">
+    <!-- LEFT: Controls -->
+    <div class="card">
+      <div class="formula">NPV = Σ [ CF(t) ÷ (1 + XIRR)<sup>t/365</sup> ] = 0</div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Monthly SIP amount (₹)</span>
+          <span class="slider-value" id="lbl-x-sip">₹10,000</span>
+        </div>
+        <input type="range" min="1000" max="100000" step="1000" value="10000" id="sl-x-sip" oninput="updateXIRR()">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Duration (years)</span>
+          <span class="slider-value" id="lbl-x-yr">10 yrs</span>
+        </div>
+        <input type="range" min="1" max="30" step="1" value="10" id="sl-x-yr" oninput="updateXIRR()">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Expected annual return (%)</span>
+          <span class="slider-value" id="lbl-x-rate">17.35%</span>
+        </div>
+        <input type="range" min="4" max="30" step="0.25" value="17.35" id="sl-x-rate" oninput="updateXIRR()">
+      </div>
+
+      <div style="margin-top:1rem; font-size:12px; color:var(--text3); font-family:var(--mono);">
+        Benchmark rate (Nifty 100 TRI): <span style="color:var(--text2);">15.54%</span>
+      </div>
+
+      <div class="four-col" id="xirr-metrics" style="margin-top:1.25rem;"></div>
+    </div>
+
+    <!-- RIGHT: Chart -->
+    <div>
+      <div class="chart-wrap">
+        <div class="chart-title">Invested vs corpus growth over time</div>
+        <div class="legend-row">
+          <div class="leg"><div class="leg-dot" style="background:#4b5563;"></div>Invested</div>
+          <div class="leg"><div class="leg-dot" style="background:#60a5fa;"></div>Benchmark</div>
+          <div class="leg"><div class="leg-dot" style="background:#34d399;"></div>Fund corpus</div>
+        </div>
+        <div style="position:relative;height:280px;">
+          <canvas id="xirrChart"></canvas>
+        </div>
+      </div>
+
+      <div class="good-box">
+        <strong>Why XIRR often beats lump sum CAGR:</strong> SIP investors automatically accumulate more units during market crashes at depressed NAVs. This rupee cost averaging effect boosts XIRR above the simple lump sum CAGR — but only XIRR captures it correctly.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PANEL 3: ROLLING -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="p-rolling" class="panel">
+  <div class="section-title">Rolling Returns — Distribution Analysis</div>
+  <p class="section-sub">Rolling returns compute CAGR for every possible holding-period window in the fund's history. Adjust the window to see how risk and return change with time horizon.</p>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="slider-group">
+        <div class="slider-header">
+          <span class="slider-label">Rolling window (years)</span>
+          <span class="slider-value" id="lbl-roll">3 yrs</span>
+        </div>
+        <input type="range" min="1" max="10" step="1" value="3" id="sl-roll" oninput="updateRolling()">
+      </div>
+
+      <div id="rolling-metrics" class="four-col" style="margin-bottom:1.25rem;"></div>
+
+      <div class="chart-wrap" style="margin-top:0;">
+        <div class="chart-title">Return distribution histogram (illustrative)</div>
+        <div style="position:relative;height:220px;">
+          <canvas id="rollingHistChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="chart-wrap">
+        <div class="chart-title">Rolling 3-yr CAGR — Fund vs Benchmark</div>
+        <div class="legend-row">
+          <div class="leg"><div class="leg-dot" style="background:#818cf8;"></div>Nippon Large Cap</div>
+          <div class="leg"><div class="leg-dot" style="background:#4b5563;"></div>Nifty 100 TRI</div>
+        </div>
+        <div style="position:relative;height:220px;">
+          <canvas id="rollingBarChart"></canvas>
+        </div>
+      </div>
+
+      <table class="rtable" style="margin-top:16px;">
+        <thead>
+          <tr>
+            <th>3-year window</th>
+            <th>Fund CAGR</th>
+            <th>Nifty 100</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Jan 2013 → Jan 2016</td><td style="color:var(--green);">18.2%</td><td>16.1%</td><td><span class="badge badge-g">Beat +2.1%</span></td></tr>
+          <tr><td>Jan 2015 → Jan 2018</td><td style="color:var(--amber);">9.6%</td><td>9.8%</td><td><span class="badge badge-a">Slight miss</span></td></tr>
+          <tr><td>Jan 2017 → Jan 2020</td><td style="color:var(--green);">11.4%</td><td>10.2%</td><td><span class="badge badge-g">Beat +1.2%</span></td></tr>
+          <tr><td>Mar 2020 → Mar 2023</td><td style="color:var(--green);">28.4%</td><td>24.6%</td><td><span class="badge badge-g">Beat +3.8%</span></td></tr>
+          <tr><td>Jan 2021 → Jan 2024</td><td style="color:var(--green);">14.9%</td><td>13.1%</td><td><span class="badge badge-g">Beat +1.8%</span></td></tr>
+          <tr><td>Jan 2022 → Jan 2025</td><td style="color:var(--red);">9.2%</td><td>10.4%</td><td><span class="badge badge-r">Under −1.2%</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--text3);margin-top:8px;font-family:var(--mono);">* Approximate data for educational purposes. Verify on Value Research / AMFI.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PANEL 4: NIPPON CASE STUDY -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="p-nippon" class="panel">
+  <div class="section-title">Nippon India Large Cap Fund — Full Case Study</div>
+
+  <div class="fund-strip">
+    <div class="fund-tag">Nippon India Large Cap Fund · Direct Plan · Growth · Benchmark: Nifty 100 TRI</div>
+    <h3>Fund at a glance — May 2026</h3>
+    <div class="fund-metrics">
+      <div class="fund-metric"><div class="fund-metric-label">Current NAV</div><div class="fund-metric-value">₹99.81</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">AUM</div><div class="fund-metric-value">₹51,690 Cr</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">Inception CAGR</div><div class="fund-metric-value g">13.3%</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">10-yr SIP XIRR</div><div class="fund-metric-value g">17.35%</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">Benchmark CAGR</div><div class="fund-metric-value">11.87%</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">XIRR Alpha</div><div class="fund-metric-value a">+1.81%</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">5-yr return</div><div class="fund-metric-value g">15.62%</div></div>
+      <div class="fund-metric"><div class="fund-metric-label">Expense ratio</div><div class="fund-metric-value">0.71%</div></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <!-- NAV Journey -->
+    <div>
+      <div class="chart-wrap">
+        <div class="chart-title">NAV journey — Aug 2007 to May 2026 (illustrative)</div>
+        <div class="legend-row">
+          <div class="leg"><div class="leg-dot" style="background:#818cf8;"></div>Nippon Large Cap</div>
+          <div class="leg"><div class="leg-dot" style="background:#4b5563;border:1px dashed #6b7280;"></div>Nifty 100 TRI</div>
+        </div>
+        <div style="position:relative;height:280px;">
+          <canvas id="navChart"></canvas>
+        </div>
+      </div>
+      <div class="info-box">
+        <strong>COVID crash visible:</strong> March 2020 saw the fund NAV fall ~38% from its Jan 2020 level. Investors who entered at this point report a spectacular CAGR. All other investors from earlier periods had to wait 18 months to recover. Neither experience is fully captured by a single trailing CAGR.
+      </div>
+    </div>
+
+    <!-- SIP comparison -->
+    <div>
+      <div class="chart-wrap">
+        <div class="chart-title">₹10,000/month SIP for 10 years — fund vs benchmark</div>
+        <div style="position:relative;height:200px;">
+          <canvas id="sipCompChart"></canvas>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title" style="font-size:1rem;margin-bottom:1rem;">3-yr rolling beat rate</div>
+      <div class="three-col">
+        <div class="metric-card">
+          <div class="metric-label">Windows analysed</div>
+          <div class="metric-val blue">6</div>
+          <div class="metric-sub">Across 12 years</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Benchmark beaten</div>
+          <div class="metric-val green">5 / 6</div>
+          <div class="metric-sub">83% beat rate</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Max 3-yr CAGR</div>
+          <div class="metric-val green">28.4%</div>
+          <div class="metric-sub">Mar 2020 entry</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Min 3-yr CAGR</div>
+          <div class="metric-val amber">9.2%</div>
+          <div class="metric-sub">Jan 2022 entry</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Median 3-yr CAGR</div>
+          <div class="metric-val accent">13.1%</div>
+          <div class="metric-sub">Typical experience</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">All windows positive?</div>
+          <div class="metric-val green">Yes</div>
+          <div class="metric-sub">100% positive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PANEL 5: VERDICT -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="p-verdict" class="panel">
+  <div class="section-title">Which Number Should You Trust?</div>
+  <p class="section-sub">Each metric answers a different question. Using the wrong one doesn't give you a wrong number — it gives you an answer to a question you didn't ask.</p>
+
+  <div class="verdict-grid">
+    <div class="verdict-card v-blue">
+      <div class="verdict-icon">💰</div>
+      <h4>Lump sum evaluation</h4>
+      <p>Use CAGR when comparing a single investment from a known start date to a known end date. Ensure both comparison funds use identical date ranges.</p>
+      <div class="verdict-tag">Use: CAGR</div>
+    </div>
+    <div class="verdict-card v-green">
+      <div class="verdict-icon">🔄</div>
+      <h4>SIP / multiple cash flows</h4>
+      <p>XIRR is the only correct metric when cash flows occur at different dates. SEBI mandates XIRR for all SIP return disclosures since 2021.</p>
+      <div class="verdict-tag">Use: XIRR</div>
+    </div>
+    <div class="verdict-card v-amber">
+      <div class="verdict-icon">📊</div>
+      <h4>Fund selection & comparison</h4>
+      <p>Rolling returns reveal consistency across market cycles. Compare median rolling CAGR, % positive windows, and benchmark beat rate — not just trailing CAGR.</p>
+      <div class="verdict-tag">Use: Rolling Returns</div>
+    </div>
+    <div class="verdict-card v-red">
+      <div class="verdict-icon">🚩</div>
+      <h4>Reading fund advertisements</h4>
+      <p>Fund ads use CAGR because it is the most manipulable. A "24% CAGR" almost always uses a COVID-bottom start date. Always ask: "From which date?" Then check rolling returns.</p>
+      <div class="verdict-tag">Be sceptical of CAGR</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="pullquote">
+    "The three questions every investor must ask: What was the start date? What happens to this return if I shift the start date by 6 months? And how often has this fund delivered positive returns over my intended holding period?"
+  </div>
+
+  <!-- Summary table -->
+  <div style="overflow-x:auto; margin-top:2rem;">
+    <table class="rtable">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>CAGR</th>
+          <th>XIRR</th>
+          <th>Rolling Returns</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>What it measures</td>
+          <td>Lump sum annualised return</td>
+          <td>Return on any set of dated cash flows</td>
+          <td>Distribution across all entry points</td>
+        </tr>
+        <tr>
+          <td>Cash flows</td>
+          <td>Single invest + exit only</td>
+          <td>Multiple, irregular dates</td>
+          <td>Each window is a separate CAGR</td>
+        </tr>
+        <tr>
+          <td>Output</td>
+          <td>One %</td>
+          <td>One %</td>
+          <td>Range: min, median, max, % positive</td>
+        </tr>
+        <tr>
+          <td>Best for</td>
+          <td>Lump sum, benchmark comparison</td>
+          <td>SIP returns, personal portfolio</td>
+          <td>Fund selection, consistency check</td>
+        </tr>
+        <tr>
+          <td>Main weakness</td>
+          <td>Start-date sensitive; hides path</td>
+          <td>Depends on cash flow timing</td>
+          <td>Needs long data history</td>
+        </tr>
+        <tr>
+          <td>SEBI requirement</td>
+          <td>Point-to-point disclosures</td>
+          <td>Mandatory for SIP return claims</td>
+          <td>Not mandated; used by analysts</td>
+        </tr>
+        <tr>
+          <td>Nippon India (real data)</td>
+          <td style="color:var(--accent);">13.3% (inception)</td>
+          <td style="color:var(--green);">17.35% (10-yr SIP)</td>
+          <td style="color:var(--green);">Beat benchmark 5/6 windows</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:2rem; padding:1.25rem; background:var(--surface2); border-radius:var(--radius); border:1px solid var(--border); font-size:11px; color:var(--text3); font-family:var(--mono); line-height:1.8;">
+    DISCLAIMER: This dashboard is for educational purposes only and does not constitute investment advice. Past performance does not guarantee future returns. Mutual fund investments are subject to market risks. NAV and return data are approximate and for illustrative purposes — verify from official AMC, AMFI, or Value Research sources. The author is a finance educator and not a registered investment advisor.
+  </div>
+</div>
+</main>
+
+<script>
+// ── UTILITIES ──────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const fmt = (n, d=0) => n.toLocaleString('en-IN', {maximumFractionDigits:d, minimumFractionDigits:d});
+let charts = {};
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  $('p-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+const chartDefaults = {
+  color: '#8b8fa8',
+  borderColor: 'rgba(255,255,255,0.07)',
+  font: { family: "'DM Sans', sans-serif", size: 11 }
+};
+Chart.defaults.color = chartDefaults.color;
+
+// ── CAGR ──────────────────────────────────────────────────
+function updateCAGR() {
+  const invest = parseFloat($('sl-c-invest').value) * 100000;
+  const end    = parseFloat($('sl-c-end').value) * 100000;
+  const yrs    = parseFloat($('sl-c-years').value);
+
+  $('lbl-c-invest').textContent = '₹' + fmt(invest);
+  $('lbl-c-end').textContent    = '₹' + fmt(end);
+  $('lbl-c-years').textContent  = yrs + ' yrs';
+
+  const cagr = (Math.pow(end/invest, 1/yrs) - 1) * 100;
+  const gain = end - invest;
+
+  $('cagr-metrics').innerHTML = `
+    <div class="metric-card"><div class="metric-label">CAGR</div><div class="metric-val accent">${cagr.toFixed(1)}%</div><div class="metric-sub">Annualised</div></div>
+    <div class="metric-card"><div class="metric-label">Invested</div><div class="metric-val">₹${fmt(invest/100000,1)}L</div><div class="metric-sub">Lump sum</div></div>
+    <div class="metric-card"><div class="metric-label">Gain</div><div class="metric-val green">₹${fmt(gain/100000,2)}L</div><div class="metric-sub">Absolute</div></div>
+    <div class="metric-card"><div class="metric-label">Period</div><div class="metric-val">${yrs} yrs</div><div class="metric-sub">Holding</div></div>
+  `;
+  drawCAGRChart(invest, end, yrs, cagr);
+}
+
+function drawCAGRChart(invest, end, yrs, cagr) {
+  const labels = [], smooth = [], bumpy = [];
+  for (let i = 0; i <= yrs; i++) {
+    labels.push('Y' + i);
+    smooth.push(+(invest * Math.pow(1 + cagr/100, i) / 100000).toFixed(2));
+  }
+  bumpy.push(+(invest/100000).toFixed(2));
+  for (let i = 1; i < yrs; i++) {
+    const s = smooth[i];
+    const noise = s * (0.82 + Math.sin(i * 1.9 + 0.5) * 0.22);
+    bumpy.push(+noise.toFixed(2));
+  }
+  bumpy.push(+(end/100000).toFixed(2));
+  if (charts.cagr) charts.cagr.destroy();
+  charts.cagr = new Chart($('cagrChart').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label:'CAGR', data:smooth, borderColor:'#818cf8', borderWidth:2, borderDash:[6,3], pointRadius:3, tension:0.3, fill:false },
+        { label:'Actual path', data:bumpy, borderColor:'#f87171', borderWidth:2, pointRadius:3, tension:0.4, fill:false }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins: { legend:{ display:false } },
+      scales: {
+        y: { ticks:{ callback:v=>'₹'+v+'L' }, grid:{ color:'rgba(255,255,255,0.05)' } },
+        x: { grid:{ display:false } }
+      }
+    }
+  });
+}
+
+// ── XIRR ──────────────────────────────────────────────────
+function updateXIRR() {
+  const sip  = parseFloat($('sl-x-sip').value);
+  const yrs  = parseFloat($('sl-x-yr').value);
+  const rate = parseFloat($('sl-x-rate').value) / 100;
+  const bench = 0.1554;
+
+  $('lbl-x-sip').textContent  = '₹' + fmt(sip);
+  $('lbl-x-yr').textContent   = yrs + ' yrs';
+  $('lbl-x-rate').textContent = (rate*100).toFixed(2) + '%';
+
+  const months = yrs * 12;
+  const mr  = Math.pow(1+rate, 1/12) - 1;
+  const mr2 = Math.pow(1+bench, 1/12) - 1;
+  let corpus = 0, benchCorpus = 0;
+  for (let m = 1; m <= months; m++) {
+    corpus      += sip * Math.pow(1+mr, months-m+1);
+    benchCorpus += sip * Math.pow(1+mr2, months-m+1);
+  }
+  const invested = sip * months;
+  const extra = corpus - benchCorpus;
+
+  $('xirr-metrics').innerHTML = `
+    <div class="metric-card"><div class="metric-label">XIRR</div><div class="metric-val green">${(rate*100).toFixed(2)}%</div><div class="metric-sub">Fund</div></div>
+    <div class="metric-card"><div class="metric-label">Invested</div><div class="metric-val">₹${fmt(invested/100000,1)}L</div><div class="metric-sub">${months} SIPs</div></div>
+    <div class="metric-card"><div class="metric-label">Fund corpus</div><div class="metric-val green">₹${fmt(corpus/100000,1)}L</div><div class="metric-sub">At ${(rate*100).toFixed(2)}%</div></div>
+    <div class="metric-card"><div class="metric-label">Extra wealth</div><div class="metric-val accent">₹${fmt(extra/100000,1)}L</div><div class="metric-sub">vs benchmark</div></div>
+  `;
+  drawXIRRChart(invested, corpus, benchCorpus, yrs, sip, rate, bench);
+}
+
+function drawXIRRChart(invested, corpus, benchCorpus, yrs, sip, rate, bench) {
+  const labels = [];
+  const inv=[], fund=[], bchk=[];
+  const months = yrs*12;
+  const mr  = Math.pow(1+rate,1/12)-1;
+  const mr2 = Math.pow(1+bench,1/12)-1;
+  for (let y = 0; y <= yrs; y++) {
+    labels.push('Y'+y);
+    const m = y*12;
+    let c=0, b=0;
+    for (let i=1; i<=m; i++) {
+      c += sip*Math.pow(1+mr, m-i+1);
+      b += sip*Math.pow(1+mr2, m-i+1);
+    }
+    inv.push(+(sip*m/100000).toFixed(2));
+    fund.push(+(c/100000).toFixed(2));
+    bchk.push(+(b/100000).toFixed(2));
+  }
+  if (charts.xirr) charts.xirr.destroy();
+  charts.xirr = new Chart($('xirrChart').getContext('2d'), {
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        {label:'Invested', data:inv, borderColor:'#4b5563', borderWidth:1.5, fill:true, backgroundColor:'rgba(75,85,99,0.08)', tension:0.2, pointRadius:2},
+        {label:'Benchmark', data:bchk, borderColor:'#60a5fa', borderWidth:2, fill:false, tension:0.3, pointRadius:2, borderDash:[4,3]},
+        {label:'Fund', data:fund, borderColor:'#34d399', borderWidth:2, fill:false, tension:0.3, pointRadius:2}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{callback:v=>'₹'+v+'L'}, grid:{color:'rgba(255,255,255,0.05)'}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+}
+
+// ── ROLLING ───────────────────────────────────────────────
+const rollingData = {
+  1: {min:-18, p5:-8, med:12, p95:42, max:68, pct:72},
+  2: {min:-12, p5:-3, med:11, p95:28, max:40, pct:80},
+  3: {min:-4,  p5:2,  med:11, p95:24, max:32, pct:88},
+  5: {min:2,   p5:5,  med:12, p95:21, max:26, pct:96},
+  7: {min:4,   p5:6,  med:12, p95:18, max:22, pct:100},
+  10:{min:7,   p5:8,  med:13, p95:17, max:19, pct:100}
+};
+
+function updateRolling() {
+  const w = parseInt($('sl-roll').value);
+  $('lbl-roll').textContent = w + ' yrs';
+  const d = rollingData[w] || rollingData[3];
+  $('rolling-metrics').innerHTML = `
+    <div class="metric-card"><div class="metric-label">Min return</div><div class="metric-val ${d.min<0?'red':'amber'}">${d.min>0?'+':''}${d.min}%</div><div class="metric-sub">Worst window</div></div>
+    <div class="metric-card"><div class="metric-label">Median return</div><div class="metric-val green">+${d.med}%</div><div class="metric-sub">Typical investor</div></div>
+    <div class="metric-card"><div class="metric-label">Max return</div><div class="metric-val green">+${d.max}%</div><div class="metric-sub">Best window</div></div>
+    <div class="metric-card"><div class="metric-label">% positive</div><div class="metric-val ${d.pct>=90?'green':'amber'}">${d.pct}%</div><div class="metric-sub">Of all windows</div></div>
+  `;
+  drawRollingCharts(d);
+}
+
+function drawRollingCharts(d) {
+  // Histogram
+  if (charts.rollHist) charts.rollHist.destroy();
+  const buckets = [
+    'Below 0%','0–5%','5–10%','10–15%','15–20%','20–30%','30%+'
+  ];
+  const counts = [
+    Math.max(0, Math.round((100-d.pct)*0.4)),
+    Math.max(0, Math.round((100-d.pct)*0.6)),
+    Math.round(d.pct*0.15),
+    Math.round(d.pct*0.30),
+    Math.round(d.pct*0.25),
+    Math.round(d.pct*0.20),
+    Math.round(d.pct*0.10)
+  ];
+  charts.rollHist = new Chart($('rollingHistChart').getContext('2d'), {
+    type:'bar',
+    data:{
+      labels: buckets,
+      datasets:[{
+        data: counts,
+        backgroundColor: ['#f87171','#fbbf24','#60a5fa','#818cf8','#34d399','#34d399','#34d399'],
+        borderRadius: 4
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{stepSize:5}, grid:{color:'rgba(255,255,255,0.05)'}},
+        x:{grid:{display:false}, ticks:{font:{size:10}}}
+      }
+    }
+  });
+
+  // Bar chart (fund vs benchmark)
+  if (charts.rollBar) charts.rollBar.destroy();
+  charts.rollBar = new Chart($('rollingBarChart').getContext('2d'), {
+    type:'bar',
+    data:{
+      labels:['2013–16','2015–18','2017–20','2020–23','2021–24','2022–25'],
+      datasets:[
+        {label:'Fund', data:[18.2,9.6,11.4,28.4,14.9,9.2], backgroundColor:'rgba(129,140,248,0.7)', borderRadius:4},
+        {label:'Nifty 100', data:[16.1,9.8,10.2,24.6,13.1,10.4], backgroundColor:'rgba(75,85,99,0.6)', borderRadius:4}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{callback:v=>v+'%'}, grid:{color:'rgba(255,255,255,0.05)'}},
+        x:{grid:{display:false}, ticks:{font:{size:10}}}
+      }
+    }
+  });
+}
+
+// ── NIPPON CHARTS ─────────────────────────────────────────
+function drawNipponCharts() {
+  // NAV chart
+  const years = ['2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+  const fundNav  = [10,7.2,9.8,14.5,12.1,16.2,20.5,24.8,28.2,27.5,32.1,29.8,34.5,29.1,47.3,60.2,55.8,72.1,85.0,88.9];
+  const benchNav = [10,6.9,9.2,13.8,11.4,15.5,19.2,23.1,26.5,25.4,30.2,27.6,32.1,26.9,43.8,56.0,51.2,66.8,79.5,83.1];
+  if (charts.nav) charts.nav.destroy();
+  charts.nav = new Chart($('navChart').getContext('2d'), {
+    type:'line',
+    data:{
+      labels:years,
+      datasets:[
+        {label:'Fund NAV',  data:fundNav,  borderColor:'#818cf8', borderWidth:2, fill:false, pointRadius:2, tension:0.3},
+        {label:'Benchmark', data:benchNav, borderColor:'#4b5563', borderWidth:1.5, fill:false, pointRadius:2, tension:0.3, borderDash:[5,3]}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{callback:v=>'₹'+v}, grid:{color:'rgba(255,255,255,0.05)'}},
+        x:{ticks:{maxRotation:45,autoSkip:true,maxTicksLimit:10}, grid:{display:false}}
+      }
+    }
+  });
+
+  // SIP comparison bar
+  if (charts.sipComp) charts.sipComp.destroy();
+  charts.sipComp = new Chart($('sipCompChart').getContext('2d'), {
+    type:'bar',
+    data:{
+      labels:['Total Invested','Benchmark corpus','Fund corpus'],
+      datasets:[{
+        data:[12, 27.01, 29.78],
+        backgroundColor:['rgba(75,85,99,0.7)','rgba(96,165,250,0.7)','rgba(52,211,153,0.8)'],
+        borderRadius:5
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{callback:v=>'₹'+v+'L'}, grid:{color:'rgba(255,255,255,0.05)'}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────
+updateCAGR();
+updateXIRR();
+updateRolling();
+drawNipponCharts();
+</script>
+</body>
+</html>
