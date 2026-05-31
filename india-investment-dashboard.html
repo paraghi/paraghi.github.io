@@ -3,1178 +3,880 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>India Investment Dashboard 2025</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>India Asset Class Investment Dashboard 2025</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628;
+    --navy2: #0f2744;
+    --gold: #c9922a;
+    --gold2: #f5d98b;
+    --green: #16a34a;
+    --green2: #58d68d;
+    --blue: #1d6ecc;
+    --blue2: #5dade2;
+    --red: #dc2626;
+    --red2: #e87d6e;
+    --purple: #7c3aed;
+    --purple2: #c4b5fd;
+    --orange: #ea580c;
+    --orange2: #fb923c;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a1628 0%, #0f2744 30%, #1a0a2e 60%, #0a1628 100%);
+    min-height: 100vh;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+  }
 
-:root {
-  --bg: #0A0F1E;
-  --bg2: #0F1629;
-  --bg3: #141D35;
-  --bg4: #1A2440;
-  --surface: #1E2B4A;
-  --surface2: #243354;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.12);
-  --text: #E8EDF8;
-  --text2: #8B97B8;
-  --text3: #5A6785;
+  /* HEADER */
+  .dashboard-header {
+    background: linear-gradient(135deg, rgba(15,39,68,0.95), rgba(26,10,46,0.95));
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .dashboard-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c9922a, #f5d98b, #58d68d, #5dade2, #c4b5fd, #e05a1a, #c9922a);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .header-title h1 {
+    font-size: 28px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, #f5d98b 50%, #58d68d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .header-title p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+  .live-badge {
+    background: rgba(88,214,141,0.15);
+    border: 1px solid rgba(88,214,141,0.4);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #58d68d;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #58d68d;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  --equity: #4F8EF7;
-  --equity-glow: rgba(79,142,247,0.25);
-  --gold: #F0B429;
-  --gold-glow: rgba(240,180,41,0.2);
-  --mf: #34D399;
-  --mf-glow: rgba(52,211,153,0.2);
-  --re: #F97316;
-  --re-glow: rgba(249,115,22,0.2);
-  --fd: #94A3B8;
-  --fd-glow: rgba(148,163,184,0.15);
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 2px;
+    margin-top: 16px;
+  }
+  .tab {
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab:hover { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.05); }
+  .tab.active {
+    color: #fff;
+    background: rgba(201,146,42,0.15);
+    border-color: rgba(201,146,42,0.3);
+    border-bottom: 2px solid #c9922a;
+  }
 
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-}
+  /* CONTENT */
+  .content {
+    padding: 24px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
-html { scroll-behavior: smooth; }
+  /* METRIC CARDS */
+  .metric-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .metric-card {
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .metric-card:hover { transform: translateY(-2px); }
+  .mc-eq  { background: linear-gradient(135deg, rgba(29,110,204,0.2), rgba(93,173,226,0.1)); border: 1px solid rgba(93,173,226,0.3); }
+  .mc-mf  { background: linear-gradient(135deg, rgba(22,163,74,0.2), rgba(88,214,141,0.1)); border: 1px solid rgba(88,214,141,0.3); }
+  .mc-gd  { background: linear-gradient(135deg, rgba(201,146,42,0.2), rgba(245,217,139,0.1)); border: 1px solid rgba(245,217,139,0.3); }
+  .mc-re  { background: linear-gradient(135deg, rgba(234,88,12,0.2), rgba(251,146,60,0.1)); border: 1px solid rgba(251,146,60,0.3); }
+  .mc-fd  { background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(232,125,110,0.1)); border: 1px solid rgba(232,125,110,0.3); }
+  .mc-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
+  .mc-cagr { font-size: 22px; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+  .mc-desc { font-size: 10px; color: rgba(255,255,255,0.45); line-height: 1.3; }
+  .mc-badge {
+    position: absolute; top: 12px; right: 12px;
+    font-size: 8px; font-weight: 800; letter-spacing: 0.5px;
+    padding: 2px 6px; border-radius: 4px;
+  }
+  .badge-best  { background: rgba(88,214,141,0.2); color: #58d68d; }
+  .badge-good  { background: rgba(93,173,226,0.2); color: #5dade2; }
+  .badge-ok    { background: rgba(245,217,139,0.2); color: #f5d98b; }
+  .badge-weak  { background: rgba(251,146,60,0.2); color: #fb923c; }
+  .badge-poor  { background: rgba(232,125,110,0.2); color: #e87d6e; }
 
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+  /* SECTION TITLES */
+  .section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
 
-/* ── BACKGROUND GRID ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(79,142,247,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,142,247,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-}
+  /* CHART CARDS */
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .chart-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .chart-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 4px;
+  }
+  .chart-card-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 16px;
+  }
+  .chart-wrap { position: relative; height: 220px; }
 
-/* ── HERO HEADER ── */
-.hero {
-  position: relative;
-  padding: 48px 40px 36px;
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  z-index: 1;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -80px; left: -80px;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: -60px; right: 10%;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(240,180,41,0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 24px; }
+  .data-table th {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.45);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.8);
+  }
+  .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .verdict-pill {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .vp-green  { background: rgba(88,214,141,0.15); color: #58d68d; }
+  .vp-blue   { background: rgba(93,173,226,0.15); color: #5dade2; }
+  .vp-gold   { background: rgba(245,217,139,0.15); color: #f5d98b; }
+  .vp-orange { background: rgba(251,146,60,0.15); color: #fb923c; }
+  .vp-red    { background: rgba(232,125,110,0.15); color: #e87d6e; }
 
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 24px;
-}
+  /* PORTFOLIO BUILDER */
+  .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .portfolio-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .profile-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .profile-tab {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    transition: all 0.2s;
+  }
+  .profile-tab.active { background: #c9922a; border-color: #c9922a; color: #fff; }
+  .alloc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .alloc-label { font-size: 12px; color: rgba(255,255,255,0.7); width: 110px; flex-shrink: 0; }
+  .alloc-bar-wrap { flex: 1; background: rgba(255,255,255,0.06); border-radius: 4px; height: 22px; overflow: hidden; }
+  .alloc-bar { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 700; color: #fff; transition: width 0.5s; }
+  .expected-return {
+    margin-top: 16px;
+    padding: 14px;
+    background: rgba(201,146,42,0.1);
+    border: 1px solid rgba(201,146,42,0.25);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .er-label { font-size: 10px; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .er-value { font-size: 24px; font-weight: 900; color: #f5d98b; }
 
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 0.15em;
-  color: var(--equity);
-  background: rgba(79,142,247,0.1);
-  border: 1px solid rgba(79,142,247,0.25);
-  padding: 5px 12px;
-  border-radius: 100px;
-}
-.hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--equity); animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  /* OUTLOOK */
+  .outlook-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+  .outlook-card {
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .oc-bull { background: linear-gradient(135deg, rgba(22,163,74,0.15), rgba(88,214,141,0.08)); border: 1px solid rgba(88,214,141,0.25); }
+  .oc-base { background: linear-gradient(135deg, rgba(29,110,204,0.15), rgba(93,173,226,0.08)); border: 1px solid rgba(93,173,226,0.25); }
+  .oc-bear { background: linear-gradient(135deg, rgba(220,38,38,0.15), rgba(232,125,110,0.08)); border: 1px solid rgba(232,125,110,0.25); }
+  .oc-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; }
+  .oc-bull .oc-title { color: #58d68d; }
+  .oc-base .oc-title { color: #5dade2; }
+  .oc-bear .oc-title { color: #e87d6e; }
+  .oc-prob { font-size: 10px; font-weight: 700; opacity: 0.6; margin-bottom: 10px; }
+  .oc-item { font-size: 11px; color: rgba(255,255,255,0.65); margin-bottom: 5px; display: flex; gap: 6px; }
+  .oc-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
 
-.hero-date {
-  font-family: var(--font-mono);
-  font-size: 11px; color: var(--text3);
-  letter-spacing: 0.05em;
-}
+  /* SCORECARD */
+  .score-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .score-table th {
+    padding: 10px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .score-table th:first-child { text-align: left; }
+  .score-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+  }
+  .score-table td:first-child { text-align: left; font-weight: 500; }
+  .star { color: #f5d98b; font-size: 11px; }
 
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 46px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-}
-.hero-title .accent { color: var(--equity); }
+  /* FOOTER */
+  .dash-footer {
+    text-align: center;
+    padding: 20px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    line-height: 1.7;
+  }
+  .dash-footer a { color: #5dade2; text-decoration: none; }
 
-.hero-sub {
-  font-size: 14px; color: var(--text2); font-weight: 300;
-  max-width: 600px; line-height: 1.6;
-}
-
-/* ── NAV TABS ── */
-.nav-tabs {
-  display: flex; gap: 4px;
-  padding: 20px 40px 0;
-  border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  position: sticky; top: 0;
-  background: var(--bg);
-  z-index: 100;
-  scrollbar-width: none;
-}
-.nav-tabs::-webkit-scrollbar { display: none; }
-
-.nav-tab {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 600;
-  padding: 10px 20px;
-  border: none; background: none; cursor: pointer;
-  color: var(--text3);
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  white-space: nowrap;
-  transition: color 0.2s, border-color 0.2s;
-  letter-spacing: 0.02em;
-}
-.nav-tab:hover { color: var(--text2); }
-.nav-tab.active { color: var(--equity); border-bottom-color: var(--equity); }
-
-/* ── MAIN LAYOUT ── */
-.main { padding: 32px 40px 60px; position: relative; z-index: 1; }
-
-.panel { display: none; }
-.panel.active { display: block; animation: fadeIn 0.3s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-/* ── KPI STRIP ── */
-.kpi-strip {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-.kpi-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 16px 14px;
-  position: relative;
-  overflow: hidden;
-  cursor: default;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.kpi-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.kpi-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-}
-.kpi-card.eq::after { background: var(--equity); }
-.kpi-card.gd::after { background: var(--gold); }
-.kpi-card.mf::after { background: var(--mf); }
-.kpi-card.re::after { background: var(--re); }
-.kpi-card.fd::after { background: var(--fd); }
-
-.kpi-label {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 8px;
-}
-.kpi-value {
-  font-family: var(--font-display);
-  font-size: 22px; font-weight: 800;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.kpi-card.eq .kpi-value { color: var(--equity); }
-.kpi-card.gd .kpi-value { color: var(--gold); }
-.kpi-card.mf .kpi-value { color: var(--mf); }
-.kpi-card.re .kpi-value { color: var(--re); }
-.kpi-card.fd .kpi-value { color: var(--fd); }
-.kpi-sub { font-size: 10px; color: var(--text3); }
-
-/* ── CHART GRID ── */
-.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-.chart-grid.three { grid-template-columns: 2fr 1fr; }
-.chart-full { grid-column: 1 / -1; }
-
-.chart-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.chart-card-header { margin-bottom: 4px; }
-.chart-card-title {
-  font-family: var(--font-display);
-  font-size: 14px; font-weight: 700;
-  color: var(--text);
-  letter-spacing: 0.01em;
-}
-.chart-card-sub { font-size: 11px; color: var(--text3); margin-top: 2px; margin-bottom: 14px; }
-
-.chart-wrap { position: relative; width: 100%; }
-
-/* ── LEGEND ── */
-.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
-.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); }
-.legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
-
-/* ── DATA TABLE ── */
-.data-table {
-  width: 100%; border-collapse: collapse; font-size: 12px;
-}
-.data-table th {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text3);
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-.data-table td {
-  padding: 10px 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: var(--text2);
-  vertical-align: middle;
-}
-.data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: rgba(255,255,255,0.02); }
-.data-table td:first-child { color: var(--text); font-weight: 500; }
-
-/* ── BADGES ── */
-.badge {
-  display: inline-block; font-size: 9px; font-weight: 500;
-  padding: 3px 7px; border-radius: 4px;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-family: var(--font-mono);
-}
-.b-green { background: rgba(52,211,153,0.15); color: var(--mf); border: 1px solid rgba(52,211,153,0.25); }
-.b-amber { background: rgba(240,180,41,0.12); color: var(--gold); border: 1px solid rgba(240,180,41,0.25); }
-.b-red   { background: rgba(239,68,68,0.12); color: #F87171; border: 1px solid rgba(239,68,68,0.2); }
-.b-blue  { background: rgba(79,142,247,0.12); color: var(--equity); border: 1px solid rgba(79,142,247,0.25); }
-.b-gray  { background: rgba(148,163,184,0.1); color: var(--fd); border: 1px solid rgba(148,163,184,0.2); }
-
-/* ── PORTFOLIO BUILDER ── */
-.profile-bar {
-  display: flex; gap: 6px; flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.profile-btn {
-  font-family: var(--font-display);
-  font-size: 12px; font-weight: 600;
-  padding: 8px 18px;
-  border: 1px solid var(--border2);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text2);
-  cursor: pointer;
-  transition: all 0.2s;
-  letter-spacing: 0.02em;
-}
-.profile-btn:hover { background: var(--surface); color: var(--text); }
-.profile-btn.active { background: var(--equity); color: #fff; border-color: var(--equity); }
-
-.portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-
-.alloc-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-}
-.alloc-title {
-  font-family: var(--font-display);
-  font-size: 16px; font-weight: 700;
-  margin-bottom: 4px; color: var(--text);
-}
-.alloc-desc { font-size: 11px; color: var(--text3); margin-bottom: 14px; line-height: 1.5; }
-.alloc-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 10px; gap: 1px; }
-.alloc-seg { border-radius: 0; transition: flex 0.4s ease; }
-.alloc-labels { display: flex; flex-wrap: wrap; gap: 8px; }
-.alloc-lbl { font-size: 10px; display: flex; align-items: center; gap: 4px; color: var(--text3); }
-.alloc-dot { width: 6px; height: 6px; border-radius: 1px; }
-.alloc-cagr {
-  margin-top: 12px; padding-top: 10px;
-  border-top: 1px solid var(--border);
-  font-size: 11px; color: var(--text3);
-  display: flex; justify-content: space-between;
-}
-.alloc-cagr strong { font-family: var(--font-mono); color: var(--equity); }
-
-/* ── SLIDER ── */
-.slider-section {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.slider-title {
-  font-family: var(--font-display);
-  font-size: 14px; font-weight: 700;
-  margin-bottom: 16px; color: var(--text);
-}
-.slider-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.slider-lbl { width: 110px; font-size: 11px; color: var(--text2); flex-shrink: 0; }
-.slider-input { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; background: var(--surface2); border-radius: 2px; outline: none; }
-.slider-input::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--equity); cursor: pointer; }
-.slider-val { width: 36px; text-align: right; font-family: var(--font-mono); font-size: 12px; color: var(--equity); }
-.slider-total {
-  display: flex; justify-content: space-between;
-  padding-top: 12px; border-top: 1px solid var(--border);
-  font-size: 12px; color: var(--text3);
-}
-.slider-total strong { font-family: var(--font-mono); }
-
-/* ── HOW TO INVEST ── */
-.invest-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
-.invest-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  border-top: 2px solid;
-}
-.invest-card-title {
-  font-family: var(--font-display);
-  font-size: 15px; font-weight: 700;
-  margin-bottom: 14px;
-}
-.vehicle-row { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.vehicle-row:last-child { border-bottom: none; }
-.vehicle-name { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center; }
-.vehicle-desc { font-size: 11px; color: var(--text3); line-height: 1.5; }
-
-/* ── OUTLOOK ── */
-.outlook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
-.outlook-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-}
-.outlook-asset { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
-.outlook-verdict { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-.outlook-text { font-size: 12px; color: var(--text2); line-height: 1.6; margin-bottom: 12px; }
-.scenario-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
-.scenario-cell {
-  text-align: center; padding: 8px 4px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-.scenario-label { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; font-family: var(--font-mono); }
-.scenario-val { font-family: var(--font-display); font-size: 15px; font-weight: 800; }
-
-/* ── RECOMMENDATIONS ── */
-.rec-card {
-  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg4) 100%);
-  border: 1px solid rgba(79,142,247,0.2);
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 16px;
-}
-.rec-title {
-  font-family: var(--font-display);
-  font-size: 18px; font-weight: 800;
-  color: var(--equity);
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-.rec-item {
-  display: flex; gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  font-size: 12px; line-height: 1.6; color: var(--text2);
-}
-.rec-item:last-child { border-bottom: none; }
-.rec-num {
-  font-family: var(--font-mono); font-size: 10px;
-  color: var(--equity); min-width: 24px; padding-top: 1px;
-  opacity: 0.7;
-}
-
-/* ── FRAMEWORK ── */
-.framework {
-  border: 1px solid rgba(240,180,41,0.25);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-.framework-header {
-  background: linear-gradient(90deg, rgba(240,180,41,0.15), transparent);
-  border-bottom: 1px solid rgba(240,180,41,0.15);
-  padding: 12px 20px;
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--gold);
-}
-.framework-row {
-  display: grid; grid-template-columns: 160px 70px 1fr;
-  gap: 16px; align-items: center;
-  padding: 12px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  font-size: 12px;
-}
-.framework-row:last-child { border-bottom: none; }
-.framework-asset { font-weight: 600; color: var(--text); }
-.framework-pct { font-family: var(--font-display); font-size: 22px; font-weight: 800; }
-.framework-note { color: var(--text3); line-height: 1.5; font-size: 11px; }
-
-/* ── GLOWING STAT ── */
-.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-.stat-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-}
-.stat-val {
-  font-family: var(--font-display);
-  font-size: 32px; font-weight: 800;
-  line-height: 1; margin-bottom: 6px;
-}
-.stat-lbl { font-size: 11px; color: var(--text3); line-height: 1.4; }
-
-/* ── DISCLAIMER ── */
-.disclaimer {
-  background: rgba(240,180,41,0.05);
-  border: 1px solid rgba(240,180,41,0.15);
-  border-radius: 8px;
-  padding: 14px 18px;
-  font-size: 11px; color: var(--text3); line-height: 1.6;
-}
-.disclaimer strong { color: var(--gold); }
-
-/* ── SECTION LABEL ── */
-.section-lbl {
-  font-family: var(--font-mono);
-  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
-}
-.section-lbl::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .hero { padding: 32px 20px 24px; }
-  .nav-tabs { padding: 16px 20px 0; }
-  .main { padding: 24px 20px 40px; }
-  .kpi-strip { grid-template-columns: repeat(3, 1fr); }
-  .chart-grid, .chart-grid.three { grid-template-columns: 1fr; }
-  .portfolio-grid, .invest-grid, .outlook-grid { grid-template-columns: 1fr; }
-  .framework-row { grid-template-columns: 1fr 50px; }
-  .framework-note { display: none; }
-  .stat-row { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
-}
+  @media (max-width: 700px) {
+    .metric-row { grid-template-columns: repeat(2,1fr); }
+    .chart-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .outlook-grid { grid-template-columns: 1fr; }
+    .content { padding: 16px; }
+    .dashboard-header { padding: 16px 16px 0; }
+    .tabs { overflow-x: auto; }
+  }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-top">
-    <div class="hero-badge"><span></span> Live Dashboard · India Markets</div>
-    <div class="hero-date">Analysis Period: 2000–2025 · Updated May 2025</div>
+<!-- HEADER -->
+<div class="dashboard-header">
+  <div class="header-top">
+    <div class="header-title">
+      <h1>India Asset Class Investment Dashboard</h1>
+      <p>25-Year Performance Analysis · 2000–2025 · Equity · Real Estate · Gold · Mutual Funds · Fixed Deposits</p>
+    </div>
+    <div class="live-badge"><div class="live-dot"></div> Live Dashboard · May 2025</div>
   </div>
-  <h1 class="hero-title">India Asset Class<br><span class="accent">Investment Dashboard</span></h1>
-  <p class="hero-sub">25-year performance analysis across Equity, Real Estate, Gold, Mutual Funds &amp; Fixed Deposits — with portfolio frameworks and 2030 outlook.</p>
-</header>
-
-<!-- NAV -->
-<nav class="nav-tabs">
-  <button class="nav-tab active" onclick="showPanel('returns',this)">Returns</button>
-  <button class="nav-tab" onclick="showPanel('comparison',this)">Comparison</button>
-  <button class="nav-tab" onclick="showPanel('portfolio',this)">Portfolio Builder</button>
-  <button class="nav-tab" onclick="showPanel('invest',this)">How to Invest</button>
-  <button class="nav-tab" onclick="showPanel('outlook',this)">Outlook 2025–30</button>
-  <button class="nav-tab" onclick="showPanel('recs',this)">Recommendations</button>
-</nav>
-
-<!-- MAIN -->
-<main class="main">
-
-<!-- ════════════════════════════════════════
-     PANEL 1 — RETURNS
-════════════════════════════════════════ -->
-<div id="panel-returns" class="panel active">
-
-  <div class="section-lbl">Long-Term CAGR — India (20–25 Years)</div>
-
-  <div class="kpi-strip">
-    <div class="kpi-card eq">
-      <div class="kpi-label">Equity (Sensex/Nifty)</div>
-      <div class="kpi-value">14–16%</div>
-      <div class="kpi-sub">CAGR over 20–25 yrs</div>
-    </div>
-    <div class="kpi-card gd">
-      <div class="kpi-label">Gold</div>
-      <div class="kpi-value">11–15%</div>
-      <div class="kpi-sub">CAGR in INR terms</div>
-    </div>
-    <div class="kpi-card mf">
-      <div class="kpi-label">Mutual Funds</div>
-      <div class="kpi-value">13–18%</div>
-      <div class="kpi-sub">Active large-to-midcap</div>
-    </div>
-    <div class="kpi-card re">
-      <div class="kpi-label">Real Estate</div>
-      <div class="kpi-value">7–10%</div>
-      <div class="kpi-sub">NHB Residex avg</div>
-    </div>
-    <div class="kpi-card fd">
-      <div class="kpi-label">Fixed Deposits</div>
-      <div class="kpi-value">6–7.5%</div>
-      <div class="kpi-sub">Pre-tax, bank FD</div>
-    </div>
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('returns')">📊 Returns</div>
+    <div class="tab" onclick="showTab('comparison')">🔍 Comparison</div>
+    <div class="tab" onclick="showTab('portfolio')">🏗️ Portfolio Builder</div>
+    <div class="tab" onclick="showTab('howtoinvest')">💡 How to Invest</div>
+    <div class="tab" onclick="showTab('outlook')">🔮 Outlook 2025–30</div>
+    <div class="tab" onclick="showTab('scorecard')">⭐ Scorecard</div>
   </div>
+</div>
 
-  <div class="stat-row">
-    <div class="stat-card">
-      <div class="stat-val" style="color:var(--mf);">₹18L</div>
-      <div class="stat-lbl">₹1 Lakh in Mutual Funds<br>20 years ago</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" style="color:var(--equity);">₹15.2L</div>
-      <div class="stat-lbl">₹1 Lakh in Nifty 50<br>20 years ago</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" style="color:var(--fd);">₹3.9L</div>
-      <div class="stat-lbl">₹1 Lakh in Fixed Deposits<br>20 years ago</div>
-    </div>
-  </div>
+<!-- CONTENT -->
+<div class="content">
 
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-card-header">
-        <div class="chart-card-title">20-Year CAGR by Asset Class</div>
-        <div class="chart-card-sub">Annualised pre-tax returns · India</div>
+  <!-- TAB 1: RETURNS -->
+  <div class="tab-panel active" id="tab-returns">
+
+    <div class="metric-row">
+      <div class="metric-card mc-mf">
+        <div class="mc-badge badge-best">BEST</div>
+        <div class="mc-label" style="color:#58d68d">Mutual Funds</div>
+        <div class="mc-cagr" style="color:#58d68d">13–18%</div>
+        <div class="mc-desc">Active large-to-midcap · 20Y avg</div>
       </div>
-      <div class="chart-wrap" style="height:240px;">
-        <canvas id="cagrChart" role="img" aria-label="CAGR bar chart">CAGR comparison</canvas>
+      <div class="metric-card mc-eq">
+        <div class="mc-badge badge-good">STRONG</div>
+        <div class="mc-label" style="color:#5dade2">Equity</div>
+        <div class="mc-cagr" style="color:#5dade2">14–16%</div>
+        <div class="mc-desc">Sensex / Nifty · 20–25 years</div>
+      </div>
+      <div class="metric-card mc-gd">
+        <div class="mc-badge badge-ok">HEDGE</div>
+        <div class="mc-label" style="color:#f5d98b">Gold</div>
+        <div class="mc-cagr" style="color:#f5d98b">11–15%</div>
+        <div class="mc-desc">INR terms · SGB recommended</div>
+      </div>
+      <div class="metric-card mc-re">
+        <div class="mc-badge badge-weak">WEAK</div>
+        <div class="mc-label" style="color:#fb923c">Real Estate</div>
+        <div class="mc-cagr" style="color:#fb923c">7–10%</div>
+        <div class="mc-desc">NHB Residex avg · Location dep.</div>
+      </div>
+      <div class="metric-card mc-fd">
+        <div class="mc-badge badge-poor">AVOID</div>
+        <div class="mc-label" style="color:#e87d6e">Fixed Deposits</div>
+        <div class="mc-cagr" style="color:#e87d6e">6–7.5%</div>
+        <div class="mc-desc">Pre-tax · Barely beats inflation</div>
       </div>
     </div>
-    <div class="chart-card">
-      <div class="chart-card-header">
+
+    <div class="section-title" style="color:#c9922a">20-Year CAGR & Wealth Growth</div>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-card-title">CAGR by Asset Class</div>
+        <div class="chart-card-sub">Annualised pre-tax returns · India · 20 years</div>
+        <div class="chart-wrap"><canvas id="cagrChart" role="img" aria-label="Bar chart showing 20-year CAGR: Mutual Funds 15.5%, Equity 15%, Gold 13%, Real Estate 8.5%, Fixed Deposits 7%">CAGR: Mutual Funds 15.5%, Equity 15%, Gold 13%, Real Estate 8.5%, FDs 7%</canvas></div>
+      </div>
+      <div class="chart-card">
         <div class="chart-card-title">₹1 Lakh Grown Over 20 Years</div>
-        <div class="chart-card-sub">Terminal value in ₹ Lakh</div>
+        <div class="chart-card-sub">Terminal value in ₹ Lakh · compounded</div>
+        <div class="chart-wrap"><canvas id="wealthChart" role="img" aria-label="Bar chart showing wealth of 1 lakh after 20 years: MF 19.5L, Equity 15.2L, Gold 9.6L, Real Estate 4.8L, FDs 3.9L">Wealth: MF ₹19.5L, Equity ₹15.2L, Gold ₹9.6L, Real Estate ₹4.8L, FDs ₹3.9L</canvas></div>
       </div>
-      <div class="chart-wrap" style="height:240px;">
-        <canvas id="wealthChart" role="img" aria-label="Wealth accumulation">Wealth chart</canvas>
+    </div>
+
+    <div class="section-title" style="color:#5dade2">Real Returns After 6% Inflation</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Asset Class</th>
+          <th>Nominal CAGR</th>
+          <th>Real Return</th>
+          <th>After-Tax Effective</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#5dade2">Equity (Nifty 50 TRI)</strong></td>
+          <td style="color:#5dade2;font-weight:700">14–16%</td>
+          <td style="color:#58d68d;font-weight:700">8–10%</td>
+          <td>12–14% (LTCG 12.5%)</td>
+          <td><span class="verdict-pill vp-green">Wealth Creator</span></td>
+        </tr>
+        <tr>
+          <td><strong style="color:#58d68d">Mutual Funds (Flexi-cap)</strong></td>
+          <td style="color:#58d68d;font-weight:700">13–18%</td>
+          <td style="color:#58d68d;font-weight:700">7–12%</td>
+          <td>11–16% (LTCG 12.5%)</td>
+          <td><span class="verdict-pill vp-green">Best Risk-Adjusted</span></td>
+        </tr>
+        <tr>
+          <td><strong style="color:#f5d98b">Gold (SGB)</strong></td>
+          <td style="color:#f5d98b;font-weight:700">11–15%</td>
+          <td style="color:#f5d98b;font-weight:700">5–9%</td>
+          <td>11–15% (Tax-free maturity)</td>
+          <td><span class="verdict-pill vp-gold">Inflation Hedge</span></td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fb923c">Real Estate (avg India)</strong></td>
+          <td style="color:#fb923c;font-weight:700">7–10%</td>
+          <td style="color:#fb923c;font-weight:700">1–4%</td>
+          <td>5–8% (20% LTCG + indexation)</td>
+          <td><span class="verdict-pill vp-orange">Location-Dependent</span></td>
+        </tr>
+        <tr>
+          <td><strong style="color:#e87d6e">Fixed Deposits (Bank)</strong></td>
+          <td style="color:#e87d6e;font-weight:700">6–7.5%</td>
+          <td style="color:#e87d6e;font-weight:700">0–1.5%</td>
+          <td>4.2–5.3% (30% slab)</td>
+          <td><span class="verdict-pill vp-red">Barely Beats Inflation</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TAB 2: COMPARISON -->
+  <div class="tab-panel" id="tab-comparison">
+    <div class="section-title" style="color:#c9922a">8-Dimension Attribute Scorecard</div>
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th style="color:#5dade2">Equity/MFs</th>
+          <th style="color:#fb923c">Real Estate</th>
+          <th style="color:#f5d98b">Gold</th>
+          <th style="color:#e87d6e">Fixed Dep.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>20-yr Return</td><td style="color:#5dade2;font-weight:700">14–16% CAGR</td><td style="color:#fb923c">7–10% CAGR</td><td style="color:#f5d98b">11–15% CAGR</td><td style="color:#e87d6e">6–7.5% CAGR</td></tr>
+        <tr><td>Liquidity</td><td><span class="verdict-pill vp-green">Same Day</span></td><td><span class="verdict-pill vp-red">Months</span></td><td><span class="verdict-pill vp-green">High (ETF)</span></td><td><span class="verdict-pill vp-orange">Penalty</span></td></tr>
+        <tr><td>Entry Barrier</td><td><span class="verdict-pill vp-green">₹500 SIP</span></td><td><span class="verdict-pill vp-red">₹20L+</span></td><td><span class="verdict-pill vp-green">₹10 digital</span></td><td><span class="verdict-pill vp-blue">₹1,000</span></td></tr>
+        <tr><td>Volatility</td><td style="color:#fb923c">High Short-Term</td><td style="color:#58d68d">Low-Med</td><td style="color:#f5d98b">Medium</td><td style="color:#58d68d">Near Zero</td></tr>
+        <tr><td>Tax Efficiency</td><td><span class="verdict-pill vp-green">LTCG 12.5%</span></td><td><span class="verdict-pill vp-gold">20%+Indexation</span></td><td><span class="verdict-pill vp-green">SGB Tax-Free</span></td><td><span class="verdict-pill vp-red">Full Slab</span></td></tr>
+        <tr><td>Inflation Hedge</td><td><span class="verdict-pill vp-green">Strong</span></td><td><span class="verdict-pill vp-gold">Partial</span></td><td><span class="verdict-pill vp-green">Strong</span></td><td><span class="verdict-pill vp-red">Negative</span></td></tr>
+        <tr><td>Passive Income</td><td>Dividends 1–2%</td><td style="color:#58d68d">Rent 2–3%</td><td style="color:#f5d98b">SGB 2.5%</td><td style="color:#58d68d;font-weight:700">7–7.5%</td></tr>
+        <tr><td>Leverage Option</td><td style="color:#e87d6e">Limited</td><td style="color:#58d68d;font-weight:700">80% LTV</td><td style="color:#f5d98b">Gold Loan</td><td style="color:#e87d6e">None</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title" style="color:#58d68d">City-wise Real Estate Returns (10-Year CAGR)</div>
+    <div class="chart-card" style="margin-bottom:0">
+      <div class="chart-card-title">Tier-1 vs Tier-3 Cities</div>
+      <div class="chart-card-sub">Estimated 10-year CAGR · NHB Residex data</div>
+      <div class="chart-wrap" style="height:240px"><canvas id="cityChart" role="img" aria-label="Horizontal bar chart showing real estate CAGR by city">City real estate returns chart</canvas></div>
+    </div>
+  </div>
+
+  <!-- TAB 3: PORTFOLIO BUILDER -->
+  <div class="tab-panel" id="tab-portfolio">
+    <div class="section-title" style="color:#c9922a">Portfolio Allocation by Investor Profile</div>
+    <div class="profile-tabs">
+      <div class="profile-tab active" onclick="setProfile('balanced')">⚖️ Balanced</div>
+      <div class="profile-tab" onclick="setProfile('conservative')">🛡️ Conservative</div>
+      <div class="profile-tab" onclick="setProfile('aggressive')">🚀 Aggressive</div>
+      <div class="profile-tab" onclick="setProfile('retiree')">🌅 Retiree</div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <div class="chart-card-title" id="profile-title">Balanced Portfolio</div>
+        <div class="chart-card-sub" id="profile-desc" style="margin-bottom:20px">Age 35–55 · Moderate risk · 7–10 yr horizon</div>
+        <div class="alloc-row">
+          <div class="alloc-label">Equity / MFs</div>
+          <div class="alloc-bar-wrap"><div class="alloc-bar" id="bar-eq" style="width:45%;background:linear-gradient(90deg,#1d6ecc,#5dade2)">45%</div></div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-label">Real Estate</div>
+          <div class="alloc-bar-wrap"><div class="alloc-bar" id="bar-re" style="width:25%;background:linear-gradient(90deg,#ea580c,#fb923c)">25%</div></div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-label">Gold</div>
+          <div class="alloc-bar-wrap"><div class="alloc-bar" id="bar-gd" style="width:15%;background:linear-gradient(90deg,#c9922a,#f5d98b)">15%</div></div>
+        </div>
+        <div class="alloc-row">
+          <div class="alloc-label">Fixed Income</div>
+          <div class="alloc-bar-wrap"><div class="alloc-bar" id="bar-fd" style="width:15%;background:linear-gradient(90deg,#dc2626,#e87d6e)">15%</div></div>
+        </div>
+        <div class="expected-return">
+          <div class="er-label">Expected Blended CAGR</div>
+          <div class="er-value" id="expected-cagr">~11.5–12.5%</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="chart-card-title">Allocation Visual</div>
+        <div class="chart-card-sub" style="margin-bottom:16px">Portfolio distribution</div>
+        <div class="chart-wrap"><canvas id="donutChart" role="img" aria-label="Donut chart showing portfolio allocation">Portfolio allocation donut chart</canvas></div>
       </div>
     </div>
   </div>
 
-  <div class="chart-card" style="margin-bottom:16px;">
-    <div class="chart-card-title">Real Return After Inflation — What You Actually Keep</div>
-    <div class="chart-card-sub">Nominal CAGR minus 6% average inflation · India</div>
-    <div style="overflow-x:auto;">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Asset Class</th>
-            <th>Nominal CAGR</th>
-            <th>Real Return</th>
-            <th>After-Tax Effective*</th>
-            <th>Verdict</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="color:var(--equity);">Equity (Nifty 50 TRI)</td>
-            <td>14–16%</td>
-            <td style="color:var(--mf);font-weight:600;">8–10%</td>
-            <td>12–14% (LTCG 12.5%)</td>
-            <td><span class="badge b-green">Wealth Creator</span></td>
-          </tr>
-          <tr>
-            <td style="color:var(--mf);">Mutual Funds (Flexi-cap)</td>
-            <td>13–18%</td>
-            <td style="color:var(--mf);font-weight:600;">7–12%</td>
-            <td>11–16% (LTCG 12.5%)</td>
-            <td><span class="badge b-green">Best Risk-Adjusted</span></td>
-          </tr>
-          <tr>
-            <td style="color:var(--gold);">Gold (SGB)</td>
-            <td>11–15%</td>
-            <td style="color:var(--gold);font-weight:600;">5–9%</td>
-            <td>11–15% (tax-free maturity)</td>
-            <td><span class="badge b-amber">Inflation Hedge</span></td>
-          </tr>
-          <tr>
-            <td style="color:var(--re);">Real Estate (avg India)</td>
-            <td>7–10%</td>
-            <td style="color:var(--gold);font-weight:600;">1–4%</td>
-            <td>5–8% (20% LTCG + indexation)</td>
-            <td><span class="badge b-amber">Location-Dependent</span></td>
-          </tr>
-          <tr>
-            <td style="color:var(--fd);">Fixed Deposits (Bank)</td>
-            <td>6–7.5%</td>
-            <td style="color:#F87171;font-weight:600;">0–1.5%</td>
-            <td>4.2–5.3% (30% slab)</td>
-            <td><span class="badge b-red">Barely Beats Inflation</span></td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- TAB 4: HOW TO INVEST -->
+  <div class="tab-panel" id="tab-howtoinvest">
+    <div class="section-title" style="color:#c9922a">How to Invest in Each Asset Class</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="chart-card">
+        <div class="chart-card-title" style="color:#5dade2;font-size:14px;margin-bottom:12px">📈 Equity & Mutual Funds</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:rgba(93,173,226,0.08);border:1px solid rgba(93,173,226,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#5dade2;margin-bottom:4px">BEST ENTRY ROUTE</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Monthly SIP via Direct Plans (Zerodha Coin, Groww, Paytm Money). Minimum ₹500/month. ELSS for 80C benefit.</div>
+          </div>
+          <div style="background:rgba(88,214,141,0.08);border:1px solid rgba(88,214,141,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#58d68d;margin-bottom:4px">RECOMMENDED FUNDS</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Nippon Large Cap · Invesco Mid Cap · Bandhan Small Cap · ICICI Flexi-cap</div>
+          </div>
+          <div style="background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#e87d6e;margin-bottom:4px">AVOID</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Regular plans (high commission), NFOs without track record, timing the market</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title" style="color:#f5d98b;font-size:14px;margin-bottom:12px">🥇 Gold</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:rgba(245,217,139,0.08);border:1px solid rgba(245,217,139,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#f5d98b;margin-bottom:4px">BEST ROUTE — SGBs</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Sovereign Gold Bonds via RBI. 2.5% annual interest + capital gains. Tax-FREE at 8-year maturity. Best risk-return of any gold instrument.</div>
+          </div>
+          <div style="background:rgba(201,146,42,0.08);border:1px solid rgba(201,146,42,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#c9922a;margin-bottom:4px">ALTERNATIVES</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Gold ETFs (Nippon/HDFC Gold ETF) for liquidity. Digital gold for small amounts. Avoid physical gold (making charges, storage).</div>
+          </div>
+          <div style="background:rgba(88,214,141,0.08);border:1px solid rgba(88,214,141,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#58d68d;margin-bottom:4px">IDEAL ALLOCATION</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">10–15% of portfolio. Increases in uncertainty/inflation cycles. Natural hedge against equity volatility.</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title" style="color:#fb923c;font-size:14px;margin-bottom:12px">🏠 Real Estate</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:rgba(251,146,60,0.08);border:1px solid rgba(251,146,60,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#fb923c;margin-bottom:4px">STRATEGY</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Own home only for personal use. REITs for commercial exposure without large capital (Embassy, Mindspace, Brookfield). Minimum ₹10,000 investment.</div>
+          </div>
+          <div style="background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#e87d6e;margin-bottom:4px">THE REAL COST</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Stamp duty 6–8% + registration + maintenance + property tax + illiquidity = NET return often only 1–4% real. Much lower than marketed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title" style="color:#e87d6e;font-size:14px;margin-bottom:12px">🏦 Fixed Income</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:rgba(232,125,110,0.08);border:1px solid rgba(232,125,110,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#e87d6e;margin-bottom:4px">RIGHT USE CASE</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">Emergency fund (3–6 months expenses) only. High-yield FDs (small finance banks — 8–9%). Short-duration debt mutual funds over bank FDs.</div>
+          </div>
+          <div style="background:rgba(88,214,141,0.08);border:1px solid rgba(88,214,141,0.2);border-radius:8px;padding:12px">
+            <div style="font-size:11px;font-weight:700;color:#58d68d;margin-bottom:4px">BETTER ALTERNATIVES</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7)">PPF (7.1% tax-free), NPS (additional 50K deduction), RBI Floating Rate Bonds (8.05%). All superior to standard bank FDs after tax.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <p style="font-size:10px;color:var(--text3);margin-top:8px;">*After-tax returns assume 30% slab for FD; LTCG 12.5% above ₹1.25L for equity/MFs; SGB tax-free at 8-yr maturity.</p>
   </div>
+
+  <!-- TAB 5: OUTLOOK -->
+  <div class="tab-panel" id="tab-outlook">
+    <div class="section-title" style="color:#c9922a">2025–2030 Outlook Scenarios</div>
+    <div class="outlook-grid">
+      <div class="outlook-card oc-bull">
+        <div class="oc-title">🚀 Bull Case</div>
+        <div class="oc-prob">Probability: 35%</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#58d68d"></div>GDP 7.5%+ · India becomes 3rd largest economy</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#58d68d"></div>Nifty 35,000–40,000 by 2030</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#58d68d"></div>Mid-cap/Small-cap returns 18–22% CAGR</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#58d68d"></div>FII inflows ₹3–4L Cr annually</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#58d68d"></div>Gold stable 10–12% CAGR in INR</div>
+      </div>
+      <div class="outlook-card oc-base">
+        <div class="oc-title">📊 Base Case</div>
+        <div class="oc-prob">Probability: 50%</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#5dade2"></div>GDP 6–7% · Steady capex cycle</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#5dade2"></div>Nifty 28,000–32,000 by 2030</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#5dade2"></div>Equity returns 12–15% CAGR</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#5dade2"></div>RBI cuts rates 50–75 bps by 2026</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#5dade2"></div>Gold 11–13% CAGR · FII stabilisation</div>
+      </div>
+      <div class="outlook-card oc-bear">
+        <div class="oc-title">⚠️ Bear Case</div>
+        <div class="oc-prob">Probability: 15%</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#e87d6e"></div>Global recession · FII outflows continue</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#e87d6e"></div>Nifty 20,000–22,000 by 2027 (before recovery)</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#e87d6e"></div>Gold outperforms all — safe haven demand</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#e87d6e"></div>Real estate further correction 10–15%</div>
+        <div class="oc-item"><div class="oc-dot" style="background:#e87d6e"></div>SIP investors benefit — buy more at lower NAV</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="color:#58d68d">Recommended Strategy 2025–2030</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="chart-card">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(88,214,141,0.08);border-radius:8px;border:1px solid rgba(88,214,141,0.2)">
+            <span style="font-size:18px">✅</span>
+            <div><div style="font-size:12px;font-weight:700;color:#58d68d;margin-bottom:2px">Core — Equity Mutual Funds</div><div style="font-size:11px;color:rgba(255,255,255,0.6)">SIP in Flexi-cap/Mid-cap. Increase allocation during corrections. 40–50% of portfolio.</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(245,217,139,0.08);border-radius:8px;border:1px solid rgba(245,217,139,0.2)">
+            <span style="font-size:18px">🥇</span>
+            <div><div style="font-size:12px;font-weight:700;color:#f5d98b;margin-bottom:2px">Hedge — Sovereign Gold Bonds</div><div style="font-size:11px;color:rgba(255,255,255,0.6)">10–15% allocation. Buy in RBI windows. Hold to 8-year maturity for tax-free gains.</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(196,181,253,0.08);border-radius:8px;border:1px solid rgba(196,181,253,0.2)">
+            <span style="font-size:18px">🏢</span>
+            <div><div style="font-size:12px;font-weight:700;color:#c4b5fd;margin-bottom:2px">Property — REITs Only</div><div style="font-size:11px;color:rgba(255,255,255,0.6)">Commercial RE via Embassy/Mindspace REITs. 8–9% dividend yield + capital appreciation. No illiquidity.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(220,38,38,0.08);border-radius:8px;border:1px solid rgba(220,38,38,0.2)">
+            <span style="font-size:18px">❌</span>
+            <div><div style="font-size:12px;font-weight:700;color:#e87d6e;margin-bottom:2px">Avoid — FDs as Wealth Creator</div><div style="font-size:11px;color:rgba(255,255,255,0.6)">0–1.5% real return after inflation and tax. Use only for emergency fund (3–6 months).</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(234,88,12,0.08);border-radius:8px;border:1px solid rgba(234,88,12,0.2)">
+            <span style="font-size:18px">⚠️</span>
+            <div><div style="font-size:12px;font-weight:700;color:#fb923c;margin-bottom:2px">Caution — Residential Real Estate</div><div style="font-size:11px;color:rgba(255,255,255,0.6)">Own home for personal use only. Investment property — poor net returns after costs, taxes, and illiquidity.</div></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:rgba(93,173,226,0.08);border-radius:8px;border:1px solid rgba(93,173,226,0.2)">
+            <span style="font-size:18px">💡</span>
+            <div><div style="font-size:12px;font-weight:700;color:#5dade2;margin-bottom:2px">Key Principle</div><div style="font-size:11px;color:rgba(255,255,255,0.6)">Time in market beats timing the market. SIP discipline through all 3 scenarios delivers superior outcomes.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: SCORECARD -->
+  <div class="tab-panel" id="tab-scorecard">
+    <div class="section-title" style="color:#c9922a">Overall Asset Class Scorecard</div>
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th style="color:#5dade2">Equity/MFs</th>
+          <th style="color:#fb923c">Real Estate</th>
+          <th style="color:#f5d98b">Gold</th>
+          <th style="color:#e87d6e">Fixed Dep.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Long-term Returns</td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★★★</span></td>
+          <td><span class="star">★★★★</span></td>
+          <td><span class="star">★★</span></td></tr>
+        <tr><td>Liquidity</td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★</span></td>
+          <td><span class="star">★★★★</span></td>
+          <td><span class="star">★★★</span></td></tr>
+        <tr><td>Tax Efficiency</td>
+          <td><span class="star">★★★★</span></td>
+          <td><span class="star">★★★</span></td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★</span></td></tr>
+        <tr><td>Inflation Hedge</td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★★★</span></td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★</span></td></tr>
+        <tr><td>Accessibility</td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★★</span></td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★★★★★</span></td></tr>
+        <tr><td>Risk-Adjusted Return</td>
+          <td><span class="star">★★★★★</span></td>
+          <td><span class="star">★★</span></td>
+          <td><span class="star">★★★★</span></td>
+          <td><span class="star">★★</span></td></tr>
+        <tr>
+          <td><strong>OVERALL SCORE</strong></td>
+          <td><span class="verdict-pill vp-green" style="font-size:13px">29/30 ⭐</span></td>
+          <td><span class="verdict-pill vp-orange" style="font-size:13px">14/30</span></td>
+          <td><span class="verdict-pill vp-gold" style="font-size:13px">23/30</span></td>
+          <td><span class="verdict-pill vp-red" style="font-size:13px">11/30</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title" style="color:#58d68d;margin-top:24px">Final Recommendations</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+      <div style="background:linear-gradient(135deg,rgba(22,163,74,0.12),rgba(88,214,141,0.06));border:1px solid rgba(88,214,141,0.25);border-radius:12px;padding:18px">
+        <div style="font-size:13px;font-weight:800;color:#58d68d;margin-bottom:10px">✅ DO THIS</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.7">
+          → Start SIP immediately — even ₹500/month<br>
+          → Choose Direct Plans to save 0.5–1% annually<br>
+          → Buy SGBs in every RBI window<br>
+          → Invest in REITs for real estate exposure<br>
+          → Increase SIP by 10% every year (Step-Up SIP)<br>
+          → Hold minimum 7 years for small/mid-caps
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(220,38,38,0.12),rgba(232,125,110,0.06));border:1px solid rgba(232,125,110,0.25);border-radius:12px;padding:18px">
+        <div style="font-size:13px;font-weight:800;color:#e87d6e;margin-bottom:10px">❌ AVOID THIS</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.7">
+          → FDs for long-term wealth creation<br>
+          → Regular plans with high commissions<br>
+          → Buying investment property in Tier-2/3 cities<br>
+          → Timing the market — stay invested always<br>
+          → Physical gold with making charges<br>
+          → NFOs without performance track record
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end content -->
+
+<div class="dash-footer">
+  <strong>CA Parvesh Aghi</strong> · Visiting Professor of Finance · IMT Ghaziabad · IIFT Delhi · BML Munjal University · Shiv Nadar University<br>
+  <a href="https://paraghi.github.io">paraghi.github.io</a> · WhatsApp: +91 9891450400<br>
+  <em>For educational purposes only. Not investment advice. Consult a SEBI-registered advisor before investing. Data as of May 2025.</em>
 </div>
-
-<!-- ════════════════════════════════════════
-     PANEL 2 — COMPARISON
-════════════════════════════════════════ -->
-<div id="panel-comparison" class="panel">
-
-  <div class="chart-grid">
-    <div class="chart-card">
-      <div class="chart-card-title">Multi-Dimensional Performance Radar</div>
-      <div class="chart-card-sub">Scored out of 10 across five investment dimensions</div>
-      <div class="legend">
-        <span class="legend-item"><span class="legend-dot" style="background:var(--equity);"></span>Equity/MFs</span>
-        <span class="legend-item"><span class="legend-dot" style="background:var(--re);"></span>Real Estate</span>
-        <span class="legend-item"><span class="legend-dot" style="background:var(--gold);"></span>Gold</span>
-        <span class="legend-item"><span class="legend-dot" style="background:var(--fd);"></span>Fixed Dep.</span>
-      </div>
-      <div class="chart-wrap" style="height:280px;">
-        <canvas id="radarChart" role="img" aria-label="Radar comparison chart">Radar chart</canvas>
-      </div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-card-title">City-wise Real Estate Returns</div>
-      <div class="chart-card-sub">10-year estimated CAGR · Tier-1 vs Tier-3</div>
-      <div class="chart-wrap" style="height:280px;">
-        <canvas id="cityChart" role="img" aria-label="City real estate returns">City chart</canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class="chart-card" style="margin-bottom:16px;">
-    <div class="chart-card-title">Attribute Scorecard — 8 Dimensions</div>
-    <div class="chart-card-sub">Qualitative comparison across key investment criteria</div>
-    <div style="overflow-x:auto;">
-      <table class="data-table">
-        <thead>
-          <tr><th>Attribute</th><th style="color:var(--equity);">Equity/MFs</th><th style="color:var(--re);">Real Estate</th><th style="color:var(--gold);">Gold</th><th style="color:var(--fd);">Fixed Dep.</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>20-yr return</td><td><span class="badge b-green">14–16% CAGR</span></td><td><span class="badge b-amber">7–10% CAGR</span></td><td><span class="badge b-amber">11–15% CAGR</span></td><td><span class="badge b-red">6–7.5% CAGR</span></td></tr>
-          <tr><td>Liquidity</td><td><span class="badge b-green">Same Day</span></td><td><span class="badge b-red">Months</span></td><td><span class="badge b-green">High (ETF)</span></td><td><span class="badge b-gray">Penalty</span></td></tr>
-          <tr><td>Entry barrier</td><td><span class="badge b-green">₹500 SIP</span></td><td><span class="badge b-red">₹20L+</span></td><td><span class="badge b-green">₹10 digital</span></td><td><span class="badge b-green">₹1,000</span></td></tr>
-          <tr><td>Volatility</td><td><span class="badge b-amber">High S-T</span></td><td><span class="badge b-blue">Low-Med</span></td><td><span class="badge b-blue">Medium</span></td><td><span class="badge b-green">Near Zero</span></td></tr>
-          <tr><td>Tax efficiency</td><td><span class="badge b-blue">LTCG 12.5%</span></td><td><span class="badge b-amber">20%+Indexation</span></td><td><span class="badge b-green">SGB Tax-Free</span></td><td><span class="badge b-red">Full Slab</span></td></tr>
-          <tr><td>Inflation hedge</td><td><span class="badge b-green">Strong</span></td><td><span class="badge b-blue">Partial</span></td><td><span class="badge b-green">Strong</span></td><td><span class="badge b-red">Negative</span></td></tr>
-          <tr><td>Passive income</td><td><span class="badge b-blue">Divid. 1–2%</span></td><td><span class="badge b-blue">Rent 2–3%</span></td><td><span class="badge b-amber">SGB 2.5%</span></td><td><span class="badge b-green">7–7.5%</span></td></tr>
-          <tr><td>Leverage option</td><td><span class="badge b-gray">Limited</span></td><td><span class="badge b-green">80% LTV</span></td><td><span class="badge b-blue">Gold Loan</span></td><td><span class="badge b-red">None</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PANEL 3 — PORTFOLIO BUILDER
-════════════════════════════════════════ -->
-<div id="panel-portfolio" class="panel">
-
-  <div class="section-lbl">Recommended Allocations by Investor Profile</div>
-
-  <div class="profile-bar">
-    <button class="profile-btn active" onclick="setProfile('balanced',this)">Balanced</button>
-    <button class="profile-btn" onclick="setProfile('conservative',this)">Conservative</button>
-    <button class="profile-btn" onclick="setProfile('aggressive',this)">Aggressive</button>
-    <button class="profile-btn" onclick="setProfile('retiree',this)">Retiree</button>
-  </div>
-
-  <div class="portfolio-grid">
-    <div class="alloc-card">
-      <div class="alloc-title" id="pf-name">Balanced</div>
-      <div class="alloc-desc" id="pf-desc">Age 35–55 · Moderate risk · Wealth growth + stability · 7–10 yr horizon</div>
-      <div class="alloc-bar" id="pf-bar">
-        <div class="alloc-seg" style="flex:45;background:var(--equity);"></div>
-        <div class="alloc-seg" style="flex:25;background:var(--re);"></div>
-        <div class="alloc-seg" style="flex:15;background:var(--gold);"></div>
-        <div class="alloc-seg" style="flex:15;background:var(--fd);"></div>
-      </div>
-      <div class="alloc-labels" id="pf-labels">
-        <span class="alloc-lbl"><span class="alloc-dot" style="background:var(--equity);"></span>Equity/MFs 45%</span>
-        <span class="alloc-lbl"><span class="alloc-dot" style="background:var(--re);"></span>Real Estate 25%</span>
-        <span class="alloc-lbl"><span class="alloc-dot" style="background:var(--gold);"></span>Gold 15%</span>
-        <span class="alloc-lbl"><span class="alloc-dot" style="background:var(--fd);"></span>Fixed Inc. 15%</span>
-      </div>
-      <div class="alloc-cagr">
-        <span>Expected blended CAGR</span>
-        <strong id="pf-cagr">~11.5–12.5%</strong>
-      </div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-card-title" style="margin-bottom:8px;">Allocation Donut</div>
-      <div class="chart-wrap" style="height:220px;">
-        <canvas id="donutChart" role="img" aria-label="Portfolio allocation donut">Donut chart</canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class="slider-section">
-    <div class="slider-title">Custom Portfolio Simulator</div>
-    <div class="slider-row">
-      <span class="slider-lbl">Equity / MFs</span>
-      <input type="range" class="slider-input" min="0" max="80" step="5" value="45" id="s-eq" oninput="updateCustom()">
-      <span class="slider-val" id="v-eq">45%</span>
-    </div>
-    <div class="slider-row">
-      <span class="slider-lbl">Real Estate</span>
-      <input type="range" class="slider-input" min="0" max="60" step="5" value="25" id="s-re" oninput="updateCustom()">
-      <span class="slider-val" id="v-re">25%</span>
-    </div>
-    <div class="slider-row">
-      <span class="slider-lbl">Gold</span>
-      <input type="range" class="slider-input" min="5" max="30" step="5" value="15" id="s-gd" oninput="updateCustom()">
-      <span class="slider-val" id="v-gd">15%</span>
-    </div>
-    <div class="slider-row">
-      <span class="slider-lbl">Fixed Income</span>
-      <input type="range" class="slider-input" min="0" max="50" step="5" value="15" id="s-fi" oninput="updateCustom()">
-      <span class="slider-val" id="v-fi">15%</span>
-    </div>
-    <div class="slider-total">
-      <span>Total allocation: <strong id="custom-total" style="color:var(--text);">100%</strong></span>
-      <span>Est. blended CAGR: <strong id="est-cagr" style="color:var(--equity);">12.1%</strong></span>
-    </div>
-  </div>
-
-  <div class="framework">
-    <div class="framework-header">★ The 50–30–15–5 Core Framework (Balanced Investor, Age 35–50)</div>
-    <div style="background:var(--bg3);">
-      <div class="framework-row">
-        <div class="framework-asset">Equity &amp; Mutual Funds</div>
-        <div class="framework-pct" style="color:var(--equity);">50%</div>
-        <div class="framework-note">Core wealth engine. Index funds + 1–2 active flexi-cap funds via monthly SIP. Nifty 50 + Nifty Next 50 for large-cap core.</div>
-      </div>
-      <div class="framework-row">
-        <div class="framework-asset">Real Estate</div>
-        <div class="framework-pct" style="color:var(--re);">30%</div>
-        <div class="framework-note">Primary home (utility + leverage) + REIT for commercial exposure without illiquidity. Avoid second residential unless rent covers 60% EMI.</div>
-      </div>
-      <div class="framework-row">
-        <div class="framework-asset">Gold</div>
-        <div class="framework-pct" style="color:var(--gold);">15%</div>
-        <div class="framework-note">Inflation hedge + crisis insurance. Preferably Sovereign Gold Bonds (tax-free at maturity + 2.5% coupon). Rebalance after every 15–20% run-up.</div>
-      </div>
-      <div class="framework-row">
-        <div class="framework-asset">Fixed Income</div>
-        <div class="framework-pct" style="color:var(--fd);">5%</div>
-        <div class="framework-note">Emergency fund only. PPF for tax-free compounding. Avoid heavy FD allocation — real after-tax returns near zero in 30% bracket.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PANEL 4 — HOW TO INVEST
-════════════════════════════════════════ -->
-<div id="panel-invest" class="panel">
-
-  <div class="section-lbl">Best Investment Vehicles — Ranked by Cost, Tax &amp; Practicality</div>
-
-  <div class="invest-grid">
-    <div class="invest-card" style="border-top-color:var(--equity);">
-      <div class="invest-card-title" style="color:var(--equity);">Equity &amp; Mutual Funds</div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Nifty 50 Index Fund <span class="badge b-green">Best Start</span></div>
-        <div class="vehicle-desc">TER 0.05–0.20%. Tracks 50 largest Indian cos. 13–15% historical CAGR. Zero manager risk. Perfect SIP vehicle for beginners.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Flexi-cap / Multi-cap MF <span class="badge b-blue">Core</span></div>
-        <div class="vehicle-desc">Active mgmt across market caps. TER 0.8–1.5%. Can deliver alpha. SIP ₹5,000–25,000/month. Review every 3 years.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Direct Equity <span class="badge b-gray">Advanced</span></div>
-        <div class="vehicle-desc">Quality growth stocks held 5–10 yrs. Needs research. Only after MF portfolio is established.</div>
-      </div>
-    </div>
-    <div class="invest-card" style="border-top-color:var(--gold);">
-      <div class="invest-card-title" style="color:var(--gold);">Gold</div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Sovereign Gold Bonds <span class="badge b-green">Top Pick</span></div>
-        <div class="vehicle-desc">RBI-issued. 2.5% annual interest + capital gains TAX-FREE at 8-yr maturity. Best vehicle by a wide margin.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Gold ETFs <span class="badge b-blue">Recommended</span></div>
-        <div class="vehicle-desc">Exchange-traded, backed by physical gold. Highly liquid. No making charges or storage risk. Ideal for tactical allocation.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Physical Gold <span class="badge b-red">Avoid</span></div>
-        <div class="vehicle-desc">Making charges 10–20% destroy returns. Storage risk. Financially worst vehicle. Limit to jewellery for occasions only.</div>
-      </div>
-    </div>
-    <div class="invest-card" style="border-top-color:var(--re);">
-      <div class="invest-card-title" style="color:var(--re);">Real Estate</div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">REITs <span class="badge b-green">Preferred</span></div>
-        <div class="vehicle-desc">Embassy, Mindspace, Nexus Malls. Min ₹300. Distribution yields 6–9%. Fully liquid, SEBI-regulated. Best beyond primary home.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Residential Property <span class="badge b-blue">Primary Home</span></div>
-        <div class="vehicle-desc">Primary home: rational (utility + appreciation). Investment: only Tier-1 city where rent covers 60%+ EMI. RERA registration mandatory.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Commercial Property <span class="badge b-amber">High Capital</span></div>
-        <div class="vehicle-desc">Rental yields 6–9% vs residential 2–3%. Requires ₹50L+. REITs are superior for most investors.</div>
-      </div>
-    </div>
-    <div class="invest-card" style="border-top-color:var(--fd);">
-      <div class="invest-card-title" style="color:var(--fd);">Fixed Income</div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">PPF <span class="badge b-green">Must Have</span></div>
-        <div class="vehicle-desc">7.1% tax-free (EEE). 15-yr lock-in. Max ₹1.5L/yr. Invest ₹12,500/month to fully utilise. Best guaranteed vehicle.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">RBI Floating Rate Bonds <span class="badge b-blue">Senior</span></div>
-        <div class="vehicle-desc">Currently 8.05%. Government-backed, highest safety. Taxable at slab. 7-year tenure. Ideal for senior investors.</div>
-      </div>
-      <div class="vehicle-row">
-        <div class="vehicle-name">Bank Fixed Deposits <span class="badge b-amber">Emergency Only</span></div>
-        <div class="vehicle-desc">6.5–7.5%. Insured up to ₹5L per bank. For liquidity reserve only. Taxed at full slab — not for wealth creation.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="disclaimer">
-    <strong>Tax Note:</strong> An FD at 7.5% taxed at 30% = 5.25% effective return. With 6% inflation, the real after-tax return is negative. Reserve FDs for emergency funds only. Equity LTCG at 12.5% (above ₹1.25L) is structurally far superior for high-tax-bracket investors.
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PANEL 5 — OUTLOOK
-════════════════════════════════════════ -->
-<div id="panel-outlook" class="panel">
-
-  <div class="chart-card" style="margin-bottom:16px;">
-    <div class="chart-card-title">Projected Return Scenarios 2025–2030</div>
-    <div class="chart-card-sub">Bear / Base / Bull case annualised return estimates</div>
-    <div class="legend">
-      <span class="legend-item"><span class="legend-dot" style="background:rgba(79,142,247,0.25);"></span>Bear Case</span>
-      <span class="legend-item"><span class="legend-dot" style="background:rgba(79,142,247,0.55);"></span>Base Case</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--equity);"></span>Bull Case</span>
-    </div>
-    <div class="chart-wrap" style="height:260px;">
-      <canvas id="outlookChart" role="img" aria-label="Outlook scenario chart">Outlook scenarios</canvas>
-    </div>
-  </div>
-
-  <div class="outlook-grid">
-    <div class="outlook-card" style="border-top:2px solid var(--equity);">
-      <div class="outlook-asset">Equity Markets</div>
-      <div class="outlook-verdict" style="color:var(--equity);">Bullish — Highest Conviction</div>
-      <div class="outlook-text">India's $5T GDP target by 2030 on track. Corporate earnings CAGR 14–16% expected. FII inflows structural as India's weight in global indices rises. Nifty 1,00,000 by 2027 is a credible base case. Preferred: Financials, Infra, Healthcare, IT, Capital Goods.</div>
-      <div class="scenario-bar">
-        <div class="scenario-cell"><div class="scenario-label">Bear</div><div class="scenario-val" style="color:var(--fd);">10%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Base</div><div class="scenario-val" style="color:var(--equity);">13%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Bull</div><div class="scenario-val" style="color:var(--mf);">17%</div></div>
-      </div>
-    </div>
-    <div class="outlook-card" style="border-top:2px solid var(--gold);">
-      <div class="outlook-asset">Gold</div>
-      <div class="outlook-verdict" style="color:var(--gold);">Moderating — Stagger Entry</div>
-      <div class="outlook-text">After 74% surge in 2025, gold faces base-effect headwinds. Central bank buying remains structural. Geopolitical risk premium persists. Rupee depreciation (2–3%/yr) adds to INR returns. At ₹1.35L/10g, some froth. Enter via SGB in tranches, not lumpsum.</div>
-      <div class="scenario-bar">
-        <div class="scenario-cell"><div class="scenario-label">Bear</div><div class="scenario-val" style="color:var(--fd);">6%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Base</div><div class="scenario-val" style="color:var(--gold);">9%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Bull</div><div class="scenario-val" style="color:var(--mf);">13%</div></div>
-      </div>
-    </div>
-    <div class="outlook-card" style="border-top:2px solid var(--re);">
-      <div class="outlook-asset">Real Estate</div>
-      <div class="outlook-verdict" style="color:var(--re);">Selective — Tier-1 Only</div>
-      <div class="outlook-text">Top 6 cities outperform on structural housing demand. Affordable segment strong. Warehousing, data centres, and Grade-A office through REITs most attractive. RERA improved transparency. Avoid over-levered Tier-3 speculative bets.</div>
-      <div class="scenario-bar">
-        <div class="scenario-cell"><div class="scenario-label">Bear</div><div class="scenario-val" style="color:var(--fd);">6%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Base</div><div class="scenario-val" style="color:var(--re);">9%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Bull</div><div class="scenario-val" style="color:var(--mf);">13%</div></div>
-      </div>
-    </div>
-    <div class="outlook-card" style="border-top:2px solid var(--fd);">
-      <div class="outlook-asset">Fixed Income</div>
-      <div class="outlook-verdict" style="color:var(--fd);">Improving — Rate Cut Cycle</div>
-      <div class="outlook-text">RBI rate-cut cycle is underway. Lock in long-duration bonds and gilt funds now — price appreciation expected as rates fall. FD rates likely to fall from 7.5% to 6.5%. Debt MFs attractive for mark-to-market gains. PPF remains best guaranteed vehicle.</div>
-      <div class="scenario-bar">
-        <div class="scenario-cell"><div class="scenario-label">Bear</div><div class="scenario-val" style="color:var(--fd);">6.5%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Base</div><div class="scenario-val" style="color:var(--gold);">7.8%</div></div>
-        <div class="scenario-cell"><div class="scenario-label">Bull</div><div class="scenario-val" style="color:var(--mf);">9%</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PANEL 6 — RECOMMENDATIONS
-════════════════════════════════════════ -->
-<div id="panel-recs" class="panel">
-
-  <div class="stat-row" style="margin-bottom:20px;">
-    <div class="stat-card">
-      <div class="stat-val" style="color:var(--equity);">₹5.3Cr</div>
-      <div class="stat-lbl">₹25K/month SIP at 13% CAGR<br>in 20 years</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" style="color:var(--gold);">₹40.7L</div>
-      <div class="stat-lbl">PPF maxed at ₹1.5L/yr<br>over 15 years (tax-free)</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" style="color:var(--mf);">98%</div>
-      <div class="stat-lbl">Nifty 7-yr periods delivering<br>above 7% return</div>
-    </div>
-  </div>
-
-  <div class="rec-card">
-    <div class="rec-title">10 Principles for the Indian Investor</div>
-    <div class="rec-item"><span class="rec-num">01</span><span><strong style="color:var(--text);">Start SIPs early and increase 10% annually.</strong> A ₹10,000/month SIP started at 25 at 13% CAGR grows to ₹6.3 crore by age 60. The same SIP started at 35 yields only ₹1.8 crore. Time in market beats timing the market — always.</span></div>
-    <div class="rec-item"><span class="rec-num">02</span><span><strong style="color:var(--text);">Hold 15% gold via Sovereign Gold Bonds — not physical.</strong> SGBs give 2.5% interest + capital gains tax-free at maturity. Rebalance when gold exceeds 20% of portfolio after a rally.</span></div>
-    <div class="rec-item"><span class="rec-num">03</span><span><strong style="color:var(--text);">Real estate = one primary home, then REITs.</strong> Direct investment in a second property is only rational if rental yield covers 60%+ of EMI in a top-6 city. REITs give commercial exposure without lock-in or transaction cost.</span></div>
-    <div class="rec-item"><span class="rec-num">04</span><span><strong style="color:var(--text);">Fixed deposits = emergency fund only.</strong> 3–6 months of expenses in a liquid FD is sensible. Beyond that, in the 30% tax bracket, FDs destroy real wealth. Especially damaging in a falling rate environment.</span></div>
-    <div class="rec-item"><span class="rec-num">05</span><span><strong style="color:var(--text);">Max your PPF every year without fail.</strong> ₹1.5 lakh/year at 7.1% tax-free, compounded over 15 years = ₹40.7 lakh. Zero tax, zero risk, government guarantee. The best fixed-income vehicle in India.</span></div>
-    <div class="rec-item"><span class="rec-num">06</span><span><strong style="color:var(--text);">Never exit equities during a crash — increase SIP instead.</strong> Every market correction is a buying opportunity. 83% of all 7-year Nifty holding periods since 1999 delivered above 10%. Panic-selling is the number one destroyer of wealth.</span></div>
-    <div class="rec-item"><span class="rec-num">07</span><span><strong style="color:var(--text);">Use the "100 minus age" rule for equity allocation.</strong> Age 30 → 70% equity. Age 50 → 50% equity. Age 65 → 35% equity. Reduce equity by 1% per year after 50.</span></div>
-    <div class="rec-item"><span class="rec-num">08</span><span><strong style="color:var(--text);">Rebalance once a year — not monthly.</strong> When any asset class deviates 5%+ from target weight, rebalance. Enforces disciplined buy-low/sell-high and controls drift.</span></div>
-    <div class="rec-item"><span class="rec-num">09</span><span><strong style="color:var(--text);">Prioritise tax efficiency.</strong> LTCG 12.5% on equity vs 30% on FD is a structural advantage. Hold equity 12+ months. Use SGB for gold. Max PPF and ELSS for 80C benefits every year.</span></div>
-    <div class="rec-item"><span class="rec-num">10</span><span><strong style="color:var(--text);">Don't chase last year's winner.</strong> In 2025, gold gave 74%. Equity gave 20% in 2024. Debt may outperform in 2026. A diversified allocation ensures you capture rotation without guessing the next winner.</span></div>
-  </div>
-
-  <div class="disclaimer">
-    <strong>Disclaimer:</strong> This dashboard is prepared for educational purposes at business schools and does not constitute investment advice. All return figures are historical and do not guarantee future performance. Returns vary based on entry/exit timing, specific instruments, and individual tax situations. Investors should consult a SEBI-registered financial advisor before making investment decisions.
-    <br><br>
-    <strong>Data sources:</strong> Morgan Stanley Research, FundsIndia Wealth Conversations Report 2024, NHB Residex, World Gold Council, Business Standard, SEBI.
-  </div>
-</div>
-
-</main>
 
 <script>
-// ── CHART COLORS ──
-const C = {
-  eq: '#4F8EF7', gd: '#F0B429', mf: '#34D399', re: '#F97316', fd: '#94A3B8',
-  eqA: 'rgba(79,142,247,0.15)', gdA: 'rgba(240,180,41,0.12)',
-  mfA: 'rgba(52,211,153,0.1)', reA: 'rgba(249,115,22,0.1)', fdA: 'rgba(148,163,184,0.1)',
-  grid: 'rgba(255,255,255,0.06)', tick: '#5A6785'
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+const COLORS = {
+  mf:  { border: '#58d68d', bg: 'rgba(88,214,141,0.7)' },
+  eq:  { border: '#5dade2', bg: 'rgba(93,173,226,0.7)' },
+  gd:  { border: '#f5d98b', bg: 'rgba(245,217,139,0.7)' },
+  re:  { border: '#fb923c', bg: 'rgba(251,146,60,0.7)'  },
+  fd:  { border: '#e87d6e', bg: 'rgba(232,125,110,0.7)' }
 };
 
-const baseOpts = {
-  responsive: true, maintainAspectRatio: false,
-  plugins: { legend: { display: false } }
-};
-
-// ── CAGR CHART ──
 new Chart(document.getElementById('cagrChart'), {
   type: 'bar',
   data: {
-    labels: ['Mutual Funds', 'Equity', 'Gold', 'Real Estate', 'Fixed Dep.'],
+    labels: ['Mutual Funds','Equity','Gold','Real Estate','Fixed Dep.'],
     datasets: [{
+      label: '20Y CAGR %',
       data: [15.5, 15, 13, 8.5, 7],
-      backgroundColor: [C.mf, C.eq, C.gd, C.re, C.fd],
-      borderRadius: 6, borderSkipped: false
+      backgroundColor: [COLORS.mf.bg, COLORS.eq.bg, COLORS.gd.bg, COLORS.re.bg, COLORS.fd.bg],
+      borderColor: [COLORS.mf.border, COLORS.eq.border, COLORS.gd.border, COLORS.re.border, COLORS.fd.border],
+      borderWidth: 2, borderRadius: 6
     }]
   },
   options: {
-    ...baseOpts,
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
     scales: {
-      y: { min: 0, max: 20, ticks: { callback: v => v + '%', color: C.tick, font: { size: 10 } }, grid: { color: C.grid } },
-      x: { ticks: { color: C.tick, font: { size: 10 } }, grid: { display: false } }
-    },
-    plugins: { ...baseOpts.plugins, tooltip: { callbacks: { label: v => ' ' + v.raw + '% CAGR' } } }
+      x: { ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+      y: { ticks: { color: 'rgba(255,255,255,0.55)', callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' }, min: 0, max: 20 }
+    }
   }
 });
 
-// ── WEALTH CHART ──
 new Chart(document.getElementById('wealthChart'), {
   type: 'bar',
   data: {
-    labels: ['Mutual Funds', 'Equity', 'Gold', 'Real Estate', 'FD'],
+    labels: ['Mutual Funds','Equity','Gold','Real Estate','Fixed Dep.'],
     datasets: [{
-      data: [18, 15.2, 11.5, 4.8, 3.9],
-      backgroundColor: [C.mf, C.eq, C.gd, C.re, C.fd],
-      borderRadius: 6, borderSkipped: false
+      label: '₹ Lakh',
+      data: [19.5, 15.2, 9.6, 4.8, 3.9],
+      backgroundColor: [COLORS.mf.bg, COLORS.eq.bg, COLORS.gd.bg, COLORS.re.bg, COLORS.fd.bg],
+      borderColor: [COLORS.mf.border, COLORS.eq.border, COLORS.gd.border, COLORS.re.border, COLORS.fd.border],
+      borderWidth: 2, borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+      y: { ticks: { color: 'rgba(255,255,255,0.55)', callback: v => '₹' + v + 'L' }, grid: { color: 'rgba(255,255,255,0.05)' }, min: 0 }
+    }
+  }
+});
+
+new Chart(document.getElementById('cityChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Mumbai','Delhi NCR','Bengaluru','Hyderabad','Pune','Chennai','Ahmedabad','Tier-3 avg'],
+    datasets: [{
+      label: '10Y CAGR %',
+      data: [8.5, 7.8, 9.2, 10.1, 8.8, 7.5, 7.2, 5.5],
+      backgroundColor: ['rgba(251,146,60,0.7)','rgba(251,146,60,0.65)','rgba(251,146,60,0.75)','rgba(88,214,141,0.7)','rgba(251,146,60,0.7)','rgba(251,146,60,0.6)','rgba(251,146,60,0.55)','rgba(232,125,110,0.6)'],
+      borderColor: ['#fb923c','#fb923c','#fb923c','#58d68d','#fb923c','#fb923c','#fb923c','#e87d6e'],
+      borderWidth: 2, borderRadius: 4
     }]
   },
   options: {
     indexAxis: 'y',
-    ...baseOpts,
-    scales: {
-      x: { ticks: { callback: v => '₹' + v + 'L', color: C.tick, font: { size: 10 } }, grid: { color: C.grid } },
-      y: { ticks: { color: C.tick, font: { size: 10 } }, grid: { display: false } }
-    },
-    plugins: { ...baseOpts.plugins, tooltip: { callbacks: { label: v => ' ₹' + v.raw + ' Lakh' } } }
-  }
-});
-
-// ── RADAR ──
-new Chart(document.getElementById('radarChart'), {
-  type: 'radar',
-  data: {
-    labels: ['Long-term Return', 'Liquidity', 'Accessibility', 'Tax Efficiency', 'Inflation Hedge'],
-    datasets: [
-      { label: 'Equity/MFs', data: [9,9,9,7,8], borderColor: C.eq, backgroundColor: C.eqA, pointBackgroundColor: C.eq, borderDash: [] },
-      { label: 'Real Estate', data: [6,2,3,6,6], borderColor: C.re, backgroundColor: C.reA, pointBackgroundColor: C.re, borderDash: [4,4] },
-      { label: 'Gold', data: [7,8,8,9,9], borderColor: C.gd, backgroundColor: C.gdA, pointBackgroundColor: C.gd, borderDash: [2,2] },
-      { label: 'Fixed Dep.', data: [3,6,9,3,2], borderColor: C.fd, backgroundColor: C.fdA, pointBackgroundColor: C.fd, borderDash: [6,3] }
-    ]
-  },
-  options: {
     responsive: true, maintainAspectRatio: false,
-    scales: { r: { min:0, max:10, ticks:{display:false}, pointLabels:{color:C.tick,font:{size:10}}, grid:{color:C.grid}, angleLines:{color:C.grid} } },
-    plugins: { legend: { display: false } }
-  }
-});
-
-// ── CITY CHART ──
-new Chart(document.getElementById('cityChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Bengaluru','Hyderabad','Mumbai','Pune','Delhi-NCR','Chennai','Kolkata','Tier-3 Avg'],
-    datasets: [{
-      data: [13, 14, 12, 11, 10, 9, 7, 5],
-      backgroundColor: [C.mf,C.mf,C.eq,C.eq,'rgba(79,142,247,0.5)','rgba(79,142,247,0.5)',C.fd,'#E05252'],
-      borderRadius: 4, borderSkipped: false
-    }]
-  },
-  options: {
-    ...baseOpts,
+    plugins: { legend: { display: false } },
     scales: {
-      y: { min:0, max:18, ticks:{callback:v=>v+'%',color:C.tick,font:{size:10}}, grid:{color:C.grid} },
-      x: { ticks:{color:C.tick,font:{size:9},maxRotation:30}, grid:{display:false} }
-    },
-    plugins: { ...baseOpts.plugins, tooltip: { callbacks: { label: v => ' ' + v.raw + '% CAGR' } } }
+      x: { ticks: { color: 'rgba(255,255,255,0.55)', callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' }, min: 0, max: 12 },
+      y: { ticks: { color: 'rgba(255,255,255,0.7)', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+    }
   }
 });
 
-// ── OUTLOOK CHART ──
-new Chart(document.getElementById('outlookChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Equity / MFs', 'Gold', 'Real Estate (Prime)', 'Fixed Income'],
-    datasets: [
-      { label:'Bear', data:[10,6,6,6.5], backgroundColor:'rgba(79,142,247,0.2)', borderRadius:4, borderSkipped:false },
-      { label:'Base', data:[13,9,9,7.8], backgroundColor:'rgba(79,142,247,0.5)', borderRadius:4, borderSkipped:false },
-      { label:'Bull', data:[17,13,13,9], backgroundColor:C.eq, borderRadius:4, borderSkipped:false }
-    ]
-  },
-  options: {
-    ...baseOpts,
-    scales: {
-      y: { min:0, max:20, ticks:{callback:v=>v+'%',color:C.tick,font:{size:10}}, grid:{color:C.grid} },
-      x: { ticks:{color:C.tick,font:{size:10}}, grid:{display:false} }
-    },
-    plugins: { legend:{display:true, labels:{color:C.tick,font:{size:11},boxWidth:10,padding:10}}, tooltip:{callbacks:{label:v=>' '+v.dataset.label+': '+v.raw+'%'}} }
-  }
-});
+const profiles = {
+  balanced:     { title: 'Balanced Portfolio', desc: 'Age 35–55 · Moderate risk · 7–10 yr horizon', eq:45, re:25, gd:15, fd:15, cagr: '~11.5–12.5%' },
+  conservative: { title: 'Conservative Portfolio', desc: 'Age 50+ · Low risk · Capital preservation', eq:30, re:25, gd:20, fd:25, cagr: '~9–10.5%' },
+  aggressive:   { title: 'Aggressive Portfolio', desc: 'Age 25–35 · High risk · Maximum growth', eq:65, re:15, gd:10, fd:10, cagr: '~13–15%' },
+  retiree:      { title: 'Retiree Portfolio', desc: 'Age 60+ · Very low risk · Income focused', eq:20, re:20, gd:20, fd:40, cagr: '~8–9%' }
+};
 
-// ── DONUT ──
 let donutChart = new Chart(document.getElementById('donutChart'), {
   type: 'doughnut',
   data: {
     labels: ['Equity/MFs', 'Real Estate', 'Gold', 'Fixed Income'],
-    datasets: [{ data:[45,25,15,15], backgroundColor:[C.eq,C.re,C.gd,C.fd], borderWidth:2, borderColor:'#141D35' }]
+    datasets: [{
+      data: [45, 25, 15, 15],
+      backgroundColor: [COLORS.eq.bg, COLORS.re.bg, COLORS.gd.bg, COLORS.fd.bg],
+      borderColor: [COLORS.eq.border, COLORS.re.border, COLORS.gd.border, COLORS.fd.border],
+      borderWidth: 2
+    }]
   },
   options: {
-    responsive:true, maintainAspectRatio:false, cutout:'62%',
-    plugins: { legend:{display:false}, tooltip:{callbacks:{label:v=>' '+v.label+': '+v.raw+'%'}} }
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.65)', font: { size: 11 }, boxWidth: 12, padding: 16 } }
+    },
+    cutout: '60%'
   }
 });
 
-// ── PANEL SWITCHING ──
-function showPanel(id, el) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('panel-' + id).classList.add('active');
-  el.classList.add('active');
-}
-
-// ── PORTFOLIO PROFILES ──
-const profiles = {
-  balanced:     { name:'Balanced', desc:'Age 35–55 · Moderate risk · Wealth growth + stability · 7–10 yr horizon', eq:45, re:25, gd:15, fi:15, cagr:'~11.5–12.5%' },
-  conservative: { name:'Conservative', desc:'Age 55+ · Capital preservation · Low risk tolerance · 3–5 yr horizon', eq:25, re:20, gd:20, fi:35, cagr:'~9–10%' },
-  aggressive:   { name:'Aggressive', desc:'Under 40 · Max wealth creation · High volatility tolerance · 10–15+ yr horizon', eq:65, re:15, gd:10, fi:10, cagr:'~13–14%' },
-  retiree:      { name:'Retiree', desc:'Post-retirement · Income generation + inflation protection · Capital safety', eq:20, re:30, gd:20, fi:30, cagr:'~9–10%' }
-};
-
-function setProfile(name, btn) {
-  document.querySelectorAll('.profile-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const p = profiles[name];
-  document.getElementById('pf-name').textContent = p.name;
-  document.getElementById('pf-desc').textContent = p.desc;
-  document.getElementById('pf-cagr').textContent = p.cagr;
-  const bar = document.getElementById('pf-bar');
-  bar.innerHTML = [
-    `<div class="alloc-seg" style="flex:${p.eq};background:var(--equity);"></div>`,
-    `<div class="alloc-seg" style="flex:${p.re};background:var(--re);"></div>`,
-    `<div class="alloc-seg" style="flex:${p.gd};background:var(--gold);"></div>`,
-    `<div class="alloc-seg" style="flex:${p.fi};background:var(--fd);"></div>`
-  ].join('');
-  document.getElementById('pf-labels').innerHTML = [
-    `<span class="alloc-lbl"><span class="alloc-dot" style="background:var(--equity);"></span>Equity/MFs ${p.eq}%</span>`,
-    `<span class="alloc-lbl"><span class="alloc-dot" style="background:var(--re);"></span>Real Estate ${p.re}%</span>`,
-    `<span class="alloc-lbl"><span class="alloc-dot" style="background:var(--gold);"></span>Gold ${p.gd}%</span>`,
-    `<span class="alloc-lbl"><span class="alloc-dot" style="background:var(--fd);"></span>Fixed Inc. ${p.fi}%</span>`
-  ].join('');
-  donutChart.data.datasets[0].data = [p.eq, p.re, p.gd, p.fi];
+function setProfile(key) {
+  const p = profiles[key];
+  document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('profile-title').textContent = p.title;
+  document.getElementById('profile-desc').textContent = p.desc;
+  document.getElementById('bar-eq').style.width = p.eq + '%';
+  document.getElementById('bar-eq').textContent = p.eq + '%';
+  document.getElementById('bar-re').style.width = p.re + '%';
+  document.getElementById('bar-re').textContent = p.re + '%';
+  document.getElementById('bar-gd').style.width = p.gd + '%';
+  document.getElementById('bar-gd').textContent = p.gd + '%';
+  document.getElementById('bar-fd').style.width = p.fd + '%';
+  document.getElementById('bar-fd').textContent = p.fd + '%';
+  document.getElementById('expected-cagr').textContent = p.cagr;
+  donutChart.data.datasets[0].data = [p.eq, p.re, p.gd, p.fd];
   donutChart.update();
-  document.getElementById('s-eq').value = p.eq; document.getElementById('v-eq').textContent = p.eq + '%';
-  document.getElementById('s-re').value = p.re; document.getElementById('v-re').textContent = p.re + '%';
-  document.getElementById('s-gd').value = p.gd; document.getElementById('v-gd').textContent = p.gd + '%';
-  document.getElementById('s-fi').value = p.fi; document.getElementById('v-fi').textContent = p.fi + '%';
-  updateCustom();
-}
-
-function updateCustom() {
-  const eq = +document.getElementById('s-eq').value;
-  const re = +document.getElementById('s-re').value;
-  const gd = +document.getElementById('s-gd').value;
-  const fi = +document.getElementById('s-fi').value;
-  document.getElementById('v-eq').textContent = eq + '%';
-  document.getElementById('v-re').textContent = re + '%';
-  document.getElementById('v-gd').textContent = gd + '%';
-  document.getElementById('v-fi').textContent = fi + '%';
-  const total = eq + re + gd + fi;
-  const tc = document.getElementById('custom-total');
-  tc.textContent = total + '%';
-  tc.style.color = total === 100 ? '#34D399' : total > 100 ? '#F87171' : '#F0B429';
-  const cagr = ((eq*14.5 + re*8.5 + gd*12 + fi*7.5) / Math.max(total,1)).toFixed(1);
-  document.getElementById('est-cagr').textContent = cagr + '%';
 }
 </script>
 </body>
