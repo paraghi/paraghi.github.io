@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth Management Professional Framework — CA Parvesh Aghi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-light: #1a3259;
+    --gold: #b8922a;
+    --gold-light: #d4a843;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --text: #1c1c1c;
+    --text-muted: #5a5a5a;
+    --text-light: #888;
+    --border: #d8cfc0;
+    --accent-green: #1a5c3a;
+    --accent-red: #7a1f1f;
+    --accent-blue: #1a3a6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── TOP RULE ── */
+  .top-rule {
+    height: 5px;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%);
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--navy);
+    color: white;
+    padding: 52px 48px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border: 1px solid rgba(184,146,42,0.15);
+    border-radius: 50%;
+  }
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(184,146,42,0.10);
+    border-radius: 50%;
+  }
+
+  .masthead-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .series-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .series-label::after { content: ''; flex: 1; height: 1px; background: rgba(184,146,42,0.3); }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .masthead h1 span { color: var(--gold-light); }
+
+  .masthead-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .parts-strip {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+  }
+  .part-badge {
+    background: rgba(184,146,42,0.15);
+    border: 1px solid rgba(184,146,42,0.3);
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .masthead-meta {
+    display: flex; flex-wrap: wrap;
+    gap: 24px; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 20px;
+  }
+  .meta-item { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+  .meta-item strong { color: rgba(255,255,255,0.85); font-weight: 400; }
+  .meta-dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
+
+  /* ── NAV ── */
+  .toc-nav {
+    background: var(--navy-light);
+    padding: 14px 48px;
+    border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toc-nav-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; gap: 0;
+    align-items: center;
+  }
+  .toc-nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    transition: color 0.2s;
+  }
+  .toc-nav a:first-child { padding-left: 0; }
+  .toc-nav a:last-child { border-right: none; }
+  .toc-nav a:hover { color: var(--gold-light); }
+
+  /* ── MAIN CONTENT ── */
+  .content-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* ── EXECUTIVE SUMMARY ── */
+  .exec-summary {
+    background: white;
+    border-left: 4px solid var(--gold);
+    padding: 36px 40px;
+    margin: 44px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+  .exec-summary h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .exec-summary p {
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+  .exec-summary ul {
+    margin: 0 0 16px 20px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .exec-summary ul li { margin-bottom: 8px; }
+
+  .guiding-principle {
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 0.93rem;
+    color: var(--navy);
+    line-height: 1.7;
+  }
+  .guiding-principle strong { font-style: normal; color: var(--gold); }
+
+  /* ── PART HEADER ── */
+  .part-header {
+    margin: 56px 0 36px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--navy);
+    position: relative;
+  }
+  .part-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .part-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .part-header .part-tagline {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 44px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy-light);
+    margin: 32px 0 14px;
+  }
+  .section-h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 22px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.87rem;
+  }
+
+  p { margin-bottom: 16px; }
+
+  /* ── BULLET LISTS ── */
+  .content-list {
+    margin: 0 0 20px 24px;
+    padding: 0;
+  }
+  .content-list li {
+    margin-bottom: 10px;
+    font-size: 0.96rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+  .content-list li strong { color: var(--text); }
+
+  /* ── KEY PRINCIPLE CALLOUT ── */
+  .key-principle {
+    background: linear-gradient(135deg, #f7f2e8 0%, #ede5d0 100%);
+    border-left: 3px solid var(--gold);
+    padding: 18px 22px;
+    margin: 24px 0;
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+  .key-principle .kp-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x: auto; margin: 24px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    background: white;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+  thead tr { background: var(--navy); color: white; }
+  thead th {
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid #eee; transition: background 0.15s; }
+  tbody tr:hover { background: var(--cream); }
+  tbody td {
+    padding: 11px 14px;
+    vertical-align: top;
+    border-right: 1px solid #f0ebe0;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  tbody td:first-child { color: var(--navy); font-weight: 500; }
+  tbody td:last-child { border-right: none; }
+  tbody tr:nth-child(even) { background: #faf8f4; }
+  tbody tr:nth-child(even):hover { background: var(--cream); }
+
+  /* Signal color coding */
+  .signal-strong-bond { color: var(--accent-red); font-weight: 600; }
+  .signal-mild-bond { color: #b85c00; font-weight: 600; }
+  .signal-neutral { color: #6b6b00; font-weight: 600; }
+  .signal-equity { color: var(--accent-green); font-weight: 600; }
+  .signal-strong-equity { color: var(--accent-green); font-weight: 700; }
+
+  /* Allocation coloring */
+  .ow { color: var(--accent-green); font-weight: 600; }
+  .uw { color: var(--accent-red); font-weight: 600; }
+  .neu { color: var(--text-muted); }
+
+  /* ── SCENARIO CARDS ── */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .scenario-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-top: 3px solid var(--navy);
+  }
+  .scenario-card.green { border-top-color: var(--accent-green); }
+  .scenario-card.red { border-top-color: var(--accent-red); }
+  .scenario-card.amber { border-top-color: var(--gold); }
+  .scenario-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .scenario-card .spread {
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .scenario-card .spread.pos { color: var(--accent-green); }
+  .scenario-card .spread.neg { color: var(--accent-red); }
+  .scenario-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+  /* ── STEP CALCULATOR ── */
+  .step-list { margin: 20px 0; }
+  .step-item {
+    display: flex; gap: 18px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .step-body { flex: 1; padding-top: 4px; }
+  .step-body strong { color: var(--navy); display: block; margin-bottom: 2px; font-size: 0.94rem; }
+  .step-body span { font-size: 0.88rem; color: var(--text-muted); }
+  .step-calc {
+    font-family: 'JetBrains Mono', monospace;
+    background: #f0ebe0;
+    padding: 3px 10px;
+    font-size: 0.82rem;
+    color: var(--navy);
+    display: inline-block;
+    margin-top: 4px;
+    border-radius: 2px;
+  }
+
+  /* ── AIF DIMENSION CARDS ── */
+  .dimension-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .dimension-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 18px;
+  }
+  .dim-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--cream-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+    -webkit-text-stroke: 1px var(--border);
+  }
+  .dim-title { font-weight: 600; color: var(--navy); font-size: 0.94rem; margin-bottom: 8px; }
+  .dim-body { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── WATERFALL ── */
+  .waterfall-steps { margin: 20px 0; }
+  .wf-step {
+    display: flex; gap: 0;
+    margin-bottom: 4px;
+    align-items: stretch;
+  }
+  .wf-step-label {
+    background: var(--navy);
+    color: white;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    min-width: 80px;
+    display: flex; align-items: center; justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .wf-step-body {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: none;
+    padding: 10px 16px;
+    flex: 1;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .wf-step-body strong { color: var(--navy); }
+  .wf-step-amt {
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-left: none;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--navy);
+    min-width: 120px;
+    display: flex; align-items: center;
+    font-weight: 500;
+  }
+
+  /* ── FOUR QUESTIONS ── */
+  .question-list { margin: 20px 0; }
+  .question-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+  .q-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .q-title { font-weight: 600; color: var(--navy); margin-bottom: 8px; font-size: 0.96rem; }
+  .q-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── CLOSING FRAMEWORK ── */
+  .closing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .closing-card {
+    background: var(--navy);
+    color: white;
+    padding: 24px;
+  }
+  .closing-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .closing-card p { font-size: 0.87rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin: 0; }
+
+  /* ── CLIENT QUOTE ── */
+  .client-quote {
+    background: var(--navy);
+    color: white;
+    padding: 28px 32px;
+    margin: 28px 0;
+    border-left: 4px solid var(--gold);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    position: relative;
+  }
+  .client-quote::before {
+    content: '"';
+    font-size: 5rem;
+    color: rgba(184,146,42,0.15);
+    position: absolute;
+    top: -10px; left: 16px;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+  .client-quote p { color: rgba(255,255,255,0.85); }
+  .client-quote .quote-label {
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-top: 14px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  /* ── SUMMARY ONE-LINER ── */
+  .one-liner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 28px 32px;
+    margin: 28px 0;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.88);
+  }
+  .one-liner strong { color: var(--gold-light); font-style: normal; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.55);
+    padding: 36px 48px;
+    margin-top: 60px;
+    font-size: 0.82rem;
+  }
+  .page-footer-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center;
+    gap: 16px;
+  }
+  .footer-author strong { color: white; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    color: var(--gold-light);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: white; }
+
+  /* ── DIVIDER ── */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+    margin: 44px 0;
+    opacity: 0.4;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .masthead { padding: 36px 24px 32px; }
+    .toc-nav { padding: 10px 24px; }
+    .content-wrap { padding: 0 24px 60px; }
+    .page-footer { padding: 28px 24px; }
+    .masthead-meta { flex-direction: column; gap: 8px; }
+    .toc-nav-inner { gap: 4px; }
+    .scenario-grid, .dimension-grid, .closing-grid { grid-template-columns: 1fr; }
+    .wf-step { flex-direction: column; gap: 0; }
+    .wf-step-label { min-width: auto; }
+    .wf-step-amt { min-width: auto; }
+  }
+
+  @media print {
+    .toc-nav { position: static; }
+    .top-rule { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Practitioner's Framework Series &nbsp;·&nbsp; May 2026</div>
+    <h1><span>Wealth Management</span><br>Professional Framework</h1>
+    <p class="masthead-subtitle">Macro Intelligence to Portfolio Allocation — A Complete Edition for Wealth Managers</p>
+
+    <div class="parts-strip">
+      <span class="part-badge">Part I · Macro &amp; Asset Allocation</span>
+      <span class="part-badge">Part II · Earnings Yield vs Bond Yield</span>
+      <span class="part-badge">Part III · AIF Evaluation</span>
+    </div>
+
+    <div class="masthead-meta">
+      <div class="meta-item"><strong>CA Parvesh Aghi</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Visiting Professor, Finance</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BM Munjal University</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">May 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="toc-nav">
+  <div class="toc-nav-inner">
+    <a href="#exec-summary">Summary</a>
+    <a href="#part1">Part I · Macro</a>
+    <a href="#part2">Part II · Earnings Yield</a>
+    <a href="#part3">Part III · AIFs</a>
+    <a href="#closing">Closing</a>
+    <a href="https://paraghi.github.io">← Homepage</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="content-wrap">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section id="exec-summary" class="exec-summary">
+    <h2>Executive Summary</h2>
+    <p>This report is a comprehensive practitioner's reference for wealth managers and finance professionals operating in India's dynamic investment environment. It integrates three interconnected frameworks into a single, actionable guide:</p>
+    <ul>
+      <li>How macroeconomic signals — interest rates, inflation, valuations, liquidity, and geopolitical events — should drive asset allocation decisions across equity, debt, gold, and alternative investments</li>
+      <li>A numerical, step-by-step framework for using the <strong>Earnings Yield vs. Bond Yield</strong> spread to make disciplined equity-debt allocation decisions at any point in the market cycle</li>
+      <li>How <strong>Alternative Investment Funds (AIFs)</strong> fit into sophisticated portfolios — the three categories, the evaluation framework, and the critical fee structures that every wealth manager must understand</li>
+    </ul>
+    <div class="guiding-principle">
+      <strong>Guiding Principle:</strong> Markets rapidly price in known information. The practitioner's edge comes from longer time horizons, deeper instrument-level analysis, and the behavioral discipline to act counter-cyclically — increasing allocations when fear is highest and reducing them when complacency is most extreme.
+    </div>
+  </section>
+
+  <!-- SUMMARY TABLE -->
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Part</th><th>Focus</th><th>Key Tool</th><th>Key Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>Part I</td><td>Macro-to-Portfolio Framework</td><td>Asset Allocation Decision Matrix</td><td>Scenario-based allocation across 5 asset classes</td></tr>
+        <tr><td>Part II</td><td>Earnings Yield vs Bond Yield</td><td>6-Scenario Numerical Calculator</td><td>Equity-debt tilt signal at any market valuation</td></tr>
+        <tr><td>Part III</td><td>AIF Evaluation &amp; Fee Structures</td><td>6-Dimension AIF Scorecard</td><td>Rigorous fund selection and fee negotiation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ PART I ═════ -->
+  <div class="part-header" id="part1">
+    <div class="part-label">Part I</div>
+    <h2>Macro Intelligence to Portfolio Allocation</h2>
+    <p class="part-tagline">Translating macroeconomic signals into disciplined asset allocation decisions</p>
+  </div>
+
+  <h2 class="section-h1">I. The Macro-to-Portfolio Translation Framework</h2>
+  <p>The core challenge for any wealth manager is converting qualitative macroeconomic signals into quantitative allocation decisions. The framework below structures this process across five primary macro levers, each of which has distinct and predictable implications for different asset classes.</p>
+
+  <!-- A. Interest Rates -->
+  <h3 class="section-h2">A. Interest Rates — The Most Powerful Lever</h3>
+  <p>Interest rates exert perhaps the single most pervasive influence on asset allocation. Analysis must span two dimensions simultaneously: the direction of rate movement and the level of real (inflation-adjusted) rates.</p>
+
+  <h4 class="section-h3">Rising Rate Environment</h4>
+  <ul class="content-list">
+    <li>Short-duration debt outperforms long-duration bonds as rising yields compress bond prices</li>
+    <li>Equities face headwinds as the discount rate applied to future cash flows increases</li>
+    <li><strong>High-PE growth stocks</strong> are particularly vulnerable (longer duration of earnings)</li>
+    <li>Gold suffers as the opportunity cost of holding a non-yielding asset increases</li>
+    <li>Defensive equity sectors — FMCG, Healthcare, IT Services — show relative resilience</li>
+  </ul>
+
+  <h4 class="section-h3">Peak Rates and Easing Cycle</h4>
+  <ul class="content-list">
+    <li>Long-duration bonds become highly attractive — price appreciation compounds with yield income</li>
+    <li>Rate-sensitive sectors — Real Estate, Infrastructure, NBFCs — outperform</li>
+    <li>Gold typically rallies as real rates decline and the dollar weakens</li>
+    <li>A wealth manager who shifted to long-duration debt in late 2023 (anticipating RBI cuts) captured meaningful alpha</li>
+  </ul>
+
+  <div class="key-principle">
+    <div class="kp-label">Key Principle</div>
+    Duration is a weapon, not just a risk measure. Managing portfolio duration actively through the rate cycle is one of the highest-conviction alpha sources available to fixed income investors.
+  </div>
+
+  <!-- B. Inflation -->
+  <h3 class="section-h2">B. Inflation Dynamics</h3>
+  <p>Effective inflation analysis requires distinguishing between two fundamentally different types, as they have opposite implications for equity markets.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Demand-Pull Inflation</th><th>Cost-Push Inflation</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Growth-driven; initially equity-positive. Indicates strong consumer demand and corporate pricing power. Commodity-linked and cyclical sectors benefit.</td>
+          <td>Supply-side driven; margin-compressing and equity-negative. Input cost rises outpace revenue growth. Favour gold, commodities, and real assets as hedges.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>High inflation erodes real returns on fixed deposits and short-term debt. Commodities and commodity-linked equities serve as natural hedges. Gold works best against unexpected inflation spikes. Real assets — REITs, InvITs — provide inflation-linked cash flows that preserve purchasing power.</p>
+
+  <!-- C. Valuations -->
+  <h3 class="section-h2">C. Market Valuations — Long-Term Allocation Signal</h3>
+  <p>Valuation is a poor short-term market timing tool but an excellent long-term allocation signal. When the Nifty 50 PE trades at 24–26x (well above its 10-year average of approximately 20x), expected forward returns over a 5–7 year horizon are statistically lower.</p>
+
+  <div class="key-principle">
+    <div class="kp-label">Practitioner Tool</div>
+    <strong>Earnings Yield vs. Bond Yield:</strong> Compare the Nifty earnings yield (1 ÷ PE) against the 10-year G-Sec yield. When the equity earnings yield materially exceeds the bond yield, equities are attractively priced relative to debt. See Part II for a complete numerical treatment.
+  </div>
+
+  <!-- D. Liquidity -->
+  <h3 class="section-h2">D. Liquidity Conditions</h3>
+  <p>Liquidity — both global and domestic — is the most underappreciated macro lever. It drives risk appetite across all asset classes simultaneously.</p>
+  <ul class="content-list">
+    <li>When global liquidity is abundant (low Fed funds rate, QE): EMs receive FII inflows, the rupee strengthens, equities and bonds rally together</li>
+    <li>When the Fed tightens aggressively (as in 2022): FIIs exit EMs, the rupee depreciates, Indian bonds face dual pressure</li>
+    <li>Monitor the <strong>US Dollar Index (DXY)</strong> as a leading indicator — a strengthening dollar is a consistent headwind for Indian equities and the rupee</li>
+    <li>Domestic RBI OMO operations and system liquidity levels directly affect short-end rates and NBFC funding costs</li>
+  </ul>
+
+  <!-- E. Geopolitical -->
+  <h3 class="section-h2">E. Geopolitical Events — Stress Testing, Not Prediction</h3>
+  <p>Geopolitical events are discrete and non-linear. The practical approach is to use geopolitical stress as a trigger for <strong>portfolio stress-testing</strong> rather than attempting to predict outcomes. Gold, short-duration debt, and defensive equity sectors serve as portfolio stabilisers — not because they necessarily appreciate sharply, but because they preserve capital when other assets sell off.</p>
+
+  <!-- Asset Allocation Matrix -->
+  <h2 class="section-h1">II. Asset Allocation Decision Matrix</h2>
+  <p>The matrix below provides a practical starting framework for translating macro scenarios into directional allocation shifts. The discipline is not to make binary calls (fully in or out), but to make marginal, deliberate tilts — moving from 60% to 50% equity rather than exiting equities entirely.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Macro Scenario</th><th>Equity</th><th>Long-Duration Debt</th><th>Short-Duration Debt</th><th>Gold</th><th>REITs / InvITs</th></tr></thead>
+      <tbody>
+        <tr><td>Rising Rates, High Inflation</td><td class="uw">Underweight</td><td class="uw">Underweight</td><td class="ow">Overweight</td><td class="neu">Neutral</td><td class="uw">Underweight</td></tr>
+        <tr><td>Falling Rates, Moderate Inflation</td><td class="ow">Overweight</td><td class="ow">Overweight</td><td class="uw">Underweight</td><td class="neu">Neutral-Positive</td><td class="ow">Overweight</td></tr>
+        <tr><td>Stagflation</td><td class="uw">Underweight</td><td class="uw">Underweight</td><td class="neu">Neutral</td><td class="ow">Overweight</td><td class="neu">Neutral</td></tr>
+        <tr><td>High Growth, Low Inflation</td><td class="ow">Overweight</td><td class="neu">Neutral</td><td class="uw">Underweight</td><td class="uw">Underweight</td><td class="ow">Overweight</td></tr>
+        <tr><td>Geopolitical Shock</td><td class="uw">Reduce</td><td class="neu">Neutral</td><td class="ow">Overweight</td><td class="ow">Overweight</td><td class="uw">Reduce</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AIFs in Part I -->
+  <h2 class="section-h1">III. Alternative Investment Funds in Portfolio Construction</h2>
+
+  <h3 class="section-h2">A. Why AIFs Are Increasingly Relevant</h3>
+  <p>AIFs have become central to sophisticated wealth portfolios in India for three reasons. First, they provide access to return streams genuinely uncorrelated with listed markets — private credit, venture capital, real estate debt, and long-short equity strategies unavailable through mutual funds. Second, India's private credit market (Category II AIFs) has grown explosively as NBFCs and mid-market corporates face constrained bank lending. Third, HNI and UHNI clients increasingly demand differentiated portfolio construction beyond the standard equity-debt-gold triad.</p>
+
+  <h3 class="section-h2">B. The Three AIF Categories</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Strategy / Focus</th><th>Return Expectation</th><th>Key Risks</th></tr></thead>
+      <tbody>
+        <tr><td>Category I</td><td>Venture Capital, SME Funds, Infrastructure</td><td>IRR 18–25%+ (VC)</td><td>Illiquidity, J-curve, capital loss</td></tr>
+        <tr><td>Category II</td><td>Private Equity, Private Credit, Real Estate</td><td>14–18% yield (credit); 18–22% IRR (PE)</td><td>Credit risk, lock-in 3–5 yrs, concentration</td></tr>
+        <tr><td>Category III</td><td>Hedge Funds, Long-Short, Multi-Strategy</td><td>Absolute returns, low market correlation</td><td>Low transparency, high fees, mixed track record</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section-h2">C. AIF Evaluation Framework — Six Dimensions</h3>
+  <div class="dimension-grid">
+    <div class="dimension-card"><div class="dim-num">01</div><div class="dim-title">Track Record</div><div class="dim-body">Has the fund manager demonstrated consistent IRR across at least one full economic cycle? Request TVPI and DPI data separately. Beware of managers with only a bull-market vintage.</div></div>
+    <div class="dimension-card"><div class="dim-num">02</div><div class="dim-title">Team Stability</div><div class="dim-body">Key person risk is amplified in AIFs. Has the core investment committee remained stable? Document any departures and their reasons.</div></div>
+    <div class="dimension-card"><div class="dim-num">03</div><div class="dim-title">Strategy Clarity</div><div class="dim-body">Can the manager explain precisely what drives returns and what the downside scenario looks like? Vague answers about proprietary deal flow are red flags.</div></div>
+    <div class="dimension-card"><div class="dim-num">04</div><div class="dim-title">Fee Structure</div><div class="dim-body">Is the hurdle rate realistic (8% is standard for Category II)? Is performance fee calculated on NAV gain or realised IRR? Carried interest waterfall must be examined carefully.</div></div>
+    <div class="dimension-card"><div class="dim-num">05</div><div class="dim-title">Liquidity Terms</div><div class="dim-body">Understand the lock-in period, redemption notice period, and whether there are gates. Ensure the client's overall portfolio has adequate liquidity even with the AIF locked in.</div></div>
+    <div class="dimension-card"><div class="dim-num">06</div><div class="dim-title">Correlation</div><div class="dim-body">Has the manager demonstrated genuine decorrelation with actual drawdown data from March 2020 (COVID) and the 2022 rate-hike cycle?</div></div>
+  </div>
+
+  <div class="key-principle">
+    <div class="kp-label">Portfolio Construction Rule of Thumb</div>
+    AIF allocation should not exceed <strong>15–20%</strong> of a client's investable wealth. Within AIFs, illiquid strategies (Category I and II) should not exceed <strong>10%</strong>. This preserves portfolio liquidity for opportunistic reallocation during market dislocations.
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════ PART II ═════ -->
+  <div class="part-header" id="part2">
+    <div class="part-label">Part II</div>
+    <h2>Earnings Yield vs. Bond Yield</h2>
+    <p class="part-tagline">A complete numerical framework for valuation-based equity-debt allocation decisions</p>
+  </div>
+
+  <h2 class="section-h1">1. What Is the Earnings Yield vs. Bond Yield Tool?</h2>
+  <p>When a wealth manager decides whether to allocate a marginal rupee to equities or to debt, they need a common unit of comparison. This framework places both asset classes on the same scale and generates an actionable allocation signal.</p>
+
+  <div class="key-principle">
+    <div class="kp-label">Core Formula</div>
+    <strong>Earnings Yield = 1 ÷ Nifty PE Ratio, expressed as a percentage.</strong><br>
+    If the Nifty 50 trades at PE 20x, the earnings yield is 1 ÷ 20 = <strong>5.00%</strong> — meaning for every ₹100 invested, the index collectively earns ₹5 annually.
+  </div>
+
+  <h2 class="section-h1">2. The Step-by-Step Arithmetic</h2>
+  <p>The following walkthrough uses PE = 20x and G-Sec = 6.80% — broadly reflective of Indian market conditions across 2023–2024.</p>
+
+  <div class="step-list">
+    <div class="step-item"><div class="step-num">1</div><div class="step-body"><strong>Note the current Nifty PE</strong><span>Available from NSE / Bloomberg / AMFI data</span><div class="step-calc">PE = 20x</div></div></div>
+    <div class="step-item"><div class="step-num">2</div><div class="step-body"><strong>Compute Earnings Yield</strong><span>Earnings Yield = 1 ÷ PE</span><div class="step-calc">1 ÷ 20 = 5.00%</div></div></div>
+    <div class="step-item"><div class="step-num">3</div><div class="step-body"><strong>Note the 10-yr G-Sec yield</strong><span>Available on RBI website / Bloomberg</span><div class="step-calc">G-Sec = 6.80%</div></div></div>
+    <div class="step-item"><div class="step-num">4</div><div class="step-body"><strong>Compute the Spread</strong><span>Spread = Earnings Yield − G-Sec Yield</span><div class="step-calc">5.00% − 6.80% = −1.80%</div></div></div>
+    <div class="step-item"><div class="step-num">5</div><div class="step-body"><strong>Read the signal</strong><span>Spread is negative — bond yield exceeds earnings yield</span><div class="step-calc">Bonds relatively attractive; equities moderately expensive</div></div></div>
+    <div class="step-item"><div class="step-num">6</div><div class="step-body"><strong>Allocation implication</strong><span>Marginal shift — do not exit equities, but tilt toward debt duration</span><div class="step-calc">Reduce equity from 60% → 50–55%; add to long-duration MFs</div></div></div>
+  </div>
+
+  <h2 class="section-h1">3. Six Scenarios with Full Numbers</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Nifty PE</th><th>Earnings Yield</th><th>G-Sec Yield (10-yr)</th><th>Spread &amp; Signal</th></tr></thead>
+      <tbody>
+        <tr><td>Bull market peak</td><td>26x</td><td>3.85%</td><td>6.80%</td><td class="signal-strong-bond">−2.95% → Strong bond signal</td></tr>
+        <tr><td>Moderately expensive</td><td>22x</td><td>4.55%</td><td>6.80%</td><td class="signal-mild-bond">−2.25% → Mild bond signal</td></tr>
+        <tr><td>Fair value zone</td><td>20x</td><td>5.00%</td><td>6.80%</td><td class="signal-mild-bond">−1.80% → Mild bond signal</td></tr>
+        <tr><td>Post-correction (rate-cut cycle)</td><td>18x</td><td>5.56%</td><td>6.00%</td><td class="signal-neutral">−0.44% → Borderline neutral</td></tr>
+        <tr><td>Attractive entry (low PE, low rates)</td><td>15x</td><td>6.67%</td><td>6.00%</td><td class="signal-equity">+0.67% → Equities attractive</td></tr>
+        <tr><td>Deep value (COVID-type dislocation)</td><td>12x</td><td>8.33%</td><td>5.50%</td><td class="signal-strong-equity">+2.83% → Strong equity signal</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-h1">4. Allocation Signal Reference</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Spread Range</th><th>Signal</th><th>Recommended Stance</th><th>Historical Context</th></tr></thead>
+      <tbody>
+        <tr><td>Below −2%</td><td class="signal-strong-bond">Strong bond signal</td><td>Significantly underweight equities; shift to long-duration G-Secs and quality debt</td><td>Late 2021: Nifty at 25–27x PE with G-Sec at 7%+</td></tr>
+        <tr><td>−2% to −1%</td><td class="signal-mild-bond">Mild bond signal</td><td>Neutral-defensive; avoid adding equity risk; prefer short-to-mid duration debt</td><td>Moderately overvalued markets with firm rates</td></tr>
+        <tr><td>−1% to 0%</td><td class="signal-neutral">Cautious neutral</td><td>Maintain strategic allocation; no aggressive tilts in either direction</td><td>Transition zone — monitor earnings revision trend</td></tr>
+        <tr><td>0% to +1.5%</td><td class="signal-equity">Neutral-mildly equity-positive</td><td>Hold equity allocation; selectively add on dips; no urgent action</td><td>Fairly-valued market; stock selection matters more</td></tr>
+        <tr><td>+1.5% to +3%</td><td class="signal-equity">Equity signal</td><td>Overweight equities; tilt toward large-cap and quality mid-cap</td><td>Post-corrections: 2016 demonetisation, 2019 NBFC stress</td></tr>
+        <tr><td>Above +3%</td><td class="signal-strong-equity">Strong equity signal</td><td>Significantly overweight equities; bold allocation for long-horizon investors</td><td>COVID low (March 2020): PE 12–14x, G-Sec ~6%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="key-principle">
+    <div class="kp-label">Important Discipline</div>
+    These signals call for <strong>marginal shifts, not binary exits</strong>. A strong bond signal means reducing equity allocation from 65% to 50% and adding to long-duration debt funds — not selling all equities. Attempting to time complete in-and-out moves based on valuation signals has historically destroyed more value than it has created.
+  </div>
+
+  <h2 class="section-h1">5. Why the Spread Works — The Theory</h2>
+  <h3 class="section-h2">A. The Gordon Growth Model Connection</h3>
+  <p>The earnings yield vs. bond yield comparison is rooted in the Gordon Growth Model, which states that the fair value of an equity index equals its dividends divided by (required return minus growth rate). Re-arranged, this implies that the required equity return should exceed the risk-free rate (G-Sec yield) by a premium that compensates for equity risk.</p>
+  <p>When the earnings yield falls below the G-Sec yield, it implies either: the market expects earnings to grow at an unusually high rate (justifying a premium PE), or equities are genuinely overpriced relative to the risk-free return available.</p>
+
+  <h3 class="section-h2">B. India-Specific Nuances</h3>
+  <ul class="content-list">
+    <li>The Nifty 50 PE is dominated by financials, IT, consumer sectors whose earnings are structurally different. A rising weight of high-PE sectors can structurally elevate the index PE without implying overvaluation</li>
+    <li>India's nominal G-Sec yield incorporates a higher inflation premium than developed markets. Spread thresholds appropriate for India (+1.5 to +2%) are wider than the US Fed Model, reflecting higher risk premium expectations</li>
+    <li>FII flows introduce a dollar-rupee dynamic: when global risk appetite deteriorates, FIIs exit regardless of domestic valuation signals — which is why this tool works best over <strong>3–5 year horizons</strong>, not 3–6 month windows</li>
+  </ul>
+
+  <h2 class="section-h1">6. Limitations and How to Address Them</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Limitation</th><th>How to Address It</th></tr></thead>
+      <tbody>
+        <tr><td>PE ratio uses trailing earnings, which may not reflect the future</td><td>Cross-check with forward PE (consensus earnings estimates from Bloomberg/Kotak)</td></tr>
+        <tr><td>G-Sec yield reflects RBI policy and supply, not just inflation</td><td>Use real yield (G-Sec minus CPI) for a more economically grounded comparison</td></tr>
+        <tr><td>Spread can stay extreme for 12–24 months before correcting</td><td>Treat as a 3–5 year positioning signal, not a 3-month market call</td></tr>
+        <tr><td>Does not capture earnings growth — a high-PE market may be justified if earnings grow fast</td><td>Supplement with the PEG ratio (PE divided by Earnings Growth Rate)</td></tr>
+        <tr><td>Sector composition of Nifty changes over time</td><td>Use sector-specific earnings yield when making sector rotation decisions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-h1">7. Applying the Tool in a Client Conversation</h2>
+
+  <div class="client-quote">
+    <p>Today, the Nifty is trading at a PE of 22x, which means equities are earning about 4.5% per rupee invested. A 10-year G-Sec is offering 6.8%. That gap of 2.3% means you are giving up a risk-free return of 2.3% per year to hold equities. This does not mean we exit equities — equities can still grow earnings and deliver capital appreciation. But it means we should not aggressively add to equities at current levels. We are therefore trimming equity allocation slightly and moving capital into long-duration debt funds, which will also benefit if RBI cuts rates.</p>
+    <p class="quote-label">Sample client communication · Earnings Yield Framework</p>
+  </div>
+
+  <h2 class="section-h1">8. Data Sources for Live Monitoring</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Data Point</th><th>Primary Source</th><th>Update Frequency</th></tr></thead>
+      <tbody>
+        <tr><td>Nifty 50 PE Ratio</td><td>NSE India (nseindia.com) — Indices — PE/PB data</td><td>Daily</td></tr>
+        <tr><td>10-Year G-Sec Yield</td><td>RBI website (rbi.org.in) — Financial Markets — Government Securities</td><td>Daily</td></tr>
+        <tr><td>Nifty EPS (trailing and forward)</td><td>Bloomberg, Kotak Institutional Equities, Morgan Stanley India Strategy</td><td>Quarterly</td></tr>
+        <tr><td>CPI Inflation (for real yield)</td><td>Ministry of Statistics, RBI MPC reports</td><td>Monthly</td></tr>
+        <tr><td>FII Flow Data</td><td>SEBI / NSDL / CDSL daily bulletin</td><td>Daily</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════ PART III ═════ -->
+  <div class="part-header" id="part3">
+    <div class="part-label">Part III</div>
+    <h2>AIF Fee Structures &amp; Track Record Evaluation</h2>
+    <p class="part-tagline">TVPI, DPI, Hurdle Rates, Performance Fees, and Waterfall Structures — Explained with Numbers</p>
+  </div>
+
+  <h2 class="section-h1">1. Track Record Evaluation — TVPI and DPI</h2>
+  <p>When reviewing an AIF manager's track record, two metrics are essential — and they must always be read together. TVPI tells you what the fund claims your money is worth. DPI tells you what has actually been paid back to you in real cash.</p>
+
+  <h3 class="section-h2">A. The Simple Story</h3>
+  <p>Suppose you invested ₹100 in an AIF three years ago. The fund tells you: your investment is now worth ₹180. But there is a critical question: has any of that ₹180 actually been paid back to you, or is it still sitting inside the fund?</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Situation</th><th>Cash Returned</th><th>Still in Fund (Paper Value)</th><th>TVPI</th><th>DPI</th></tr></thead>
+      <tbody>
+        <tr><td>Nothing returned yet</td><td>₹0</td><td>₹180</td><td>1.8x</td><td class="signal-strong-bond">0x — Nothing in hand</td></tr>
+        <tr><td>Partial return</td><td>₹80</td><td>₹100</td><td>1.8x</td><td class="signal-mild-bond">0.8x — ₹20 still to recover</td></tr>
+        <tr><td>Full return + profit</td><td>₹180</td><td>₹0</td><td>1.8x</td><td class="signal-strong-equity">1.8x — All real, proven cash</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="key-principle">
+    <div class="kp-label">Key Insight</div>
+    All three rows show the same TVPI of 1.8x. But only the third row means the investor has actually received their full money back. <strong>DPI cannot be faked — cash is cash.</strong> Always insist on DPI data: it is the only metric that reflects actual manager performance rather than estimated portfolio value.
+  </div>
+
+  <h3 class="section-h2">B. DPI Reference Table</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>You Invested</th><th>Cash Received Back</th><th>DPI</th><th>What It Means</th></tr></thead>
+      <tbody>
+        <tr><td>₹100</td><td>₹0</td><td>0x</td><td>Nothing returned yet — all value is unrealised</td></tr>
+        <tr><td>₹100</td><td>₹80</td><td>0.8x</td><td>Still to recover ₹20 of original capital</td></tr>
+        <tr><td>₹100</td><td>₹100</td><td>1.0x</td><td>Full capital returned — anything more is profit</td></tr>
+        <tr><td>₹100</td><td>₹160</td><td>1.6x</td><td>Capital back + ₹60 profit proven in cash</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section-h2">C. The Full Economic Cycle Test</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>What to Check</th><th>Green Flag</th><th>Red Flag</th></tr></thead>
+      <tbody>
+        <tr><td>TVPI across funds</td><td>Consistently 1.8x+ across 2+ funds</td><td>Only one fund, only bull-market vintage</td></tr>
+        <tr><td>DPI vs TVPI gap</td><td>DPI is at least 60–70% of TVPI</td><td>High TVPI, DPI below 0.3x — mostly paper gains</td></tr>
+        <tr><td>Vintage years covered</td><td>Includes a stress year (2008, 2013, 2020)</td><td>All funds raised 2014–2018 or 2020–2022 only</td></tr>
+        <tr><td>IRR source</td><td>Driven by actual exits (cash-on-cash)</td><td>Driven mostly by unrealised NAV marks</td></tr>
+        <tr><td>Transparency</td><td>Audited financials, third-party valuation</td><td>Self-reported NAVs, no independent verification</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-h1">2. Fee Structure — Hurdle Rate, Performance Fee, and Waterfall</h2>
+  <p>When you invest in an AIF, you pay two layers of fees. Layer 1 is the <strong>management fee</strong> — a fixed annual charge (typically 1–2%) for managing the fund, paid regardless of performance. Layer 2 is the <strong>performance fee (carried interest)</strong> — a share of profits (typically 20%) above a threshold.</p>
+
+  <h3 class="section-h2">A. The Hurdle Rate</h3>
+  <p>The hurdle rate is the minimum return the fund must deliver before the manager is entitled to any performance fee. For Category II credit AIFs in India, <strong>8% per annum</strong> is the accepted benchmark.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Fund Return (3 Years)</th><th>Hurdle Cleared?</th><th>Manager Gets Carry?</th><th>Investor Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td>6% p.a. → ₹119</td><td class="uw">No</td><td class="uw">No</td><td>₹119 (below hurdle)</td></tr>
+        <tr><td>B</td><td>8% p.a. → ₹126</td><td class="neu">Just barely</td><td class="neu">No — at threshold</td><td>₹126 (exactly hurdle)</td></tr>
+        <tr><td>C</td><td>15% p.a. → ₹152</td><td class="ow">Yes</td><td class="ow">Yes — on ₹26 above hurdle</td><td>₹146.8 (after 20% carry on ₹26)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section-h2">B. NAV Gain vs. Realised IRR — The Most Dangerous Distinction</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>NAV Gain Method (Investor-Unfriendly)</th><th>Realised IRR Method (Investor-Friendly)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Performance fees calculated on estimated portfolio value increase — even if no investments have been sold. Fund can charge carry on paper gains that may never materialise. If the portfolio later falls in value, the fee already paid is not returned.</td>
+          <td>Performance fees calculated only on actual cash returned to investors after real exits. No carry is charged until investments are sold and proceeds distributed. Protects investors from paying for paper gains that may reverse.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="section-h2">C. European vs. American Waterfall</h3>
+  <h4 class="section-h3">Waterfall Type 1: European Waterfall (Investor-Friendly)</h4>
+  <p>Numerical example: ₹100 invested, 8% hurdle, fund returns ₹160 after 4 years.</p>
+  <div class="waterfall-steps">
+    <div class="wf-step"><div class="wf-step-label">Step 1</div><div class="wf-step-body"><strong>Return original capital</strong></div><div class="wf-step-amt">₹100 → Investor</div></div>
+    <div class="wf-step"><div class="wf-step-label">Step 2</div><div class="wf-step-body"><strong>Pay 8% p.a. hurdle for 4 years</strong></div><div class="wf-step-amt">₹36.05 → Investor</div></div>
+    <div class="wf-step"><div class="wf-step-label">Step 3</div><div class="wf-step-body"><strong>Manager catch-up (20% of total profits ₹60)</strong></div><div class="wf-step-amt">₹12 → Manager</div></div>
+    <div class="wf-step"><div class="wf-step-label">Step 4</div><div class="wf-step-body"><strong>Remaining profit split 80/20 on ₹11.95</strong></div><div class="wf-step-amt">₹9.56 / ₹2.39</div></div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Party</th><th>Total Received</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Investor</strong></td><td class="ow">₹145.56</td></tr>
+        <tr><td>Manager (carry)</td><td>₹14.39</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="section-h3">Waterfall Type 2: American Waterfall (Manager-Friendly) — The Carry Leakage Problem</h4>
+  <p>Example: Fund has three investments. Manager collects carry on winning deals, while investors bear losses on losing deals.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Investment</th><th>Capital Deployed</th><th>Exit Value</th><th>Gain / Loss</th></tr></thead>
+      <tbody>
+        <tr><td>Company A</td><td>₹40</td><td>₹72</td><td class="ow">+₹32 profit</td></tr>
+        <tr><td>Company B</td><td>₹35</td><td>₹35</td><td class="neu">Breakeven</td></tr>
+        <tr><td>Company C</td><td>₹25</td><td>₹10</td><td class="uw">−₹15 loss</td></tr>
+        <tr><td><strong>TOTAL</strong></td><td>₹100</td><td>₹117</td><td>+₹17 net</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="key-principle">
+    <div class="kp-label">Carry Leakage Warning</div>
+    Manager collects ₹6.4 carry on Company A (20% × ₹32). Company C then fails. Net result: Investor gets ₹110.6, but manager collected ₹6.4 carry on a fund that only made ₹17 net — an <strong>effective carry rate of 37.6%</strong>, not 20%. This is carry leakage — the manager has been systematically overpaid relative to overall fund performance.
+  </div>
+
+  <h3 class="section-h2">D. The Catch-Up Clause</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th></th><th>Fair Catch-Up</th><th>Aggressive Catch-Up</th></tr></thead>
+      <tbody>
+        <tr><td>Capital returned</td><td>₹100 to investor</td><td>₹100 to investor</td></tr>
+        <tr><td>Hurdle paid (8% × 4 yrs)</td><td>₹36 to investor</td><td>₹36 to investor</td></tr>
+        <tr><td>Remaining pool</td><td>₹44</td><td>₹44</td></tr>
+        <tr><td>Catch-up to manager</td><td>₹8.8 (capped at 20% of ₹44)</td><td class="signal-strong-bond">₹44 (100% until manager is fully made whole)</td></tr>
+        <tr><td>Final split to investor</td><td class="ow">₹35.2</td><td class="signal-strong-bond">₹0 — investor gets nothing beyond hurdle</td></tr>
+        <tr><td><strong>INVESTOR TOTAL</strong></td><td class="ow"><strong>₹171.2</strong></td><td class="signal-strong-bond"><strong>₹136.0</strong></td></tr>
+        <tr><td>Manager total (carry)</td><td>₹8.8</td><td class="signal-strong-bond">₹44.0</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><em>Same stated terms ("20% carry, 8% hurdle"), very different outcome. A difference of ₹35 per ₹100 invested — which on a ₹5 crore AIF allocation is ₹1.75 crore. Always read the catch-up clause.</em></p>
+
+  <h2 class="section-h1">3. The Four Non-Negotiable Questions</h2>
+  <div class="question-list">
+    <div class="question-item"><div class="q-label">Question 1</div><div class="q-title">Hurdle Rate</div><div class="q-body">What is the hurdle rate, and is it compounded annually or simple interest? Compounded is investor-friendly; simple interest understates the true hurdle. Standard for Category II credit funds: <strong>8% compounded annually</strong>.</div></div>
+    <div class="question-item"><div class="q-label">Question 2</div><div class="q-title">Fee Calculation Basis</div><div class="q-body">Is the performance fee calculated on realised cash returns or on NAV marks? <strong>Realised returns is the only acceptable answer</strong> for a serious investor. NAV-based fees expose you to paying carry on gains that may never materialise.</div></div>
+    <div class="question-item"><div class="q-label">Question 3</div><div class="q-title">Waterfall Type</div><div class="q-body">Is the waterfall <strong>European (whole-fund) or American (deal-by-deal)?</strong> European protects the investor by ensuring all capital is returned before the manager profits. American creates carry leakage risk.</div></div>
+    <div class="question-item"><div class="q-label">Question 4</div><div class="q-title">Catch-Up Structure</div><div class="q-body">Is the catch-up <strong>capped at the manager's fair 20% share, or is it unlimited</strong> until the manager is fully made whole? A capped catch-up is fair. An unlimited catch-up can eliminate all investor return above the hurdle rate on high-performing funds.</div></div>
+  </div>
+
+  <div class="one-liner">
+    The management fee pays the manager to show up. The performance fee is supposed to align the manager's interests with yours — but only if the hurdle rate is honest, performance is measured on real cash (not paper marks), the waterfall returns your capital before the manager profits, and the catch-up is capped fairly. <strong>If any one of these four conditions is not met, the fee structure is working harder for the manager than it is for you.</strong>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- CLOSING FRAMEWORK -->
+  <div class="part-header" id="closing">
+    <div class="part-label">Closing Framework</div>
+    <h2>The Practitioner's Edge</h2>
+    <p class="part-tagline">Three sources of genuine alpha that no analytical framework alone can replicate</p>
+  </div>
+
+  <div class="closing-grid">
+    <div class="closing-card">
+      <h4>Longer Time Horizon</h4>
+      <p>Markets are reasonably efficient in the short run. A wealth manager who reads the same Bloomberg headlines and makes the same allocation shifts generates no alpha. The edge comes from maintaining conviction through short-term volatility and acting on 3–5 year signals when markets are focused on the next 3 months.</p>
+    </div>
+    <div class="closing-card">
+      <h4>Instrument-Level Depth</h4>
+      <p>Macro views are common; instrument-specific insight is rare. Understanding the collateral quality of a specific AIF's loan book, the credit trajectory of a specific bond issuer, or the earnings revision trend within a specific Nifty sector creates genuine differentiation that aggregate allocation models cannot replicate.</p>
+    </div>
+    <div class="closing-card">
+      <h4>Behavioral Discipline</h4>
+      <p>The most profitable allocation decisions — increasing equity exposure during COVID-19 panic in March 2020, adding duration when rates peaked, entering AIFs at distressed pricing — are also the most emotionally difficult. The framework must be robust enough to act on when consensus sentiment is most extreme in the opposite direction.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="footer-author">
+      <strong>CA Parvesh Aghi</strong> · Visiting Professor, Finance<br>
+      IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BM Munjal University · May 2026
+    </div>
+    <div class="footer-links">
+      <a href="https://paraghi.github.io">Homepage</a>
+      <a href="mailto:parvesh1104@gmail.com">Email</a>
+      <a href="https://wa.me/919891450400">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/parvesh-aghi-34473b18">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
