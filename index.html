@@ -1,905 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CA Parvesh Aghi — Visiting Professor of Finance</title>
-<meta name="description" content="CA Parvesh Aghi — Chartered Accountant and Visiting Professor of Finance at IMT Ghaziabad, IIFT Delhi, BML Munjal University, Shiv Nadar University, and the Institute of Chartered Accountants of India. Expertise in stock valuations, mutual fund analysis, and corporate finance." />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5WH2Y2XFJC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-5WH2Y2XFJC');
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #0a1929;
-    --ink-soft: #1a2942;
-    --paper: #f6f1e8;
-    --paper-warm: #ede4d3;
-    --gold: #b8893a;
-    --gold-bright: #d4a554;
-    --rule: #c9b894;
-    --muted: #5a6678;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CA Parvesh Aghi — Chartered Accountant and Visiting Professor of Finance at IMT Ghaziabad, IIFT Delhi, BML Munjal University, Shiv Nadar University, and the Institute of Chartered Accountants of India. Expertise in stock valuations, mutual fund analysis, and corporate finance.">
+  <title>CA Parvesh Aghi — Visiting Professor of Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0f1f38;
+      --navy-mid: #1a3259;
+      --gold: #b8922a;
+      --gold-light: #d4a843;
+      --cream: #faf7f2;
+      --cream-dark: #f0ebe0;
+      --text: #1c1c1c;
+      --muted: #5a5a5a;
+      --border: #ddd6c8;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter Tight', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    overflow-x: hidden;
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(184, 137, 58, 0.05) 0%, transparent 40%),
-      radial-gradient(circle at 80% 80%, rgba(10, 25, 41, 0.04) 0%, transparent 40%);
-  }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.75;
+    }
 
-  /* NAVIGATION */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(246, 241, 232, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(10, 25, 41, 0.08);
-    z-index: 100;
-    padding: 1.2rem 0;
-  }
-  nav .inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-  nav .brand span { color: var(--gold); }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2.5rem;
-  }
-  nav ul a {
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.3s;
-    position: relative;
-  }
-  nav ul a:hover { color: var(--gold); }
-  nav ul a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.3s;
-  }
-  nav ul a:hover::after { width: 100%; }
+    /* ── TOP BAR ── */
+    .topbar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%);
+    }
 
-  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      padding: 0 48px;
+      position: sticky; top: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      padding: 14px 0;
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 0; }
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 18px 16px;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    padding: 8rem 2rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
-  }
-  .hero::before {
-    content: '01';
-    position: absolute;
-    top: 6rem; right: 2rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 12rem;
-    font-weight: 300;
-    color: rgba(184, 137, 58, 0.08);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .hero-text { opacity: 0; animation: fadeUp 1s ease 0.2s forwards; }
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 80px 48px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      border: 1px solid rgba(184,146,42,0.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: 30%;
+      width: 300px; height: 300px;
+      border: 1px solid rgba(184,146,42,0.07);
+      border-radius: 50%;
+      pointer-events: none;
+    }
 
-  .eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .eyebrow::before {
-    content: '';
-    width: 40px; height: 1px;
-    background: var(--gold);
-  }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
 
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-    font-weight: 400;
-  }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::after {
+      content: '';
+      flex: 1; max-width: 80px;
+      height: 1px;
+      background: rgba(184,146,42,0.4);
+    }
 
-  .lede {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    margin-bottom: 2rem;
-    max-width: 90%;
-  }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
 
-  .meta {
-    display: flex;
-    gap: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(10, 25, 41, 0.15);
-    font-size: 0.85rem;
-  }
-  .meta div span {
-    display: block;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 0.7rem;
-    margin-bottom: 0.3rem;
-  }
-  .meta div strong {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.68);
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
 
-  .hero-visual {
-    position: relative;
-    opacity: 0;
-    animation: fadeIn 1.2s ease 0.5s forwards;
-  }
-  .portrait-frame {
-    aspect-ratio: 3/4;
-    background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
-    border: 1px solid var(--gold);
-    position: relative;
-    overflow: hidden;
-  }
-  .portrait-frame::before {
-    content: '';
-    position: absolute;
-    top: 12px; left: 12px; right: 12px; bottom: 12px;
-    border: 1px solid rgba(184, 137, 58, 0.4);
-    z-index: 2;
-    pointer-events: none;
-  }
-  .portrait-frame img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    filter: brightness(1.0) contrast(1.03);
-  }
-  .portrait-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(10, 25, 41, 0.5) 100%);
-    z-index: 1;
-  }
-  .portrait-frame .label {
-    position: absolute;
-    bottom: 1.5rem; left: 50%;
-    transform: translateX(-50%);
-    color: var(--paper);
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    text-align: center;
-    z-index: 3;
-  }
-  .portrait-frame .label span {
-    color: var(--gold-bright);
-    display: block;
-    margin-bottom: 0.4rem;
-    font-size: 0.65rem;
-  }
+    .hero-stats {
+      display: flex; gap: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 28px;
+    }
+    .hero-stat { }
+    .hero-stat .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat .lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
 
-  /* SECTION BASE */
-  section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+    /* Portrait */
+    .hero-portrait {
+      flex-shrink: 0;
+    }
+    .portrait-frame {
+      width: 200px; height: 200px;
+      border: 2px solid rgba(184,146,42,0.4);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--navy-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .portrait-monogram {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: rgba(184,146,42,0.3);
+      font-weight: 700;
+    }
+    .portrait-label {
+      margin-top: 10px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
 
-  .section-head {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 3rem;
-    align-items: baseline;
-    margin-bottom: 4rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  .section-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--gold);
-    font-style: italic;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
+    /* ── SECTIONS ── */
+    section { padding: 80px 48px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
 
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 5rem;
-  }
-  .about-sidebar {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.5rem;
-    line-height: 1.4;
-    color: var(--ink-soft);
-    position: sticky;
-    top: 8rem;
-    align-self: start;
-  }
-  .about-sidebar::before {
-    content: '"';
-    font-size: 5rem;
-    color: var(--gold);
-    line-height: 0.5;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .about-body p {
-    margin-bottom: 1.5rem;
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-  }
-  .about-body p:first-child::first-letter {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4.5rem;
-    font-weight: 500;
-    float: left;
-    line-height: 1;
-    padding-right: 0.8rem;
-    padding-top: 0.4rem;
-    color: var(--gold);
-  }
+    .section-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-number::after {
+      content: '';
+      height: 1px;
+      width: 40px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
 
-  /* INSTITUTIONS */
-  .institutions {
-    background: var(--ink);
-    color: var(--paper);
-    margin: 0;
-    max-width: none;
-    padding: 6rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .institutions::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .institutions-inner { max-width: 1200px; margin: 0 auto; }
-  .institutions .section-head { border-color: rgba(184, 137, 58, 0.3); }
-  .institutions .section-title { color: var(--paper); }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+    section h2 em { font-style: italic; color: var(--gold); }
 
-  .school-list { display: grid; gap: 0; }
-  .school {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 3rem;
-    align-items: center;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(184, 137, 58, 0.2);
-    transition: padding 0.4s ease;
-  }
-  .school:hover { padding-left: 1rem; }
-  .school:last-child { border-bottom: none; }
-  .school-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--gold);
-    font-size: 1.1rem;
-  }
-  .school-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 500;
-  }
-  .school-loc {
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold-bright);
-  }
+    /* ── ABOUT ── */
+    #about { background: white; border-bottom: 1px solid var(--border); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-body p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-pull {
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      background: var(--cream);
+      margin-top: 8px;
+    }
+    .about-pull p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+      margin: 0;
+    }
 
-  /* EXPERTISE */
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  .exp-card {
-    padding: 2.5rem 2rem;
-    background: var(--paper-warm);
-    border: 1px solid transparent;
-    transition: all 0.4s ease;
-    position: relative;
-  }
-  .exp-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-4px);
-  }
-  .exp-icon {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-  .exp-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-  .exp-card p {
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+    /* ── TEACHING ── */
+    #teaching { background: var(--cream); }
+    .institutions-list { display: flex; flex-direction: column; gap: 0; }
+    .institution-item {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .institution-item:last-child { border-bottom: none; }
+    .inst-roman {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+    .inst-name {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+    .inst-location {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      text-align: right;
+    }
 
-  /* WRITINGS SECTION */
-  .writings-featured {
-    background: var(--paper-warm);
-    border-left: 3px solid var(--gold);
-    padding: 2.5rem 2.5rem 2.5rem 3rem;
-    margin-bottom: 3rem;
-    position: relative;
-  }
-  .writings-featured .featured-tag {
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  .writings-featured h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: var(--ink);
-  }
-  .writings-featured h3 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .writings-featured .summary p {
-    font-size: 1.02rem;
-    line-height: 1.65;
-    margin-bottom: 1rem;
-    color: var(--ink-soft);
-  }
-  .writings-featured .summary p:last-of-type {
-    margin-bottom: 1.5rem;
-  }
-  .writings-featured .stats {
-    display: flex;
-    gap: 2.5rem;
-    margin: 1.8rem 0;
-    padding: 1.2rem 0;
-    border-top: 1px solid rgba(184, 137, 58, 0.25);
-    border-bottom: 1px solid rgba(184, 137, 58, 0.25);
-    flex-wrap: wrap;
-  }
-  .writings-featured .stat {
-    display: flex;
-    flex-direction: column;
-  }
-  .writings-featured .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.3rem;
-  }
-  .writings-featured .stat-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .writings-featured .stat-value.up { color: #2d7a4a; }
-  .writings-featured .stat-value.gold-val { color: var(--gold); }
+    /* ── EXPERTISE ── */
+    #expertise { background: white; border-top: 1px solid var(--border); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .expertise-card {
+      background: var(--cream);
+      padding: 36px 32px;
+    }
+    .expertise-card .symbol {
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+      font-family: 'Playfair Display', serif;
+    }
+    .expertise-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .expertise-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
 
-  .pdf-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 1.8rem;
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    text-decoration: none;
-    color: var(--ink);
-    transition: all 0.3s ease;
-  }
-  .pdf-card:hover {
-    border-color: var(--gold);
-    transform: translateX(4px);
-    box-shadow: 0 4px 20px rgba(10, 25, 41, 0.08);
-  }
-  .pdf-icon {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-    background: var(--ink);
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-  }
-  .pdf-icon.xls {
-    background: #1f5a3a;
-    color: #e8d68a;
-  }
-  .pdf-info { flex: 1; min-width: 0; }
-  .pdf-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    line-height: 1.3;
-  }
-  .pdf-meta {
-    font-size: 0.78rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-  .pdf-meta span.tag {
-    color: var(--gold);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-right: 0.8rem;
-  }
-  .pdf-arrow {
-    color: var(--gold);
-    font-size: 1.5rem;
-    font-family: 'Cormorant Garamond', serif;
-    flex-shrink: 0;
-  }
+    /* ── WRITINGS ── */
+    #writings { background: var(--cream); border-top: 1px solid var(--border); }
 
-  .more-writings {
-    margin-top: 3rem;
-  }
-  .more-writings-head {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--ink-soft);
-    margin-bottom: 1.2rem;
-    padding-left: 0.2rem;
-  }
-  .more-writings .pdf-card {
-    background: var(--paper-warm);
-  }
+    /* Featured writing */
+    .writing-featured {
+      background: var(--navy);
+      color: white;
+      padding: 36px 40px;
+      margin-bottom: 44px;
+      display: block;
+      text-decoration: none;
+      transition: transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .writing-featured::before {
+      content: 'Featured';
+      position: absolute;
+      top: 20px; right: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border: 1px solid rgba(184,146,42,0.3);
+      padding: 4px 10px;
+    }
+    .writing-featured:hover { transform: translateY(-2px); }
+    .writing-featured .wf-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+    .writing-featured h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .writing-featured .wf-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+    .writing-featured .wf-stats {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 16px;
+    }
+    .writing-featured .wf-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+    }
+    .writing-featured .wf-stat strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
 
-  /* CONTACT */
-  .contact {
-    background: var(--paper-warm);
-    margin: 0;
-    max-width: none;
-    padding: 8rem 2rem;
-    text-align: center;
-  }
-  .contact-inner { max-width: 700px; margin: 0 auto; }
-  .contact .eyebrow { justify-content: center; }
-  .contact .eyebrow::before { display: none; }
-  .contact h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-  }
-  .contact h2 em { font-style: italic; color: var(--gold); }
-  .contact p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    color: var(--ink-soft);
-    margin-bottom: 3rem;
-  }
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .contact-links a {
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    padding: 1rem 2rem;
-    border: 1px solid var(--ink);
-    transition: all 0.3s;
-  }
-  .contact-links a:hover {
-    background: var(--ink);
-    color: var(--paper);
-  }
+    /* Sub-heading for more writings */
+    .writings-more-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
 
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    color: var(--paper-warm);
-    padding: 3rem 2rem;
-    text-align: center;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-  }
-  footer .gold-rule {
-    width: 60px; height: 1px;
-    background: var(--gold);
-    margin: 0 auto 2rem;
-  }
-  footer span { color: var(--gold); }
+    /* Grid of writing items */
+    .writings-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .writing-item {
+      display: flex;
+      gap: 20px;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .writing-item:last-child { border-bottom: none; }
+    .writing-item:hover { background: white; padding-left: 12px; padding-right: 12px; margin: 0 -12px; }
+    .writing-item .wi-type {
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(184,146,42,0.08);
+      border: 1px solid rgba(184,146,42,0.2);
+      padding: 3px 8px;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 3px;
+    }
+    .writing-item .wi-type.wi-new {
+      color: white;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .writing-item .wi-body { flex: 1; }
+    .writing-item .wi-title {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .writing-item .wi-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .writing-item .wi-arrow {
+      flex-shrink: 0;
+      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      align-self: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .writing-item:hover .wi-arrow { opacity: 1; }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+    #contact h2 { color: white; }
+    #contact h2 em { color: var(--gold-light); }
+    #contact .contact-sub {
+      font-size: 0.96rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      margin: 0 auto 44px;
+      line-height: 1.8;
+    }
+    .contact-links {
+      display: flex; flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    .contact-links a {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .contact-links a:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav ul { display: none; }
-    .hero { grid-template-columns: 1fr; padding-top: 6rem; gap: 3rem; }
-    .hero::before { font-size: 8rem; top: 4rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .about-sidebar { position: static; font-size: 1.2rem; }
-    .section-head { grid-template-columns: 1fr; gap: 0.5rem; }
-    .school { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
-    .school-name { font-size: 1.4rem; }
-    .expertise-grid { grid-template-columns: 1fr; }
-    .writings-featured { padding: 1.8rem 1.5rem 1.8rem 1.8rem; }
-    .writings-featured .stats { gap: 1.2rem; }
-    .pdf-card { padding: 1.2rem; gap: 1rem; }
-    .pdf-title { font-size: 1rem; }
-    section { padding: 4rem 1.5rem; }
-  }
-</style>
+    /* ── FOOTER ── */
+    footer {
+      background: #080f1c;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      padding: 20px 48px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 52px 24px 52px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero-portrait { display: none; }
+      section { padding: 56px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .writing-featured { padding: 24px; }
+      footer { padding: 16px 24px; }
+    }
+  </style>
 </head>
 <body>
 
+<div class="topbar"></div>
+
+<!-- NAV -->
 <nav>
-  <div class="inner">
-    <div class="brand">P<span>·</span>A</div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#teaching">Teaching</a></li>
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#writings">Writings</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <div class="nav-brand">P·A</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#writings">Writings</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <div class="eyebrow">Chartered Accountant &middot; Educator</div>
-    <h1>CA Parvesh <em>Aghi</em></h1>
-    <p class="lede">Visiting Professor of Finance with four decades at the intersection of corporate practice and classroom rigour — interpreting markets, valuations, and the discipline of investing for India's next generation of business leaders.</p>
-    <div class="meta">
-      <div>
-        <span>Industry</span>
-        <strong>25 Years</strong>
-      </div>
-      <div>
-        <span>Teaching</span>
-        <strong>15 Years</strong>
-      </div>
-      <div>
-        <span>Focus</span>
-        <strong>Valuations</strong>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Chartered Accountant · Educator</div>
+      <h1>CA Parvesh <em>Aghi</em></h1>
+      <p class="hero-tagline">Visiting Professor of Finance with four decades at the intersection of corporate practice and classroom rigour — interpreting markets, valuations, and the discipline of investing for India's next generation of business leaders.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="val">25 Years</span><span class="lbl">Industry</span></div>
+        <div class="hero-stat"><span class="val">15 Years</span><span class="lbl">Teaching</span></div>
+        <div class="hero-stat"><span class="val">Valuations</span><span class="lbl">Focus</span></div>
       </div>
     </div>
-  </div>
-  <div class="hero-visual">
-    <div class="portrait-frame">
-      <img src="profile.jpg" alt="CA Parvesh Aghi" />
-      <div class="label"><span>Est. Practice</span>Finance &middot; Pedagogy</div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <img src="https://paraghi.github.io/profile.jpg" alt="CA Parvesh Aghi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="portrait-monogram" style="display:none;align-items:center;justify-content:center;width:100%;height:100%">PA</div>
+      </div>
+      <div class="portrait-label">Est. Practice<br>Finance · Pedagogy</div>
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-  <div class="section-head">
-    <div class="section-num">02 &mdash; Profile</div>
-    <h2 class="section-title">A practitioner who <em>teaches</em>.</h2>
-  </div>
-  <div class="about-grid">
-    <aside class="about-sidebar">
-      The most valuable lesson in finance is the one a textbook cannot offer — the lived experience of decisions made under uncertainty.
-    </aside>
-    <div class="about-body">
-      <p>A Chartered Accountant by training, I spent twenty-five years in the corporate world, navigating financial strategy, capital decisions, and the day-to-day judgements that determine whether enterprises endure or unravel. That practice forms the spine of how I teach today.</p>
-      <p>For the past fifteen years, I have been a visiting faculty member at leading Indian business schools, where my courses explore the architecture of financial analysis — how to read a company, how to value it, and how to separate signal from noise in equity and mutual fund markets.</p>
-      <p>My approach is unapologetically applied. Cases are drawn from Indian markets. Frameworks are stress-tested against real filings. Students leave with not just models, but the instincts to question them.</p>
-    </div>
-  </div>
-</section>
-
-<section class="institutions" id="teaching">
-  <div class="institutions-inner">
-    <div class="section-head">
-      <div class="section-num">03 &mdash; Affiliations</div>
-      <h2 class="section-title">Visiting faculty across India's <em>leading</em> business schools &amp; universities.</h2>
-    </div>
-    <div class="school-list">
-      <div class="school">
-        <div class="school-num">i.</div>
-        <div class="school-name">IMT Ghaziabad</div>
-        <div class="school-loc">Ghaziabad &middot; NCR</div>
+  <div class="section-inner">
+    <div class="section-number">02 — Profile</div>
+    <h2>A practitioner who <em>teaches</em>.</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>The most valuable lesson in finance is the one a textbook cannot offer — the lived experience of decisions made under uncertainty.</p>
+        <p>A Chartered Accountant by training, I spent twenty-five years in the corporate world, navigating financial strategy, capital decisions, and the day-to-day judgements that determine whether enterprises endure or unravel. That practice forms the spine of how I teach today.</p>
+        <p>For the past fifteen years, I have been a visiting faculty member at leading Indian business schools, where my courses explore the architecture of financial analysis — how to read a company, how to value it, and how to separate signal from noise in equity and mutual fund markets.</p>
+        <p>My approach is unapologetically applied. Cases are drawn from Indian markets. Frameworks are stress-tested against real filings. Students leave with not just models, but the instincts to question them.</p>
       </div>
-      <div class="school">
-        <div class="school-num">ii.</div>
-        <div class="school-name">Indian Institute of Foreign Trade</div>
-        <div class="school-loc">New Delhi</div>
-      </div>
-      <div class="school">
-        <div class="school-num">iii.</div>
-        <div class="school-name">BML Munjal University</div>
-        <div class="school-loc">Gurgaon &middot; Haryana</div>
-      </div>
-      <div class="school">
-        <div class="school-num">iv.</div>
-        <div class="school-name">Shiv Nadar University</div>
-        <div class="school-loc">Greater Noida &middot; NCR</div>
-      </div>
-      <div class="school">
-        <div class="school-num">v.</div>
-        <div class="school-name">Institute of Chartered Accountants of India</div>
-        <div class="school-loc">ICAI &middot; New Delhi</div>
+      <div>
+        <div class="about-pull">
+          <p>"The most profitable allocation decisions are also the most emotionally difficult. The framework must be robust enough to act on when consensus sentiment is most extreme in the opposite direction."</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-inner">
+    <div class="section-number">03 — Affiliations</div>
+    <h2>Visiting faculty across India's <em>leading</em> business schools &amp; universities.</h2>
+    <div class="institutions-list">
+      <div class="institution-item">
+        <span class="inst-roman">i.</span>
+        <span class="inst-name">IMT Ghaziabad</span>
+        <span class="inst-location">Ghaziabad · NCR</span>
+      </div>
+      <div class="institution-item">
+        <span class="inst-roman">ii.</span>
+        <span class="inst-name">Indian Institute of Foreign Trade</span>
+        <span class="inst-location">New Delhi</span>
+      </div>
+      <div class="institution-item">
+        <span class="inst-roman">iii.</span>
+        <span class="inst-name">BML Munjal University</span>
+        <span class="inst-location">Gurgaon · Haryana</span>
+      </div>
+      <div class="institution-item">
+        <span class="inst-roman">iv.</span>
+        <span class="inst-name">Shiv Nadar University</span>
+        <span class="inst-location">Greater Noida · NCR</span>
+      </div>
+      <div class="institution-item">
+        <span class="inst-roman">v.</span>
+        <span class="inst-name">Institute of Chartered Accountants of India</span>
+        <span class="inst-location">ICAI · New Delhi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
 <section id="expertise">
-  <div class="section-head">
-    <div class="section-num">04 &mdash; Expertise</div>
-    <h2 class="section-title">What I <em>teach</em> &amp; analyse.</h2>
-  </div>
-  <div class="expertise-grid">
-    <div class="exp-card">
-      <div class="exp-icon">§</div>
-      <h3>Equity Valuations</h3>
-      <p>Discounted cash flow, relative valuation, and the practical judgement calls that separate good models from defensible ones in Indian listed markets.</p>
-    </div>
-    <div class="exp-card">
-      <div class="exp-icon">¶</div>
-      <h3>Mutual Fund Analysis</h3>
-      <p>Reading factsheets beyond returns — risk-adjusted performance, style consistency, expense drag, and the long-arc compounding of disciplined choices.</p>
-    </div>
-    <div class="exp-card">
-      <div class="exp-icon">†</div>
-      <h3>Financial Analysis</h3>
-      <p>Annual reports as primary documents. Ratio analysis as a language. The skills to interrogate management commentary and decode what numbers don't say.</p>
+  <div class="section-inner">
+    <div class="section-number">04 — Expertise</div>
+    <h2>What I <em>teach</em> &amp; analyse.</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <span class="symbol">§</span>
+        <h3>Equity Valuations</h3>
+        <p>Discounted cash flow, relative valuation, and the practical judgement calls that separate good models from defensible ones in Indian listed markets.</p>
+      </div>
+      <div class="expertise-card">
+        <span class="symbol">¶</span>
+        <h3>Mutual Fund Analysis</h3>
+        <p>Reading factsheets beyond returns — risk-adjusted performance, style consistency, expense drag, and the long-arc compounding of disciplined choices.</p>
+      </div>
+      <div class="expertise-card">
+        <span class="symbol">†</span>
+        <h3>Financial Analysis</h3>
+        <p>Annual reports as primary documents. Ratio analysis as a language. The skills to interrogate management commentary and decode what numbers don't say.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- WRITINGS -->
 <section id="writings">
-  <div class="section-head">
-    <div class="section-num">05 &mdash; Writings</div>
-    <h2 class="section-title">Notes &amp; <em>analyses</em>.</h2>
-  </div>
+  <div class="section-inner">
+    <div class="section-number">05 — Writings</div>
+    <h2>Notes &amp; <em>analyses</em>.</h2>
 
-  <div class="writings-featured">
-    <div class="featured-tag">Featured &middot; Updated May 16, 2026</div>
-    <h3>India Inc. Q4 FY 2025-26 &mdash; <em>The Mid Cap Story Strengthens</em></h3>
-    <div class="summary">
-      <p>As Q4 earnings season crosses the quarter-way mark, 1,264 of 4,976 listed Indian companies have reported &mdash; and the picture has not just held, it has improved. Aggregate net profit growth has accelerated to 20.20% year-on-year, with 745 companies reporting positive growth against 519 declines. A clear majority confirms this is broad-based recovery, not a top-heavy story.</p>
-      <p>The headline belongs to mid caps. Net profit growth has climbed from 26% in the early sample to 35.38% now &mdash; nearly 3.5x the Nifty 50 pace. Critically, mid-cap gross profit is growing at 20.65% against revenue at 10.66%, meaning these companies are not just scaling, they are becoming more efficient as they scale. This is the clearest signal in the data.</p>
-      <p>The contrasts within the market are sharpening. Retailing posted +979% net profit growth on operating leverage finally showing in retail chains; Paper and Media each delivered triple-digit profit gains. Against them, Consumer Durables (&minus;79.6% NP) and Trading (&minus;87.6% NP) show severe margin destruction. Among large names, Tata Steel (+151%) and Hindustan Copper (+134%) shone, while JSW Steel missed estimates by 62.7% and Voltas by 52.8%.</p>
-      <p>The full report breaks down each segment with company-level analysis, a sector scorecard, and a three-horizon market impact view.</p>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-label">Revenue Growth</span>
-        <span class="stat-value up">+10.68%</span>
+    <!-- Featured -->
+    <a href="https://paraghi.github.io/india-inc-q4-fy26-results.pdf" class="writing-featured">
+      <div class="wf-tag">Featured · Updated May 16, 2026</div>
+      <h3>India Inc. Q4 FY 2025-26 — The Mid Cap Story Strengthens</h3>
+      <p class="wf-desc">As Q4 earnings season crosses the quarter-way mark, 1,264 of 4,976 listed Indian companies have reported — and the picture has not just held, it has improved. Aggregate net profit growth has accelerated to 20.20% year-on-year, with 745 companies reporting positive growth against 519 declines. The headline belongs to mid caps: net profit growth has climbed to 35.38% — nearly 3.5× the Nifty 50 pace. The full report breaks down each segment with company-level analysis, a sector scorecard, and a three-horizon market impact view.</p>
+      <div class="wf-stats">
+        <div class="wf-stat"><strong>+10.68%</strong>Revenue Growth</div>
+        <div class="wf-stat"><strong>+20.20%</strong>Net Profit Growth</div>
+        <div class="wf-stat"><strong>+35.38%</strong>Mid Cap NP</div>
+        <div class="wf-stat"><strong>1,264 / 4,976</strong>Companies Reported</div>
       </div>
-      <div class="stat">
-        <span class="stat-label">Net Profit Growth</span>
-        <span class="stat-value up">+20.20%</span>
-      </div>
-      <div class="stat">
-        <span class="stat-label">Mid Cap NP</span>
-        <span class="stat-value gold-val">+35.38%</span>
-      </div>
-      <div class="stat">
-        <span class="stat-label">Companies Reported</span>
-        <span class="stat-value">1,264 / 4,976</span>
-      </div>
-    </div>
-
-    <a class="pdf-card" href="india-inc-q4-fy26-results.pdf" target="_blank" rel="noopener">
-      <div class="pdf-icon">PDF</div>
-      <div class="pdf-info">
-        <div class="pdf-title">India Inc. Quarterly Results Report &mdash; FY 2025-26</div>
-        <div class="pdf-meta"><span class="tag">Financial Analysis</span>Comparative analysis across Large Cap, Mid Cap &amp; Small Cap</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-  </div>
-
-  <div class="more-writings">
-    <div class="more-writings-head">More notes &amp; teaching material</div>
-    <a class="pdf-card" href="intrinsic-value-calculator.xlsx" target="_blank" rel="noopener">
-      <div class="pdf-icon xls">XLS</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Intrinsic Value Calculator &mdash; DCF + Relative Valuation</div>
-        <div class="pdf-meta"><span class="tag">Excel Model</span>8 sheets &middot; 10-yr FCFF projections, WACC build, sensitivity table, peer multiples &amp; football field</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="fii-fpi-analysis-may2026.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">📊</div>
-      <div class="pdf-info">
-        <div class="pdf-title">FII / FPI Data Analysis &mdash; May 2026</div>
-        <div class="pdf-meta"><span class="tag">Market Analysis</span>Foreign institutional investor flows, market impact &amp; capital movements in Indian markets</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="deferred-tax-india-complete-guide.pdf" target="_blank" rel="noopener">
-      <div class="pdf-icon">PDF</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Deferred Tax Law in India &mdash; Complete Guide</div>
-        <div class="pdf-meta"><span class="tag">Teaching Note</span>Principles, profit impact, investor framework &amp; case study on Reliance Industries FY 2023-24</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="deferred-tax-india-guide.pdf" target="_blank" rel="noopener">
-      <div class="pdf-icon">PDF</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Deferred Tax Law in India &mdash; A Complete Guide <span style="color:var(--muted);font-style:italic;font-size:0.85em;">(v1 &middot; original)</span></div>
-        <div class="pdf-meta"><span class="tag">Teaching Note</span>Concepts, journal entries, full case study and implications for stock valuation</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="equity-mf-report-may2026.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">📄</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Equity Mutual Fund Analysis &mdash; May 2026 <span style="color:var(--gold);font-style:italic;font-size:0.85em;">(Premium)</span></div>
-        <div class="pdf-meta"><span class="tag">Interactive Report</span>Best picks across Large Cap, Mid Cap &amp; Small Cap with premium editorial design</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="equity-mf-analysis-may2026.pdf" target="_blank" rel="noopener">
-      <div class="pdf-icon">PDF</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Equity Mutual Fund Analysis &mdash; May 2026 <span style="color:var(--muted);font-style:italic;font-size:0.85em;">(PDF)</span></div>
-        <div class="pdf-meta"><span class="tag">Download</span>Same analysis in PDF format for easy sharing &amp; offline reading</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="india-top-mutual-funds-2026.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">📊</div>
-      <div class="pdf-info">
-        <div class="pdf-title">India's Top Mutual Funds 2026 <span style="color:var(--gold);font-style:italic;font-size:0.85em;">(Premium)</span></div>
-        <div class="pdf-meta"><span class="tag">Fund Guide</span>7-Dimension selection framework &middot; Top 5 picks across Large Cap, Mid Cap &amp; Small Cap &middot; Portfolio allocation models</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="india-top-mutual-funds-2026.pdf" target="_blank" rel="noopener">
-      <div class="pdf-icon">PDF</div>
-      <div class="pdf-info">
-        <div class="pdf-title">India's Top Mutual Funds 2026 <span style="color:var(--muted);font-style:italic;font-size:0.85em;">(PDF)</span></div>
-        <div class="pdf-meta"><span class="tag">Download</span>Complete fund analysis with 7-dimension framework in PDF format</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="returns-report-may2026.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">📐</div>
-      <div class="pdf-info">
-        <div class="pdf-title">CAGR, XIRR &amp; Rolling Returns &mdash; Which Number Should You Trust?</div>
-        <div class="pdf-meta"><span class="tag">Finance Education</span>A complete framework for reading mutual fund performance metrics &middot; Live case study: Nippon India Large Cap</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="returns-dashboard.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">⚡</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Mutual Fund Returns Calculator &mdash; Interactive Dashboard</div>
-        <div class="pdf-meta"><span class="tag">Interactive Tool</span>Live CAGR, XIRR &amp; Rolling Returns calculators &middot; Nippon India Large Cap case study &middot; Adjust sliders in real time</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="india-asset-report-2025.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">🏆</div>
-      <div class="pdf-info">
-        <div class="pdf-title">Where Should India Invest? &mdash; Asset Class Report 2025</div>
-        <div class="pdf-meta"><span class="tag">Investment Research</span>25-year analysis of Equity, Real Estate, Gold, Mutual Funds &amp; Fixed Deposits &middot; Risk-return profiles &amp; 2030 outlook</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
-    </a>
-    <a class="pdf-card" href="india-investment-dashboard.html" target="_blank" rel="noopener">
-      <div class="pdf-icon">⚡</div>
-      <div class="pdf-info">
-        <div class="pdf-title">India Asset Class Dashboard &mdash; Interactive 2025</div>
-        <div class="pdf-meta"><span class="tag">Live Dashboard</span>6-tab interactive tool &middot; Portfolio builder &middot; 2030 outlook &middot; 25-year CAGR comparisons across all asset classes</div>
-      </div>
-      <div class="pdf-arrow">&rarr;</div>
     </a>
 
+    <!-- More writings label -->
+    <div class="writings-more-label">More notes &amp; teaching material</div>
+
+    <div class="writings-grid">
+
+      <!-- ★ NEW — Wealth Management Professional Framework -->
+      <a href="https://paraghi.github.io/wealth-management-complete-edition.html" class="writing-item">
+        <span class="wi-type wi-new">NEW</span>
+        <div class="wi-body">
+          <div class="wi-title">Wealth Management Professional Framework — Complete Edition · May 2026</div>
+          <div class="wi-desc">A 3-part practitioner's guide: Macro Intelligence to Portfolio Allocation · Earnings Yield vs Bond Yield (6-scenario numerical framework) · AIF Evaluation with TVPI/DPI, Hurdle Rates &amp; Waterfall Structures. Full ₹ worked examples throughout.</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- Intrinsic Value Calculator -->
+      <a href="https://paraghi.github.io/intrinsic-value-calculator.xlsx" class="writing-item">
+        <span class="wi-type">XLS</span>
+        <div class="wi-body">
+          <div class="wi-title">Intrinsic Value Calculator — DCF + Relative Valuation</div>
+          <div class="wi-desc">Excel Model · 8 sheets · 10-yr FCFF projections, WACC build, sensitivity table, peer multiples &amp; football field</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- FII/FPI Analysis -->
+      <a href="https://paraghi.github.io/fii-fpi-analysis-may2026.html" class="writing-item">
+        <span class="wi-type">📊</span>
+        <div class="wi-body">
+          <div class="wi-title">FII / FPI Data Analysis — May 2026</div>
+          <div class="wi-desc">Market Analysis · Foreign institutional investor flows, market impact &amp; capital movements in Indian markets</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- Deferred Tax (v2) -->
+      <a href="https://paraghi.github.io/deferred-tax-india-complete-guide.pdf" class="writing-item">
+        <span class="wi-type">PDF</span>
+        <div class="wi-body">
+          <div class="wi-title">Deferred Tax Law in India — Complete Guide</div>
+          <div class="wi-desc">Teaching Note · Principles, profit impact, investor framework &amp; case study on Reliance Industries FY 2023-24</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- Deferred Tax (v1) -->
+      <a href="https://paraghi.github.io/deferred-tax-india-guide.pdf" class="writing-item">
+        <span class="wi-type">PDF</span>
+        <div class="wi-body">
+          <div class="wi-title">Deferred Tax Law in India — A Complete Guide (v1 · original)</div>
+          <div class="wi-desc">Teaching Note · Concepts, journal entries, full case study and implications for stock valuation</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- Equity MF Report HTML -->
+      <a href="https://paraghi.github.io/equity-mf-report-may2026.html" class="writing-item">
+        <span class="wi-type">📄</span>
+        <div class="wi-body">
+          <div class="wi-title">Equity Mutual Fund Analysis — May 2026 (Premium)</div>
+          <div class="wi-desc">Interactive Report · Best picks across Large Cap, Mid Cap &amp; Small Cap with premium editorial design</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- Equity MF PDF -->
+      <a href="https://paraghi.github.io/equity-mf-analysis-may2026.pdf" class="writing-item">
+        <span class="wi-type">PDF</span>
+        <div class="wi-body">
+          <div class="wi-title">Equity Mutual Fund Analysis — May 2026 (PDF)</div>
+          <div class="wi-desc">Download · Same analysis in PDF format for easy sharing &amp; offline reading</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- India Top MFs HTML -->
+      <a href="https://paraghi.github.io/india-top-mutual-funds-2026.html" class="writing-item">
+        <span class="wi-type">📊</span>
+        <div class="wi-body">
+          <div class="wi-title">India's Top Mutual Funds 2026 (Premium)</div>
+          <div class="wi-desc">Fund Guide · 7-Dimension selection framework · Top 5 picks across Large Cap, Mid Cap &amp; Small Cap · Portfolio allocation models</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- India Top MFs PDF -->
+      <a href="https://paraghi.github.io/india-top-mutual-funds-2026.pdf" class="writing-item">
+        <span class="wi-type">PDF</span>
+        <div class="wi-body">
+          <div class="wi-title">India's Top Mutual Funds 2026 (PDF)</div>
+          <div class="wi-desc">Download · Complete fund analysis with 7-dimension framework in PDF format</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- CAGR / XIRR Report -->
+      <a href="https://paraghi.github.io/returns-report-may2026.html" class="writing-item">
+        <span class="wi-type">📐</span>
+        <div class="wi-body">
+          <div class="wi-title">CAGR, XIRR &amp; Rolling Returns — Which Number Should You Trust?</div>
+          <div class="wi-desc">Finance Education · A complete framework for reading mutual fund performance metrics · Live case study: Nippon India Large Cap</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- Returns Dashboard -->
+      <a href="https://paraghi.github.io/returns-dashboard.html" class="writing-item">
+        <span class="wi-type">⚡</span>
+        <div class="wi-body">
+          <div class="wi-title">Mutual Fund Returns Calculator — Interactive Dashboard</div>
+          <div class="wi-desc">Interactive Tool · Live CAGR, XIRR &amp; Rolling Returns calculators · Nippon India Large Cap case study · Adjust sliders in real time</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- India Asset Report -->
+      <a href="https://paraghi.github.io/india-asset-report-2025.html" class="writing-item">
+        <span class="wi-type">🏆</span>
+        <div class="wi-body">
+          <div class="wi-title">Where Should India Invest? — Asset Class Report 2025</div>
+          <div class="wi-desc">Investment Research · 25-year analysis of Equity, Real Estate, Gold, Mutual Funds &amp; Fixed Deposits · Risk-return profiles &amp; 2030 outlook</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+      <!-- India Investment Dashboard -->
+      <a href="https://paraghi.github.io/india-investment-dashboard.html" class="writing-item">
+        <span class="wi-type">⚡</span>
+        <div class="wi-body">
+          <div class="wi-title">India Asset Class Dashboard — Interactive 2025</div>
+          <div class="wi-desc">Live Dashboard · 6-tab interactive tool · Portfolio builder · 2030 outlook · 25-year CAGR comparisons across all asset classes</div>
+        </div>
+        <span class="wi-arrow">→</span>
+      </a>
+
+    </div><!-- end writings-grid -->
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="eyebrow">Get in touch</div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-number" style="color:rgba(184,146,42,0.7);">Get in touch</div>
     <h2>Open to <em>guest lectures</em>, corporate sessions, and collaborations.</h2>
-    <p>For speaking engagements, MDP sessions, or academic conversations on Indian finance.</p>
+    <p class="contact-sub">For speaking engagements, MDP sessions, or academic conversations on Indian finance.</p>
     <div class="contact-links">
       <a href="mailto:parvesh1104@gmail.com">Email</a>
       <a href="https://wa.me/919891450400" target="_blank" rel="noopener">WhatsApp</a>
@@ -909,9 +824,9 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="gold-rule"></div>
-  <div>CA PARVESH AGHI <span>&middot;</span> NEW DELHI <span>&middot;</span> &copy; 2026</div>
+  CA Parvesh Aghi · New Delhi · © 2026
 </footer>
 
 </body>
