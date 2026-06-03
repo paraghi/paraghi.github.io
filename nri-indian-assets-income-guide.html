@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRI Income from Indian Assets &amp; Inheritance — 14 Case Studies | CA Parvesh Aghi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-light: #1a3259;
+    --gold: #b8922a;
+    --gold-light: #d4a843;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --text: #1c1c1c;
+    --muted: #5a5a5a;
+    --border: #d8cfc0;
+    --green: #1a5c3a;
+    --green-bg: #edf7f1;
+    --red: #7a1f1f;
+    --red-bg: #fdf0f0;
+    --amber: #7a4f00;
+    --amber-bg: #fff8e8;
+    --blue: #1a3a8a;
+    --blue-bg: #eef2fc;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16.5px;
+    line-height: 1.78;
+  }
+
+  .top-rule { height: 5px; background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%); }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--navy); color: white;
+    padding: 56px 48px 48px;
+    position: relative; overflow: hidden;
+  }
+  .masthead::before { content:''; position:absolute; top:-80px; right:-80px; width:420px; height:420px; border:1px solid rgba(184,146,42,0.12); border-radius:50%; }
+  .masthead::after { content:''; position:absolute; bottom:-60px; left:200px; width:260px; height:260px; border:1px solid rgba(184,146,42,0.08); border-radius:50%; }
+  .masthead-inner { max-width: 960px; margin: 0 auto; position: relative; z-index:1; }
+
+  .series-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .series-label::after { content:''; flex:1; height:1px; background:rgba(184,146,42,0.3); }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.5px;
+  }
+  .masthead h1 span { color: var(--gold-light); }
+
+  .masthead-subtitle {
+    font-style: italic; font-weight: 300; font-size: 1.08rem;
+    color: rgba(255,255,255,0.68); margin-bottom: 26px; line-height: 1.6;
+  }
+
+  .coverage-strip { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 28px; }
+  .cov-badge {
+    background: rgba(184,146,42,0.12);
+    border: 1px solid rgba(184,146,42,0.25);
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 2px;
+  }
+
+  .masthead-meta {
+    display: flex; flex-wrap: wrap; gap: 22px; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;
+  }
+  .meta-item { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .meta-item strong { color: rgba(255,255,255,0.82); font-weight:400; }
+  .meta-dot { width:3px; height:3px; background:var(--gold); border-radius:50%; }
+
+  /* NAV */
+  .toc-nav {
+    background: var(--navy-light); padding: 0 48px;
+    border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 100; overflow-x: auto;
+  }
+  .toc-nav-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: center; white-space: nowrap;
+  }
+  .toc-nav a {
+    color: rgba(255,255,255,0.62); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase;
+    padding: 13px 13px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s; flex-shrink: 0;
+  }
+  .toc-nav a:first-child { padding-left: 0; }
+  .toc-nav a:last-child { border-right: none; }
+  .toc-nav a:hover { color: var(--gold-light); }
+
+  /* MAIN */
+  .content-wrap { max-width: 960px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* KEY NOTICE */
+  .key-notice {
+    background: var(--navy); color: white;
+    padding: 28px 34px; margin: 40px 0;
+    border-left: 4px solid var(--gold);
+  }
+  .key-notice .kn-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 10px;
+  }
+  .key-notice h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 10px; }
+  .key-notice p { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.75; margin:0; }
+
+  /* PART HEADER */
+  .part-header {
+    margin: 56px 0 28px; padding-bottom: 16px;
+    border-bottom: 2px solid var(--navy);
+  }
+  .part-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .part-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 700; color: var(--navy); line-height: 1.2;
+  }
+  .part-header .part-sub { font-style: italic; font-size: 0.95rem; color: var(--muted); margin-top: 6px; }
+
+  /* SECTION HEADINGS */
+  .sec-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.12rem; font-weight: 700; color: var(--navy-light);
+    margin: 32px 0 12px;
+  }
+
+  p { margin-bottom: 14px; font-size: 0.95rem; color: var(--muted); }
+  p strong { color: var(--text); }
+  ul.body-list { margin: 0 0 14px 22px; }
+  ul.body-list li { font-size: 0.92rem; color: var(--muted); margin-bottom: 7px; line-height: 1.7; }
+  ul.body-list li strong { color: var(--text); }
+
+  /* CASE STUDY */
+  .case-study {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--navy);
+    margin: 28px 0;
+    overflow: hidden;
+  }
+  .cs-header {
+    background: var(--navy); padding: 18px 28px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .cs-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: rgba(184,146,42,0.35);
+    line-height: 1; flex-shrink: 0;
+  }
+  .cs-meta { flex: 1; }
+  .cs-meta .cs-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 4px;
+  }
+  .cs-meta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700; color: white; line-height: 1.3;
+  }
+  .cs-meta .cs-sub { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
+  .cs-body { padding: 24px 28px; }
+  .cs-body .cs-scenario {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.75;
+    margin-bottom: 16px; border-left: 3px solid var(--cream-dark);
+    padding-left: 14px; font-style: italic;
+  }
+  .cs-question {
+    background: var(--amber-bg); border: 1px solid rgba(184,146,42,0.2);
+    padding: 12px 16px; margin-bottom: 16px;
+    font-size: 0.87rem; color: var(--amber); line-height: 1.65;
+  }
+  .cs-question strong { color: var(--amber); }
+  .cs-body p { font-size: 0.9rem; }
+  .cs-result {
+    background: var(--green-bg); border-left: 3px solid var(--green);
+    padding: 12px 16px; margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.5px; color: var(--green); line-height: 1.7;
+  }
+
+  /* COMPUTATION TABLE */
+  .comp-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.86rem; margin: 16px 0;
+    background: #f8f6f2;
+  }
+  .comp-table tr { border-bottom: 1px solid var(--border); }
+  .comp-table tr:last-child { border-bottom: none; }
+  .comp-table td {
+    padding: 9px 14px; vertical-align: top; line-height: 1.55;
+  }
+  .comp-table td:first-child { color: var(--muted); width: 65%; }
+  .comp-table td:last-child { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.83rem; color: var(--navy); font-weight: 500; }
+  .comp-table tr.highlight { background: var(--navy); }
+  .comp-table tr.highlight td { color: white !important; font-weight: 600; }
+  .comp-table tr.highlight td:last-child { color: var(--gold-light) !important; font-size: 0.9rem; }
+  .comp-table tr.sub-head { background: var(--cream-dark); }
+  .comp-table tr.sub-head td { color: var(--navy) !important; font-weight: 600; font-size: 0.83rem; }
+
+  /* CALLOUT */
+  .callout {
+    padding: 16px 20px; margin: 16px 0;
+    font-size: 0.91rem; line-height: 1.75;
+  }
+  .callout .c-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 6px; display: block;
+  }
+  .callout p { font-size: 0.91rem; margin: 0 0 8px; }
+  .callout p:last-child { margin:0; }
+  .callout.red { background: var(--red-bg); border-left: 3px solid var(--red); }
+  .callout.red .c-label { color: var(--red); }
+  .callout.green { background: var(--green-bg); border-left: 3px solid var(--green); }
+  .callout.green .c-label { color: var(--green); }
+  .callout.gold { background: var(--amber-bg); border-left: 3px solid var(--gold); }
+  .callout.gold .c-label { color: var(--amber); }
+  .callout.navy { background: var(--blue-bg); border-left: 3px solid var(--navy); }
+  .callout.navy .c-label { color: var(--navy); }
+
+  /* LAW BOX */
+  .law-box {
+    background: var(--blue-bg); border: 1px solid #c5d3f0;
+    border-left: 4px solid var(--blue);
+    padding: 18px 22px; margin: 16px 0;
+    font-size: 0.9rem; line-height: 1.75;
+  }
+  .law-box .lb-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 7px; display: block;
+  }
+  .law-box p { font-size: 0.9rem; color: var(--navy); margin:0 0 6px; }
+  .law-box p:last-child { margin:0; }
+
+  /* STANDARD TABLES */
+  .tbl-wrap { overflow-x: auto; margin: 18px 0; }
+  table.std { width:100%; border-collapse:collapse; font-size:0.86rem; background:white; box-shadow:0 1px 8px rgba(0,0,0,0.05); }
+  table.std thead tr { background: var(--navy); color: white; }
+  table.std thead th {
+    padding: 11px 12px; text-align:left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  table.std thead th:last-child { border-right:none; }
+  table.std tbody tr { border-bottom: 1px solid #eee; }
+  table.std tbody tr:hover { background: var(--cream); }
+  table.std tbody td {
+    padding: 10px 12px; vertical-align:top;
+    border-right: 1px solid #f0ebe0;
+    line-height: 1.6; color: var(--muted);
+    font-size: 0.85rem;
+  }
+  table.std tbody td:first-child { color: var(--navy); font-weight:500; }
+  table.std tbody td:last-child { border-right:none; }
+  table.std tbody tr:nth-child(even) { background: #faf8f4; }
+
+  /* MASTER SUMMARY TABLE */
+  .master-tbl { font-size: 0.82rem; }
+  .master-tbl th { font-size: 8.5px; }
+  .master-tbl td { font-size: 0.8rem; padding: 8px 10px; }
+  .tax-free { color: var(--green); font-weight: 700; }
+  .tax-high { color: var(--red); font-weight: 600; }
+  .tax-12 { color: var(--green); font-weight: 600; }
+  .caution { color: var(--red); font-weight: 600; }
+  .free-rep { color: var(--green); font-weight: 600; }
+  .limited-rep { color: var(--amber); font-weight: 600; }
+  .no-rep { color: var(--red); font-weight: 700; }
+
+  /* CHECKLIST */
+  .checklist-steps { margin: 20px 0; }
+  .cl-step {
+    background: white; border: 1px solid var(--border);
+    margin-bottom: 12px; overflow: hidden;
+  }
+  .cl-step-header {
+    background: var(--navy); padding: 12px 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .cl-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: rgba(184,146,42,0.4);
+  }
+  .cl-step-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .cl-step-body { padding: 16px 20px; }
+  .cl-step-body ul { margin: 0 0 0 18px; }
+  .cl-step-body ul li { font-size: 0.88rem; color: var(--muted); margin-bottom: 7px; line-height: 1.65; }
+  .cl-step-body ul li strong { color: var(--text); }
+
+  /* GOLD DIVIDER */
+  .gold-div { height:1px; margin:44px 0; background:linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%); opacity:0.35; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #f5f5f0; border:1px solid var(--border);
+    padding: 16px 20px; margin-top: 40px;
+    font-size: 0.78rem; color: var(--muted); line-height: 1.7;
+  }
+
+  /* FOOTER */
+  .page-footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 36px 48px; }
+  .page-footer-inner {
+    max-width: 960px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .footer-author { font-size: 0.82rem; }
+  .footer-author strong { color: white; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    color: var(--gold-light); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .footer-links a:hover { color: white; }
+
+  @media (max-width: 700px) {
+    .masthead { padding: 36px 20px 28px; }
+    .toc-nav { padding: 0 14px; }
+    .content-wrap { padding: 0 18px 60px; }
+    .cs-header { flex-direction: column; gap: 8px; }
+    .page-footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Finance Faculty Reference Series &nbsp;·&nbsp; FY 2025-26 &nbsp;·&nbsp; 14 Case Studies</div>
+    <h1>NRI <span>Income from</span><br>Indian Assets &amp; Inheritance</h1>
+    <p class="masthead-subtitle">A Comprehensive Guide for Non-Resident Indians with 14 Detailed Hypothetical Case Studies</p>
+
+    <div class="coverage-strip">
+      <span class="cov-badge">Inherited Property</span>
+      <span class="cov-badge">Rental Income</span>
+      <span class="cov-badge">Dividends</span>
+      <span class="cov-badge">Capital Gains</span>
+      <span class="cov-badge">Gifts &amp; Succession</span>
+      <span class="cov-badge">EPF &amp; PPF</span>
+      <span class="cov-badge">Repatriation</span>
+      <span class="cov-badge">DTAA Planning</span>
+      <span class="cov-badge">Section 49(1) · 54 · 56 · 112A</span>
+      <span class="cov-badge">FEMA 1999</span>
+    </div>
+
+    <div class="masthead-meta">
+      <div class="meta-item"><strong>CA Parvesh Aghi</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Visiting Professor, Finance</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">FY 2025-26 · Budget 2024 Incorporated · May 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="toc-nav">
+  <div class="toc-nav-inner">
+    <a href="#intro">Introduction</a>
+    <a href="#part1">Part I · Property</a>
+    <a href="#part2">Part II · Rental</a>
+    <a href="#part3">Part III · Shares &amp; MF</a>
+    <a href="#part4">Part IV · Gifts</a>
+    <a href="#part5">Part V · PPF &amp; EPF</a>
+    <a href="#part6">Part VI · Dividends</a>
+    <a href="#part7">Part VII · Joint</a>
+    <a href="#master">Master Summary</a>
+    <a href="#checklist">Checklist</a>
+    <a href="https://paraghi.github.io">← Homepage</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="content-wrap">
+
+  <!-- INTRO -->
+  <div id="intro"></div>
+
+  <div class="key-notice">
+    <div class="kn-label">Foundational Fact — India's Estate Duty</div>
+    <h3>India Abolished Inheritance Tax in 1985</h3>
+    <p>No tax is payable at the time of inheriting any asset — property, shares, cash, gold, or otherwise. Tax arises only when the inherited asset generates <strong>income</strong> (rent, dividends, interest) or is <strong>sold</strong> (capital gains). The asset itself passes tax-free from the deceased to the heir.</p>
+  </div>
+
+  <p>Every year, hundreds of thousands of Indians living in the US, UK, Canada, Australia, the Gulf, Singapore and beyond find themselves connected to a web of Indian financial assets — property inherited from parents, share portfolios accumulated over decades, fixed deposits, insurance policies, EPF balances. The questions are remarkably consistent across geographies:</p>
+  <ul class="body-list">
+    <li>Do I pay tax in India on rent collected on my behalf?</li>
+    <li>When I sell my late father's flat — does the cost start from what he paid in 1985?</li>
+    <li>Can I bring the sale money to London without restriction?</li>
+    <li>Is the dividend from my TCS shares taxable? What about my PPF?</li>
+  </ul>
+  <p><strong>This report answers all such questions through 14 detailed hypothetical case studies</strong> spanning every common scenario — tracing the full tax and compliance journey from asset acquisition through income generation to ultimate repatriation.</p>
+
+  <div class="law-box">
+    <span class="lb-label">Section 49(1) — The Single Most Important Rule in NRI Inheritance Taxation</span>
+    <p>When a capital asset is inherited, the heir's <strong>cost of acquisition is deemed to be the cost at which the previous owner (the last person who actually purchased it) acquired it</strong> — not the market value on the date of inheritance. The holding period also includes the period for which the previous owner held the asset.</p>
+    <p>If the original acquisition was before <strong>April 1, 2001</strong>, the taxpayer may substitute Fair Market Value as on April 1, 2001 (subject to the Stamp Duty value cap). This single provision can make a multi-crore difference to the tax calculation.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART I -->
+  <div class="part-header" id="part1">
+    <div class="part-num">Part I</div>
+    <h2>Inherited Immovable Property</h2>
+    <p class="part-sub">Residential flats, houses, commercial premises, agricultural land — the largest component of most NRI inheritances</p>
+  </div>
+
+  <!-- CASE 1 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">01</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Inherited Residential Property · Sale · UK NRI</div>
+        <h3>Rahul Mehta — Inherited Mumbai Flat: Sale After 5 Years</h3>
+        <div class="cs-sub">London, UK · Father's 2002 cost of ₹18L → 2026 sale at ₹2.2 Cr</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Rahul Mehta, 42, moved to London in 2008. His father, who passed away in 2021, owned a 2BHK flat in Bandra, Mumbai, purchased in 2002 for ₹18 lakh. The flat was valued at ₹1.8 crore on inheritance. Rahul decides to sell it in January 2026 for ₹2.2 crore.</div>
+      <div class="cs-question"><strong>Questions:</strong> What is Rahul's capital gains tax liability? How does Section 49(1) apply? Can he reduce tax? How does he repatriate to London?</div>
+      <p><strong>Key facts:</strong> Father's purchase cost (2002) = ₹18 lakh. Section 49(1) makes this Rahul's cost. Holding period counted from father's purchase (2002) = 24 years → LONG-TERM.</p>
+
+      <table class="comp-table">
+        <tr class="sub-head"><td colspan="2">Option A — 20% with Indexation (Pre-July 2024 Regime)</td></tr>
+        <tr><td>Sale Consideration</td><td>₹2,20,00,000</td></tr>
+        <tr><td>Less: Indexed Cost (CII 2002-03=105; 2024-25=363) = 18L × 363/105</td><td>₹62,29,000</td></tr>
+        <tr><td>Long-Term Capital Gain</td><td>₹1,57,71,000</td></tr>
+        <tr><td>Tax @ 20% with indexation</td><td>₹31,54,000</td></tr>
+        <tr class="sub-head"><td colspan="2">Option B — 12.5% without Indexation (Post-July 23, 2024 Default)</td></tr>
+        <tr><td>Capital Gain without indexation (2.2Cr − 18L)</td><td>₹2,02,00,000</td></tr>
+        <tr><td>Tax @ 12.5%</td><td>₹25,25,000</td></tr>
+        <tr class="highlight"><td>✓ Better Option: 12.5% without indexation saves ₹6.3 lakh</td><td>₹25,25,000</td></tr>
+      </table>
+
+      <p><strong>Tax planning actions:</strong> (1) Obtain Lower Deduction Certificate (LDC) under Section 197 before sale — without LDC, buyer deducts TDS at 12.5% on full ₹2.2 crore = ₹27.5 lakh TDS vs actual tax of ₹25.25 lakh. (2) Invest up to ₹50 lakh of LTCG in NHAI/REC bonds within 6 months (Section 54EC). (3) Sale proceeds go to NRO account. (4) File ITR-2 in India by July 31.</p>
+      <p><strong>DTAA — India-UK:</strong> Capital gains from Indian immovable property are taxable in India. Rahul reports the gain on his UK Self-Assessment return and claims Foreign Tax Credit (FTC) for Indian capital gains tax paid.</p>
+      <div class="cs-result">Repatriation: NRO account → Form 15CA + Form 15CB (CA certificate) → up to USD 1 million per financial year to London.</div>
+    </div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">02</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Multi-Generation Succession · Australia · OCI</div>
+        <h3>Priya Iyer — Multi-Generation Succession: Grandfather's Property</h3>
+        <div class="cs-sub">Sydney, Australia · Grandfather (1978) → Mother (1995) → Priya (2022) → Sale 2026</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Priya's maternal grandfather purchased a house in Chennai in 1978 for ₹2.5 lakh. He passed away in 1995; Priya's mother inherited it. Her mother passed away in 2022; Priya (Australian citizen, OCI card holder) inherited. The house is now valued at ₹3.5 crore. Priya decides to sell in 2026.</div>
+      <div class="cs-question"><strong>Questions:</strong> Who is the 'previous owner' under Section 49(1)? What is Priya's cost of acquisition? Can she use FMV as of April 1, 2001?</div>
+
+      <div class="callout navy">
+        <span class="c-label">Section 49(1) — Tracing the Chain</span>
+        <p>Section 49(1) traces back to the <strong>last person who actually purchased the asset</strong>. Priya's grandfather purchased in 1978. Priya's mother's 1995 inheritance was not a purchase. Therefore, Priya's cost = grandfather's 1978 cost of ₹2.5 lakh.</p>
+      </div>
+
+      <table class="comp-table">
+        <tr class="sub-head"><td colspan="2">Option A — 20% with CII Indexation (using FMV April 1, 2001)</td></tr>
+        <tr><td>FMV as on April 1, 2001 (Registered Valuer certificate required)</td><td>₹18,00,000</td></tr>
+        <tr><td>Indexed cost (CII 2001-02=100; 2024-25=363): 18L × 363/100</td><td>₹65,34,000</td></tr>
+        <tr><td>LTCG (Sale ₹3.5Cr − ₹65.34L)</td><td>₹2,84,66,000</td></tr>
+        <tr><td>Tax @ 20%</td><td>₹56,93,000</td></tr>
+        <tr class="sub-head"><td colspan="2">Option B — 12.5% without Indexation</td></tr>
+        <tr><td>LTCG (₹3.5Cr − ₹18L FMV April 2001)</td><td>₹3,32,00,000</td></tr>
+        <tr><td>Tax @ 12.5%</td><td>₹41,50,000</td></tr>
+        <tr class="highlight"><td>✓ Better Option: 12.5% without indexation saves ₹15.4 lakh</td><td>₹41,50,000</td></tr>
+      </table>
+
+      <p><strong>Procedural requirements:</strong> Registered Valuer's certificate for FMV as on April 1, 2001. Legal heir certificate / succession certificate. Probate (mandatory in Tamil Nadu for testamentary succession on immovable property). Property mutation completed before sale. As an OCI, Priya can own and sell residential/commercial property.</p>
+      <div class="cs-result">Key Rule: FMV as on April 1, 2001 replaces the original cost if original acquisition was pre-April 2001 — get a Registered Valuer's certificate.</div>
+    </div>
+  </div>
+
+  <!-- CASE 3 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">03</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Agricultural Land · FEMA Restriction · USA NRI</div>
+        <h3>Vikram Nair — Inherited Agricultural Land</h3>
+        <div class="cs-sub">San Jose, USA · Green Card Holder · 5 Acres Kerala · CANNOT repatriate proceeds</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Vikram's parents owned 5 acres of agricultural land in Kerala (1990 purchase, ₹3 lakh). Both parents passed away; Vikram (Green Card holder, Indian citizen) inherited. Current market value: ₹1.2 crore. Vikram wants to sell and repatriate to the US.</div>
+      <div class="cs-question"><strong>Questions:</strong> Can Vikram sell agricultural land? Can he repatriate proceeds? What is the tax treatment?</div>
+
+      <div class="callout green">
+        <span class="c-label">FEMA — The Critical Distinction</span>
+        <p>NRIs <strong>cannot purchase</strong> agricultural land in India. However, they <strong>can inherit it</strong> — confirmed by multiple High Court rulings. Once inherited, the NRI can sell, but only to a <strong>Resident Indian</strong> (not to another NRI or foreign entity).</p>
+      </div>
+
+      <div class="callout red">
+        <span class="c-label">Most Misunderstood FEMA Rule — No Repatriation of Agricultural Land Proceeds</span>
+        <p>Sale proceeds from inherited agricultural land, farmhouses, and plantation property <strong>CANNOT be repatriated outside India</strong> by an NRI under the USD 1 million general scheme. Proceeds must remain in India (NRO account). Remittance abroad requires <strong>prior RBI approval</strong>.</p>
+      </div>
+
+      <table class="comp-table">
+        <tr><td>Sale Price</td><td>₹1,20,00,000</td></tr>
+        <tr><td>FMV as on April 1, 2001 (acquisition cost substitute)</td><td>₹12,00,000</td></tr>
+        <tr><td>Option A: Indexed cost (12L × 363/100) → Tax @ 20%</td><td>₹15,28,800</td></tr>
+        <tr><td>Option B: 12.5% without indexation on ₹1,08,00,000</td><td>₹13,50,000</td></tr>
+        <tr><td>Add: Health &amp; Education Cess @ 4%</td><td>₹54,000</td></tr>
+        <tr class="highlight"><td>✓ Total Tax (12.5% option preferred)</td><td>₹14,04,000</td></tr>
+      </table>
+
+      <p><strong>Vikram's options for the NRO proceeds:</strong> (a) Reinvest in residential property (Section 54F — can eliminate LTCG tax entirely), (b) ₹50 lakh in capital gain bonds (Section 54EC), (c) NRO FDs/mutual funds generating income in India, (d) Gift to resident Indian relatives (gifts to lineal relatives are tax-free).</p>
+      <div class="cs-result">Critical: Sale proceeds STAY in India. Cannot remit abroad without prior RBI approval. Plan reinvestment in India accordingly.</div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART II — RENTAL -->
+  <div class="part-header" id="part2">
+    <div class="part-num">Part II</div>
+    <h2>Rental Income from Inherited and Owned Property</h2>
+    <p class="part-sub">Taxable in India under Section 22 — with specific TDS obligations on tenants</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std">
+      <thead><tr><th>Item</th><th>Treatment</th></tr></thead>
+      <tbody>
+        <tr><td>Gross Annual Value</td><td>Higher of standard rent or actual rent received</td></tr>
+        <tr><td>Less: Municipal taxes paid</td><td>Deductible in full</td></tr>
+        <tr><td>Less: Standard Deduction (Section 24a)</td><td>30% of Net Annual Value — flat, no bills needed</td></tr>
+        <tr><td>Less: Interest on housing loan (Section 24b)</td><td>Fully deductible — no ₹2 lakh cap for let-out property</td></tr>
+        <tr><td>TDS obligation on tenant</td><td class="caution">30% TDS u/s 195 — no monthly threshold for NRI landlords</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CASE 4 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">04</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Multiple Properties · Co-Ownership · Singapore NRIs</div>
+        <h3>Ananya &amp; Deepa Sharma — Two Sisters, Two Inherited Properties</h3>
+        <div class="cs-sub">Singapore · Residential flat ₹35K/mo + Commercial shop ₹55K/mo + Self-occupied flat</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Sisters Ananya and Deepa Sharma (both Singapore-based NRIs) inherited two properties from their parents — a residential flat in Pune (monthly rent ₹35,000) and a commercial shop in Nashik (monthly rent ₹55,000). They also have a self-occupied apartment in Pune. All via a Will. Each owns 50% of all three properties.</div>
+      <div class="cs-question"><strong>Questions:</strong> How is rental income taxed? Can they treat the self-occupied flat as 'self-occupied'? What is the tenant's TDS obligation?</div>
+
+      <div class="callout navy">
+        <span class="c-label">Rule — Maximum Two Self-Occupied Properties (FY 2024-25 Onwards)</span>
+        <p>From FY 2024-25 onwards, an individual can declare a <strong>maximum of TWO properties as self-occupied</strong> (NIL annual value). All other properties — even if genuinely vacant — are deemed let-out at market rent and taxable.</p>
+      </div>
+
+      <table class="comp-table">
+        <tr class="sub-head"><td colspan="2">Ananya's Share — 50% Co-Ownership (Annual)</td></tr>
+        <tr><td>Residential flat rent (₹35K × 12 × 50%)</td><td>₹2,10,000</td></tr>
+        <tr><td>Less: Municipal taxes (50% share)</td><td>₹6,000</td></tr>
+        <tr><td>Less: 30% standard deduction (Section 24a)</td><td>₹61,200</td></tr>
+        <tr><td>Taxable from residential flat</td><td>₹1,42,800</td></tr>
+        <tr><td>Commercial shop rent (₹55K × 12 × 50%)</td><td>₹3,30,000</td></tr>
+        <tr><td>Less: Municipal taxes + 30% standard deduction</td><td>₹1,05,300</td></tr>
+        <tr><td>Taxable from commercial shop</td><td>₹2,24,700</td></tr>
+        <tr class="highlight"><td>Total Taxable Rental Income (Ananya)</td><td>₹3,67,500</td></tr>
+        <tr><td>Self-occupied flat — declared as self-occupied</td><td class="tax-free">Annual Value = Nil</td></tr>
+      </table>
+
+      <p><strong>TDS compliance:</strong> Tenants must deduct TDS at 30% on rent paid to NRI landlords (Section 195) from the first rupee — unlike the ₹50,000/month threshold for resident landlords. Tenant deposits TDS using Form 26Q and issues Form 16A. If TDS is not deducted, the tenant becomes an 'assessee in default' personally liable for the tax plus interest.</p>
+      <div class="cs-result">DTAA — Singapore: Rental income from Indian property is taxable in India. Sisters claim FTC in Singapore for Indian tax paid.</div>
+    </div>
+  </div>
+
+  <!-- CASE 5 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">05</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Vacant Property · Deemed Let-Out · Canada NRI</div>
+        <h3>Sameer Bose — Vacant Inherited Property: The 'Deemed Let Out' Trap</h3>
+        <div class="cs-sub">Toronto, Canada · Two inherited Kolkata flats — both vacant, both declared self-occupied</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Sameer Bose inherited two flats in Kolkata from his father. Both are vacant — one he intends to use on India visits, the other he couldn't rent out. He declares BOTH as 'self-occupied' in his Indian ITR.</div>
+      <div class="cs-question"><strong>Question:</strong> Can Sameer declare both as self-occupied? What are the consequences?</div>
+
+      <div class="callout red">
+        <span class="c-label">Tax Trap — Deemed Let-Out on Vacant Properties</span>
+        <p>Sameer can declare only <strong>ONE</strong> of the two flats as self-occupied (zero Annual Value). The second flat, even if genuinely vacant and never let out, is treated as <strong>DEEMED LET OUT</strong>. Its Annual Value = prevailing market rent — and rental income on that notional basis becomes taxable, regardless of whether he received a single rupee of rent.</p>
+        <p>An NRI with multiple inherited vacant properties can find himself paying income tax on <strong>rent he never collected</strong>. The only relief: the 30% standard deduction under Section 24(a) still applies to this notional income.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART III — SHARES & MF -->
+  <div class="part-header" id="part3">
+    <div class="part-num">Part III</div>
+    <h2>Inherited Shares, Mutual Funds &amp; Demat Assets</h2>
+    <p class="part-sub">Section 49(1) applies equally to securities — the previous owner's cost and holding period transfer to the heir</p>
+  </div>
+
+  <!-- CASE 6 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">06</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Blue-Chip Portfolio · Section 112A · UAE NRI</div>
+        <h3>Arun Pillai — Inherited Blue-Chip Share Portfolio</h3>
+        <div class="cs-sub">Dubai, UAE · Infosys + HDFC Bank + Reliance Industries · Total LTCG ₹77.5L</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Arun Pillai's father passed away in 2024, leaving a demat portfolio: 1,000 shares of Infosys (cost ₹150/share, bought 2001), 500 shares of HDFC Bank (cost ₹400/share, bought 2010), 2,000 shares of Reliance (cost ₹200/share, bought 2005). Arun (Dubai NRI) wants to sell all and repatriate.</div>
+      <div class="cs-question"><strong>Questions:</strong> What is Arun's cost of acquisition? Holding period? LTCG or STCG? TDS implications?</div>
+
+      <div class="callout navy">
+        <span class="c-label">Key Principle — Section 49(1) for Inherited Shares</span>
+        <p>Cost of inherited shares = <strong>father's original purchase cost</strong>. Holding period <strong>includes the father's holding period</strong> under Section 2(42A). Since the father held all stocks &gt; 12 months, ALL gains are <strong>LTCG at 12.5%</strong> with ₹1.25 lakh annual exemption (Section 112A).</p>
+      </div>
+
+      <table class="comp-table">
+        <tr><td>Infosys: Sale (1000 × ₹1,900) − Cost (1000 × ₹150)</td><td>₹17,50,000</td></tr>
+        <tr><td>HDFC Bank: Sale (500 × ₹1,600) − Cost (500 × ₹400)</td><td>₹6,00,000</td></tr>
+        <tr><td>Reliance: Sale (2000 × ₹2,900) − Cost (2000 × ₹200)</td><td>₹54,00,000</td></tr>
+        <tr><td>Total LTCG</td><td>₹77,50,000</td></tr>
+        <tr><td>Less: Annual LTCG exemption (Section 112A)</td><td>₹1,25,000</td></tr>
+        <tr><td>Taxable LTCG</td><td>₹76,25,000</td></tr>
+        <tr><td>Tax @ 12.5%</td><td>₹9,53,125</td></tr>
+        <tr><td>Add: Health &amp; Education Cess @ 4%</td><td>₹38,125</td></tr>
+        <tr class="highlight"><td>Total Tax Liability</td><td>₹9,91,250</td></tr>
+      </table>
+
+      <p><strong>Procedural steps:</strong> (1) Shares transmitted to Arun's demat account via legal heir certificate + death certificate + transmission request form to DP. (2) Open PIS sub-account under NRE or NRO account — NRIs must route all share trades through PIS. (3) TDS at 12.5% deducted by broker. (4) File ITR-2 to claim ₹1.25 lakh exemption and any TDS refund.</p>
+      <p><strong>Dividend income:</strong> Dividends are taxable at slab rate; TDS deducted at 20% by company. Under India-UAE DTAA, no UAE tax — Arun pays Indian tax with no double taxation concern.</p>
+      <div class="cs-result">Repatriation: NRE-based PIS proceeds — fully repatriable. NRO-based PIS proceeds — USD 1 million per year.</div>
+    </div>
+  </div>
+
+  <!-- CASE 7 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">07</div>
+      <div class="cs-meta">
+        <div class="cs-tag">ELSS · Debt MF · Balanced Fund · Germany NRI</div>
+        <h3>Neha Krishnan — Inherited Mutual Fund Folio: ELSS and Debt Funds</h3>
+        <div class="cs-sub">Munich, Germany · Post-2023 Debt MF rule change · Three fund categories</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Neha inherited her mother's mutual fund folio in 2025: ₹15 lakh in ELSS fund (SIP units 2015-2020); ₹8 lakh in a debt mutual fund (purchased post-April 2023); ₹12 lakh in a balanced advantage fund (60% equity). She wants to redeem all three.</div>
+      <div class="cs-question"><strong>Questions:</strong> Tax rates on each? How is the ELSS 3-year lock-in handled post-inheritance? How does the post-2023 debt fund change affect her?</div>
+
+      <div class="tbl-wrap">
+        <table class="std">
+          <thead><tr><th>Fund</th><th>Lock-in / Holding</th><th>Tax Treatment</th><th>TDS</th></tr></thead>
+          <tbody>
+            <tr><td>ELSS Fund (SIP 2015-2020)</td><td>Lock-in runs from previous owner's purchase date — already over. All units LTCG.</td><td class="tax-12">12.5% LTCG (Section 112A)</td><td>12.5%</td></tr>
+            <tr><td>Debt Fund (post-April 2023)</td><td>No LTCG benefit — rule change effective April 2023</td><td class="tax-high">Slab rate — always STCG regardless of holding period</td><td class="tax-high">30%</td></tr>
+            <tr><td>Balanced Advantage Fund (&gt;65% equity)</td><td>Classified as equity-oriented</td><td class="tax-12">12.5% LTCG applies</td><td>12.5%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout red">
+        <span class="c-label">Rule Change — Debt Mutual Fund Taxation Post-April 2023</span>
+        <p>With effect from April 1, 2023, debt mutual funds lost their LTCG benefit. <strong>Regardless of holding period, all gains are taxed at the applicable income tax slab rate</strong>. TDS on debt MF redemption for NRIs is 30%. This makes debt MFs significantly less tax-efficient for NRIs compared to NRE/FCNR fixed deposits which earn completely tax-free interest.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART IV — GIFTS -->
+  <div class="part-header" id="part4">
+    <div class="part-num">Part IV</div>
+    <h2>Gifts, Transfers &amp; Inter-Family Transactions</h2>
+    <p class="part-sub">Section 56(2)(x) — gifts from relatives are completely tax-free regardless of amount</p>
+  </div>
+
+  <div class="law-box">
+    <span class="lb-label">Section 56(2)(x) — Taxability of Gifts</span>
+    <p>Any sum or property received without adequate consideration becomes taxable if it exceeds ₹50,000. <strong>EXCEPTIONS:</strong> Gifts from <em>relatives</em> are completely tax-free regardless of amount. 'Relative' includes spouse, siblings, siblings of spouse and parents, and all lineal ascendants/descendants and their spouses.</p>
+    <p>Gifts received on occasion of marriage, under a Will, or by way of inheritance are also <strong>exempt regardless of relationship</strong>.</p>
+  </div>
+
+  <!-- CASE 8 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">08</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Gift of Property · Father to NRI Son · New Zealand</div>
+        <h3>Kartik Menon — Gift of Plot from Father (₹80 Lakh Land)</h3>
+        <div class="cs-sub">Auckland, New Zealand · Father's Section 47(iii) exemption · FEMA agricultural land watch</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Kartik's father in Kerala wants to gift a plot of land (market value ₹80 lakh) to Kartik as an advance on his inheritance. The father purchased the land in 1995 for ₹5 lakh.</div>
+      <div class="cs-question"><strong>Questions:</strong> Is the gift taxable for Kartik? What is his cost of acquisition when he eventually sells? Father's tax implications at time of gift?</div>
+
+      <div class="tbl-wrap">
+        <table class="std">
+          <thead><tr><th>Party</th><th>Tax at Time of Gift</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>Kartik (recipient)</td><td class="tax-free">Tax-FREE</td><td>Gift from parent = relative under Section 56(2)(x) — exempt regardless of value</td></tr>
+            <tr><td>Father (donor)</td><td class="tax-free">Tax-FREE</td><td>Section 47(iii) specifically exempts gifts from capital gains tax at time of transfer</td></tr>
+            <tr><td>Kartik's future sale</td><td>Section 49(1) applies</td><td>Cost = father's original cost of ₹5 lakh (or FMV April 1, 2001 if lower); holding period from father's 1995 purchase</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout red">
+        <span class="c-label">FEMA Watch — NRI Cannot Hold Agricultural Land Received by Gift</span>
+        <p>While the Income Tax Act is generous on gifts between relatives, FEMA has its own restrictions. An NRI can receive a gift of immovable property from a resident — but <strong>cannot hold agricultural land, farmhouses, or plantation property received by gift</strong> (as opposed to inheritance). Upon receiving such a gift, the NRI must either: (a) sell it to a resident Indian within a reasonable time, or (b) seek specific RBI approval to retain it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 9 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">09</div>
+      <div class="cs-meta">
+        <div class="cs-tag">NRI Remittances to Parents · Clubbing Provisions · USA</div>
+        <h3>Suresh Patel — NRI Gifts Money to Parents in India</h3>
+        <div class="cs-sub">Houston, USA · ₹20 lakh/year to parents · Clubbing provisions do NOT apply to parents</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Suresh Patel (Houston) transfers ₹20 lakh per year to his retired parents in India for living expenses. Parents invest the surplus in fixed deposits and purchase shares in their name.</div>
+      <div class="cs-question"><strong>Questions:</strong> Is this gift taxable for Suresh in India? For his parents? Who is taxed on returns from the invested money?</div>
+
+      <div class="tbl-wrap">
+        <table class="std">
+          <thead><tr><th>Party / Issue</th><th>Tax Position</th></tr></thead>
+          <tbody>
+            <tr><td>Suresh — outward remittance</td><td class="tax-free">Not taxable in India. No 'gift tax' on NRI outward remittances.</td></tr>
+            <tr><td>Parents — gift received from son</td><td class="tax-free">Tax-FREE. Son is a lineal descendant = relative under Section 56(2)(x).</td></tr>
+            <tr><td>Income earned by parents on invested gifted money</td><td>Taxable in parents' hands (NOT clubbed back to Suresh)</td></tr>
+            <tr><td>Clubbing provisions (Section 64)</td><td>Clubbing applies to transfers to spouse and minor children ONLY — NOT parents</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>US compliance note:</strong> Suresh must file FBAR (FinCEN 114) to disclose any foreign bank accounts over USD 10,000 — including any joint accounts or accounts over which he has signatory authority in India.</p>
+      <div class="cs-result">Since parents are senior citizens with modest incomes, tax on returns from invested funds is likely minimal or nil after the ₹3 lakh basic exemption and 80TTB deduction (₹50,000 for senior citizens).</div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART V — PPF & EPF -->
+  <div class="part-header" id="part5">
+    <div class="part-num">Part V</div>
+    <h2>PPF, EPF &amp; Small Savings Instruments</h2>
+    <p class="part-sub">Accumulated balances from pre-emigration years — specific rules apply to NRIs</p>
+  </div>
+
+  <!-- CASE 10 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">10</div>
+      <div class="cs-meta">
+        <div class="cs-tag">PPF Maturity · NRI Cannot Extend · Qatar</div>
+        <h3>Rajesh Kumar — PPF Account Maturity</h3>
+        <div class="cs-sub">Doha, Qatar · PPF opened 2009 · Matures 2024 · ₹32 lakh balance · CANNOT extend</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Rajesh moved to Qatar in 2016. Before leaving, he had been contributing to a PPF account opened in 2009. The 15-year maturity period expires in 2024. The accumulated balance is ₹32 lakh.</div>
+
+      <div class="tbl-wrap">
+        <table class="std">
+          <thead><tr><th>Issue</th><th>Position for NRIs</th></tr></thead>
+          <tbody>
+            <tr><td>Can NRI extend PPF beyond 15 years?</td><td class="caution">NO — NRIs cannot extend in 5-year blocks (unlike resident Indians)</td></tr>
+            <tr><td>Interest after maturity (from Oct 2024)</td><td class="caution">Only POSA rate (~4% p.a.) — down from 7.1% PPF rate. Effective penalty for not closing.</td></tr>
+            <tr><td>Tax on maturity proceeds (Section 10(11))</td><td class="tax-free">Completely TAX-FREE in India — entire ₹32 lakh is exempt</td></tr>
+            <tr><td>Qatar tax position</td><td class="tax-free">Qatar has no personal income tax — no issue</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout gold">
+        <span class="c-label">Action Required</span>
+        <p>NRIs with PPF accounts must close at maturity. The 2024 notification makes continued holding financially detrimental — 4% rate vs 7-8% tax-free NRE FD rate. <strong>Close PPF at maturity → transfer to NRO account → shift to NRE FD for ongoing tax-free returns</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 11 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">11</div>
+      <div class="cs-meta">
+        <div class="cs-tag">EPF Withdrawal · 5-Year Rule · Netherlands NRI</div>
+        <h3>Anita Joshi — EPF Withdrawal</h3>
+        <div class="cs-sub">Amsterdam, Netherlands · 8 years service · ₹18 lakh EPF balance · TAX-FREE withdrawal</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Anita worked in Mumbai for 8 years before moving to the Netherlands in 2018. Her EPF account has a balance of ₹18 lakh. She wants to withdraw the full amount.</div>
+
+      <div class="tbl-wrap">
+        <table class="std">
+          <thead><tr><th>Condition</th><th>Tax Treatment</th></tr></thead>
+          <tbody>
+            <tr><td>Continuous service ≥ 5 years (Anita: 8 years ✓)</td><td class="tax-free">EPF withdrawal completely TAX-FREE (Section 10(12)). No TDS if PAN provided.</td></tr>
+            <tr><td>Withdrawal before 5 years, amount &gt; ₹50,000</td><td class="tax-high">TDS at 10% (with PAN) or 34.608% (without PAN)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Anita must update her UAN portal with overseas address and banking details. Transfer EPF proceeds to NRO account and then repatriate. In the Netherlands, this lump sum may be taxable — Article on lump sum pension/provident fund receipts in the India-Netherlands DTAA should be checked with a Dutch tax advisor.</p>
+      <div class="cs-result">Anita's ₹18 lakh EPF withdrawal is fully tax-free in India (8 years > 5-year threshold). Transfer to NRO → repatriate within USD 1 million annual limit.</div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART VI — DIVIDENDS & INTEREST -->
+  <div class="part-header" id="part6">
+    <div class="part-num">Part VI</div>
+    <h2>Dividends, Interest &amp; Investment Income</h2>
+    <p class="part-sub">Post-DDT regime (from April 2020) — dividends taxable in shareholder's hands; TDS applies from first rupee</p>
+  </div>
+
+  <!-- CASE 12 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">12</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Dividend Portfolio · DTAA Planning · Japan NRI</div>
+        <h3>Ritu Saxena — Dividend Portfolio from Inherited Shares</h3>
+        <div class="cs-sub">Tokyo, Japan · ₹6 lakh/year dividends · 20% TDS → Refund of ₹86,200 via ITR</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Ritu inherited a portfolio of blue-chip dividend-paying shares from her father. She receives approximately ₹6 lakh per year in dividends from ONGC, Coal India, ITC, HCL Tech, and Hindustan Zinc. She does not want to sell the shares.</div>
+      <div class="cs-question"><strong>Questions:</strong> How are dividends taxed in India for NRIs? What TDS applies? Can DTAA help?</div>
+
+      <div class="callout navy">
+        <span class="c-label">Post-2020 — Dividend Distribution Tax (DDT) Abolished</span>
+        <p>From April 2020, dividends are <strong>taxable in the shareholder's hands at their applicable income tax slab rate</strong>. For NRIs, TDS is deducted at <strong>20%</strong> on all dividends — no minimum threshold (unlike ₹5,000 for residents).</p>
+      </div>
+
+      <table class="comp-table">
+        <tr><td>Total dividend income (FY 2025-26)</td><td>₹6,00,000</td></tr>
+        <tr><td>TDS deducted by companies @ 20%</td><td>₹1,20,000</td></tr>
+        <tr><td>Tax on ₹6L at slab (Nil up to ₹2.5L + 5% on next ₹2.5L + 20% on ₹1L)</td><td>₹32,500</td></tr>
+        <tr><td>Add: Cess @ 4%</td><td>₹1,300</td></tr>
+        <tr><td>Total Tax Liability</td><td>₹33,800</td></tr>
+        <tr><td>TDS already deducted</td><td>₹1,20,000</td></tr>
+        <tr class="highlight"><td>REFUND due — file ITR-2 to claim</td><td>₹86,200</td></tr>
+      </table>
+
+      <p><strong>DTAA Planning:</strong> Submit Form 10F + Japan Tax Residency Certificate to each company's registrar before the dividend record date. Under India-Japan DTAA (Article 10), TDS may be reduced to 10-15% instead of 20% — reducing upfront TDS and the refund wait.</p>
+      <div class="cs-result">GIFT City Alternative: Ritu could invest via IFSC funds in GIFT City — distributions under Section 10(4D) are exempt in India, completely eliminating dividend tax. An increasingly popular structure for NRI equity investors.</div>
+    </div>
+  </div>
+
+  <!-- CASE 13 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">13</div>
+      <div class="cs-meta">
+        <div class="cs-tag">NRO FD Interest · DTAA Saves ₹1.75L/year · USA NRI</div>
+        <h3>Mohan Iyer — NRO Fixed Deposit Interest: DTAA Benefit</h3>
+        <div class="cs-sub">New Jersey, USA · ₹1.5 Cr NRO FDs · ₹11.25L/yr interest · India-USA DTAA reduces TDS 30%→15%</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Mohan has ₹1.5 crore in NRO fixed deposits at three Indian banks (inherited + own savings), earning approximately 7.5% interest — about ₹11.25 lakh per year. TDS at 30% is being deducted by each bank — totalling about ₹3.38 lakh per year.</div>
+      <div class="cs-question"><strong>Questions:</strong> Can Mohan reduce TDS using DTAA? How much can he save? How is this taxed in the US?</div>
+
+      <table class="comp-table">
+        <tr><td>Annual NRO FD interest income</td><td>₹11,25,000</td></tr>
+        <tr><td>TDS without DTAA (30% + cess)</td><td>₹3,51,000</td></tr>
+        <tr><td>TDS with India-USA DTAA Article 11 (15% + cess)</td><td>₹1,75,500</td></tr>
+        <tr class="highlight"><td>Annual TDS saving from DTAA claim</td><td>₹1,75,500</td></tr>
+        <tr><td>Over 5 years (compounded with reinvestment)</td><td>~₹9-10 lakh</td></tr>
+      </table>
+
+      <p><strong>Procedure:</strong> Obtain IRS Form 6166 (Tax Residency Certificate) → File Form 10F with each bank → Bank deducts TDS at 15% instead of 30%.</p>
+      <p><strong>US tax treatment:</strong> Report all NRO FD interest on US federal return (Form 1040, Schedule B). Claim Foreign Tax Credit on Form 1116 for the 15% Indian TDS paid. Mohan must also file FBAR (FinCEN 114) to disclose foreign bank accounts over USD 10,000, and potentially Form 8938 (FATCA) if aggregate foreign assets exceed the threshold.</p>
+      <div class="cs-result">Action: Obtain IRS Form 6166 → file Form 10F with each bank immediately → save ₹1.75 lakh annually in TDS.</div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- PART VII — JOINT PROPERTY -->
+  <div class="part-header" id="part7">
+    <div class="part-num">Part VII</div>
+    <h2>Complex Scenarios: Joint Property with Resident Co-Owner</h2>
+    <p class="part-sub">One of the most practically complex NRI property tax situations — bifurcated TDS obligations</p>
+  </div>
+
+  <!-- CASE 14 -->
+  <div class="case-study">
+    <div class="cs-header">
+      <div class="cs-num">14</div>
+      <div class="cs-meta">
+        <div class="cs-tag">Joint Inheritance · NRI + Resident Co-Owner · Singapore</div>
+        <h3>Arvind Sharma (NRI) &amp; Raj Sharma (Resident) — Joint Delhi Apartment Sale</h3>
+        <div class="cs-sub">₹2.8 Cr sale · 50% each · Section 194IA (1%) for Raj vs Section 195 (12.5%) for Arvind</div>
+      </div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-scenario">Arvind (Singapore NRI) and Raj (Resident Indian, Delhi) jointly inherited their parents' Delhi apartment (50% each). Purchased 1992 for ₹8 lakh. Current sale value: ₹2.8 crore. Arvind's share = ₹1.4 crore.</div>
+      <div class="cs-question"><strong>Critical Question:</strong> How is TDS handled when one co-owner is NRI and one is resident? What are the respective tax treatments?</div>
+
+      <div class="callout red">
+        <span class="c-label">Most Practically Complex Situation — Bifurcated TDS</span>
+        <p>The buyer must deduct TDS differently for each co-owner: For <strong>Raj (resident)</strong>: TDS under Section 194IA = <strong>1%</strong> of ₹1.4 crore = ₹1.4 lakh. For <strong>Arvind (NRI)</strong>: TDS under Section 195 = <strong>12.5%</strong> on LTCG (or on full amount without LDC). In practice, many buyers deduct 12.5% on the entire ₹2.8 crore, causing massive over-deduction for the resident co-owner. <strong>Both co-owners should proactively obtain Lower Deduction Certificates.</strong></p>
+      </div>
+
+      <table class="comp-table">
+        <tr class="sub-head"><td colspan="2">Arvind's Share — NRI Co-Owner Calculation</td></tr>
+        <tr><td>Arvind's 50% sale consideration</td><td>₹1,40,00,000</td></tr>
+        <tr><td>Less: 50% of indexed cost (50% × ₹8L, indexed)</td><td>₹14,58,000</td></tr>
+        <tr><td>LTCG (12.5% without indexation preferred)</td><td>₹1,35,42,000</td></tr>
+        <tr><td>Tax @ 12.5%</td><td>₹16,92,750</td></tr>
+        <tr><td>Add: Cess @ 4%</td><td>₹67,710</td></tr>
+        <tr><td>Total Indian Tax</td><td>₹17,60,460</td></tr>
+        <tr><td>TDS buyer deducts (on Arvind's LTCG @ 12.5%)</td><td>₹17,93,400</td></tr>
+        <tr class="highlight"><td>Net proceeds to Arvind (NRO account, after TDS)</td><td>₹1,22,06,600</td></tr>
+      </table>
+
+      <p><strong>Repatriation to Singapore:</strong> Arvind's share ≈ USD 1.46 million — exceeds the USD 1 million annual limit. May need repatriation in <strong>two tranches across two financial years</strong>. Form 15CA (Part D) + Form 15CB from a CA mandatory before each remittance. Singapore does not tax capital gains — no double taxation arises.</p>
+      <div class="cs-result">Key Action: Arvind obtains LDC specifying TDS restricted to actual tax amount (₹17.6L) — not 12.5% on full sale value. Split repatriation over 2 financial years to stay within USD 1M annual limit.</div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- MASTER SUMMARY TABLE -->
+  <div class="part-header" id="master">
+    <div class="part-num">Master Summary</div>
+    <h2>All 14 Case Studies at a Glance</h2>
+    <p class="part-sub">Complete reference table — Scenario · Asset · Key Rule · Tax Rate · Repatriation</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std master-tbl">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>NRI / Location</th>
+          <th>Asset Type</th>
+          <th>Key Rule</th>
+          <th>Tax Rate</th>
+          <th>Repatriation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Rahul (UK)</td><td>Residential property sale</td><td>Section 49(1): father's cost; Section 112</td><td class="tax-12">12.5% LTCG</td><td class="limited-rep">USD 1M/yr — NRO + 15CA/CB</td></tr>
+        <tr><td>2</td><td>Priya (Australia)</td><td>Multi-gen succession</td><td>FMV April 1, 2001 if pre-2001; trace to last purchaser</td><td class="tax-12">12.5% LTCG</td><td class="limited-rep">USD 1M/yr — NRO</td></tr>
+        <tr><td>3</td><td>Vikram (USA)</td><td>Agricultural land</td><td>Can inherit; sell only to resident Indian</td><td class="tax-12">12.5% LTCG</td><td class="no-rep">CANNOT repatriate — RBI approval needed</td></tr>
+        <tr><td>4</td><td>Ananya &amp; Deepa (Singapore)</td><td>Residential + commercial rental</td><td>30% TDS on tenants; max 2 self-occupied properties</td><td>Slab rate</td><td class="limited-rep">Via NRO — USD 1M/yr</td></tr>
+        <tr><td>5</td><td>Sameer (Canada)</td><td>Vacant inherited flats</td><td>Deemed let-out: notional rent taxable on 2nd+ property</td><td>Slab on notional rent</td><td>N/A</td></tr>
+        <tr><td>6</td><td>Arun (UAE)</td><td>Inherited share portfolio</td><td>Section 49(1); PIS route; holding period includes father's</td><td class="tax-12">12.5% LTCG above ₹1.25L</td><td class="free-rep">NRE PIS: unlimited; NRO: USD 1M/yr</td></tr>
+        <tr><td>7</td><td>Neha (Germany)</td><td>ELSS, Debt, Hybrid MF</td><td>Post-2023 debt funds: slab rate — no LTCG; lock-in from previous owner</td><td>12.5% equity; slab for debt</td><td class="limited-rep">NRO → 15CA/CB</td></tr>
+        <tr><td>8</td><td>Kartik (New Zealand)</td><td>Plot gifted by father</td><td>Section 47(iii): gift not taxable; Sec 49(1) for future sale</td><td>Future sale: 12.5% LTCG</td><td class="limited-rep">Check: agri land — may not be repatriable</td></tr>
+        <tr><td>9</td><td>Suresh (USA)</td><td>Cash remittances to parents</td><td>Section 56(2)(x): gift from son — tax-free for parents</td><td class="tax-free">No tax on gift</td><td>FBAR required in USA</td></tr>
+        <tr><td>10</td><td>Rajesh (Qatar)</td><td>PPF account maturity</td><td>Cannot extend; 4% rate post-maturity; Section 10(11) exempts</td><td class="tax-free">TAX-FREE maturity</td><td class="limited-rep">NRO → NRE transfer</td></tr>
+        <tr><td>11</td><td>Anita (Netherlands)</td><td>EPF withdrawal</td><td>5+ years service = tax-free; Section 10(12)</td><td class="tax-free">TAX-FREE (8 yrs service)</td><td class="limited-rep">NRO → repatriate</td></tr>
+        <tr><td>12</td><td>Ritu (Japan)</td><td>Inherited dividend portfolio</td><td>20% TDS on dividends; DTAA reduces to 10-15%</td><td>Slab rate (DTAA benefit)</td><td>N/A (income)</td></tr>
+        <tr><td>13</td><td>Mohan (USA)</td><td>NRO Fixed Deposits</td><td>Form 10F + IRS TRC reduces TDS 30% → 15%; saves ₹1.75L/yr</td><td>15% (India-USA DTAA)</td><td class="limited-rep">USD 1M/yr</td></tr>
+        <tr><td>14</td><td>Arvind + Raj (Singapore)</td><td>Joint inherited property</td><td>Bifurcated TDS: 1% (resident) vs 12.5% (NRI); LDC essential</td><td class="tax-12">12.5% LTCG (Arvind's share)</td><td class="limited-rep">2 tranches × USD 1M over 2 years</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- COMPLIANCE CHECKLIST -->
+  <div class="part-header" id="checklist">
+    <div class="part-num">Compliance Checklist</div>
+    <h2>NRI Income from Indian Assets — 5-Step Checklist</h2>
+    <p class="part-sub">From acquiring NRI status to annual compliance — the complete sequence</p>
+  </div>
+
+  <div class="checklist-steps">
+    <div class="cl-step">
+      <div class="cl-step-header">
+        <div class="cl-step-num">01</div>
+        <div class="cl-step-title">Immediately on Acquiring NRI Status</div>
+      </div>
+      <div class="cl-step-body">
+        <ul>
+          <li>Convert resident savings account to <strong>NRO account</strong> — failing to do so is a FEMA violation</li>
+          <li>Close or maintain PPF <strong>only until maturity</strong> — NRIs cannot open new PPF accounts</li>
+          <li>Register for <strong>PIS (Portfolio Investment Scheme)</strong> with a designated bank before trading Indian equities</li>
+          <li>Update address with all mutual fund folios, DPs, and insurance companies</li>
+          <li>Link <strong>PAN with Aadhaar</strong> if PAN was issued in India</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-step">
+      <div class="cl-step-header">
+        <div class="cl-step-num">02</div>
+        <div class="cl-step-title">When Inheriting Assets</div>
+      </div>
+      <div class="cl-step-body">
+        <ul>
+          <li>Obtain <strong>legal heir certificate / succession certificate / probate</strong> as applicable (state-specific requirements vary)</li>
+          <li>Register property <strong>mutation in your name</strong> at the local sub-registrar</li>
+          <li>Get shares/MF units transmitted via depository participant with death certificate and transmission form</li>
+          <li>Obtain <strong>Registered Valuer certificate for FMV as on April 1, 2001</strong> for any pre-2001 assets</li>
+          <li><strong>Do NOT treat inheritance value as cost</strong> — it is the previous owner's cost under Section 49(1)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-step">
+      <div class="cl-step-header">
+        <div class="cl-step-num">03</div>
+        <div class="cl-step-title">Before Selling Any Asset</div>
+      </div>
+      <div class="cl-step-body">
+        <ul>
+          <li>Apply for <strong>Lower Deduction Certificate (Form 13)</strong> at least 2–3 months before sale — especially for property where buyer TDS at 12.5% on full value substantially exceeds actual tax</li>
+          <li>Compute capital gains carefully: <strong>correct cost (Section 49(1))</strong>, correct holding period (includes previous owner), correct indexation option (FY of original purchase)</li>
+          <li>File <strong>Form 10F + TRC</strong> with payer for DTAA benefits before payment</li>
+          <li>Evaluate <strong>Section 54/54EC/54F reinvestment</strong> options to reduce or eliminate LTCG tax</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-step">
+      <div class="cl-step-header">
+        <div class="cl-step-num">04</div>
+        <div class="cl-step-title">For Repatriation of Funds</div>
+      </div>
+      <div class="cl-step-body">
+        <ul>
+          <li>All sale proceeds / rental income must first come into the <strong>NRO account</strong></li>
+          <li>For outward remittances: <strong>Form 15CA (self-declaration) + Form 15CB (CA certificate)</strong> mandatory for amounts exceeding ₹5 lakh</li>
+          <li>Annual limit: <strong>USD 1 million per financial year</strong></li>
+          <li><strong>Agricultural land / farmhouse sale proceeds: CANNOT be repatriated</strong> — requires prior RBI approval</li>
+          <li>Maintain records for <strong>7 years</strong> for potential Income Tax scrutiny</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cl-step">
+      <div class="cl-step-header">
+        <div class="cl-step-num">05</div>
+        <div class="cl-step-title">Annual Compliance</div>
+      </div>
+      <div class="cl-step-body">
+        <ul>
+          <li>File <strong>ITR-2 (or ITR-3 if business income)</strong> in India if total Indian income exceeds ₹2.5 lakh, or if any capital gain regardless of amount. Deadline: July 31.</li>
+          <li>Report foreign assets in <strong>Schedule FA</strong> of the ITR</li>
+          <li>File <strong>FBAR (FinCEN 114)</strong> for USA-based NRIs with foreign accounts over USD 10,000; Form 8938 (FATCA) if assets exceed threshold</li>
+          <li>Check <strong>Form 26AS / Annual Information Statement (AIS)</strong> online for TDS credit and advance notices</li>
+          <li>Renew <strong>Lower Deduction Certificate annually</strong> — valid for one financial year only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This report is prepared for academic and informational purposes only. The case studies presented are entirely hypothetical and designed to illustrate the application of Indian tax laws, FEMA regulations, and international treaty provisions. All names, figures, and scenarios are fictional. Tax laws and regulations are subject to amendment. The Income Tax Act 2025 (new consolidated code) has been enacted and applies from FY 2026-27 onwards; the Income Tax Act 1961 continues to govern FY 2025-26 assessments. Nothing in this report constitutes professional tax, legal, or financial advice. Consult a qualified Chartered Accountant or tax advisor for guidance specific to individual circumstances.
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="footer-author">
+      <strong>CA Parvesh Aghi</strong> · Chartered Accountant &amp; Visiting Professor, Finance<br>
+      IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University &nbsp;·&nbsp; May 2026
+    </div>
+    <div class="footer-links">
+      <a href="https://paraghi.github.io">Homepage</a>
+      <a href="mailto:parvesh1104@gmail.com">Email</a>
+      <a href="https://wa.me/919891450400">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/parvesh-aghi-34473b18">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
