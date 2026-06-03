@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP vs Lump Sum — Indian Mutual Fund Analysis | CA Parvesh Aghi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-light: #1a3259;
+    --gold: #b8922a;
+    --gold-light: #d4a843;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --text: #1c1c1c;
+    --muted: #5a5a5a;
+    --border: #d8cfc0;
+    --green: #1a5c3a;
+    --green-light: #e8f5ee;
+    --red: #7a1f1f;
+    --red-light: #fdf0f0;
+    --amber: #7a4f00;
+    --amber-light: #fff8e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.78;
+  }
+
+  /* TOP RULE */
+  .top-rule { height: 5px; background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%); }
+
+  /* MASTHEAD */
+  .masthead {
+    background: var(--navy);
+    color: white;
+    padding: 56px 48px 48px;
+    position: relative; overflow: hidden;
+  }
+  .masthead::before {
+    content: ''; position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border: 1px solid rgba(184,146,42,0.12); border-radius: 50%;
+  }
+  .masthead::after {
+    content: ''; position: absolute;
+    bottom: -60px; left: 220px;
+    width: 250px; height: 250px;
+    border: 1px solid rgba(184,146,42,0.08); border-radius: 50%;
+  }
+  .masthead-inner { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .series-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .series-label::after { content: ''; flex:1; height:1px; background: rgba(184,146,42,0.3); }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700; line-height: 1.12;
+    margin-bottom: 8px; letter-spacing: -0.5px;
+  }
+  .masthead h1 span { color: var(--gold-light); }
+
+  .masthead-subtitle {
+    font-style: italic; font-weight: 300; font-size: 1.1rem;
+    color: rgba(255,255,255,0.68); margin-bottom: 28px; line-height: 1.6;
+  }
+
+  .verdict-strip {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(184,146,42,0.12);
+    border: 1px solid rgba(184,146,42,0.25);
+    padding: 10px 18px; margin-bottom: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 1px;
+    color: var(--gold-light);
+  }
+  .verdict-strip .dot { width:6px; height:6px; background: var(--gold-light); border-radius:50%; }
+
+  .masthead-meta {
+    display: flex; flex-wrap: wrap; gap: 24px; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;
+  }
+  .meta-item { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .meta-item strong { color: rgba(255,255,255,0.82); font-weight: 400; }
+  .meta-dot { width:3px; height:3px; background: var(--gold); border-radius:50%; }
+
+  /* NAV */
+  .toc-nav {
+    background: var(--navy-light); padding: 0 48px;
+    border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .toc-nav-inner {
+    max-width: 920px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; align-items: center;
+  }
+  .toc-nav a {
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 14px 16px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .toc-nav a:first-child { padding-left: 0; }
+  .toc-nav a:last-child { border-right: none; }
+  .toc-nav a:hover { color: var(--gold-light); }
+
+  /* MAIN */
+  .content-wrap { max-width: 920px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* KEY FINDING BOX */
+  .key-finding {
+    background: var(--navy);
+    color: white; padding: 36px 40px; margin: 44px 0;
+    border-left: 4px solid var(--gold);
+  }
+  .key-finding .kf-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 14px;
+  }
+  .key-finding .kf-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: white; margin-bottom: 16px; line-height: 1.4;
+  }
+  .key-finding p { font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 12px; }
+  .key-finding p:last-child { margin-bottom: 0; }
+
+  /* THREE-CARD SUMMARY */
+  .three-card { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin: 32px 0; }
+  .tc-card { background: white; padding: 28px 24px; text-align: center; }
+  .tc-card .tc-strategy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .tc-card .tc-corpus {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--navy); line-height: 1; margin-bottom: 6px;
+  }
+  .tc-card .tc-xirr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem; color: var(--green); font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .tc-card .tc-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* SECTION HEADERS */
+  .section-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem; font-weight: 700; color: var(--navy);
+    margin: 48px 0 18px; padding-bottom: 12px;
+    border-bottom: 2px solid var(--navy);
+  }
+  .section-h1 .sec-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 6px;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--navy-light);
+    margin: 32px 0 12px;
+  }
+
+  p { margin-bottom: 16px; font-size: 0.97rem; color: var(--muted); }
+  p strong { color: var(--text); }
+
+  /* CALLOUT */
+  .callout {
+    padding: 18px 22px; margin: 22px 0; font-size: 0.94rem; line-height: 1.75;
+  }
+  .callout .c-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .callout.green { background: var(--green-light); border-left: 3px solid var(--green); }
+  .callout.green .c-label { color: var(--green); }
+  .callout.red { background: var(--red-light); border-left: 3px solid var(--red); }
+  .callout.red .c-label { color: var(--red); }
+  .callout.gold { background: var(--amber-light); border-left: 3px solid var(--gold); }
+  .callout.gold .c-label { color: var(--amber); }
+  .callout.navy { background: #eef1f6; border-left: 3px solid var(--navy); }
+  .callout.navy .c-label { color: var(--navy); }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x: auto; margin: 24px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: white; box-shadow: 0 1px 8px rgba(0,0,0,0.05); }
+  thead tr { background: var(--navy); color: white; }
+  thead th {
+    padding: 12px 14px; text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid #eee; }
+  tbody tr:hover { background: var(--cream); }
+  tbody td {
+    padding: 11px 14px; vertical-align: top;
+    border-right: 1px solid #f0ebe0;
+    line-height: 1.6; color: var(--muted);
+  }
+  tbody td:first-child { color: var(--navy); font-weight: 500; }
+  tbody td:last-child { border-right: none; }
+  tbody tr:nth-child(even) { background: #faf8f4; }
+
+  /* winner cells */
+  .win-ls { color: var(--green); font-weight: 600; }
+  .win-sip { color: #1a3a8a; font-weight: 600; }
+  .win-tie { color: var(--amber); font-weight: 600; }
+  .ret-high { color: var(--green); font-weight: 600; }
+  .ret-med { color: var(--amber); font-weight: 600; }
+
+  /* CONCEPT CARDS */
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .concept-card { background: white; border: 1px solid var(--border); padding: 24px; border-top: 3px solid var(--navy); }
+  .concept-card.sip-card { border-top-color: #1a3a8a; }
+  .concept-card.ls-card { border-top-color: var(--green); }
+  .concept-card.stp-card { border-top-color: var(--gold); grid-column: span 2; }
+  .concept-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .concept-card .cc-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .concept-card p { font-size: 0.88rem; margin-bottom: 10px; }
+  .concept-card ul { margin: 0 0 0 18px; }
+  .concept-card ul li { font-size: 0.86rem; color: var(--muted); margin-bottom: 6px; }
+
+  /* DECISION CARDS */
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .decision-card { padding: 24px; }
+  .decision-card.sip-d { background: #eef3fc; border: 1px solid #c5d3f0; }
+  .decision-card.ls-d { background: var(--green-light); border: 1px solid #b0d9c0; }
+  .decision-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+  .decision-card.sip-d h3 { color: #1a3a8a; }
+  .decision-card.ls-d h3 { color: var(--green); }
+  .decision-card ul { margin: 0 0 0 18px; }
+  .decision-card ul li { font-size: 0.87rem; color: var(--muted); margin-bottom: 8px; line-height: 1.6; }
+
+  /* STP STRATEGY BOX */
+  .stp-box {
+    background: var(--navy); color: white;
+    padding: 32px 36px; margin: 28px 0;
+  }
+  .stp-box .stp-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 16px;
+  }
+  .stp-box h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 16px; }
+  .stp-steps { display: flex; gap: 0; flex-wrap: wrap; }
+  .stp-step {
+    flex: 1; min-width: 180px;
+    background: rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    padding: 18px 20px;
+  }
+  .stp-step:last-child { border-right: none; }
+  .stp-step .ss-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: rgba(184,146,42,0.25);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .stp-step .ss-title { font-size: 0.85rem; font-weight: 600; color: var(--gold-light); margin-bottom: 6px; }
+  .stp-step .ss-body { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .stp-outcome {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-size: 0.88rem; color: rgba(255,255,255,0.7);
+    font-style: italic;
+  }
+
+  /* STAT PULL QUOTE */
+  .stat-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 28px 0; }
+  .stat-box {
+    background: white; border: 1px solid var(--border);
+    padding: 20px 24px; flex: 1; min-width: 160px; text-align: center;
+  }
+  .stat-box .sb-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--navy); line-height: 1; margin-bottom: 4px;
+  }
+  .stat-box .sb-val.green { color: var(--green); }
+  .stat-box .sb-val.gold { color: var(--gold); }
+  .stat-box .sb-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* PULLQUOTE */
+  .pullquote {
+    background: var(--cream-dark); border-left: 4px solid var(--gold);
+    padding: 24px 28px; margin: 28px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1.1rem;
+    color: var(--navy); line-height: 1.65;
+  }
+
+  /* MISSING DAYS */
+  .missing-days {
+    display: flex; gap: 0; margin: 24px 0; background: white;
+    border: 1px solid var(--border);
+  }
+  .md-item {
+    flex: 1; padding: 20px 18px; text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .md-item:last-child { border-right: none; }
+  .md-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .md-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+  .md-sub { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+  /* BEHAVIOURAL */
+  .behav-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0; }
+  .behav-card { background: white; border: 1px solid var(--border); padding: 20px; }
+  .behav-card .bc-icon { font-size: 1.3rem; margin-bottom: 8px; }
+  .behav-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .behav-card p { font-size: 0.84rem; color: var(--muted); margin: 0; line-height: 1.65; }
+
+  /* REFERENCES */
+  .ref-list { list-style: none; margin: 0; padding: 0; }
+  .ref-list li {
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+    display: flex; gap: 14px; align-items: baseline;
+  }
+  .ref-list li:last-child { border-bottom: none; }
+  .ref-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: var(--gold); flex-shrink: 0;
+    width: 24px;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #f5f5f0; border: 1px solid var(--border);
+    padding: 16px 20px; margin-top: 40px;
+    font-size: 0.79rem; color: var(--muted); line-height: 1.65;
+  }
+  .disclaimer strong { color: var(--text); }
+
+  /* DIVIDER */
+  .gold-div {
+    height: 1px; margin: 44px 0;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+    opacity: 0.35;
+  }
+
+  /* FOOTER */
+  .page-footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 36px 48px; }
+  .page-footer-inner {
+    max-width: 920px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .footer-author { font-size: 0.82rem; }
+  .footer-author strong { color: white; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    color: var(--gold-light); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .footer-links a:hover { color: white; }
+
+  @media (max-width: 680px) {
+    .masthead { padding: 36px 24px 32px; }
+    .toc-nav { padding: 0 16px; }
+    .content-wrap { padding: 0 20px 60px; }
+    .three-card { grid-template-columns: 1fr; gap: 1px; }
+    .concept-grid, .decision-grid { grid-template-columns: 1fr; }
+    .concept-card.stp-card { grid-column: span 1; }
+    .missing-days { flex-direction: column; }
+    .behav-grid { grid-template-columns: 1fr; }
+    .stp-steps { flex-direction: column; }
+    .page-footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Finance Research Report &nbsp;·&nbsp; May 2026</div>
+    <h1><span>SIP vs Lump Sum</span><br>Which Gives Better Returns?</h1>
+    <p class="masthead-subtitle">Evidence from Indian Mutual Fund Schemes — 30-Year Nifty 50 Study</p>
+
+    <div class="verdict-strip">
+      <span class="dot"></span>
+      Key Finding: Over 30 years, XIRR spread between SIP and Lump Sum is less than 0.1 percentage points — Consistency beats method
+    </div>
+
+    <div class="masthead-meta">
+      <div class="meta-item"><strong>CA Parvesh Aghi</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Visiting Professor, Finance</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Sources: BusinessToday · 5nance · ProfitNifty · AMFI · SEBI</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">May 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="toc-nav">
+  <div class="toc-nav-inner">
+    <a href="#summary">Summary</a>
+    <a href="#framework">Framework</a>
+    <a href="#scenarios">Scenarios</a>
+    <a href="#schemes">Schemes</a>
+    <a href="#longrun">30-Year Study</a>
+    <a href="#behavioural">Behaviour</a>
+    <a href="#decision">Decision</a>
+    <a href="#conclusions">Conclusions</a>
+    <a href="https://paraghi.github.io">← Homepage</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="content-wrap">
+
+  <!-- 1. EXECUTIVE SUMMARY -->
+  <div class="section-h1" id="summary">
+    <span class="sec-num">Section 01</span>
+    Executive Summary
+  </div>
+
+  <p>This report examines whether a <strong>Lump Sum (LS)</strong> investment or a <strong>Systematic Investment Plan (SIP)</strong> delivers superior returns in Indian equity mutual funds. Using 30-year Nifty 50 data, rolling return studies, and actual scheme-level performance, the report finds that <strong>no single method dominates unconditionally</strong>.</p>
+
+  <div class="key-finding">
+    <div class="kf-label">Central Finding</div>
+    <div class="kf-headline">Over 30 years, the method matters far less than the discipline.</div>
+    <p>Deploying ₹37.2 lakh over 30 years, a monthly SIP generated ₹3.38 crore (XIRR 12.48%) while a disciplined lump-sum-on-dips strategy generated ₹3.90 crore (XIRR 12.41%) — a spread of less than 0.1% XIRR. The practical advantage of either method is determined almost entirely by (a) market valuation at entry, (b) investor time horizon, and (c) behavioural resilience during drawdowns.</p>
+  </div>
+
+  <!-- Three strategy cards -->
+  <div class="three-card">
+    <div class="tc-card">
+      <div class="tc-strategy">Monthly SIP</div>
+      <div class="tc-corpus">₹3.38 Cr</div>
+      <div class="tc-xirr">XIRR 12.48%</div>
+      <div class="tc-desc">₹10,000/month · ₹37.2L total deployed over 30 years</div>
+    </div>
+    <div class="tc-card">
+      <div class="tc-strategy">Lump Sum on Dips</div>
+      <div class="tc-corpus">₹3.90 Cr</div>
+      <div class="tc-xirr">XIRR 12.41%</div>
+      <div class="tc-desc">₹1.2L/year on 10%+ dips · ₹37.2L total deployed over 30 years</div>
+    </div>
+    <div class="tc-card">
+      <div class="tc-strategy">Hybrid SIP + LS</div>
+      <div class="tc-corpus">₹3.90 Cr</div>
+      <div class="tc-xirr">XIRR 12.45%</div>
+      <div class="tc-desc">₹5K SIP + ₹60K annual LS · ₹37.2L total deployed over 30 years</div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="sb-val green">12.48%</div><div class="sb-lbl">SIP XIRR · 30 Years</div></div>
+    <div class="stat-box"><div class="sb-val green">12.41%</div><div class="sb-lbl">LS XIRR · 30 Years</div></div>
+    <div class="stat-box"><div class="sb-val gold">&lt;0.1%</div><div class="sb-lbl">XIRR Spread</div></div>
+    <div class="stat-box"><div class="sb-val">100M+</div><div class="sb-lbl">SIP Investors · India</div></div>
+    <div class="stat-box"><div class="sb-val">₹26,000Cr</div><div class="sb-lbl">Monthly SIP Inflows</div></div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 2. CONCEPTUAL FRAMEWORK -->
+  <div class="section-h1" id="framework">
+    <span class="sec-num">Section 02</span>
+    Conceptual Framework
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-card sip-card">
+      <div class="cc-tag">Systematic Investment Plan</div>
+      <h3>SIP — Rupee Cost Averaging</h3>
+      <p>A SIP deploys a fixed rupee amount at regular intervals (typically monthly), irrespective of market levels. The core mechanism is <strong>Rupee Cost Averaging (RCA)</strong>: more units are purchased at lower NAVs and fewer at higher NAVs, reducing the average cost of acquisition over time.</p>
+      <ul>
+        <li>Salaried investors with regular monthly income</li>
+        <li>Beginners entering equity markets</li>
+        <li>Volatile market environments</li>
+        <li>Small-cap and mid-cap allocations — higher volatility amplifies RCA benefit</li>
+        <li>Investors with limited risk tolerance or shorter time horizons (5–8 years)</li>
+      </ul>
+    </div>
+    <div class="concept-card ls-card">
+      <div class="cc-tag">Lump Sum Investment</div>
+      <h3>Lump Sum — Full Capital at Work</h3>
+      <p>A lump sum deploys the entire investable corpus at a single point in time. Returns are a direct function of NAV appreciation from the entry date. The full capital benefits from <strong>compounding from day one</strong> — a structural advantage in steadily rising markets.</p>
+      <ul>
+        <li>Windfall receipts: bonus, maturity proceeds, property sale</li>
+        <li>Post-correction entries — Nifty has fallen 15–20%+ from recent peak</li>
+        <li>Valuation-justified entries: Nifty P/E below 18–20x</li>
+        <li>Time horizon of 10+ years in diversified large-cap / index funds</li>
+        <li>High-conviction investors with demonstrated ability to hold through volatility</li>
+      </ul>
+    </div>
+    <div class="concept-card stp-card">
+      <div class="cc-tag">Systematic Transfer Plan — The Optimal Hybrid</div>
+      <h3>STP — Best of Both Worlds</h3>
+      <p>An STP parks lump-sum capital in a <strong>liquid/debt fund earning 6–7% p.a.</strong> and auto-transfers fixed monthly amounts into equity. This combines lump sum deployment efficiency with SIP's cost-averaging benefit and <strong>eliminates idle-cash loss</strong>. Academically supported default for most investors: <strong>70% SIP (core) + 30% direct lump sum / STP (tactical)</strong>.</p>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 3. MARKET SCENARIO ANALYSIS -->
+  <div class="section-h1" id="scenarios">
+    <span class="sec-num">Section 03</span>
+    Market-Scenario Analysis
+  </div>
+
+  <p>The winner in any given period is entirely context-dependent. The table below compares ₹1,20,000 deployed as lump sum vs ₹10,000/month SIP on the Nifty 50 across distinct market phases. The discipline is reading which phase you are in — not which method is universally superior.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Market Phase</th>
+          <th>Period</th>
+          <th>Lump Sum CAGR</th>
+          <th>SIP XIRR</th>
+          <th>Winner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sustained bull run</td>
+          <td>2010–15, 2020–21</td>
+          <td class="ret-high">~16–20%</td>
+          <td>~12–14%</td>
+          <td class="win-ls">Lump Sum</td>
+        </tr>
+        <tr>
+          <td>Sideways / volatile</td>
+          <td>2016–2019</td>
+          <td>~7–9%</td>
+          <td class="ret-high">~11–13%</td>
+          <td class="win-sip">SIP</td>
+        </tr>
+        <tr>
+          <td>Market crash &amp; recovery</td>
+          <td>2008–09, COVID 2020</td>
+          <td style="color:var(--red)">−15% to −35%</td>
+          <td class="ret-high">~14–18%</td>
+          <td class="win-sip">SIP</td>
+        </tr>
+        <tr>
+          <td>Post-correction entry (−10%+ dip)</td>
+          <td>Opportunistic</td>
+          <td class="ret-high">~15–22%</td>
+          <td>~12–14%</td>
+          <td class="win-ls">Lump Sum</td>
+        </tr>
+        <tr>
+          <td>Random / unknown entry</td>
+          <td>Any time</td>
+          <td>Unpredictable</td>
+          <td class="ret-high">Consistent</td>
+          <td class="win-sip">SIP</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <div class="c-label">Key Observation</div>
+    Lump sum outperforms <strong>only when market trajectory post-investment is consistently upward</strong>. SIP outperforms in volatile, flat, and recovering markets — which statistically describes a greater share of random entry points. Most investors cannot reliably identify which phase they are entering; this is the core argument for SIP as the default.
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 4. ACTUAL SCHEME PERFORMANCE -->
+  <div class="section-h1" id="schemes">
+    <span class="sec-num">Section 04</span>
+    Actual Scheme Performance — India
+  </div>
+
+  <p>The following table presents trailing 5-year returns (as of early 2026) for select popular Indian mutual fund schemes. Lump sum returns reflect CAGR; SIP returns reflect XIRR on ₹10,000/month.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Scheme (Direct Plan)</th>
+          <th>Category</th>
+          <th>5Y LS CAGR</th>
+          <th>5Y SIP XIRR</th>
+          <th>Edge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nippon India Small Cap Fund</td>
+          <td>Small Cap</td>
+          <td class="ret-high">~38–40%</td>
+          <td>~28–30%</td>
+          <td class="win-ls">LS ahead</td>
+        </tr>
+        <tr>
+          <td>SBI Small Cap Fund</td>
+          <td>Small Cap</td>
+          <td>~14–15%</td>
+          <td class="ret-high">~14–16%</td>
+          <td class="win-sip">SIP ahead</td>
+        </tr>
+        <tr>
+          <td>Mirae Asset Large &amp; Midcap</td>
+          <td>Large &amp; Mid Cap</td>
+          <td class="ret-high">~22–25%</td>
+          <td>~18–20%</td>
+          <td class="win-ls">LS ahead</td>
+        </tr>
+        <tr>
+          <td>HDFC Mid-Cap Opportunities</td>
+          <td>Mid Cap</td>
+          <td class="ret-high">~24–26%</td>
+          <td>~20–22%</td>
+          <td class="win-ls">LS ahead</td>
+        </tr>
+        <tr>
+          <td>Axis ELSS Tax Saver Fund</td>
+          <td>ELSS</td>
+          <td>~11–13%</td>
+          <td class="ret-high">~12–14%</td>
+          <td class="win-sip">SIP ahead</td>
+        </tr>
+        <tr>
+          <td>Invesco India Smallcap Fund</td>
+          <td>Small Cap</td>
+          <td class="ret-high">~21%</td>
+          <td>~18–20%</td>
+          <td class="win-ls">LS ahead</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout red">
+    <div class="c-label">Important Caveat — COVID Bias</div>
+    The 5-year lump sum CAGR for most equity funds (2020–25) is <strong>inflated by the near-perfect entry at the COVID low</strong>. A lump sum entry in January 2022 on many of the same funds would show returns of only 5–10% CAGR for the same holding period. This reinforces the timing-risk critique of lump sum investing — the data above reflects an exceptional starting point, not typical entry conditions.
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 5. LONG-RUN EVIDENCE -->
+  <div class="section-h1" id="longrun">
+    <span class="sec-num">Section 05</span>
+    Long-Run Evidence: 30-Year Nifty 50 Study
+  </div>
+
+  <h2 class="section-h2">Rolling Return Analysis (1995–2026)</h2>
+  <p><em>Source: BusinessToday (Jan 2026) / 5nance (Apr 2026) — rolling Nifty 50 data 1995–2026.</em></p>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="sb-val">~10.7%</div><div class="sb-lbl">Pure LS CAGR 1995–2026</div></div>
+    <div class="stat-box"><div class="sb-val green">~12.8%</div><div class="sb-lbl">Rolling 20-yr SIP XIRR</div></div>
+    <div class="stat-box"><div class="sb-val green">94%</div><div class="sb-lbl">SIPs at peaks: positive 10-yr return</div></div>
+    <div class="stat-box"><div class="sb-val">~8.5%</div><div class="sb-lbl">Worst-ever 10-yr SIP return</div></div>
+  </div>
+
+  <div class="callout green">
+    <div class="c-label">Critical Protection</div>
+    <strong>The Nifty 50 has never delivered a negative return over any 10-year SIP horizon</strong> — including SIPs started at the dot-com peak (2000) or the pre-GFC peak (2008). The worst-ever 10-year SIP return was ~8.5% — still inflation-beating. For long-horizon investors, SIP on a broad index is a near-certain wealth-creation mechanism.
+  </div>
+
+  <h2 class="section-h2">The Missing-Days Effect (2001–2025)</h2>
+  <p>A study of the Nifty 50 Total Returns Index over 24 years found that <strong>missing just the 50 best trading days</strong> out of ~6,000 reduced CAGR dramatically. The best days typically follow the worst — precisely when panic-driven investors exit.</p>
+
+  <div class="missing-days">
+    <div class="md-item"><div class="md-label">Fully Invested</div><div class="md-val">15.61%</div><div class="md-sub">CAGR · 24-year Nifty TRI · 2001–2025</div></div>
+    <div class="md-item"><div class="md-label">Miss Best 10 Days</div><div class="md-val" style="color:var(--amber)">~11%</div><div class="md-sub">Missing 10 of ~6,000 days destroys 4+ percentage points</div></div>
+    <div class="md-item"><div class="md-label">Miss Best 50 Days</div><div class="md-val" style="color:var(--red)">~1%</div><div class="md-sub">Missing 50 best days collapses CAGR from 15.61% to below 1%</div></div>
+    <div class="md-item"><div class="md-label">Pattern</div><div class="md-val" style="font-size:1.1rem;color:var(--navy)">Best follows Worst</div><div class="md-sub">Best days typically follow the worst — i.e. after panic exits</div></div>
+  </div>
+
+  <div class="callout navy">
+    <div class="c-label">Investment Implication</div>
+    This finding argues powerfully for <strong>staying invested irrespective of method</strong>. Neither SIP nor lump sum benefits from exits during downturns. The missing-days effect affects both strategies equally — what matters is continuous market presence, not the deployment mechanism.
+  </div>
+
+  <h2 class="section-h2">30-Year Strategy Comparison — Full Numbers</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Strategy</th><th>Total Deployed</th><th>30-Year Corpus</th><th>XIRR</th><th>XIRR Spread vs SIP</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monthly SIP — ₹10,000/month</td>
+          <td>₹37.2 lakh</td>
+          <td class="ret-med">₹3.38 crore</td>
+          <td class="ret-high">12.48%</td>
+          <td>Baseline</td>
+        </tr>
+        <tr>
+          <td>Annual LS on 10% dip — ₹1.2L/year</td>
+          <td>₹37.2 lakh</td>
+          <td class="ret-high">₹3.90 crore</td>
+          <td class="ret-high">12.41%</td>
+          <td class="win-tie">−0.07%</td>
+        </tr>
+        <tr>
+          <td>Hybrid — ₹5K SIP + ₹60K annual LS</td>
+          <td>₹37.2 lakh</td>
+          <td class="ret-high">₹3.90 crore</td>
+          <td class="ret-high">12.45%</td>
+          <td class="win-tie">−0.03%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pullquote">
+    The XIRR spread across all three strategies is under 0.1 percentage points over 30 years. Method matters far less than consistency, tenure, and not abandoning the plan during corrections.
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 6. BEHAVIOURAL FINANCE -->
+  <div class="section-h1" id="behavioural">
+    <span class="sec-num">Section 06</span>
+    The Behavioural Finance Dimension
+  </div>
+
+  <p>The mathematical case for lump sum (when timed correctly) is clear. The behavioural case is not. For most retail and HNI investors without professional market-timing ability, SIP's behavioural guardrails are a <strong>meaningful return driver that does not show up in pure return calculations</strong>.</p>
+
+  <div class="behav-grid">
+    <div class="behav-card">
+      <div class="bc-icon">🧠</div>
+      <h4>Prospect Theory (Kahneman &amp; Tversky)</h4>
+      <p>Investors feel loss roughly <strong>2.5× more intensely</strong> than equivalent gains. A lump sum investor who sees a 20% drawdown on day one is psychologically disposed to exit, crystallising the loss. SIP investors see the same drawdown as an opportunity to accumulate more units at lower prices.</p>
+    </div>
+    <div class="behav-card">
+      <div class="bc-icon">🔁</div>
+      <h4>SIP Removes the Timing Decision</h4>
+      <p>Each monthly debit is <strong>automatic — it deploys on crashes as well as peaks</strong> without requiring investor action or conviction. This structural feature of SIP is its most undervalued attribute: it bypasses the two most destructive investor behaviours (panic selling and FOMO buying).</p>
+    </div>
+    <div class="behav-card">
+      <div class="bc-icon">📊</div>
+      <h4>India's SIP Scale — AMFI Data (Feb 2025)</h4>
+      <p><strong>100 million+ SIP investors</strong> in India. Monthly SIP inflows of ~₹26,000 crore represent disciplined capital allocation at unprecedented scale. This institutional behaviour provides a structural support for Indian equity markets during corrections.</p>
+    </div>
+    <div class="behav-card">
+      <div class="bc-icon">📉</div>
+      <h4>The 2022 Correction — A Case Study</h4>
+      <p>Investors who <strong>stopped SIPs during the June 2022 correction missed significant unit accumulation</strong>. Those who continued through saw outsized gains by 2024. The behavioural failure — stopping the SIP — destroyed more value than any market event in that cycle.</p>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 7. DECISION FRAMEWORK -->
+  <div class="section-h1" id="decision">
+    <span class="sec-num">Section 07</span>
+    Decision Framework
+  </div>
+
+  <div class="decision-grid">
+    <div class="decision-card sip-d">
+      <h3>✦ When to Prefer SIP</h3>
+      <ul>
+        <li>Regular salaried income stream — SIP aligns with monthly cash flow</li>
+        <li>Markets at or near all-time highs with elevated P/E (Nifty P/E &gt; 22–24x)</li>
+        <li>Small-cap and mid-cap allocations — higher volatility amplifies RCA benefit</li>
+        <li>Investors with limited risk tolerance or shorter time horizons (5–8 years)</li>
+        <li>New/retail investors who may panic-sell during drawdowns</li>
+        <li>No ability or inclination to monitor market valuations actively</li>
+      </ul>
+    </div>
+    <div class="decision-card ls-d">
+      <h3>✦ When to Prefer Lump Sum</h3>
+      <ul>
+        <li>Windfall receipts: bonus, maturity proceeds, property sale</li>
+        <li>Post-correction entries — Nifty has fallen 15–20%+ from recent peak</li>
+        <li>Valuation-justified entries: Nifty P/E below 18–20x</li>
+        <li>Time horizon of 10+ years in diversified large-cap / index funds</li>
+        <li>High-conviction investors with demonstrated ability to hold through volatility</li>
+        <li>STP into equity over 6–12 months if uncertain about immediate deployment</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-h2">Recommended Hybrid — The STP Strategy</h2>
+
+  <div class="stp-box">
+    <div class="stp-label">Optimal Strategy for Lump Sum Recipients</div>
+    <h3>Systematic Transfer Plan — Three Steps to Optimal Deployment</h3>
+    <div class="stp-steps">
+      <div class="stp-step">
+        <div class="ss-num">1</div>
+        <div class="ss-title">Deploy into Liquid/Debt Fund</div>
+        <div class="ss-body">On receipt of lump sum (bonus, maturity, etc.), park full corpus in a liquid or short-duration debt fund. Earns 6–7% p.a. while awaiting equity deployment. No idle-cash drag.</div>
+      </div>
+      <div class="stp-step">
+        <div class="ss-num">2</div>
+        <div class="ss-title">Set Up Automatic STP</div>
+        <div class="ss-body">Configure a fixed monthly STP from the debt fund into chosen equity fund(s) over 6–12 months. Frequency and amount can be calibrated to market conditions.</div>
+      </div>
+      <div class="stp-step">
+        <div class="ss-num">3</div>
+        <div class="ss-title">Equity Fully Deployed</div>
+        <div class="ss-body">After the STP period, full corpus is in equity. The investor has captured cost averaging, avoided idle-cash drag, and required no market-timing skill throughout.</div>
+      </div>
+    </div>
+    <div class="stp-outcome">
+      Outcome: Captures cost averaging benefit · Avoids idle-cash drag · Eliminates need for market-timing skill · Academically supported default split: <strong>70% SIP (core) + 30% direct lump sum / STP (tactical)</strong>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- 8. REFERENCES -->
+  <div class="section-h1">
+    <span class="sec-num">Section 08</span>
+    Key Academic &amp; Empirical References
+  </div>
+
+  <ul class="ref-list">
+    <li><span class="ref-num">01</span>BusinessToday (Jan 2026) — 30-year Nifty 50 strategy comparison; XIRR data across three strategies</li>
+    <li><span class="ref-num">02</span>5nance.com (Apr 2026) — Rolling return analysis: SIP at market peaks, 1995–2026</li>
+    <li><span class="ref-num">03</span>ProfitNifty (Apr 2026) — Nifty 50 lump sum CAGR 10.7% vs rolling SIP XIRR 12.8%</li>
+    <li><span class="ref-num">04</span>AMFI (Feb 2025) — 100M+ SIP accounts; monthly inflows ~₹26,000 crore</li>
+    <li><span class="ref-num">05</span>Gavhale, S. (2025) — F&amp;O Expiry vs First-Day SIPs: 22-Year Analysis, DY Patil International University</li>
+    <li><span class="ref-num">06</span>ACR Journal (2025) — Nifty 50: Returns, Drawdowns and Systemic Investment Outcomes (1988–2024)</li>
+    <li><span class="ref-num">07</span>Campbell &amp; Shiller (1998) — P/E ratios as predictors of forward long-run equity returns</li>
+    <li><span class="ref-num">08</span>Kahneman &amp; Tversky — Prospect Theory: loss aversion as a driver of suboptimal investor behaviour</li>
+  </ul>
+
+  <div class="gold-div"></div>
+
+  <!-- 9. CONCLUSIONS -->
+  <div class="section-h1" id="conclusions">
+    <span class="sec-num">Section 09</span>
+    Conclusions
+  </div>
+
+  <p>The debate between SIP and lump sum is fundamentally a debate between two different <strong>risk profiles</strong>, not two different return outcomes over long horizons. The empirical evidence from India establishes the following:</p>
+
+  <div class="callout navy">
+    <div class="c-label">Finding 1</div>
+    Over 30 years, the XIRR difference between strategies is <strong>negligible (&lt;0.1 percentage points)</strong>. Consistency of investment dwarfs method. An investor who stays the course with either strategy will build substantial wealth.
+  </div>
+
+  <div class="callout green">
+    <div class="c-label">Finding 2</div>
+    Lump sum <strong>outperforms materially (15–25%) in sustained bull markets</strong> — but requires the discipline to remain invested through interim drawdowns and the ability to identify attractive valuations at entry.
+  </div>
+
+  <div class="callout gold">
+    <div class="c-label">Finding 3</div>
+    SIP produces <strong>superior risk-adjusted outcomes in volatile, flat, and recovering markets</strong> — which characterises a majority of random entry environments in Indian equities. SIP is the structurally safer default.
+  </div>
+
+  <div class="callout red">
+    <div class="c-label">Finding 4 — The Most Important</div>
+    <strong>The greatest determinant of investor wealth is not whether they chose SIP or lump sum — it is whether they stayed invested through market cycles.</strong> Time in the market, not timing the market, is the dominant factor. The missing-days effect quantifies this precisely: missing 50 best days out of 6,000 reduces 24-year CAGR from 15.61% to below 1%.
+  </div>
+
+  <div class="pullquote">
+    "For practical deployment of large sums, STP into equity over 6–12 months from a liquid fund is the academically and behaviourally optimal strategy. The Nifty 50 has never delivered a negative return over any 10-year SIP horizon."
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This report is prepared for academic and educational purposes only. Past performance of mutual funds is not indicative of future returns. All figures are approximate and sourced from publicly available data as cited. This does not constitute investment advice. Investors should consult a SEBI-registered investment advisor before making investment decisions. Data sources: BusinessToday, 5nance, ProfitNifty, AMFI, SEBI — May 2026.
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="footer-author">
+      <strong>CA Parvesh Aghi</strong> · Visiting Professor, Finance<br>
+      IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University &nbsp;·&nbsp; May 2026
+    </div>
+    <div class="footer-links">
+      <a href="https://paraghi.github.io">Homepage</a>
+      <a href="mailto:parvesh1104@gmail.com">Email</a>
+      <a href="https://wa.me/919891450400">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/parvesh-aghi-34473b18">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
