@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRI Taxation in India — Comprehensive Guide FY 2025-26 | CA Parvesh Aghi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-light: #1a3259;
+    --gold: #b8922a;
+    --gold-light: #d4a843;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --text: #1c1c1c;
+    --muted: #5a5a5a;
+    --border: #d8cfc0;
+    --green: #1a5c3a;
+    --green-bg: #edf7f1;
+    --red: #7a1f1f;
+    --red-bg: #fdf0f0;
+    --amber: #7a4f00;
+    --amber-bg: #fff8e8;
+    --blue: #1a3a8a;
+    --blue-bg: #eef2fc;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16.5px;
+    line-height: 1.78;
+  }
+
+  /* ── TOP RULE ── */
+  .top-rule { height: 5px; background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%); }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--navy); color: white;
+    padding: 56px 48px 48px;
+    position: relative; overflow: hidden;
+  }
+  .masthead::before {
+    content:''; position:absolute; top:-80px; right:-80px;
+    width:420px; height:420px;
+    border:1px solid rgba(184,146,42,0.12); border-radius:50%;
+  }
+  .masthead::after {
+    content:''; position:absolute; bottom:-60px; left:200px;
+    width:260px; height:260px;
+    border:1px solid rgba(184,146,42,0.08); border-radius:50%;
+  }
+  .masthead-inner { max-width: 940px; margin: 0 auto; position: relative; z-index:1; }
+
+  .series-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .series-label::after { content:''; flex:1; height:1px; background:rgba(184,146,42,0.3); }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 10px; letter-spacing: -0.5px;
+  }
+  .masthead h1 span { color: var(--gold-light); }
+
+  .masthead-subtitle {
+    font-style: italic; font-weight: 300; font-size: 1.08rem;
+    color: rgba(255,255,255,0.68); margin-bottom: 28px; line-height: 1.6;
+  }
+
+  .law-strip {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  }
+  .law-badge {
+    background: rgba(184,146,42,0.13);
+    border: 1px solid rgba(184,146,42,0.28);
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px;
+  }
+
+  .masthead-meta {
+    display: flex; flex-wrap: wrap; gap: 22px; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;
+  }
+  .meta-item { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .meta-item strong { color: rgba(255,255,255,0.82); font-weight:400; }
+  .meta-dot { width:3px; height:3px; background:var(--gold); border-radius:50%; }
+
+  /* ── NAV ── */
+  .toc-nav {
+    background: var(--navy-light); padding: 0 48px;
+    border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+    overflow-x: auto;
+  }
+  .toc-nav-inner {
+    max-width: 940px; margin: 0 auto;
+    display: flex; align-items: center; white-space: nowrap;
+  }
+  .toc-nav a {
+    color: rgba(255,255,255,0.62); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase;
+    padding: 13px 14px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s; flex-shrink: 0;
+  }
+  .toc-nav a:first-child { padding-left: 0; }
+  .toc-nav a:last-child { border-right: none; }
+  .toc-nav a:hover { color: var(--gold-light); }
+
+  /* ── CONTENT ── */
+  .content-wrap { max-width: 940px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* ── AUDIENCE BOX ── */
+  .audience-box {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+    background: var(--border); margin: 44px 0;
+  }
+  .aud-card {
+    background: white; padding: 20px 22px;
+  }
+  .aud-card .ac-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .aud-card .ac-val { font-size: 0.92rem; color: var(--navy); font-weight: 600; }
+  .aud-card .ac-sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── PART HEADER ── */
+  .part-header {
+    margin: 56px 0 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--navy);
+  }
+  .part-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .part-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    font-weight: 700; color: var(--navy); line-height: 1.2;
+  }
+  .part-header .part-sub {
+    font-style: italic; font-size: 0.96rem; color: var(--muted); margin-top: 6px;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .sec-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.18rem; font-weight: 700; color: var(--navy-light);
+    margin: 36px 0 14px;
+  }
+  .sec-h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.88rem; font-weight: 600; color: var(--text);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 16px; font-size: 0.96rem; color: var(--muted); }
+  p strong { color: var(--text); }
+  ul.body-list { margin: 0 0 16px 22px; }
+  ul.body-list li { font-size: 0.93rem; color: var(--muted); margin-bottom: 8px; line-height: 1.7; }
+  ul.body-list li strong { color: var(--text); }
+
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x: auto; margin: 20px 0; }
+  table { width:100%; border-collapse:collapse; font-size:0.86rem; background:white; box-shadow:0 1px 8px rgba(0,0,0,0.05); }
+  thead tr { background: var(--navy); color: white; }
+  thead th {
+    padding: 11px 13px; text-align:left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  thead th:last-child { border-right:none; }
+  tbody tr { border-bottom: 1px solid #eee; transition: background 0.12s; }
+  tbody tr:hover { background: var(--cream); }
+  tbody td {
+    padding: 10px 13px; vertical-align:top;
+    border-right: 1px solid #f0ebe0;
+    line-height: 1.6; color: var(--muted);
+  }
+  tbody td:first-child { color: var(--navy); font-weight:500; }
+  tbody td:last-child { border-right:none; }
+  tbody tr:nth-child(even) { background: #faf8f4; }
+
+  /* cell colouring */
+  .tax-free { color: var(--green); font-weight: 700; }
+  .tax-30 { color: var(--red); font-weight: 600; }
+  .tax-20 { color: var(--amber); font-weight: 600; }
+  .tax-12 { color: #1a5c3a; font-weight: 600; }
+  .yes-cell { color: var(--green); font-weight: 600; }
+  .no-cell { color: var(--red); font-weight: 600; }
+  .permitted { color: var(--green); font-weight: 600; }
+  .prohibited { color: var(--red); font-weight: 600; }
+  .key-row td { background: #fffbf0 !important; }
+  .key-row td:first-child { color: var(--amber) !important; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    padding: 18px 22px; margin: 20px 0;
+    font-size: 0.93rem; line-height: 1.78;
+  }
+  .callout .c-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 7px; display: block;
+  }
+  .callout p { font-size: 0.93rem; margin: 0 0 8px; }
+  .callout p:last-child { margin: 0; }
+  .callout.green { background: var(--green-bg); border-left: 3px solid var(--green); }
+  .callout.green .c-label { color: var(--green); }
+  .callout.red { background: var(--red-bg); border-left: 3px solid var(--red); }
+  .callout.red .c-label { color: var(--red); }
+  .callout.gold { background: var(--amber-bg); border-left: 3px solid var(--gold); }
+  .callout.gold .c-label { color: var(--amber); }
+  .callout.navy { background: var(--blue-bg); border-left: 3px solid var(--navy); }
+  .callout.navy .c-label { color: var(--navy); }
+
+  /* ── CASE STUDY BOXES ── */
+  .case-study {
+    background: var(--navy); color: white;
+    padding: 28px 32px; margin: 24px 0;
+    border-left: 4px solid var(--gold);
+  }
+  .case-study .cs-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 10px;
+  }
+  .case-study h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: white; margin-bottom: 12px; font-weight: 700;
+  }
+  .case-study p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 8px; }
+  .case-study p:last-child { margin:0; }
+  .case-study .cs-result {
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--gold-light);
+  }
+
+  /* ── ACCOUNT COMPARISON GRID ── */
+  .account-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 22px 0; }
+  .acc-card {
+    background: white; border: 1px solid var(--border);
+    padding: 20px; border-top: 3px solid var(--navy);
+  }
+  .acc-card.nre { border-top-color: var(--green); }
+  .acc-card.nro { border-top-color: var(--amber); }
+  .acc-card.fcnr { border-top-color: var(--blue); }
+  .acc-card .acc-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .acc-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .acc-card .acc-row { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0ebe0; font-size: 0.82rem; }
+  .acc-card .acc-row:last-child { border-bottom: none; }
+  .acc-card .acc-key { color: var(--muted); flex-shrink: 0; }
+  .acc-card .acc-val { color: var(--navy); font-weight: 500; text-align: right; }
+  .acc-card .acc-val.free { color: var(--green); font-weight: 700; }
+  .acc-card .acc-val.taxed { color: var(--red); font-weight: 700; }
+
+  /* ── STRATEGY CARDS ── */
+  .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+  .strat-card { background: white; border: 1px solid var(--border); padding: 22px; }
+  .strat-card .st-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: var(--cream-dark); line-height: 1;
+    -webkit-text-stroke: 1px var(--border); margin-bottom: 8px;
+  }
+  .strat-card h4 { font-weight: 700; color: var(--navy); font-size: 0.96rem; margin-bottom: 8px; }
+  .strat-card p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.65; }
+
+  /* ── COMPLIANCE CHECKLIST ── */
+  .checklist { margin: 0; padding: 0; list-style: none; }
+  .checklist li {
+    display: flex; gap: 14px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .cl-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .cl-body { flex: 1; }
+  .cl-title { font-weight: 600; color: var(--navy); margin-bottom: 2px; font-size: 0.9rem; }
+  .cl-sub { color: var(--muted); line-height: 1.6; }
+
+  /* ── MASTER TABLE NOTE ── */
+  .master-note {
+    background: var(--navy); color: white;
+    padding: 20px 28px; margin: 20px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px;
+    line-height: 1.8; color: rgba(255,255,255,0.7);
+  }
+  .master-note strong { color: var(--gold-light); }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    border-left: 4px solid var(--gold);
+    background: var(--cream-dark);
+    padding: 22px 28px; margin: 26px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1.05rem;
+    color: var(--navy); line-height: 1.65;
+  }
+
+  /* ── FEMA COMPARISON ── */
+  .law-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .law-card { padding: 22px; }
+  .law-card.old { background: #fdf5f5; border: 1px solid #e8c8c8; }
+  .law-card.new-law { background: var(--green-bg); border: 1px solid #b0d9c0; }
+  .law-card h4 { font-family: 'Playfair Display', serif; font-size: 0.98rem; font-weight: 700; margin-bottom: 12px; }
+  .law-card.old h4 { color: var(--red); }
+  .law-card.new-law h4 { color: var(--green); }
+  .law-card ul { margin: 0 0 0 16px; }
+  .law-card ul li { font-size: 0.84rem; color: var(--muted); margin-bottom: 8px; line-height: 1.6; }
+
+  /* ── DIVIDER ── */
+  .gold-div { height:1px; margin:44px 0; background:linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%); opacity:0.35; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    background: #f5f5f0; border:1px solid var(--border);
+    padding: 16px 20px; margin-top: 40px;
+    font-size: 0.78rem; color: var(--muted); line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 36px 48px; }
+  .page-footer-inner {
+    max-width: 940px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .footer-author { font-size: 0.82rem; }
+  .footer-author strong { color: white; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    color: var(--gold-light); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .footer-links a:hover { color: white; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .masthead { padding: 36px 20px 28px; }
+    .toc-nav { padding: 0 16px; }
+    .content-wrap { padding: 0 20px 60px; }
+    .audience-box, .account-grid { grid-template-columns: 1fr; }
+    .strategy-grid, .law-compare { grid-template-columns: 1fr; }
+    .page-footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Finance Faculty Reference Series &nbsp;·&nbsp; FY 2025-26</div>
+    <h1><span>NRI Taxation</span> in India<br>Comprehensive Guide</h1>
+    <p class="masthead-subtitle">Laws, Regulations, Tax Planning Strategies &amp; Bank Accounts — FY 2025-26 (AY 2026-27) · Budget 2024 Changes Incorporated</p>
+
+    <div class="law-strip">
+      <span class="law-badge">Income Tax Act 1961</span>
+      <span class="law-badge">FEMA 1999</span>
+      <span class="law-badge">RBI Circulars</span>
+      <span class="law-badge">90+ DTAA Treaties</span>
+      <span class="law-badge">Section 6 · 5(2) · 90 · 195 · 197</span>
+      <span class="law-badge">Budget 2024 · Post July 23 Rates</span>
+    </div>
+
+    <div class="masthead-meta">
+      <div class="meta-item"><strong>CA Parvesh Aghi</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Visiting Professor, Finance</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">For Academic &amp; Advisory Reference · May 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="toc-nav">
+  <div class="toc-nav-inner">
+    <a href="#status">Residential Status</a>
+    <a href="#income">Taxable Income</a>
+    <a href="#capgains">Capital Gains</a>
+    <a href="#accounts">Bank Accounts</a>
+    <a href="#fema">FEMA</a>
+    <a href="#dtaa">DTAA</a>
+    <a href="#tds">TDS · Sec 195</a>
+    <a href="#planning">Tax Planning</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#master">Quick Reference</a>
+    <a href="https://paraghi.github.io">← Homepage</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="content-wrap">
+
+  <!-- AUDIENCE / SCOPE -->
+  <div class="audience-box" style="margin-top:40px;">
+    <div class="aud-card">
+      <div class="ac-label">Audience</div>
+      <div class="ac-val">Finance Professors, MBA Students, NRI Investors</div>
+    </div>
+    <div class="aud-card">
+      <div class="ac-label">Applicable Period</div>
+      <div class="ac-val">FY 2025-26 (AY 2026-27)</div>
+      <div class="ac-sub">Budget 2024 changes incorporated · Post July 23, 2024 rates apply</div>
+    </div>
+    <div class="aud-card">
+      <div class="ac-label">Key Laws Covered</div>
+      <div class="ac-val">IT Act 1961 · FEMA 1999 · 90+ DTAAs</div>
+      <div class="ac-sub">RBI Circulars · FERA 1973 (repealed) · Section 195/197</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ PART I — RESIDENTIAL STATUS ═══════════════ -->
+  <div class="part-header" id="status">
+    <div class="part-num">Part I</div>
+    <h2>Establishing Residential Status</h2>
+    <p class="part-sub">The foundational determination — all tax liability flows from this single classification</p>
+  </div>
+
+  <p>Residential status is the foundational determination in NRI taxation. The governing provision is <strong>Section 6 of the Income Tax Act, 1961</strong>. All subsequent questions — which income is taxable, at what rate, under which treaty — flow from this classification.</p>
+
+  <h2 class="sec-h2">The Three Categories</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Status</th><th>Days in India</th><th>Tax on Indian Income</th><th>Tax on Foreign Income</th></tr></thead>
+      <tbody>
+        <tr><td>Resident &amp; Ordinarily Resident (ROR)</td><td>≥ 182 days (general)</td><td class="yes-cell">Yes — all heads</td><td class="yes-cell">Yes — global income</td></tr>
+        <tr><td>Resident but Not Ordinarily Resident (RNOR)</td><td>Transitional: met 182 days but recently NRI</td><td class="yes-cell">Yes</td><td>Only if controlled from India</td></tr>
+        <tr class="key-row"><td>Non-Resident Indian (NRI)</td><td>&lt; 182 days (or &lt; 120 days for citizens)</td><td class="yes-cell">Yes — sourced in India</td><td class="no-cell">No</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-h2">The Primary Test — Section 6(1)</h2>
+  <p>An individual is a resident if present in India for <strong>182 or more days</strong> during the financial year (April 1 to March 31). An alternative test applies: 60 or more days in the current year AND 365 or more days in the preceding four years. However, for <strong>Indian citizens living abroad for employment, business or vocation, only the 182-day test applies</strong>.</p>
+
+  <div class="callout red">
+    <span class="c-label">Finance Act 2020 Amendment — The 120-Day Rule (Critical)</span>
+    <p>An Indian citizen or Person of Indian Origin (PIO) who visits India and stays for <strong>120 or more days</strong>, and whose total Indian-sourced income exceeds ₹15 lakh, is now deemed a Resident (RNOR) even if not a tax resident in any other country. This plugged the <em>stateless individual</em> loophole used by high-income individuals to avoid taxation in any jurisdiction.</p>
+  </div>
+
+  <h2 class="sec-h2">RNOR Status — The Re-entry Buffer</h2>
+  <p>An individual qualifies as Resident but Not Ordinarily Resident (RNOR) if either condition is met: they were a Non-Resident in <strong>9 out of the 10 preceding financial years</strong>, OR their total stay in India in the 7 preceding financial years did not exceed <strong>729 days</strong>.</p>
+
+  <div class="case-study">
+    <div class="cs-label">Practical Case 1 — Returning Software Engineer</div>
+    <h4>Rajan: 12 Years in the US, Returns November 2024</h4>
+    <p>Rajan worked in the US for 12 years and returned to India in November 2024. In FY 2024-25 he spent 150 days in India, meeting the 182-day threshold. However, since he was NRI in 9 of the preceding 10 years, he qualifies as <strong>RNOR</strong>.</p>
+    <p>His US 401(k) withdrawals during the year are <strong>not taxable in India</strong>. Only his Indian salary and Indian rental income are taxable. He retains this buffer for potentially 2 years before becoming a full Resident.</p>
+    <div class="cs-result">Key Action: Maximise RNOR window — liquidate foreign assets and repatriate before full Resident status.</div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART II — INCOME TAXABLE ═══════════════ -->
+  <div class="part-header" id="income">
+    <div class="part-num">Part II</div>
+    <h2>Income Taxable for NRIs</h2>
+    <p class="part-sub">Section 5(2) — only India-sourced income is taxable. Foreign income is not.</p>
+  </div>
+
+  <p>Under <strong>Section 5(2)</strong> of the Income Tax Act, an NRI is taxable only on income that is received in India, or accrues or arises in India. Foreign-sourced income credited to a foreign bank account is <strong>not taxable</strong>, even if eventually remitted to India.</p>
+
+  <h2 class="sec-h2">Salary Income</h2>
+  <p>The taxing principle for salary: <strong>the place where services are rendered</strong> determines taxability, not where payment is received.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Scenario</th><th>Taxable in India?</th></tr></thead>
+      <tbody>
+        <tr><td>NRI employed by foreign company; work entirely abroad; salary credited abroad</td><td class="no-cell">No</td></tr>
+        <tr><td>NRI employed by foreign company; works 60 days on Indian project during visit</td><td class="yes-cell">Yes — proportionate to India-service days</td></tr>
+        <tr><td>NRI works remotely from India for foreign employer</td><td class="yes-cell">Yes — salary for India service period is taxable</td></tr>
+        <tr><td>Salary for past India services (leave salary, gratuity arrears)</td><td class="yes-cell">Yes — accrued in India</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-h2">Rental Income from Property in India</h2>
+  <p>All rental income from Indian property is taxable in India regardless of where the NRI resides. Key deductions permitted under Section 24: standard deduction of <strong>30% of net annual value</strong> (Section 24(a)), and home loan interest — <strong>fully deductible without limit</strong> (Section 24(b)).</p>
+
+  <div class="callout red">
+    <span class="c-label">Most Overlooked Compliance — TDS on Rent to NRI</span>
+    <p>The tenant must deduct <strong>TDS at 30%</strong> on all rent paid to an NRI landlord (Section 195). There is no monthly threshold exemption unlike the ₹50,000/month limit for resident landlords. This applies even to individual tenants — many are entirely unaware of this obligation, making themselves personally liable for the deducted tax.</p>
+  </div>
+
+  <h2 class="sec-h2">Interest Income — Account Type Determines Tax</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Account / Instrument</th><th>Tax Treatment</th><th>TDS Rate</th></tr></thead>
+      <tbody>
+        <tr><td>NRE Savings / Fixed Deposit</td><td class="tax-free">Fully Exempt u/s 10(4)</td><td class="tax-free">Nil</td></tr>
+        <tr><td>FCNR (B) Deposit</td><td class="tax-free">Fully Exempt u/s 10(15)</td><td class="tax-free">Nil</td></tr>
+        <tr class="key-row"><td>NRO Savings Account</td><td class="tax-30">Taxable — slab rate</td><td class="tax-30">30% (no threshold)</td></tr>
+        <tr class="key-row"><td>NRO Fixed Deposit</td><td class="tax-30">Taxable — slab rate</td><td class="tax-30">30% (no threshold)</td></tr>
+        <tr><td>Government bonds (notified)</td><td class="tax-free">Exempt u/s 10(15)</td><td class="tax-free">Nil</td></tr>
+        <tr><td>Listed NCD / corporate bond</td><td>Taxable</td><td>10% on interest</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout green">
+    <span class="c-label">Key Advantage — NRE vs NRO Comparison</span>
+    <p>An NRI with ₹1 crore in an NRE FD at 7.5% earns <strong>₹7.5 lakh per year with zero Indian tax liability</strong>. The same amount in an NRO FD would result in TDS of ₹2.25 lakh (30%). Account type selection is, therefore, a <strong>primary tax planning decision</strong> made before any investment is placed.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART III — CAPITAL GAINS ═══════════════ -->
+  <div class="part-header" id="capgains">
+    <div class="part-num">Part III</div>
+    <h2>Capital Gains Taxation</h2>
+    <p class="part-sub">Post-Budget 2024 rates — effective July 23, 2024 onwards</p>
+  </div>
+
+  <h2 class="sec-h2">Equity Shares &amp; Equity-Oriented Mutual Funds</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Type</th><th>Holding Period</th><th>Tax Rate</th><th>TDS on NRI</th><th>Exemption</th></tr></thead>
+      <tbody>
+        <tr><td>Short-Term Capital Gains (STCG)</td><td>≤ 12 months</td><td class="tax-20">20% (raised from 15%)</td><td class="tax-20">20%</td><td>None</td></tr>
+        <tr><td>Long-Term Capital Gains (LTCG)</td><td>&gt; 12 months</td><td class="tax-12">12.5% (raised from 10%)</td><td class="tax-12">12.5%</td><td>₹1.25 lakh p.a.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="case-study">
+    <div class="cs-label">Practical Case 2 — NRI Equity Investor</div>
+    <h4>Priya (US-based NRI) — Equity Capital Gain Computation</h4>
+    <p>Purchased 5,000 shares of an Indian IT company at ₹200 in March 2024. Sold in September 2025 at ₹380. Holding period = 18 months → <strong>LTCG</strong>.</p>
+    <p>Gain = ₹9 lakh. Exempt portion: ₹1.25 lakh. Taxable gain: ₹7.75 lakh. <strong>Tax at 12.5% = ₹96,875</strong>. TDS will be deducted at 12.5% by the broker. Priya can file an ITR to reconcile and claim any refund if TDS was over-deducted.</p>
+    <div class="cs-result">Action: Apply for Lower Deduction Certificate (Section 197) before sale to avoid TDS on full sale value.</div>
+  </div>
+
+  <h2 class="sec-h2">Immovable Property</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Type</th><th>Holding Period</th><th>Tax Rate (NRI)</th><th>TDS (Buyer's Obligation)</th></tr></thead>
+      <tbody>
+        <tr><td>STCG — property</td><td>≤ 24 months</td><td class="tax-30">Slab rate (up to 30%)</td><td class="tax-30">30% on sale consideration</td></tr>
+        <tr><td>LTCG — property (acquired post July 23, 2024)</td><td>&gt; 24 months</td><td class="tax-12">12.5% without indexation</td><td class="tax-12">12.5% on sale consideration</td></tr>
+        <tr><td>LTCG — property (acquired pre July 23, 2024)</td><td>&gt; 24 months</td><td>Lower of: 12.5% without indexation OR 20% with indexation</td><td class="tax-12">12.5% on sale consideration</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="case-study">
+    <div class="cs-label">Practical Case 3 — NRI Property Sale (UAE)</div>
+    <h4>Mrs. Sharma (Dubai NRI) — Pune Flat Sale, January 2026</h4>
+    <p>Purchased flat in Pune in 2018 for ₹80 lakh. Sold January 2026 for ₹1.5 crore. Gain = ₹70 lakh (LTCG — held &gt; 24 months).</p>
+    <p>Choice available: (a) <strong>20% with CII indexation</strong>, or (b) <strong>12.5% without indexation</strong> — whichever is lower. If she reinvests the gain in a new residential property within 2 years (Section 54), the LTCG is <strong>fully exempt</strong>. Alternatively, investing up to ₹50 lakh in NHAI/REC bonds (Section 54EC) within 6 months exempts that portion.</p>
+    <div class="cs-result">Action: File Form 13 for Lower Deduction Certificate before sale. Evaluate Section 54/54EC reinvestment options.</div>
+  </div>
+
+  <h2 class="sec-h2">Mutual Funds — Category-Wise Tax Treatment</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Fund Category</th><th>STCG</th><th>LTCG</th><th>TDS on NRI Redemption</th></tr></thead>
+      <tbody>
+        <tr><td>Equity-oriented funds (&gt;65% in equity)</td><td class="tax-20">20% u/s 111A</td><td class="tax-12">12.5% above ₹1.25L u/s 112A</td><td>STCG: 20% │ LTCG: 12.5%</td></tr>
+        <tr class="key-row"><td>Debt funds (purchased after Apr 2023)</td><td class="tax-30">Slab rate — always STCG</td><td class="tax-30">No LTCG benefit — slab rate</td><td class="tax-30">30% on gains</td></tr>
+        <tr class="key-row"><td>Hybrid funds (&lt;65% equity)</td><td class="tax-30">Slab rate</td><td class="tax-30">Slab rate</td><td class="tax-30">30%</td></tr>
+        <tr class="key-row"><td>International / FOF funds</td><td class="tax-30">Slab rate</td><td class="tax-30">Slab rate</td><td class="tax-30">30%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-h2">Capital Gains Exemptions Available to NRIs</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Section</th><th>Asset Sold</th><th>Reinvestment Condition</th><th>Time Limit</th><th>Cap</th></tr></thead>
+      <tbody>
+        <tr><td>54</td><td>Residential house property (LTCG)</td><td>Purchase / construct another residential property</td><td>2 yrs (purchase) │ 3 yrs (construct)</td><td>₹10 crore (Budget 2023)</td></tr>
+        <tr><td>54EC</td><td>Any long-term capital asset</td><td>Invest in NHAI or REC notified bonds</td><td>6 months from transfer</td><td>₹50 lakh</td></tr>
+        <tr><td>54F</td><td>Any LTCA other than residential house</td><td>Purchase / construct residential property</td><td>2 yrs (purchase) │ 3 yrs (construct)</td><td>Full gain exempt proportionately</td></tr>
+        <tr><td>54B</td><td>Agricultural land</td><td>Purchase new agricultural land</td><td>2 years</td><td>No cap</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART IV — BANK ACCOUNTS ═══════════════ -->
+  <div class="part-header" id="accounts">
+    <div class="part-num">Part IV</div>
+    <h2>NRI Bank Accounts: RBI and FEMA Framework</h2>
+    <p class="part-sub">Account type selection is a primary tax planning decision — the difference between zero tax and 30% TDS</p>
+  </div>
+
+  <div class="callout red">
+    <span class="c-label">FEMA Obligation on Acquiring NRI Status</span>
+    <p>On acquiring NRI status, a person <strong>must re-designate any existing resident savings accounts to NRO accounts</strong>. Continuing to operate a resident savings account is a FEMA violation attracting penalties of up to 3× the amount involved.</p>
+  </div>
+
+  <div class="account-grid">
+    <div class="acc-card nre">
+      <div class="acc-type">NRE Account</div>
+      <h3>Non-Resident External</h3>
+      <div class="acc-row"><span class="acc-key">Currency</span><span class="acc-val">INR (converted)</span></div>
+      <div class="acc-row"><span class="acc-key">Source</span><span class="acc-val">Foreign income only</span></div>
+      <div class="acc-row"><span class="acc-key">Interest Tax</span><span class="acc-val free">ZERO — Exempt s.10(4)</span></div>
+      <div class="acc-row"><span class="acc-key">Repatriation</span><span class="acc-val free">Fully free — unlimited</span></div>
+      <div class="acc-row"><span class="acc-key">Joint Holding</span><span class="acc-val">With NRI or resident relative (former or survivor only)</span></div>
+    </div>
+    <div class="acc-card nro">
+      <div class="acc-type">NRO Account</div>
+      <h3>Non-Resident Ordinary</h3>
+      <div class="acc-row"><span class="acc-key">Currency</span><span class="acc-val">INR</span></div>
+      <div class="acc-row"><span class="acc-key">Source</span><span class="acc-val">Indian income (rent, dividends, pension)</span></div>
+      <div class="acc-row"><span class="acc-key">Interest Tax</span><span class="acc-val taxed">30% TDS — no threshold</span></div>
+      <div class="acc-row"><span class="acc-key">Repatriation</span><span class="acc-val">USD 1 million/year (Form 15CA+15CB)</span></div>
+      <div class="acc-row"><span class="acc-key">DTAA Benefit</span><span class="acc-val">Claim lower TDS via Form 10F + TRC</span></div>
+    </div>
+    <div class="acc-card fcnr">
+      <div class="acc-type">FCNR (B) Account</div>
+      <h3>Foreign Currency NR Banks</h3>
+      <div class="acc-row"><span class="acc-key">Type</span><span class="acc-val">Fixed Deposit only (1–5 years)</span></div>
+      <div class="acc-row"><span class="acc-key">Currencies</span><span class="acc-val">USD, GBP, EUR, AUD, CAD, CHF, SGD, JPY</span></div>
+      <div class="acc-row"><span class="acc-key">Interest Tax</span><span class="acc-val free">ZERO — Exempt s.10(15)</span></div>
+      <div class="acc-row"><span class="acc-key">Currency Risk</span><span class="acc-val free">None — maintained in foreign currency</span></div>
+      <div class="acc-row"><span class="acc-key">Repatriation</span><span class="acc-val free">Fully free — in original currency</span></div>
+    </div>
+  </div>
+
+  <h2 class="sec-h2">RFC and SNRR Accounts</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Account</th><th>Who Can Hold</th><th>Tax Treatment</th><th>Repatriation</th></tr></thead>
+      <tbody>
+        <tr><td>RFC (Resident Foreign Currency)</td><td>NRIs returning to India as Resident/RNOR</td><td>Exempt while RNOR; taxable after full Resident status</td><td>Fully repatriable</td></tr>
+        <tr><td>SNRR (Special NR Rupee)</td><td>NRIs for business transactions</td><td>Non-interest-bearing</td><td>Permitted for bonafide transactions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <span class="c-label">PPF — Important Restriction</span>
+    <p>NRIs <strong>cannot open a new PPF account</strong>. An existing PPF account (opened before acquiring NRI status) can be continued until maturity (15 years). On maturity, it <strong>cannot be extended for a further 5-year block</strong>. The account must be closed and proceeds repatriated through the NRO account. Small savings schemes (NSC, Kisan Vikas Patra) are also prohibited for NRIs under FEMA.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART V — FEMA ═══════════════ -->
+  <div class="part-header" id="fema">
+    <div class="part-num">Part V</div>
+    <h2>FEMA, RBI Regulations &amp; the Erstwhile FERA</h2>
+    <p class="part-sub">The civil compliance framework governing all NRI financial transactions in India</p>
+  </div>
+
+  <div class="law-compare">
+    <div class="law-card old">
+      <h4>FERA 1973 — Repealed (Criminal Statute)</h4>
+      <ul>
+        <li>Criminal law — accused presumed guilty (reversed burden of proof)</li>
+        <li>Arrest without warrant by enforcement officers</li>
+        <li>Imprisonment up to 7 years + fine</li>
+        <li>Philosophy: Foreign exchange = scarce national resource, control tightly</li>
+        <li>Fully repealed June 1, 2000 — no applicability today</li>
+      </ul>
+    </div>
+    <div class="law-card new-law">
+      <h4>FEMA 1999 — Current Law (Civil Statute)</h4>
+      <ul>
+        <li>Civil law — normal burden of proof on prosecution</li>
+        <li>No arrest without warrant (except certain cases)</li>
+        <li>Penalty up to 3× amount involved; imprisonment only for non-payment of penalty</li>
+        <li>Philosophy: Foreign exchange = facilitator of trade, manage efficiently</li>
+        <li>In full force — governs all NRI compliance</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec-h2">FEMA Key Provisions — Real Estate</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Transaction</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Purchase of residential and commercial property — any number</td><td class="permitted">Permitted</td></tr>
+        <tr><td>Inheritance of agricultural land, plantation property, farmhouses</td><td class="permitted">Permitted</td></tr>
+        <tr><td>Purchase of agricultural land, plantation property, or farmhouses</td><td class="prohibited">Prohibited</td></tr>
+        <tr><td>Payments via NRE/NRO accounts or inward foreign remittance</td><td class="permitted">Mandatory — cash payments prohibited</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-h2">FEMA Key Provisions — Financial Investments</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Instrument</th><th>Status for NRIs</th><th>Route</th></tr></thead>
+      <tbody>
+        <tr><td>Listed equities</td><td class="permitted">Permitted</td><td>Portfolio Investment Scheme (PIS) via designated PIS bank</td></tr>
+        <tr><td>Mutual funds</td><td class="permitted">Permitted</td><td>NRE (repatriable) or NRO (non-repatriable)</td></tr>
+        <tr><td>Government Securities / T-bills / GOI bonds</td><td class="permitted">Permitted</td><td>Repatriable (NRE) or non-repatriable (NRO)</td></tr>
+        <tr><td>NCDs / Corporate bonds</td><td class="permitted">Permitted</td><td>—</td></tr>
+        <tr><td>PPF, NSC, Kisan Vikas Patra</td><td class="prohibited">Prohibited</td><td>Not available to NRIs under FEMA</td></tr>
+        <tr><td>Equity derivatives (F&amp;O)</td><td class="permitted">Permitted (limited)</td><td>NRIs can trade equity derivatives; currency derivatives face restrictions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-h2">Repatriation Rules Summary</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Account / Asset</th><th>Repatriation Limit</th><th>Documentation Required</th></tr></thead>
+      <tbody>
+        <tr><td>NRE account balance</td><td class="permitted">Unlimited — freely repatriable</td><td>None</td></tr>
+        <tr><td>FCNR(B) account balance</td><td class="permitted">Unlimited — in original currency</td><td>None</td></tr>
+        <tr><td>NRO account balance</td><td>USD 1 million per financial year</td><td>Form 15CA (self-declaration) + Form 15CB (CA certificate)</td></tr>
+        <tr><td>Sale proceeds of immovable property</td><td>Up to 2 properties: full repatriation of original consideration</td><td>Form 15CA/15CB + Title documents + IT clearance</td></tr>
+        <tr><td>Inheritance / gifts via NRO</td><td>USD 1 million per year (within overall NRO limit)</td><td>Form 15CA/15CB + legal evidence of inheritance</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART VI — DTAA ═══════════════ -->
+  <div class="part-header" id="dtaa">
+    <div class="part-num">Part VI</div>
+    <h2>Double Taxation Avoidance Agreements</h2>
+    <p class="part-sub">India has signed DTAAs with over 90 countries — they override domestic law where more beneficial</p>
+  </div>
+
+  <p>India has signed DTAAs with over 90 countries. These treaties <strong>override the domestic provisions</strong> of the Income Tax Act to the extent they are more beneficial to the taxpayer (Section 90). An NRI must be a tax resident of the treaty country to avail benefits.</p>
+
+  <h2 class="sec-h2">Methods of Relief Under DTAA</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Method</th><th>How It Works</th><th>Typical Countries</th></tr></thead>
+      <tbody>
+        <tr><td>Exemption Method</td><td>Income taxed in one country is completely exempt in the other. Source country has primary right.</td><td>UAE, Bahrain (no income tax — India taxes at domestic law)</td></tr>
+        <tr><td>Tax Credit Method</td><td>Income taxed in both countries. The residence country allows credit for taxes paid in the source country.</td><td>USA, UK, Germany, France, Australia, Singapore</td></tr>
+        <tr><td>Reduced Rate Method</td><td>Treaty caps the withholding tax rate at a lower rate (e.g., 10% instead of 30% on interest).</td><td>Most treaties for dividends, interest, royalties</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec-h2">Claiming DTAA Benefits — Step-by-Step</h2>
+  <ul class="body-list">
+    <li>Obtain a <strong>Tax Residency Certificate (TRC)</strong> from the tax authorities of the country of residence</li>
+    <li>File <strong>Form 10F</strong> with the Indian income payer (bank, company, property buyer) along with the TRC</li>
+    <li>Furnish a self-declaration of beneficial ownership of the income</li>
+    <li>The payer then deducts TDS at the <strong>DTAA rate (if lower than domestic rate)</strong> instead of the standard rate</li>
+  </ul>
+
+  <div class="case-study">
+    <div class="cs-label">Practical Case 4 — DTAA for US-based NRI</div>
+    <h4>Priya (California) — NRO FD Interest of ₹5 Lakh</h4>
+    <p>Without DTAA: TDS at 30% = <strong>₹1.5 lakh</strong>.</p>
+    <p>Under India-US DTAA Article 11, the maximum withholding tax on interest from India is <strong>15%</strong>. By submitting Form 10F + US TRC to her bank, Priya reduces TDS to <strong>₹75,000 — saving ₹75,000 immediately</strong>.</p>
+    <p>She also reports the Indian interest on her US tax return and claims a Foreign Tax Credit (FTC) for the ₹75,000 paid in India, effectively <strong>eliminating double taxation entirely</strong>.</p>
+    <div class="cs-result">Simple, low-cost intervention: obtain TRC from IRS → file Form 10F with bank → immediate cash flow saving.</div>
+  </div>
+
+  <h2 class="sec-h2">Key DTAA Provisions — Common NRI Destinations</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Country</th><th>Dividend (India Co.)</th><th>Interest (NRO)</th><th>Capital Gains (Shares)</th><th>Capital Gains (Property)</th></tr></thead>
+      <tbody>
+        <tr><td>USA</td><td>15% / 25%</td><td>15% max</td><td>Taxable in India (15%/12.5%)</td><td>Taxable in India</td></tr>
+        <tr><td>UAE</td><td>No tax in UAE; India taxes at domestic rate</td><td>India taxes at domestic rate</td><td>India taxes (no UAE tax)</td><td>India taxes</td></tr>
+        <tr><td>UK</td><td>10% / 15%</td><td>15% max</td><td>Taxable in India</td><td>Taxable in India</td></tr>
+        <tr><td>Singapore</td><td>10% / 15%</td><td>10% max</td><td>India has primary right</td><td>Taxable in India</td></tr>
+        <tr><td>Canada</td><td>15% / 25%</td><td>15% max</td><td>India taxes</td><td>India taxes</td></tr>
+        <tr><td>Australia</td><td>15%</td><td>15% max</td><td>Taxable in India</td><td>Taxable in India</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART VII — TDS ═══════════════ -->
+  <div class="part-header" id="tds">
+    <div class="part-num">Part VII</div>
+    <h2>Section 195, TDS &amp; Lower Deduction Certificates</h2>
+    <p class="part-sub">The umbrella TDS provision — applies to every person making a taxable payment to a non-resident</p>
+  </div>
+
+  <div class="callout red">
+    <span class="c-label">Most Frequent Compliance Failure — Property Purchase from NRI</span>
+    <p>A <strong>resident Indian buying a house from an NRI seller</strong> is required to deduct TDS at 12.5% (LTCG) or 30% (STCG) on the <strong>full sale consideration</strong> and deposit it with the government before registering the property. Failure to do so makes the <strong>buyer personally liable</strong> for the tax. This applies even to individual buyers — many are completely unaware of this obligation.</p>
+  </div>
+
+  <h2 class="sec-h2">Lower Deduction Certificate (LDC) — Section 197</h2>
+  <p>Since TDS on property sales and share transfers is applied on the <strong>full sale value (not just the capital gain)</strong>, the NRI may end up with most of the sale proceeds blocked as TDS while the actual tax liability is much lower. The LDC mechanism corrects this:</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Step</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>1. Filing</td><td>NRI files application (<strong>Form 13</strong>) with the Jurisdictional Assessing Officer <em>before</em> the transaction</td></tr>
+        <tr><td>2. Documents</td><td>Computation of actual capital gains, supporting cost documents, PAN card, estimated tax liability</td></tr>
+        <tr><td>3. Certificate</td><td>AO issues the LDC specifying the lower/nil TDS rate applicable to that specific transaction</td></tr>
+        <tr><td>4. Validity</td><td>One financial year only — must be renewed annually. Binding on the payer/deductor.</td></tr>
+        <tr><td>5. Benefit</td><td>Payer deducts TDS at the LDC rate (<strong>can be as low as nil</strong>) instead of 12.5%/30%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART VIII — TAX PLANNING ═══════════════ -->
+  <div class="part-header" id="planning">
+    <div class="part-num">Part VIII</div>
+    <h2>Tax Planning Strategies for NRIs</h2>
+    <p class="part-sub">Legally sound, commonly used strategies — sequencing decisions for optimal outcomes</p>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="strat-card">
+      <div class="st-num">01</div>
+      <h4>Route Foreign Income Through NRE Accounts</h4>
+      <p>NRE FD interest is completely tax-free in India (Section 10(4)). FCNR(B) interest is also tax-free (Section 10(15)) with additional FX protection. An NRI earning ₹50 lakh annually in NRE/FCNR interest pays <strong>zero Indian tax</strong>. The same in NRO deposits = ₹15 lakh TDS. This single decision can save lakhs annually.</p>
+    </div>
+    <div class="strat-card">
+      <div class="st-num">02</div>
+      <h4>Maximise the RNOR Window on Return</h4>
+      <p>An NRI returning to India typically gets 2 years of RNOR status. During this window, <strong>foreign salary, business income, and interest are NOT taxable in India</strong>. Liquidate foreign mutual funds, bonds, and property. Remit to India via NRE/RFC accounts before full Resident status — the window is finite and valuable.</p>
+    </div>
+    <div class="strat-card">
+      <div class="st-num">03</div>
+      <h4>Capital Gains Reinvestment (Sections 54/54EC/54F)</h4>
+      <p>LTCG from property can be <strong>fully exempted</strong> by reinvesting in another residential property (Section 54, cap ₹10 crore) or in NHAI/REC bonds within 6 months (Section 54EC, cap ₹50 lakh). Section 54F exempts LTCG from any non-residential asset if a house is purchased.</p>
+    </div>
+    <div class="strat-card">
+      <div class="st-num">04</div>
+      <h4>Claim DTAA for NRO Interest Income</h4>
+      <p>Filing <strong>Form 10F with TRC</strong> before interest is credited can reduce NRO FD TDS from 30% to 10–15% for most treaty countries. Simple, low-cost, immediate cash flow benefit. Obtain TRC from your country of residence's tax authority — typically a one-page certificate.</p>
+    </div>
+  </div>
+
+  <h2 class="sec-h2">Old vs. New Tax Regime — Which to Choose?</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>NRI Profile</th><th>Recommended Regime</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>NRO rental income + home loan interest + 80C investments</td><td class="yes-cell">Old Regime</td><td>Section 24(b) interest and 80C deductions often exceed new regime benefit</td></tr>
+        <tr><td>Only equity capital gains income (no deductions)</td><td>New Regime or irrelevant</td><td>Capital gains taxed at flat rates — regime choice doesn't change rate</td></tr>
+        <tr><td>High NRO FD interest + DTAA benefits claimed</td><td class="yes-cell">Old Regime</td><td>DTAA reduces income base; further deductions under old regime beneficial</td></tr>
+        <tr><td>Simple India income and no deductions</td><td class="yes-cell">New Regime</td><td>Lower slab rates; reduced compliance complexity</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART IX — COMPLIANCE ═══════════════ -->
+  <div class="part-header" id="compliance">
+    <div class="part-num">Part IX</div>
+    <h2>Compliance Obligations</h2>
+    <p class="part-sub">When to file, what to file, and what consequences follow non-compliance</p>
+  </div>
+
+  <h2 class="sec-h2">ITR Filing — When Is It Mandatory?</h2>
+  <p>NRIs must file an Income Tax Return (ITR-2 or ITR-3) in India if:</p>
+  <ul class="body-list">
+    <li>Total Indian income before deductions exceeds <strong>₹2.5 lakh</strong> in the financial year</li>
+    <li>They have <strong>any capital gain income</strong> regardless of amount</li>
+    <li>They wish to claim a <strong>refund of excess TDS</strong></li>
+    <li>They wish to <strong>carry forward a capital loss</strong></li>
+  </ul>
+
+  <div class="callout navy">
+    <span class="c-label">Exception — Section 115G</span>
+    <p>NRIs may be exempt from filing if their only Indian income is investment income (interest, dividends, LTCG) and TDS has been deducted at the applicable rate. This exemption must be exercised carefully — it does <strong>not cover capital loss carry-forward</strong> and should not be used if DTAA reclaim or excess TDS refund is needed.</p>
+  </div>
+
+  <h2 class="sec-h2">Compliance Checklist</h2>
+  <ul class="checklist">
+    <li><span class="cl-icon">📋</span><div class="cl-body"><div class="cl-title">PAN Card</div><div class="cl-sub">Required for any financial transaction in India &gt; ₹2.5 lakh. Apply via NSDL — mandatory for all tax filings and banking.</div></div></li>
+    <li><span class="cl-icon">📁</span><div class="cl-body"><div class="cl-title">ITR Filing (ITR-2 / ITR-3)</div><div class="cl-sub">Indian income &gt; ₹2.5 lakh or any capital gains. File by July 31 each year.</div></div></li>
+    <li><span class="cl-icon">🏦</span><div class="cl-body"><div class="cl-title">TDS on NRO Interest</div><div class="cl-sub">Bank deducts automatically at 30%. Claim DTAA reduction via Form 10F + TRC before interest is credited.</div></div></li>
+    <li><span class="cl-icon">🏠</span><div class="cl-body"><div class="cl-title">TDS on Property Sale (Buyer's Obligation)</div><div class="cl-sub">Buyer must deduct TDS (12.5% or 30%) and deposit via Form 15CA/15CB + TDS Challan 281 before registration.</div></div></li>
+    <li><span class="cl-icon">💸</span><div class="cl-body"><div class="cl-title">Outward Remittance from NRO Account</div><div class="cl-sub">For repatriation of funds abroad: Form 15CA (Part D) + Form 15CB from a CA certifying tax compliance.</div></div></li>
+    <li><span class="cl-icon">📈</span><div class="cl-body"><div class="cl-title">PIS Registration for Equity Trading</div><div class="cl-sub">Designate one bank as the PIS bank and obtain RBI registration before trading listed Indian equities.</div></div></li>
+    <li><span class="cl-icon">🔄</span><div class="cl-body"><div class="cl-title">FEMA Re-KYC</div><div class="cl-sub">Periodic RBI requirement. Update bank with latest address, valid passport, and current NRI status proof.</div></div></li>
+    <li><span class="cl-icon">⚠️</span><div class="cl-body"><div class="cl-title">Redesignate Resident Accounts to NRO</div><div class="cl-sub">Immediately on acquiring NRI status — failure is a FEMA violation. Penalty up to 3× the amount involved.</div></div></li>
+  </ul>
+
+  <div class="gold-div"></div>
+
+  <!-- ═══════════════ PART X — MASTER TABLE ═══════════════ -->
+  <div class="part-header" id="master">
+    <div class="part-num">Part X</div>
+    <h2>Master Quick-Reference Table</h2>
+    <p class="part-sub">Complete NRI tax guide in one table — Issue · Law · Rate · Action</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Key Section / Law</th>
+          <th>Tax / Rate</th>
+          <th>Planning Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Determine residential status</td><td>Section 6, IT Act</td><td>Determines entire tax scope</td><td>Track days; use 120-day rule awareness for high earners</td></tr>
+        <tr><td>NRI tax scope</td><td>Section 5(2), IT Act</td><td>India-sourced income only</td><td>Route foreign income away from Indian bank accounts</td></tr>
+        <tr class="key-row"><td>NRE FD interest</td><td>Section 10(4), IT Act</td><td class="tax-free">TAX FREE</td><td>Prefer NRE over NRO for all foreign income parking</td></tr>
+        <tr class="key-row"><td>FCNR (B) interest</td><td>Section 10(15), IT Act</td><td class="tax-free">TAX FREE + FX protection</td><td>Use for USD/GBP/EUR surplus — higher INR rates, no currency risk</td></tr>
+        <tr><td>NRO interest</td><td>Normal slab / 30% TDS</td><td class="tax-30">30% TDS</td><td>Claim DTAA via Form 10F + TRC to reduce to 10–15%</td></tr>
+        <tr><td>STCG — equity/equity MF</td><td>Section 111A</td><td class="tax-20">20% (post July 2024)</td><td>Hold &gt; 12 months to convert to LTCG at 12.5%</td></tr>
+        <tr><td>LTCG — equity/equity MF</td><td>Section 112A</td><td class="tax-12">12.5% (₹1.25L exempt)</td><td>File ITR to claim ₹1.25L exemption; apply for LDC to avoid full TDS</td></tr>
+        <tr><td>STCG — property</td><td>Section 112</td><td class="tax-30">Slab rate (up to 30%)</td><td>Hold &gt; 24 months; consider RNOR entry timing</td></tr>
+        <tr><td>LTCG — property</td><td>Section 112 / 54 / 54EC</td><td class="tax-12">12.5% or 20% with indexation</td><td>Use Section 54 / 54EC reinvestment; obtain LDC before sale</td></tr>
+        <tr><td>Double taxation</td><td>Section 90; 90+ DTAA treaties</td><td>Treaty rate (lower)</td><td>File Form 10F + TRC before payment; claim FTC in home country</td></tr>
+        <tr><td>RNOR window on return</td><td>Section 6(6)</td><td class="tax-free">Foreign income exempt</td><td>Maximise RNOR years; repatriate/restructure foreign assets</td></tr>
+        <tr><td>FEMA compliance</td><td>FEMA 1999; RBI circulars</td><td class="tax-30">Civil penalty up to 3× sum</td><td>Close resident accounts; register PIS; maintain Form 15CA/CB records</td></tr>
+        <tr><td>ITR filing exemption</td><td>Section 115G</td><td>Filing not mandatory</td><td>Only if all India income is investment income with full TDS deducted</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pullquote">
+    The single most powerful NRI tax planning decision is choosing NRE or FCNR(B) accounts over NRO accounts for foreign income — it is the difference between zero tax and 30% TDS, with no additional compliance burden.
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This report has been prepared for academic and informational purposes only and is based on the provisions of the Income Tax Act, 1961, FEMA 1999, and applicable RBI guidelines as of FY 2025-26. The Income Tax Act 2025 (new consolidated code) has been enacted but applies from April 1, 2026 for income of FY 2026-27 onwards; the 1961 Act provisions apply for AY 2026-27. Tax laws are subject to frequent amendment. Nothing in this report constitutes legal, tax, or financial advice. Readers should consult a qualified Chartered Accountant or tax advisor for guidance on specific situations.
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="footer-author">
+      <strong>CA Parvesh Aghi</strong> · Chartered Accountant &amp; Visiting Professor, Finance<br>
+      IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University &nbsp;·&nbsp; May 2026
+    </div>
+    <div class="footer-links">
+      <a href="https://paraghi.github.io">Homepage</a>
+      <a href="mailto:parvesh1104@gmail.com">Email</a>
+      <a href="https://wa.me/919891450400">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/parvesh-aghi-34473b18">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
