@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New vs Old Tax Regime FY 2025-26 — Complete Guide | CA Parvesh Aghi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f38;
+    --navy-light: #1a3259;
+    --gold: #b8922a;
+    --gold-light: #d4a843;
+    --cream: #faf7f2;
+    --cream-dark: #f0ebe0;
+    --text: #1c1c1c;
+    --muted: #5a5a5a;
+    --border: #d8cfc0;
+    --green: #1a5c3a;
+    --green-bg: #edf7f1;
+    --red: #7a1f1f;
+    --red-bg: #fdf0f0;
+    --amber: #7a4f00;
+    --amber-bg: #fff8e8;
+    --blue: #1a3a8a;
+    --blue-bg: #eef2fc;
+    --new-col: #1a3a8a;
+    --old-col: #5a1f6b;
+    --new-bg: #eef2fc;
+    --old-bg: #f5edf9;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Source Serif 4', Georgia, serif; background: var(--cream); color: var(--text); font-size: 16.5px; line-height: 1.78; }
+
+  .top-rule { height: 5px; background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--navy) 100%); }
+
+  /* ── MASTHEAD ── */
+  .masthead { background: var(--navy); color: white; padding: 56px 48px 48px; position: relative; overflow: hidden; }
+  .masthead::before { content:''; position:absolute; top:-80px; right:-80px; width:420px; height:420px; border:1px solid rgba(184,146,42,0.12); border-radius:50%; }
+  .masthead::after { content:''; position:absolute; bottom:-60px; left:220px; width:260px; height:260px; border:1px solid rgba(184,146,42,0.08); border-radius:50%; }
+  .masthead-inner { max-width: 960px; margin: 0 auto; position: relative; z-index:1; }
+
+  .series-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .series-label::after { content:''; flex:1; height:1px; background:rgba(184,146,42,0.3); }
+
+  .masthead h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .masthead h1 .new { color: #7eb8f5; }
+  .masthead h1 .old { color: #d4a0e8; }
+  .masthead h1 .vs { color: var(--gold-light); font-style: italic; }
+
+  .masthead-subtitle { font-style: italic; font-weight: 300; font-size: 1.08rem; color: rgba(255,255,255,0.68); margin-bottom: 26px; line-height: 1.6; }
+
+  .regime-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .badge-new { background: rgba(126,184,245,0.15); border: 1px solid rgba(126,184,245,0.3); color: #7eb8f5; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; }
+  .badge-old { background: rgba(212,160,232,0.15); border: 1px solid rgba(212,160,232,0.3); color: #d4a0e8; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; }
+  .badge-neutral { background: rgba(184,146,42,0.12); border: 1px solid rgba(184,146,42,0.25); color: var(--gold-light); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; }
+
+  .masthead-meta { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+  .meta-item { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .meta-item strong { color: rgba(255,255,255,0.82); font-weight:400; }
+  .meta-dot { width:3px; height:3px; background:var(--gold); border-radius:50%; }
+
+  /* ── NAV ── */
+  .toc-nav { background: var(--navy-light); padding: 0 48px; border-bottom: 2px solid var(--gold); position: sticky; top: 0; z-index: 100; overflow-x: auto; }
+  .toc-nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; white-space: nowrap; }
+  .toc-nav a { color: rgba(255,255,255,0.62); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 1.4px; text-transform: uppercase; padding: 13px 13px; border-right: 1px solid rgba(255,255,255,0.08); transition: color 0.2s; flex-shrink: 0; }
+  .toc-nav a:first-child { padding-left: 0; }
+  .toc-nav a:last-child { border-right: none; }
+  .toc-nav a:hover { color: var(--gold-light); }
+
+  /* ── MAIN ── */
+  .content-wrap { max-width: 960px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* ── PART HEADER ── */
+  .part-header { margin: 52px 0 26px; padding-bottom: 14px; border-bottom: 2px solid var(--navy); }
+  .part-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .part-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .part-header .part-sub { font-style: italic; font-size: 0.93rem; color: var(--muted); margin-top: 5px; }
+
+  .sec-h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy-light); margin: 28px 0 12px; }
+
+  p { margin-bottom: 14px; font-size: 0.95rem; color: var(--muted); }
+  p strong { color: var(--text); }
+  ul.body-list { margin: 0 0 14px 22px; }
+  ul.body-list li { font-size: 0.92rem; color: var(--muted); margin-bottom: 7px; line-height: 1.7; }
+  ul.body-list li strong { color: var(--text); }
+
+  /* ── KEY NOTICE ── */
+  .key-notice { background: var(--navy); color: white; padding: 26px 32px; margin: 40px 0; border-left: 4px solid var(--gold); }
+  .key-notice .kn-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px; }
+  .key-notice h3 { font-family: 'Playfair Display', serif; font-size: 1.08rem; color: white; margin-bottom: 10px; }
+  .key-notice p { font-size: 0.91rem; color: rgba(255,255,255,0.75); line-height: 1.75; margin:0 0 8px; }
+  .key-notice p:last-child { margin:0; }
+
+  /* ── CALLOUTS ── */
+  .callout { padding: 16px 20px; margin: 16px 0; font-size: 0.91rem; line-height: 1.75; }
+  .callout .c-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; display: block; }
+  .callout p { font-size: 0.91rem; margin: 0 0 8px; }
+  .callout p:last-child { margin:0; }
+  .callout.green { background: var(--green-bg); border-left: 3px solid var(--green); }
+  .callout.green .c-label { color: var(--green); }
+  .callout.red { background: var(--red-bg); border-left: 3px solid var(--red); }
+  .callout.red .c-label { color: var(--red); }
+  .callout.gold { background: var(--amber-bg); border-left: 3px solid var(--gold); }
+  .callout.gold .c-label { color: var(--amber); }
+  .callout.navy { background: var(--blue-bg); border-left: 3px solid var(--navy); }
+  .callout.navy .c-label { color: var(--navy); }
+
+  /* ── REGIME COMPARE CARDS ── */
+  .regime-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+  .regime-card { padding: 24px; border: 1px solid var(--border); }
+  .regime-card.new-card { background: var(--new-bg); border-top: 4px solid var(--new-col); }
+  .regime-card.old-card { background: var(--old-bg); border-top: 4px solid var(--old-col); }
+  .regime-card .rc-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .regime-card.new-card .rc-tag { color: var(--new-col); }
+  .regime-card.old-card .rc-tag { color: var(--old-col); }
+  .regime-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; }
+  .regime-card.new-card h3 { color: var(--new-col); }
+  .regime-card.old-card h3 { color: var(--old-col); }
+  .regime-card ul { margin: 0 0 0 16px; }
+  .regime-card ul li { font-size: 0.87rem; color: var(--muted); margin-bottom: 7px; line-height: 1.65; }
+  .regime-card ul li strong { color: var(--text); }
+
+  /* ── SLAB TABLES ── */
+  .slab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+  .slab-block { overflow: hidden; }
+  .slab-header { padding: 12px 16px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: white; }
+  .slab-header.new-head { background: var(--new-col); }
+  .slab-header.old-head { background: var(--old-col); }
+  .slab-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; background: white; }
+  .slab-table tr { border-bottom: 1px solid #eee; }
+  .slab-table tr:last-child { border-bottom: none; }
+  .slab-table td { padding: 9px 13px; }
+  .slab-table td:first-child { color: var(--muted); }
+  .slab-table td:last-child { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 600; }
+  .slab-table tr.nil td:last-child { color: var(--green); }
+  .slab-table tr.five td:last-child { color: #1a5080; }
+  .slab-table tr.ten td:last-child { color: #2a6090; }
+  .slab-table tr.fifteen td:last-child { color: #3a7090; }
+  .slab-table tr.twenty td:last-child { color: var(--amber); }
+  .slab-table tr.tfive td:last-child { color: #b06010; }
+  .slab-table tr.thirty td:last-child { color: var(--red); }
+  .slab-table tr.rebate { background: var(--green-bg); }
+  .slab-table tr.rebate td { color: var(--green); font-weight: 600; }
+  .slab-table tr.sub-head { background: var(--cream-dark); }
+  .slab-table tr.sub-head td { color: var(--navy); font-weight: 600; font-size: 0.8rem; }
+
+  /* ── DEDUCTION TABLE ── */
+  .tbl-wrap { overflow-x: auto; margin: 18px 0; }
+  table.std { width:100%; border-collapse:collapse; font-size:0.85rem; background:white; box-shadow:0 1px 8px rgba(0,0,0,0.05); }
+  table.std thead tr { background: var(--navy); color: white; }
+  table.std thead th { padding: 11px 12px; text-align:left; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; border-right: 1px solid rgba(255,255,255,0.08); }
+  table.std thead th:last-child { border-right:none; }
+  table.std tbody tr { border-bottom: 1px solid #eee; }
+  table.std tbody tr:hover { background: var(--cream); }
+  table.std tbody td { padding: 10px 12px; vertical-align:top; border-right: 1px solid #f0ebe0; line-height: 1.6; color: var(--muted); font-size: 0.84rem; }
+  table.std tbody td:first-child { color: var(--navy); font-weight:500; }
+  table.std tbody td:last-child { border-right:none; }
+  table.std tbody tr:nth-child(even) { background: #faf8f4; }
+  .yes-cell { color: var(--green); font-weight: 700; }
+  .no-cell { color: var(--red); font-weight: 700; }
+  .both-cell { color: var(--green); font-weight: 600; font-size: 0.8rem; }
+
+  /* ── EXAMPLE CARDS ── */
+  .example-card { background: white; border: 1px solid var(--border); margin: 24px 0; overflow: hidden; }
+  .ex-header { background: var(--navy); padding: 16px 24px; display: flex; align-items: center; gap: 16px; }
+  .ex-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: rgba(184,146,42,0.3); line-height: 1; flex-shrink: 0; }
+  .ex-meta .ex-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
+  .ex-meta h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: white; }
+  .ex-meta .ex-sub { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .ex-body { padding: 22px 24px; }
+  .ex-profile { background: var(--cream-dark); padding: 12px 16px; margin-bottom: 16px; font-size: 0.88rem; color: var(--muted); line-height: 1.65; border-left: 3px solid var(--border); }
+
+  /* comparison table inside example */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 12px 0; }
+  .comp-table thead tr { background: #f0ebe0; }
+  .comp-table thead th { padding: 9px 12px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; border-right: 1px solid var(--border); color: var(--navy); }
+  .comp-table thead th:last-child { border-right: none; }
+  .comp-table thead th.new-th { background: var(--new-bg); color: var(--new-col); }
+  .comp-table thead th.old-th { background: var(--old-bg); color: var(--old-col); }
+  .comp-table tbody tr { border-bottom: 1px solid #eee; }
+  .comp-table tbody td { padding: 9px 12px; vertical-align: top; border-right: 1px solid #eee; line-height: 1.55; color: var(--muted); font-size: 0.84rem; }
+  .comp-table tbody td:first-child { color: var(--navy); font-weight: 500; width: 40%; }
+  .comp-table tbody td:last-child { border-right: none; }
+  .comp-table tbody td.new-td { background: rgba(126,184,245,0.06); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+  .comp-table tbody td.old-td { background: rgba(212,160,232,0.06); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+  .comp-table tr.highlight-new { background: var(--new-bg) !important; }
+  .comp-table tr.highlight-new td { font-weight: 700; }
+  .comp-table tr.highlight-new td.new-td { color: var(--new-col); font-size: 0.9rem; }
+  .comp-table tr.highlight-new td.old-td { color: var(--muted); }
+  .comp-table tr.highlight-old { background: var(--old-bg) !important; }
+  .comp-table tr.highlight-old td { font-weight: 700; }
+  .comp-table tr.highlight-old td.old-td { color: var(--old-col); font-size: 0.9rem; }
+  .comp-table tr.highlight-old td.new-td { color: var(--muted); }
+
+  .verdict { display: flex; align-items: center; gap: 12px; padding: 12px 16px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; }
+  .verdict.new-wins { background: var(--new-bg); color: var(--new-col); border-left: 4px solid var(--new-col); }
+  .verdict.old-wins { background: var(--old-bg); color: var(--old-col); border-left: 4px solid var(--old-col); }
+  .verdict .v-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; opacity: 0.7; margin-bottom: 2px; }
+  .verdict .v-saving { font-size: 1.05rem; }
+
+  /* ── TIPS ── */
+  .tip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+  .tip-card { background: white; border: 1px solid var(--border); padding: 22px; }
+  .tip-card .tip-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--cream-dark); line-height: 1; -webkit-text-stroke: 1px var(--border); margin-bottom: 8px; }
+  .tip-card h4 { font-weight: 700; color: var(--navy); font-size: 0.94rem; margin-bottom: 8px; }
+  .tip-card p { font-size: 0.86rem; color: var(--muted); margin: 0; line-height: 1.65; }
+
+  /* ── SURCHARGE TABLE ── */
+  .key-row td { background: #fffbf0 !important; }
+  .key-row td:first-child { color: var(--amber) !important; }
+  .surcharge-win { color: var(--green); font-weight: 700; }
+  .neutral-cell { color: var(--muted); }
+
+  /* ── DECISION MATRIX ── */
+  .decision-row-new td:first-child { background: rgba(126,184,245,0.08) !important; }
+  .decision-row-old td:first-child { background: rgba(212,160,232,0.08) !important; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote { border-left: 4px solid var(--gold); background: var(--cream-dark); padding: 20px 26px; margin: 24px 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--navy); line-height: 1.65; }
+
+  /* ── GOLD DIV ── */
+  .gold-div { height:1px; margin:44px 0; background:linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%); opacity:0.35; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer { background: #f5f5f0; border:1px solid var(--border); padding: 16px 20px; margin-top: 40px; font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  .page-footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 36px 48px; }
+  .page-footer-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+  .footer-author { font-size: 0.82rem; }
+  .footer-author strong { color: white; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--gold-light); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-links a:hover { color: white; }
+
+  @media (max-width: 700px) {
+    .masthead { padding: 36px 20px 28px; }
+    .toc-nav { padding: 0 14px; }
+    .content-wrap { padding: 0 18px 60px; }
+    .regime-pair, .slab-grid, .tip-grid { grid-template-columns: 1fr; }
+    .ex-header { flex-direction: column; gap: 8px; }
+    .page-footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="series-label">Tax Planning Reference · FY 2025-26 (AY 2026-27)</div>
+    <h1>Income Tax:<br><span class="new">New Regime</span> <span class="vs">vs</span> <span class="old">Old Regime</span></h1>
+    <p class="masthead-subtitle">Complete Guide for Individuals &amp; HUFs — 5 Illustrated Examples · 8 Tax Planning Tips · Decision Framework</p>
+
+    <div class="regime-badges">
+      <span class="badge-new">Section 115BAC · New Regime · Default</span>
+      <span class="badge-old">Old Regime · Opt-in Required</span>
+      <span class="badge-neutral">Finance Act 2025 · Budget 2025</span>
+      <span class="badge-neutral">87A Rebate · ₹12L Tax-Free</span>
+      <span class="badge-neutral">Surcharge Cap · LTCG Harvesting</span>
+    </div>
+
+    <div class="masthead-meta">
+      <div class="meta-item"><strong>CA Parvesh Aghi</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Visiting Professor, Finance</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">IMT Ghaziabad · IIFT Delhi · BML Munjal University</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Finance Act 2025 · FY 2025-26 · May 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="toc-nav">
+  <div class="toc-nav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#slabs">Slab Rates</a>
+    <a href="#deductions">Deductions</a>
+    <a href="#examples">5 Examples</a>
+    <a href="#decision">Decision Guide</a>
+    <a href="#tips">8 Tax Tips</a>
+    <a href="#surcharge">Surcharge</a>
+    <a href="https://paraghi.github.io">← Homepage</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="content-wrap">
+
+  <!-- SECTION 1 — OVERVIEW -->
+  <div class="part-header" id="overview" style="margin-top:44px;">
+    <div class="part-num">Section 1</div>
+    <h2>Overview &amp; Legislative Framework</h2>
+    <p class="part-sub">India's dual personal income tax system — every Individual and HUF chooses a regime each year</p>
+  </div>
+
+  <p>India operates a <strong>dual personal income tax system</strong>, allowing every resident Individual and HUF to choose between two distinct regimes each financial year. The choice is consequential — and in many cases, the difference runs to several lakhs of rupees annually.</p>
+
+  <div class="regime-pair">
+    <div class="regime-card new-card">
+      <div class="rc-tag">New Regime · Section 115BAC · DEFAULT</div>
+      <h3>New Regime — Lower Rates, Fewer Deductions</h3>
+      <ul>
+        <li>Introduced FY 2020-21; significantly revised in <strong>Budget 2023 and Budget 2025</strong></li>
+        <li><strong>Default regime from AY 2024-25</strong> — no action needed to use it</li>
+        <li>Lower slab rates across all income brackets</li>
+        <li>Most deductions and exemptions <strong>not permitted</strong></li>
+        <li><strong>₹12 lakh effectively tax-free</strong> via 87A rebate (₹12.75L for salaried)</li>
+        <li>Surcharge <strong>capped at 25%</strong> even above ₹5 crore</li>
+        <li>No enhanced exemption for senior/super-senior citizens</li>
+      </ul>
+    </div>
+    <div class="regime-card old-card">
+      <div class="rc-tag">Old Regime · Pre-existing System · OPT-IN</div>
+      <h3>Old Regime — Higher Rates, Rich Deductions</h3>
+      <ul>
+        <li>The original income tax structure — well understood, widely used</li>
+        <li><strong>Must actively opt in</strong> — requires ITR selection or Form 10-IEA</li>
+        <li>Higher marginal rates but permits <strong>wide array of deductions</strong></li>
+        <li>80C, 80D, HRA, LTA, home loan interest — all available</li>
+        <li>Enhanced basic exemption for <strong>senior citizens</strong> (₹3L) and <strong>super-seniors</strong> (₹5L)</li>
+        <li>Surcharge up to <strong>37%</strong> for income above ₹5 crore</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key-notice">
+    <div class="kn-label">Key Procedural Rules — Know Before You File</div>
+    <h3>Switching Rules Differ by Income Type</h3>
+    <p><strong>Salaried individuals</strong> (no business income): May switch freely between regimes every year at time of ITR filing. Must declare regime to employer at year-start for correct TDS.</p>
+    <p><strong>Business / profession income:</strong> Must file <strong>Form 10-IEA</strong> before the ITR due date to opt for old regime. Can switch back to new regime, but <strong>only once in a lifetime</strong> — a permanent forfeiture of the old regime option thereafter.</p>
+    <p><strong>HUF:</strong> Treated identically to individuals below 60 years; no enhanced exemption in old regime.</p>
+    <p><strong>Health &amp; Education Cess</strong> @ 4% applies on (Tax + Surcharge) in both regimes — there is no difference here.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- SECTION 2 — SLAB RATES -->
+  <div class="part-header" id="slabs">
+    <div class="part-num">Section 2</div>
+    <h2>Slab Rates — New Regime vs Old Regime</h2>
+    <p class="part-sub">Budget 2025 revised new regime slabs significantly — the ₹4L nil threshold and ₹12L zero-tax are headline changes</p>
+  </div>
+
+  <div class="slab-grid">
+    <!-- New Regime -->
+    <div class="slab-block">
+      <div class="slab-header new-head">New Regime (Section 115BAC) · All Ages</div>
+      <table class="slab-table">
+        <tr class="nil"><td>Up to ₹4,00,000</td><td>NIL</td></tr>
+        <tr class="five"><td>₹4,00,001 – ₹8,00,000</td><td>5%</td></tr>
+        <tr class="ten"><td>₹8,00,001 – ₹12,00,000</td><td>10%</td></tr>
+        <tr class="fifteen"><td>₹12,00,001 – ₹16,00,000</td><td>15%</td></tr>
+        <tr class="twenty"><td>₹16,00,001 – ₹20,00,000</td><td>20%</td></tr>
+        <tr class="tfive"><td>₹20,00,001 – ₹24,00,000</td><td>25%</td></tr>
+        <tr class="thirty"><td>Above ₹24,00,000</td><td>30%</td></tr>
+        <tr class="rebate"><td>Section 87A Rebate (income ≤ ₹12L)</td><td>100% — Zero Tax</td></tr>
+        <tr class="rebate"><td>Salaried std deduction ₹75K → tax-free up to</td><td>₹12,75,000</td></tr>
+      </table>
+    </div>
+
+    <!-- Old Regime — All three age categories -->
+    <div class="slab-block">
+      <div class="slab-header old-head">Old Regime · Three Age Categories</div>
+      <table class="slab-table">
+        <tr class="sub-head"><td colspan="2">Below 60 years &amp; HUF</td></tr>
+        <tr class="nil"><td>Up to ₹2,50,000</td><td>NIL</td></tr>
+        <tr class="five"><td>₹2,50,001 – ₹5,00,000</td><td>5%</td></tr>
+        <tr class="twenty"><td>₹5,00,001 – ₹10,00,000</td><td>20%</td></tr>
+        <tr class="thirty"><td>Above ₹10,00,000</td><td>30%</td></tr>
+        <tr class="sub-head"><td colspan="2">Senior Citizens (60–79 years)</td></tr>
+        <tr class="nil"><td>Up to ₹3,00,000</td><td>NIL</td></tr>
+        <tr class="five"><td>₹3,00,001 – ₹5,00,000</td><td>5%</td></tr>
+        <tr class="twenty"><td>₹5,00,001 – ₹10,00,000</td><td>20%</td></tr>
+        <tr class="thirty"><td>Above ₹10,00,000</td><td>30%</td></tr>
+        <tr class="sub-head"><td colspan="2">Super Senior Citizens (80+ years)</td></tr>
+        <tr class="nil"><td>Up to ₹5,00,000</td><td>NIL</td></tr>
+        <tr class="twenty"><td>₹5,00,001 – ₹10,00,000</td><td>20%</td></tr>
+        <tr class="thirty"><td>Above ₹10,00,000</td><td>30%</td></tr>
+        <tr class="rebate"><td>Section 87A Rebate (income ≤ ₹5L)</td><td>Up to ₹12,500</td></tr>
+        <tr class="rebate"><td>Salaried standard deduction</td><td>₹50,000</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <span class="c-label">Budget 2025 — Headline Change</span>
+    <p>The new regime's nil slab was raised from ₹3L to <strong>₹4L</strong>, and the 87A rebate ceiling was raised to ₹12L (from ₹7L). For a salaried employee, the combined effect of the ₹75,000 standard deduction and the ₹12L rebate means <strong>effective zero tax up to ₹12.75 lakh</strong> — without a single rupee of Section 80C or other deduction.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- SECTION 3 — DEDUCTIONS -->
+  <div class="part-header" id="deductions">
+    <div class="part-num">Section 3</div>
+    <h2>Deductions &amp; Exemptions — What Is Allowed?</h2>
+    <p class="part-sub">The critical determinant in choosing between regimes — most deductions vanish in the new regime</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std">
+      <thead>
+        <tr>
+          <th>Section / Deduction</th>
+          <th>Limit / Basis</th>
+          <th>Old Regime</th>
+          <th>New Regime</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Standard Deduction (salaried)</td><td>₹50,000 / ₹75,000</td><td class="yes-cell">✓ ₹50,000</td><td class="yes-cell">✓ ₹75,000</td></tr>
+        <tr><td>Sec 80C — PPF, ELSS, LIC, EPF, tuition fees, home loan principal</td><td>Up to ₹1,50,000</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 80D — Health insurance premium</td><td>₹25K – ₹1,00,000</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 24(b) — Home loan interest (self-occupied)</td><td>Up to ₹2,00,000</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 24(b) — Home loan interest (let-out property)</td><td>Actual amount</td><td class="yes-cell">✓ Yes</td><td class="both-cell">✓ Yes</td></tr>
+        <tr><td>HRA Exemption — Sec 10(13A)</td><td>Actual as per formula</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>LTA — Leave Travel Allowance</td><td>Actual travel cost</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 80E — Education loan interest</td><td>Full interest, 8 years</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 80G — Donations to charity</td><td>50% / 100% of donation</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 80TTA / 80TTB — Savings / FD interest</td><td>₹10,000 / ₹50,000</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 80CCD(2) — <strong>Employer NPS contribution</strong></td><td>Up to 14% of basic+DA</td><td class="both-cell">✓ Yes</td><td class="both-cell">✓ YES — Available!</td></tr>
+        <tr><td>Sec 80CCD(1B) — Employee NPS (additional ₹50K)</td><td>₹50,000 extra</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Professional tax — Sec 16(iii)</td><td>Actual amount</td><td class="yes-cell">✓ Yes</td><td class="no-cell">✗ No</td></tr>
+        <tr><td>Sec 80JJAA — Additional employee cost</td><td>30% of new wages, 3 years</td><td class="both-cell">✓ Yes</td><td class="both-cell">✓ Yes</td></tr>
+        <tr><td>Agricultural income</td><td>Fully exempt</td><td class="both-cell">✓ Exempt</td><td class="both-cell">✓ Exempt</td></tr>
+        <tr><td>Gratuity / Leave encashment — Sec 10(10)</td><td>Statutory limits</td><td class="both-cell">✓ Yes</td><td class="both-cell">✓ Yes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <span class="c-label">The One Powerful Deduction in the New Regime</span>
+    <p><strong>Section 80CCD(2) — Employer's NPS contribution</strong> is available under the new regime, up to 14% of (basic + DA). For an employee with a basic salary of ₹1 lakh/month, this is ₹1.68 lakh per year in additional deductions — with <strong>no personal cash outflow required</strong>. This is cost-neutral for the employee (the employer restructures CTC) and represents a significant, often overlooked benefit of the new regime.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- SECTION 4 — EXAMPLES -->
+  <div class="part-header" id="examples">
+    <div class="part-num">Section 4</div>
+    <h2>Five Illustrative Examples</h2>
+    <p class="part-sub">Full tax computations for each profile — with verdict and savings</p>
+  </div>
+
+  <!-- EXAMPLE 1 -->
+  <div class="example-card">
+    <div class="ex-header">
+      <div class="ex-num">01</div>
+      <div class="ex-meta">
+        <div class="ex-tag">Young Salaried Professional · Limited Deductions</div>
+        <h3>Age 28 · Salary ₹10 Lakh · Minimal Investments</h3>
+        <div class="ex-sub">Rents apartment · No HRA claim · 80C only ₹50,000</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-profile">Profile: Age 28, salaried, rents an apartment but claims no HRA, modest 80C investment of ₹50,000. No home loan. No health insurance.</div>
+      <table class="comp-table">
+        <thead><tr><th>Particulars</th><th class="new-th">New Regime (₹)</th><th class="old-th">Old Regime (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Gross Salary</td><td class="new-td">10,00,000</td><td class="old-td">10,00,000</td></tr>
+          <tr><td>Less: Standard Deduction</td><td class="new-td">(75,000)</td><td class="old-td">(50,000)</td></tr>
+          <tr><td>Less: Section 80C</td><td class="new-td">—</td><td class="old-td">(50,000)</td></tr>
+          <tr><td><strong>Taxable Income</strong></td><td class="new-td"><strong>9,25,000</strong></td><td class="old-td"><strong>9,00,000</strong></td></tr>
+          <tr><td>Income Tax</td><td class="new-td">45,000</td><td class="old-td">80,000</td></tr>
+          <tr><td>Health &amp; Education Cess @ 4%</td><td class="new-td">1,800</td><td class="old-td">3,200</td></tr>
+          <tr class="highlight-new"><td><strong>Total Tax Liability</strong></td><td class="new-td"><strong>₹46,800</strong></td><td class="old-td"><strong>₹83,200</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="verdict new-wins">
+        <div><div class="v-label">New Regime Wins</div><div class="v-saving">New regime saves ₹36,400 — with limited deductions, lower new regime rates decisively win</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 2 -->
+  <div class="example-card">
+    <div class="ex-header">
+      <div class="ex-num">02</div>
+      <div class="ex-meta">
+        <div class="ex-tag">Mid-Career Professional · Home Loan + Full Deductions</div>
+        <h3>Age 38 · Salary ₹15 Lakh · Maximum Deductions</h3>
+        <div class="ex-sub">Home loan interest ₹2L · HRA ₹1.8L · 80C ₹1.5L · 80D ₹25K</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-profile">Profile: Age 38, salaried, home loan interest ₹2L, HRA ₹1.8L, full 80C ₹1.5L, health insurance 80D ₹25K. Typical profile of a mid-career professional.</div>
+      <table class="comp-table">
+        <thead><tr><th>Particulars</th><th class="new-th">New Regime (₹)</th><th class="old-th">Old Regime (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Gross Salary</td><td class="new-td">15,00,000</td><td class="old-td">15,00,000</td></tr>
+          <tr><td>Less: Standard Deduction</td><td class="new-td">(75,000)</td><td class="old-td">(50,000)</td></tr>
+          <tr><td>Less: HRA + 80C + 80D + Home Loan Interest</td><td class="new-td">—</td><td class="old-td">(5,55,000)</td></tr>
+          <tr><td><strong>Taxable Income</strong></td><td class="new-td"><strong>14,25,000</strong></td><td class="old-td"><strong>8,95,000</strong></td></tr>
+          <tr><td>Income Tax</td><td class="new-td">1,50,000</td><td class="old-td">89,000</td></tr>
+          <tr><td>Health &amp; Education Cess @ 4%</td><td class="new-td">6,000</td><td class="old-td">3,560</td></tr>
+          <tr class="highlight-old"><td><strong>Total Tax Liability</strong></td><td class="new-td"><strong>₹1,56,000</strong></td><td class="old-td"><strong>₹92,560</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="verdict old-wins">
+        <div><div class="v-label">Old Regime Wins</div><div class="v-saving">Old regime saves ₹63,440 — heavy deductions (HRA + home loan + 80C + 80D) make old regime dramatically more efficient</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 3 -->
+  <div class="example-card">
+    <div class="ex-header">
+      <div class="ex-num">03</div>
+      <div class="ex-meta">
+        <div class="ex-tag">Senior Citizen · Pension + FD Income</div>
+        <h3>Age 65 · Pension ₹5L + FD Interest ₹3L = ₹8 Lakh Total</h3>
+        <div class="ex-sub">Health insurance ₹50K · 80C ₹1L · 80TTB ₹50K</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-profile">Profile: Age 65, retired. Pension ₹5L + FD interest ₹3L. Health insurance ₹50K (self + spouse), 80C ₹1L (LIC), 80TTB ₹50K (FD interest deduction for senior citizens).</div>
+      <table class="comp-table">
+        <thead><tr><th>Particulars</th><th class="new-th">New Regime (₹)</th><th class="old-th">Old Regime (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Total Income</td><td class="new-td">8,00,000</td><td class="old-td">8,00,000</td></tr>
+          <tr><td>Less: 80C + 80D + 80TTB</td><td class="new-td">—</td><td class="old-td">(2,00,000)</td></tr>
+          <tr><td><strong>Taxable Income</strong></td><td class="new-td"><strong>8,00,000</strong></td><td class="old-td"><strong>6,00,000</strong></td></tr>
+          <tr><td>Income Tax</td><td class="new-td">40,000</td><td class="old-td">30,000</td></tr>
+          <tr><td>Health &amp; Education Cess @ 4%</td><td class="new-td">1,600</td><td class="old-td">1,200</td></tr>
+          <tr class="highlight-old"><td><strong>Total Tax Liability</strong></td><td class="new-td"><strong>₹41,600</strong></td><td class="old-td"><strong>₹31,200</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="verdict old-wins">
+        <div><div class="v-label">Old Regime Wins</div><div class="v-saving">Old regime saves ₹10,400 — seniors uniquely benefit from 80TTB (₹50K on FD interest), 80D, and higher basic exemption limit (₹3L for 60-79 yrs; ₹5L for 80+)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 4 -->
+  <div class="example-card">
+    <div class="ex-header">
+      <div class="ex-num">04</div>
+      <div class="ex-meta">
+        <div class="ex-tag">HUF · Investment &amp; Rental Income</div>
+        <h3>HUF · ₹20 Lakh Income · Limited Deductions</h3>
+        <div class="ex-sub">Rental + capital gains income · 80C ₹1.5L only</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-profile">Profile: HUF with rental and capital gains income of ₹20L. Only deduction: 80C investments of ₹1.5L. No home loan, no health insurance in HUF name.</div>
+      <table class="comp-table">
+        <thead><tr><th>Particulars</th><th class="new-th">New Regime (₹)</th><th class="old-th">Old Regime (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Gross Income</td><td class="new-td">20,00,000</td><td class="old-td">20,00,000</td></tr>
+          <tr><td>Less: Sec 80C</td><td class="new-td">—</td><td class="old-td">(1,50,000)</td></tr>
+          <tr><td><strong>Taxable Income</strong></td><td class="new-td"><strong>20,00,000</strong></td><td class="old-td"><strong>18,50,000</strong></td></tr>
+          <tr><td>Income Tax</td><td class="new-td">3,00,000</td><td class="old-td">3,45,000</td></tr>
+          <tr><td>Health &amp; Education Cess @ 4%</td><td class="new-td">12,000</td><td class="old-td">13,800</td></tr>
+          <tr class="highlight-new"><td><strong>Total Tax Liability</strong></td><td class="new-td"><strong>₹3,12,000</strong></td><td class="old-td"><strong>₹3,58,800</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="verdict new-wins">
+        <div><div class="v-label">New Regime Wins</div><div class="v-saving">New regime saves ₹46,800 — HUFs with modest deductions and moderate-to-high income benefit from the new regime's lower marginal rates and higher basic exemption (₹4L vs ₹2.5L)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLE 5 -->
+  <div class="example-card">
+    <div class="ex-header">
+      <div class="ex-num">05</div>
+      <div class="ex-meta">
+        <div class="ex-tag">High-Income Professional / Business Person</div>
+        <h3>Self-Employed Professional · ₹50 Lakh Income</h3>
+        <div class="ex-sub">80C ₹1.5L · 80D ₹25K · NPS 80CCD(1B) ₹50K · Surcharge applies</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-profile">Profile: Self-employed professional, income ₹50L. Total deductions: 80C ₹1.5L + 80D ₹25K + NPS additional 80CCD(1B) ₹50K = ₹2.25L total.</div>
+      <table class="comp-table">
+        <thead><tr><th>Particulars</th><th class="new-th">New Regime (₹)</th><th class="old-th">Old Regime (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Gross Income</td><td class="new-td">50,00,000</td><td class="old-td">50,00,000</td></tr>
+          <tr><td>Less: Deductions (80C + 80D + 80CCD(1B))</td><td class="new-td">—</td><td class="old-td">(2,25,000)</td></tr>
+          <tr><td><strong>Taxable Income</strong></td><td class="new-td"><strong>50,00,000</strong></td><td class="old-td"><strong>47,75,000</strong></td></tr>
+          <tr><td>Base Tax</td><td class="new-td">13,12,500</td><td class="old-td">13,42,500</td></tr>
+          <tr><td>Surcharge @ 10%</td><td class="new-td">1,31,250</td><td class="old-td">1,34,250</td></tr>
+          <tr><td>Health &amp; Education Cess @ 4%</td><td class="new-td">57,780</td><td class="old-td">59,067</td></tr>
+          <tr class="highlight-new"><td><strong>Total Tax Liability</strong></td><td class="new-td"><strong>₹15,01,530</strong></td><td class="old-td"><strong>₹15,35,817</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="verdict new-wins">
+        <div><div class="v-label">New Regime Wins</div><div class="v-saving">New regime saves ₹34,287 — at very high incomes, lower marginal rates outweigh modest deduction savings. And for income above ₹5 crore, the surcharge cap (25% vs 37%) becomes decisive.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- SECTION 5 — DECISION FRAMEWORK -->
+  <div class="part-header" id="decision">
+    <div class="part-num">Section 5</div>
+    <h2>Decision Framework — Which Regime to Choose?</h2>
+    <p class="part-sub">A practical guide based on income level and deduction utilisation — plus a break-even rule of thumb</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std">
+      <thead><tr><th>Assessee Profile</th><th>Recommended Regime</th><th>Key Rationale</th></tr></thead>
+      <tbody>
+        <tr class="decision-row-new"><td>Income ≤ ₹12L, salaried, limited deductions</td><td class="yes-cell">New Regime</td><td>Zero tax via 87A rebate — no computation needed</td></tr>
+        <tr class="decision-row-old"><td>Income ₹10–20L, total deductions &gt; ₹3.5–4L</td><td style="color:var(--old-col);font-weight:700;">Old Regime</td><td>Large deductions overwhelm the rate differential</td></tr>
+        <tr class="decision-row-new"><td>Income ₹15–25L, deductions &lt; ₹2.5L</td><td class="yes-cell">New Regime</td><td>Lower slab rates outperform modest deductions</td></tr>
+        <tr class="decision-row-old"><td>Senior citizen with medical expenses + FD interest</td><td style="color:var(--old-col);font-weight:700;">Old Regime</td><td>80TTB ₹50K + 80D ₹50K + higher basic exemption — uniquely valuable</td></tr>
+        <tr class="decision-row-new"><td>Income &gt; ₹50L, deductions &lt; ₹3L</td><td class="yes-cell">New Regime</td><td>Surcharge capped at 25% vs 37% — decisive at high incomes</td></tr>
+        <tr class="decision-row-new"><td>HUF with investment income, few deductions</td><td class="yes-cell">New Regime</td><td>₹4L basic exemption + lower rates benefit HUFs with rental/investment income</td></tr>
+        <tr class="decision-row-old"><td>Salaried with home loan + HRA + full 80C + 80D</td><td style="color:var(--old-col);font-weight:700;">Old Regime</td><td>Combined deductions of ₹5–6L+ make old regime consistently better</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout navy">
+    <span class="c-label">Break-Even Rule of Thumb</span>
+    <p>If total eligible deductions exceed approximately <strong>₹3.5 to ₹4 lakh</strong> for income in the ₹10–20 lakh range, the old regime is generally more beneficial. Below this threshold, the new regime's lower rates almost always prevail.</p>
+    <p>The most common scenario where the old regime wins decisively: <strong>₹2L home loan interest + ₹1.5L 80C + ₹50K 80D + ₹1.8L HRA = ₹5.8L total deductions</strong> — at any income above ₹10L, this combination clearly favours the old regime.</p>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- SECTION 6 — TAX PLANNING TIPS -->
+  <div class="part-header" id="tips">
+    <div class="part-num">Section 6</div>
+    <h2>Eight Tax Planning Tips</h2>
+    <p class="part-sub">Actionable strategies — regime-specific and regime-neutral — for FY 2025-26</p>
+  </div>
+
+  <div class="tip-grid">
+    <div class="tip-card">
+      <div class="tip-num">01</div>
+      <h4>Run Both Computations Before April</h4>
+      <p>Calculate tax under both regimes at the start of each financial year. The employer requires a regime declaration for TDS computation — a wrong early choice locks in sub-optimal TDS for 12 months.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">02</div>
+      <h4>Maximise Employer NPS (Section 80CCD(2)) Under New Regime</h4>
+      <p>Up to 14% of basic salary as employer NPS contribution is deductible under the new regime — generating ₹1–2 lakh annually with <strong>no personal cash outflow</strong>. The most powerful and underused new-regime deduction.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">03</div>
+      <h4>Stack All Deductions Before Committing to Old Regime</h4>
+      <p>80C alone (₹1.5L) rarely justifies the old regime above ₹15L. Combine: 80C + 80D (self+parents) + Sec 24(b) home loan + HRA + NPS 80CCD(1B). This can aggregate to ₹5–6 lakh and decisively favour the old regime.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">04</div>
+      <h4>Use HUF as a Parallel Tax Unit</h4>
+      <p>HUF has its own exemption limit (₹4L new / ₹2.5L old) and its own slab benefits. Genuine HUF income from ancestral property is taxed at HUF level — a second set of slabs for the family. Clubbing (Sections 60–64) does not apply to genuine HUF income.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">05</div>
+      <h4>Harvest LTCG Below ₹1.25 Lakh Annually</h4>
+      <p>Section 112A exempts up to ₹1.25 lakh LTCG on equity MF/shares annually. Systematic annual harvesting across multiple family members (spouse, HUF) multiplies this benefit. Completely regime-neutral.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">06</div>
+      <h4>Salary Restructuring Favours Old Regime</h4>
+      <p>Under the new regime, food allowance, telephone reimbursement, LTA, and uniform allowance are taxable. Restructuring CTC to include these tax-exempt components (old regime) can save ₹30,000–₹60,000 annually at higher income levels.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">07</div>
+      <h4>Business Income Assessees — Exercise Regime Option Carefully</h4>
+      <p>Individuals with business/profession income can exit the new regime only once by filing Form 10-IEA. Switching back to old regime permanently forecloses the new regime option. <strong>This one-time switch makes early analysis critical.</strong></p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">08</div>
+      <h4>High Incomes — Consider the Surcharge Differential</h4>
+      <p>For income above ₹5 crore, old regime surcharge reaches 37% vs 25% cap in new regime — a 12 percentage point difference translating to 3–4% higher effective rate. At this level, the new regime almost always wins even with maximum deductions.</p>
+    </div>
+  </div>
+
+  <div class="gold-div"></div>
+
+  <!-- SECTION 7 — SURCHARGE -->
+  <div class="part-header" id="surcharge">
+    <div class="part-num">Section 7</div>
+    <h2>Surcharge Rates — Where the New Regime Wins Decisively</h2>
+    <p class="part-sub">For most incomes, surcharge is identical. Above ₹5 crore, the 12% gap is significant.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="std">
+      <thead><tr><th>Net Taxable Income</th><th>New Regime</th><th>Old Regime</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr><td>Up to ₹50,00,000</td><td class="neutral-cell">Nil</td><td class="neutral-cell">Nil</td><td>No difference — regime choice is purely about rates &amp; deductions</td></tr>
+        <tr><td>₹50L to ₹1 Crore</td><td class="neutral-cell">10%</td><td class="neutral-cell">10%</td><td>No difference</td></tr>
+        <tr><td>₹1 Crore to ₹2 Crore</td><td class="neutral-cell">15%</td><td class="neutral-cell">15%</td><td>No difference</td></tr>
+        <tr><td>₹2 Crore to ₹5 Crore</td><td class="neutral-cell">25%</td><td class="neutral-cell">25%</td><td>No difference</td></tr>
+        <tr class="key-row"><td><strong>Above ₹5 Crore</strong></td><td class="surcharge-win"><strong>25% (Capped)</strong></td><td style="color:var(--red);font-weight:700;">37%</td><td class="surcharge-win"><strong>New regime saves 12% on surcharge → ~3–4% effective rate advantage. Almost always favours new regime.</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pullquote">
+    The break-even deduction level is approximately ₹3.5–4 lakh for incomes between ₹10–20 lakh. Stack home loan interest, HRA, 80C, and 80D — if your total exceeds this threshold, the old regime is your answer. Below it, the new regime's lower rates and ₹12 lakh zero-tax benefit make the choice straightforward.
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This report is intended for academic and general educational purposes only. Tax laws are subject to annual revision through Finance Acts and CBDT notifications. The Income Tax Act 2025 (new consolidated code) has been enacted and applies from AY 2027-28 (FY 2026-27) onwards; the Income Tax Act 1961 as amended by Finance Act 2025 governs FY 2025-26 assessments. All figures and calculations are indicative and based on Finance Act 2025 provisions for FY 2025-26 (AY 2026-27). Readers should consult a qualified Chartered Accountant or Tax Advisor for specific advice on individual circumstances.
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <div class="footer-author">
+      <strong>CA Parvesh Aghi</strong> · Chartered Accountant &amp; Visiting Professor, Finance<br>
+      IMT Ghaziabad &nbsp;·&nbsp; IIFT Delhi &nbsp;·&nbsp; BML Munjal University &nbsp;·&nbsp; May 2026
+    </div>
+    <div class="footer-links">
+      <a href="https://paraghi.github.io">Homepage</a>
+      <a href="mailto:parvesh1104@gmail.com">Email</a>
+      <a href="https://wa.me/919891450400">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/parvesh-aghi-34473b18">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
