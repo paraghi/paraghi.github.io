@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FCNR(B) 2026 — RBI's Special Swap Window for NRIs | CA Parvesh Aghi</title>
+<style>
+  :root {
+    --navy:#0a0f1e; --navy2:#0d1528; --navy3:#111c35; --card:#131f3a; --card2:#162240;
+    --border:#1e3060; --gold:#f0b429; --teal:#00c9a7; --blue:#4da6ff; --red:#ff6b6b;
+    --green:#34d399; --purple:#a78bfa; --orange:#fb923c; --text:#e8eaf0; --text2:#a0aec0; --text3:#6b7a99;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--navy);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.6}
+
+  .hero{background:linear-gradient(135deg,#050b1a 0%,#0a1628 40%,#0d1e3a 100%);padding:48px 32px 36px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(0,201,167,0.08) 0%,transparent 70%);pointer-events:none}
+  .hero-badge{display:inline-block;background:rgba(0,201,167,0.12);border:1px solid rgba(0,201,167,0.35);color:var(--teal);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+  .hero-date{display:inline-block;background:rgba(255,107,107,0.12);border:1px solid rgba(255,107,107,0.35);color:var(--red);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-left:10px;margin-bottom:20px}
+  .hero h1{font-size:30px;font-weight:700;color:#fff;letter-spacing:-.5px;margin-bottom:8px}
+  .hero h1 span{color:var(--teal)}
+  .hero-sub{font-size:15px;color:var(--text2);margin-bottom:24px}
+  .hero-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:20px}
+  .hero-meta-item{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text2)}
+  .hero-meta-item .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+  .tab-bar{background:var(--navy2);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 24px;position:sticky;top:0;z-index:100;scrollbar-width:none}
+  .tab-bar::-webkit-scrollbar{display:none}
+  .tab{padding:13px 17px;font-size:12.5px;font-weight:500;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;background:none;border-left:none;border-right:none;border-top:none}
+  .tab:hover{color:var(--text2)}
+  .tab.active{color:var(--teal);border-bottom-color:var(--teal)}
+
+  .section{display:none;padding:28px 24px;max-width:1060px;margin:0 auto}
+  .section.active{display:block}
+
+  .sec-header{margin-bottom:22px}
+  .sec-header h2{font-size:20px;font-weight:700;color:#fff;margin-bottom:4px}
+  .sec-header p{color:var(--text2);font-size:13.5px}
+
+  .stat-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px;margin-bottom:26px}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+  .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .stat-val{font-size:24px;font-weight:700}
+  .stat-sub{font-size:11px;color:var(--text3);margin-top:3px}
+  .teal{color:var(--teal)} .gold{color:var(--gold)} .red{color:var(--red)} .green{color:var(--green)} .blue{color:var(--blue)} .orange{color:var(--orange)}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:18px}
+  .card-title{font-size:13px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .card-title::before{content:'';display:block;width:3px;height:14px;background:var(--teal);border-radius:2px}
+
+  .alert{border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13px;line-height:1.6}
+  .alert-teal{background:rgba(0,201,167,.08);border:1px solid rgba(0,201,167,.3);color:#5eead4}
+  .alert-gold{background:rgba(240,180,41,.08);border:1px solid rgba(240,180,41,.3);color:#f5d36e}
+  .alert-red{background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.3);color:#ff8f8f}
+  .alert-green{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);color:#5eead4}
+  .alert-blue{background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.3);color:#7dbfff}
+  .alert-label{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+
+  .tbl-wrap{overflow-x:auto;margin:14px 0;border-radius:8px;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:rgba(0,201,167,.08);color:var(--teal);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+  td{padding:10px 14px;border-bottom:1px solid rgba(30,48,96,.5);color:var(--text);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  .hr td{background:rgba(0,201,167,.06);font-weight:600;color:var(--teal)}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.two-col{grid-template-columns:1fr}}
+
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px}
+  .pill-green{background:rgba(52,211,153,.15);color:var(--green)}
+  .pill-red{background:rgba(255,107,107,.15);color:var(--red)}
+  .pill-gold{background:rgba(240,180,41,.15);color:var(--gold)}
+  .pill-teal{background:rgba(0,201,167,.15);color:var(--teal)}
+  .pill-blue{background:rgba(77,166,255,.15);color:var(--blue)}
+
+  /* COMPARISON VISUAL */
+  .compare-bar{margin:18px 0}
+  .bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .bar-label{width:120px;font-size:12px;color:var(--text2);flex-shrink:0;text-align:right}
+  .bar-track{flex:1;background:rgba(30,48,96,.5);border-radius:6px;height:28px;overflow:hidden;position:relative}
+  .bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;transition:width .8s ease}
+  .bar-val{font-size:12px;font-weight:700;color:var(--text);width:60px;flex-shrink:0}
+
+  /* BANK RATE CARDS */
+  .bank-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+  .bank-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  .bank-name{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px}
+  .bank-rate{font-size:26px;font-weight:800;margin:6px 0}
+  .bank-note{font-size:11px;color:var(--text3)}
+
+  /* MECHANISM FLOW */
+  .flow{display:flex;align-items:stretch;gap:0;margin:18px 0;flex-wrap:wrap}
+  .flow-box{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;flex:1;min-width:140px;text-align:center}
+  .flow-arrow{display:flex;align-items:center;padding:0 6px;color:var(--teal);font-size:20px;font-weight:700}
+  .flow-icon{font-size:22px;margin-bottom:6px}
+  .flow-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px}
+  .flow-desc{font-size:11px;color:var(--text3)}
+
+  /* TIMELINE */
+  .timeline{position:relative;margin:18px 0}
+  .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:var(--border)}
+  .tl-item{display:flex;gap:16px;margin-bottom:20px;position:relative}
+  .tl-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;z-index:1}
+  .tl-content{flex:1;padding-top:4px}
+  .tl-date{font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
+  .tl-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+  .tl-desc{font-size:13px;color:var(--text2)}
+
+  .footer{background:var(--navy2);border-top:1px solid var(--border);padding:20px 24px;text-align:center;color:var(--text3);font-size:12px;line-height:1.7}
+  .footer a{color:var(--teal);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div>
+    <span class="hero-badge">🔴 Breaking — June 8, 2026</span>
+    <span class="hero-date">Window Closes: Sep 30, 2026</span>
+  </div>
+  <h1>RBI's FCNR(B) <span>Special Swap Window</span> 2026</h1>
+  <div class="hero-sub">~7% on Dollar Deposits · Zero Currency Risk · Zero Tax in India · Limited Window</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="dot"></span>RBI Circular — June 8, 2026</div>
+    <div class="hero-meta-item"><span class="dot"></span>USD · GBP · EUR · AUD · CAD · SGD · JPY</div>
+    <div class="hero-meta-item"><span class="dot"></span>3–5 Year Tenure | Lock-in: 1 Year</div>
+    <div class="hero-meta-item"><span class="dot"></span>CA Parvesh Aghi | paraghi.github.io</div>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab active" onclick="showTab('overview')">Overview</button>
+  <button class="tab" onclick="showTab('mechanism')">How It Works</button>
+  <button class="tab" onclick="showTab('rates')">Bank Rates</button>
+  <button class="tab" onclick="showTab('compare')">NRE vs FCNR</button>
+  <button class="tab" onclick="showTab('tax')">Tax & FEMA</button>
+  <button class="tab" onclick="showTab('history')">2013 vs 2026</button>
+  <button class="tab" onclick="showTab('action')">Should You Invest?</button>
+</div>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section active">
+  <div class="sec-header">
+    <h2>What Just Happened — The Big Picture</h2>
+    <p>RBI's most significant NRI deposit intervention since 2013 — announced June 5–8, 2026</p>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-card"><div class="stat-label">Peak Rate (USD)</div><div class="stat-val teal">7.1%</div><div class="stat-sub">AU Small Finance Bank</div></div>
+    <div class="stat-card"><div class="stat-label">Old FCNR Rate</div><div class="stat-val red">3–4%</div><div class="stat-sub">Before June 8, 2026</div></div>
+    <div class="stat-card"><div class="stat-label">Rate Jump</div><div class="stat-val gold">+295 bps</div><div class="stat-sub">SBI increase</div></div>
+    <div class="stat-card"><div class="stat-label">Tax in India</div><div class="stat-val green">ZERO</div><div class="stat-sub">Section 10(15) — Exempt</div></div>
+    <div class="stat-card"><div class="stat-label">Currency Risk</div><div class="stat-val green">NONE</div><div class="stat-sub">USD in → USD out</div></div>
+    <div class="stat-card"><div class="stat-label">Expected Inflows</div><div class="stat-val teal">$40–50B</div><div class="stat-sub">SBI Research estimate</div></div>
+  </div>
+
+  <div class="alert alert-teal">
+    <div class="alert-label">⚡ The Headline in One Line</div>
+    RBI is now absorbing the full hedging cost (2.5% p.a.) that banks previously bore on FCNR(B) deposits. Banks pass this saving to NRIs as higher interest — up to 7.1% in USD — with <strong>zero currency risk</strong> and <strong>zero Indian tax</strong>. Window closes September 30, 2026.
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Why RBI Did This</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Problem</th><th>Number</th></tr>
+        <tr><td>Rupee depreciation in 2026</td><td class="red">~7% vs USD</td></tr>
+        <tr><td>Forex reserves — Feb 2026 peak</td><td>$728 billion</td></tr>
+        <tr><td>Forex reserves — June 2026</td><td class="red">~$682 billion</td></tr>
+        <tr><td>Reserves drop</td><td class="red">~$46 billion</td></tr>
+        <tr><td>FCNR inflows FY25</td><td class="green">$7 billion</td></tr>
+        <tr><td>FCNR inflows FY26</td><td class="red">$946 million (↓86%)</td></tr>
+        <tr><td>Trigger: oil price</td><td>Hormuz crisis → $100+/barrel</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="card-title">The Full Package (June 5–8, 2026)</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Measure</th><th>Beneficiary</th></tr>
+        <tr><td>FCNR(B) swap facility — 7% on USD deposits</td><td><span class="pill pill-teal">NRIs</span></td></tr>
+        <tr><td>Zero tax on govt bond interest for FPIs</td><td><span class="pill pill-blue">FPIs</span></td></tr>
+        <tr><td>Zero CGT on govt bond gains for FPIs</td><td><span class="pill pill-blue">FPIs</span></td></tr>
+        <tr><td>FAR expanded to 15/30/40-yr bonds + Green Bonds</td><td><span class="pill pill-blue">FPIs</span></td></tr>
+        <tr><td>Equity investment opened to broader NRI/OCI class</td><td><span class="pill pill-teal">NRIs/OCIs</span></td></tr>
+      </table></div>
+      <div style="font-size:12px;color:var(--text3);margin-top:8px">Source: Income Tax (Amendment) Ordinance, 2026 — June 5, 2026</div>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <div class="alert-label">📊 The NRI's Oldest Problem — Now Solved</div>
+    Every NRI who earned high rupee interest in an NRE FD faced the same silent loss: rupee depreciation. At ~4% annual depreciation, a 7.5% NRE FD gives you only ~3.5% in real dollar terms. FCNR(B) eliminates this entirely — <strong>you deposit USD, you receive USD back</strong>. The interest is also in USD. No conversion at any point.
+  </div>
+</div>
+
+<!-- MECHANISM -->
+<div id="mechanism" class="section">
+  <div class="sec-header">
+    <h2>How the RBI Swap Mechanism Works</h2>
+    <p>The old problem, the new solution, and the chain from RBI to NRI</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">The Old Problem — Why FCNR Rates Were Stuck at 3–4%</div>
+    <p style="color:var(--text2);font-size:13px;margin-bottom:14px">When a bank accepted USD from an NRI, it had to convert to INR to lend in India. But at maturity it had to return USD — at an unknown future exchange rate. The cost of protecting against this risk:</p>
+    <div class="flow">
+      <div class="flow-box">
+        <div class="flow-icon">👤</div>
+        <div class="flow-title">NRI Deposits $</div>
+        <div class="flow-desc">USD goes in, USD must come back</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">
+        <div class="flow-icon">🏦</div>
+        <div class="flow-title">Bank Converts to ₹</div>
+        <div class="flow-desc">Lends in India at INR rates</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">
+        <div class="flow-icon">📉</div>
+        <div class="flow-title">Hedge Cost: ~2.5%/yr</div>
+        <div class="flow-desc">Buy $ forward to return at maturity</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:rgba(255,107,107,.4)">
+        <div class="flow-icon">😞</div>
+        <div class="flow-title">NRI Gets Only ~4%</div>
+        <div class="flow-desc">2.5% hedge cost eats the margin</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">The New Solution — RBI Absorbs the Hedge Cost</div>
+    <p style="color:var(--text2);font-size:13px;margin-bottom:14px">RBI circular dated June 8, 2026: For fresh FCNR(B) deposits of 3–5 year tenor booked up to September 30, 2026, the RBI will run a USD/INR swap at the same rate — effectively giving the bank rupees today and buying back the same dollars later at the same rate. Bank's hedging cost = ZERO.</p>
+    <div class="flow">
+      <div class="flow-box">
+        <div class="flow-icon">👤</div>
+        <div class="flow-title">NRI Deposits $</div>
+        <div class="flow-desc">3–5 year FCNR(B)</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">
+        <div class="flow-icon">🏦</div>
+        <div class="flow-title">Bank Gets $</div>
+        <div class="flow-desc">Sends $ to RBI under swap</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:rgba(0,201,167,.4)">
+        <div class="flow-icon">🏛️</div>
+        <div class="flow-title">RBI Swap</div>
+        <div class="flow-desc">Gives ₹ now, returns $ at maturity at same rate. Cost to bank = ZERO</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:rgba(52,211,153,.4)">
+        <div class="flow-icon">🎉</div>
+        <div class="flow-title">NRI Gets ~7%</div>
+        <div class="flow-desc">Full saving passed to depositor</div>
+      </div>
+    </div>
+    <div class="alert alert-teal" style="margin-top:14px">
+      <div class="alert-label">Additional RBI Concession</div>
+      RBI is also bearing the <strong>SLR (Statutory Liquidity Ratio) and CRR (Cash Reserve Ratio) costs</strong> on these deposits until September 30 — further reducing the bank's cost and allowing even higher rates to be offered.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Key Terms of the Special FCNR(B) Scheme</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Parameter</th><th>Detail</th></tr>
+      <tr><td>Eligible deposits</td><td>Fresh FCNR(B) deposits only — not rollovers of existing deposits</td></tr>
+      <tr><td>Minimum tenure</td><td>3 years</td></tr>
+      <tr><td>Maximum tenure</td><td>5 years</td></tr>
+      <tr><td>Lock-in period</td><td>1 year (cannot withdraw before 1 year)</td></tr>
+      <tr><td>Window closes</td><td><strong class="red">September 30, 2026</strong></td></tr>
+      <tr><td>Currency</td><td>Primarily USD; other freely convertible currencies permitted</td></tr>
+      <tr><td>Rate setting</td><td>Banks free to price per internal policy — subject to RBI ceilings</td></tr>
+      <tr><td>SLR/CRR cost</td><td>Borne by RBI until September 30</td></tr>
+      <tr><td>Who can deposit</td><td>NRIs and OCIs with valid NRI/OCI status</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- BANK RATES -->
+<div id="rates" class="section">
+  <div class="sec-header">
+    <h2>Bank-Wise FCNR(B) Rates — June 2026</h2>
+    <p>As of June 11, 2026 — rates may change. Verify directly with your bank before booking.</p>
+  </div>
+
+  <div class="bank-grid">
+    <div class="bank-card" style="border-color:rgba(0,201,167,.5)">
+      <div class="bank-name">AU Small Finance Bank</div>
+      <div class="bank-rate teal">7.10%</div>
+      <div class="bank-note">3–4 year USD | Highest in market<br>↑ from 5.15% (+195 bps)</div>
+    </div>
+    <div class="bank-card" style="border-color:rgba(240,180,41,.4)">
+      <div class="bank-name">Karur Vysya Bank</div>
+      <div class="bank-rate gold">7.00%</div>
+      <div class="bank-note">3–5 year USD<br>↑ over 300 bps increase</div>
+    </div>
+    <div class="bank-card" style="border-color:rgba(77,166,255,.4)">
+      <div class="bank-name">ICICI Bank</div>
+      <div class="bank-rate blue">6.50%</div>
+      <div class="bank-note">NRI FDs from June 11<br>All tenors 3–5 years</div>
+    </div>
+    <div class="bank-card" style="border-color:rgba(77,166,255,.4)">
+      <div class="bank-name">Punjab National Bank</div>
+      <div class="bank-rate blue">6.10%</div>
+      <div class="bank-note">3–5 year USD<br>PSU bank offering</div>
+    </div>
+    <div class="bank-card">
+      <div class="bank-name">HDFC Bank</div>
+      <div class="bank-rate" style="color:var(--text)">6.00%</div>
+      <div class="bank-note">3–5 year USD from June 10<br>↑ from 3.4% (+260 bps)</div>
+    </div>
+    <div class="bank-card">
+      <div class="bank-name">Axis Bank</div>
+      <div class="bank-rate" style="color:var(--text)">6.00%</div>
+      <div class="bank-note">3–5 year USD<br>Effective June 2026</div>
+    </div>
+    <div class="bank-card">
+      <div class="bank-name">SBI</div>
+      <div class="bank-rate" style="color:var(--text)">5.25–6.00%</div>
+      <div class="bank-note">5.25% shorter tenors<br>6% for 5-yr above $1M<br>↑ from 3.05% (+295 bps)</div>
+    </div>
+    <div class="bank-card">
+      <div class="bank-name">Central Bank of India</div>
+      <div class="bank-rate" style="color:var(--text)">6.00%</div>
+      <div class="bank-note">3–5 year USD<br>Post-RBI swap announcement</div>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <div class="alert-label">⚠ Important — Verify Before Booking</div>
+    Rates shown are as of June 11, 2026. Banks update these frequently. Always check the bank's official website or NRI desk before booking. Also confirm whether the rate applies to the specific amount you plan to deposit (some banks have higher rates above $1 million).
+  </div>
+
+  <div class="card">
+    <div class="card-title">Rate Comparison — Before vs After RBI Swap (USD, 3–5 Year)</div>
+    <div class="compare-bar">
+      <div class="bar-row">
+        <div class="bar-label">Old SBI rate</div>
+        <div class="bar-track"><div class="bar-fill" style="width:43%;background:rgba(255,107,107,.6)">3.05%</div></div>
+        <div class="bar-val red">3.05%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Old HDFC rate</div>
+        <div class="bar-track"><div class="bar-fill" style="width:48%;background:rgba(255,107,107,.6)">3.4%</div></div>
+        <div class="bar-val red">3.4%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">US Treasury 3yr</div>
+        <div class="bar-track"><div class="bar-fill" style="width:59%;background:rgba(240,180,41,.6)">4.2%</div></div>
+        <div class="bar-val gold">4.2%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">New SBI rate</div>
+        <div class="bar-track"><div class="bar-fill" style="width:85%;background:rgba(0,201,167,.5)">6.0%</div></div>
+        <div class="bar-val teal">6.0%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">New ICICI rate</div>
+        <div class="bar-track"><div class="bar-fill" style="width:91%;background:rgba(0,201,167,.6)">6.5%</div></div>
+        <div class="bar-val teal">6.5%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">New AU SFB rate</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:rgba(0,201,167,.8)">7.1%</div></div>
+        <div class="bar-val teal">7.1%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NRE vs FCNR -->
+<div id="compare" class="section">
+  <div class="sec-header">
+    <h2>NRE FD vs FCNR(B) — Which Is Better Now?</h2>
+    <p>Both are tax-free in India. The difference is all about currency risk.</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Feature</th><th>NRE Fixed Deposit</th><th>FCNR(B) Deposit</th></tr>
+    <tr><td>Currency</td><td>Indian Rupees (INR)</td><td>USD / GBP / EUR / AUD / CAD / SGD / JPY</td></tr>
+    <tr><td>Interest rate (typical)</td><td>7–7.5% in INR</td><td class="teal">6–7.1% in USD (post-swap)</td></tr>
+    <tr><td>Currency risk</td><td class="red">YES — INR depreciates ~4%/yr vs USD</td><td class="green">NONE — deposit & return in same currency</td></tr>
+    <tr><td>Real return in USD</td><td class="red">7.5% INR − 4% depreciation = ~3.5% real</td><td class="green">6–7.1% (full rate — no FX loss)</td></tr>
+    <tr><td>Tax in India</td><td class="green">ZERO (Section 10(4))</td><td class="green">ZERO (Section 10(15))</td></tr>
+    <tr><td>Repatriation</td><td class="green">Unlimited, freely</td><td class="green">Unlimited, in original currency</td></tr>
+    <tr><td>Tenure</td><td>Any — very flexible</td><td>1–5 years (3–5 yr for swap benefit)</td></tr>
+    <tr><td>Minimum tenure</td><td>7 days</td><td>1 year</td></tr>
+    <tr><td>Best for</td><td>Short-term parking; INR-spending NRIs</td><td class="teal">USD earners; protection against INR slide</td></tr>
+    <tr><td>Special window</td><td>No</td><td class="red">Closes September 30, 2026</td></tr>
+  </table></div>
+
+  <div class="alert alert-teal">
+    <div class="alert-label">💡 The Math That Changes Everything</div>
+    <strong>Scenario: NRI parks $1,00,000 for 5 years</strong><br><br>
+    NRE FD at 7.5% INR: Earns ₹7.5L/yr but if rupee depreciates 5%/yr, the dollar value of your corpus falls. Net real USD return ≈ 2.5–3%.<br><br>
+    FCNR(B) at 6.5% USD: Earns $6,500/yr in pure dollars, compounding at 6.5%. After 5 years: $1,00,000 becomes ~$1,37,000. No FX loss. Ever.<br><br>
+    <strong>Verdict: FCNR(B) wins clearly for any NRI who earns, spends, or saves in foreign currency.</strong>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">When NRE FD Is Still Better</div>
+      <ul style="color:var(--text2);font-size:13px;list-style:none">
+        <li style="padding:6px 0;border-bottom:1px solid rgba(30,48,96,.4)">✦ Planning to return to India within 1–2 years</li>
+        <li style="padding:6px 0;border-bottom:1px solid rgba(30,48,96,.4)">✦ Need short-term deposit (under 1 year)</li>
+        <li style="padding:6px 0;border-bottom:1px solid rgba(30,48,96,.4)">✦ Will spend the money in India (children's education, property)</li>
+        <li style="padding:6px 0">✦ Want complete flexibility to break deposit anytime</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">When FCNR(B) Is Clearly Better</div>
+      <ul style="color:var(--text2);font-size:13px;list-style:none">
+        <li style="padding:6px 0;border-bottom:1px solid rgba(30,48,96,.4)">✦ You earn in USD/GBP/EUR and want to protect purchasing power</li>
+        <li style="padding:6px 0;border-bottom:1px solid rgba(30,48,96,.4)">✦ Long-term NRI with no immediate India-spending need</li>
+        <li style="padding:6px 0;border-bottom:1px solid rgba(30,48,96,.4)">✦ Worried about INR depreciation (valid concern — ₹85+ already)</li>
+        <li style="padding:6px 0">✦ Want to park surplus USD at higher rate than US savings accounts</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAX & FEMA -->
+<div id="tax" class="section">
+  <div class="sec-header">
+    <h2>Tax Treatment & FEMA Rules</h2>
+    <p>FCNR(B) is one of the most tax-efficient instruments available to NRIs</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>Aspect</th><th>Rule</th><th>Section</th></tr>
+    <tr><td>Interest income — India tax</td><td><span class="pill pill-green">Fully Exempt</span> — as long as NRI status is maintained</td><td>Section 10(15)</td></tr>
+    <tr><td>TDS on interest</td><td><span class="pill pill-green">NIL</span> — no TDS deducted by bank</td><td>Section 10(15)</td></tr>
+    <tr><td>ITR filing requirement</td><td>Not required if FCNR is the only India income</td><td>Section 115G</td></tr>
+    <tr><td>Repatriation — principal</td><td><span class="pill pill-green">Unlimited</span> — freely repatriable in original currency</td><td>FEMA 1999</td></tr>
+    <tr><td>Repatriation — interest</td><td><span class="pill pill-green">Unlimited</span> — in same foreign currency</td><td>FEMA 1999</td></tr>
+    <tr><td>Form 15CA / 15CB</td><td>NOT required for FCNR repatriation (current account)</td><td>FEMA</td></tr>
+    <tr><td>On return to India (RNOR)</td><td>Remains exempt during RNOR period</td><td>Section 10(15)</td></tr>
+    <tr><td>On becoming full Resident</td><td>Interest becomes taxable at slab rate</td><td>Section 5(1)</td></tr>
+    <tr><td>FBAR (US residents)</td><td>FCNR account must be reported if balance > USD 10,000</td><td>FinCEN 114</td></tr>
+    <tr><td>Home country taxation</td><td>Interest may be taxable in country of residence — claim FTC</td><td>DTAA / local law</td></tr>
+  </table></div>
+
+  <div class="alert alert-green">
+    <div class="alert-label">✓ The Tax Triple Advantage of FCNR(B)</div>
+    1. <strong>Zero Indian tax</strong> on interest (Section 10(15)) — no TDS, no filing needed<br>
+    2. <strong>Zero currency risk</strong> — no FX conversion loss eating into returns<br>
+    3. <strong>Fully repatriable</strong> — no USD 1M/yr limit (unlike NRO account)
+  </div>
+
+  <div class="alert alert-gold">
+    <div class="alert-label">⚠ Important — Home Country Tax</div>
+    While FCNR interest is exempt in India, it may be taxable in your country of residence (USA, UK, Canada, Australia etc.). For US-based NRIs: report FCNR interest on Form 1040 Schedule B. You will NOT get a Foreign Tax Credit since no Indian tax was paid. Consult a CA in your country of residence for the net after-tax return in your specific situation.
+  </div>
+
+  <div class="card">
+    <div class="card-title">What Happens When You Return to India?</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Status After Return</th><th>FCNR Interest Treatment</th><th>Action</th></tr>
+      <tr><td><span class="pill pill-blue">RNOR</span> (up to 2 years)</td><td class="green">Still EXEMPT — Section 10(15) continues</td><td>Keep FCNR open — no tax</td></tr>
+      <tr><td><span class="pill pill-gold">Resident (ROR)</span></td><td class="red">Taxable at slab rate</td><td>Consider closing FCNR and converting to RFC account</td></tr>
+      <tr><td>RFC Account (Resident Foreign Currency)</td><td>Exempt while RNOR; taxable as Resident</td><td>Transfer FCNR proceeds to RFC on becoming resident</td></tr>
+    </table></div>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div id="history" class="section">
+  <div class="sec-header">
+    <h2>2013 vs 2026 — Same Playbook, Bigger Stakes</h2>
+    <p>RBI has used this lever before — with stunning results</p>
+  </div>
+
+  <div class="two-col">
+    <div class="card" style="border-color:rgba(240,180,41,.3)">
+      <div class="card-title" style="color:var(--gold)">2013 FCNR Swap Window</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Item</th><th>Detail</th></tr>
+        <tr><td>Trigger</td><td>Taper tantrum; rupee at ₹68/USD</td></tr>
+        <tr><td>Window</td><td>Sep–Nov 2013 (3 months)</td></tr>
+        <tr><td>Swap rate to banks</td><td>Fixed 3.5% p.a.</td></tr>
+        <tr><td>Inflows raised</td><td class="gold">~$26 billion via FCNR(B)</td></tr>
+        <tr><td>Total with other measures</td><td class="gold">~$34 billion</td></tr>
+        <tr><td>Impact on rupee</td><td class="green">Stabilised; reversed sharp fall</td></tr>
+        <tr><td>Top bank: HDFC</td><td>Raised $3.4 billion alone</td></tr>
+      </table></div>
+    </div>
+    <div class="card" style="border-color:rgba(0,201,167,.3)">
+      <div class="card-title">2026 FCNR Swap Window</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Item</th><th>Detail</th></tr>
+        <tr><td>Trigger</td><td>Hormuz crisis; oil $100+; rupee ~₹95</td></tr>
+        <tr><td>Window</td><td>Jun 8 – Sep 30, 2026</td></tr>
+        <tr><td>Swap arrangement</td><td>RBI bears full hedge cost + SLR/CRR</td></tr>
+        <tr><td>Expected inflows</td><td class="teal">$40–50 billion (SBI Research)</td></tr>
+        <tr><td>MUFG base case</td><td class="teal">$20 billion minimum</td></tr>
+        <tr><td>Rates offered</td><td class="teal">6–7.1% USD (vs 3–4% before)</td></tr>
+        <tr><td>FCNR outstanding</td><td>$33.8 billion (March 2026)</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="alert alert-teal">
+    <div class="alert-label">📈 The 2026 Window Is Bigger Than 2013</div>
+    In 2013, RBI raised ~$26 billion in 3 months. In 2026, the macro backdrop is more urgent (rupee at ₹95, Hormuz crisis, oil shock), the rates offered are higher (6–7.1% vs ~5.5% in 2013), and India's NRI diaspora is larger and wealthier. SBI Research estimates $40–45 billion could flow in — potentially 1.5–2× the 2013 haul.
+  </div>
+
+  <div class="card">
+    <div class="card-title">Timeline of FCNR Special Windows in India</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(240,180,41,.2);color:var(--gold);border:2px solid var(--gold)">13</div>
+        <div class="tl-content">
+          <div class="tl-date">September–November 2013</div>
+          <div class="tl-title">Taper Tantrum FCNR Window</div>
+          <div class="tl-desc">Rupee hit ₹68. RBI offered banks swap at 3.5% fixed. Raised $26B in FCNR alone. Rupee stabilised.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(77,166,255,.2);color:var(--blue);border:2px solid var(--blue)">22</div>
+        <div class="tl-content">
+          <div class="tl-date">July 2022</div>
+          <div class="tl-title">Post-COVID Rate Hike Pressure</div>
+          <div class="tl-desc">RBI eased FCNR rate ceilings. Limited impact — global rates already high.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(240,180,41,.2);color:var(--gold);border:2px solid var(--gold)">25</div>
+        <div class="tl-content">
+          <div class="tl-date">December 2025</div>
+          <div class="tl-title">Rate Ceiling Raised to ARR + 400/500 bps</div>
+          <div class="tl-desc">RBI raised ceiling for 1–3 year deposits to ARR+400 bps and 3–5 year to ARR+500 bps. Available till March 2025.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(0,201,167,.2);color:var(--teal);border:2px solid var(--teal)">26</div>
+        <div class="tl-content">
+          <div class="tl-date">June 8, 2026 — NOW</div>
+          <div class="tl-title">Full Swap Facility — Biggest Since 2013</div>
+          <div class="tl-desc">RBI absorbs full hedge cost + SLR/CRR. Banks offering 6–7.1% USD. Window: Sep 30, 2026. Expected: $40–50 billion.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SHOULD YOU INVEST -->
+<div id="action" class="section">
+  <div class="sec-header">
+    <h2>Should You Invest? — Decision Framework</h2>
+    <p>An objective analysis for different NRI profiles before September 30, 2026</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <tr><th>NRI Profile</th><th>Verdict</th><th>Reason</th></tr>
+    <tr><td>UAE/Gulf NRI with USD savings, staying 3+ more years</td><td><span class="pill pill-green">✓ Strong YES</span></td><td>6–7% in USD, zero tax, zero currency risk. Best USD return available vs global alternatives</td></tr>
+    <tr><td>US/UK/Canada NRI with surplus USD, no India spending plan</td><td><span class="pill pill-green">✓ YES</span></td><td>Beats US savings rates (4–5%). Check home country tax treatment.</td></tr>
+    <tr><td>NRI planning to return to India within 2 years</td><td><span class="pill pill-gold">⚠ CAUTION</span></td><td>3-year minimum tenure. Premature withdrawal loses interest. Mismatch risk.</td></tr>
+    <tr><td>NRI who needs the money in under 3 years</td><td><span class="pill pill-red">✗ NO</span></td><td>Cannot use the swap-window rates — those require 3–5 year tenure. Use NRE FD instead.</td></tr>
+    <tr><td>NRI planning to return India, become Resident soon</td><td><span class="pill pill-gold">⚠ CHECK</span></td><td>On becoming Resident (after RNOR), interest becomes taxable. Factor this in.</td></tr>
+    <tr><td>NRI with large NRO balance earning 30% TDS</td><td><span class="pill pill-green">✓ YES</span></td><td>Convert to NRE first (if eligible), then to FCNR. Moves from 30% tax to zero.</td></tr>
+  </table></div>
+
+  <div class="alert alert-red">
+    <div class="alert-label">⚠ 3 Risks to Assess Before Investing</div>
+    <strong>1. Bank Risk:</strong> Higher rates from smaller banks (AU SFB, Karur Vysya at 7–7.1%) come with slightly higher bank risk vs SBI/HDFC. India's deposit insurance covers only ₹5 lakh. For large amounts, prefer larger PSU/private banks even at slightly lower rates.<br><br>
+    <strong>2. Premature Withdrawal:</strong> 1-year lock-in means you cannot access funds for 12 months. Beyond 1 year, premature withdrawal is possible but loses the preferential swap-window interest rate.<br><br>
+    <strong>3. Home Country Tax:</strong> FCNR interest is exempt in India but <em>may be taxable</em> in USA, UK, Canada, Australia etc. at your marginal rate. A 6.5% USD FCNR for a US NRI in the 35% bracket = 4.2% net. Still beats most alternatives, but factor this in.
+  </div>
+
+  <div class="card">
+    <div class="card-title">5-Step Action Plan Before September 30, 2026</div>
+    <div class="timeline" style="margin-top:14px">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(0,201,167,.2);color:var(--teal);border:2px solid var(--teal);font-size:13px">1</div>
+        <div class="tl-content">
+          <div class="tl-title">Confirm your NRI status is valid</div>
+          <div class="tl-desc">FCNR(B) is only for NRIs/OCIs. If you have been spending 182+ days in India recently, check your residential status with a CA.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(0,201,167,.2);color:var(--teal);border:2px solid var(--teal);font-size:13px">2</div>
+        <div class="tl-content">
+          <div class="tl-title">Decide the tenure — 3, 4, or 5 years</div>
+          <div class="tl-desc">All three qualify for the swap window. Pick based on when you might need the money. 5-year gives maximum compounding.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(0,201,167,.2);color:var(--teal);border:2px solid var(--teal);font-size:13px">3</div>
+        <div class="tl-content">
+          <div class="tl-title">Compare rates across 3–4 banks</div>
+          <div class="tl-desc">ICICI (6.5%), HDFC (6%), SBI (6%), AU SFB (7.1%), PNB (6.1%). For large amounts consider splitting across 2 banks.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(0,201,167,.2);color:var(--teal);border:2px solid var(--teal);font-size:13px">4</div>
+        <div class="tl-content">
+          <div class="tl-title">Check home country tax treatment</div>
+          <div class="tl-desc">Especially important for US NRIs (Form 1040), UK NRIs (Self-Assessment), and Canadian NRIs (T1). Confirm net after-tax return.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:rgba(0,201,167,.2);color:var(--teal);border:2px solid var(--teal);font-size:13px">5</div>
+        <div class="tl-content">
+          <div class="tl-title">Book before September 30, 2026</div>
+          <div class="tl-desc">The RBI swap window closes on this date. After this, FCNR rates will revert to 3–4% range. Act before the window closes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-blue">
+    <div class="alert-label">Disclaimer</div>
+    This report is for academic and informational purposes only. Rates mentioned are as of June 11, 2026 and subject to change. Past performance of similar schemes (2013) does not guarantee similar results. Consult a qualified CA before making investment decisions. Tax treatment varies by country of residence.
+    <br><br><strong style="color:var(--teal)">CA Parvesh Aghi</strong> | Visiting Professor — Finance | IMT Ghaziabad · IIFT Delhi · Shiv Nadar | <a href="https://paraghi.github.io" style="color:var(--teal)">paraghi.github.io</a>
+  </div>
+</div>
+
+<div class="footer">
+  <strong style="color:var(--teal)">RBI FCNR(B) Special Swap Window 2026</strong> — NRI Investment Guide<br>
+  CA Parvesh Aghi | Visiting Professor — Finance | <a href="https://paraghi.github.io">paraghi.github.io</a><br>
+  RBI Circular dated June 8, 2026 | Window closes September 30, 2026 | For academic use only
+</div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
